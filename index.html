@@ -471,6 +471,42 @@
   }
   .h-tag.green { background: var(--good-soft); color: var(--good); font-weight: 600; }
 
+  /* ─── DISTANCE + SHOWER ROW ─── */
+  .h-dist {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .h-dist-cell {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+  .h-dist-cell .dc-lbl {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .h-dist-cell .dc-val {
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .h-dist-cell .dc-sub {
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+  .h-dist-cell.shower-yes .dc-val { color: var(--good); }
+  .h-dist-cell.shower-no  .dc-val { color: var(--rose); }
+  .h-dist-cell.shower-shared .dc-val { color: var(--warn); }
+
   .pcs { margin-top: 12px; display: grid; gap: 5px; }
   .pcs .row {
     display: flex;
@@ -875,6 +911,7 @@
           stars: 2, classText: "2★ Cabins & Inn",
           score: 8.8, scoreText: "מצוין", reviews: "ביקורות מאומתות",
           total: 648, nightly: 324,
+          distReserve: "1.1 ק״מ · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "Gibbon Ave · 5 ד׳ הליכה לכניסה",
           tags: ["מטבח חלקי", "חניה חינם", "Wi-Fi חינם"],
           chips: [{t:"המומלץ שלנו", c:"reco"}],
@@ -895,6 +932,7 @@
           stars: 3, classText: "3★ Inn · 2,800+ ביקורות",
           score: 8.7, scoreText: "מצוין", reviews: "2,800+ ביקורות",
           total: 635, nightly: 317,
+          distReserve: "1.4 ק״מ · 3 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "מרכז העיירה · הליכה לכניסה",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "תרסיס דובים חינם", "קפה 24/7"],
           chips: [],
@@ -916,6 +954,7 @@
           stars: 3, classText: "3★ · Travelers' Choice 2025",
           score: 8.8, scoreText: "מצוין", reviews: "Travelers' Choice 2025",
           total: 825, nightly: 412,
+          distReserve: "~3 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "מול ה־IMAX · הכי קרוב לכניסה",
           tags: ["בריכה פנימית", "ג׳קוזי", "טעינת EV", "ארוחת בוקר חינם"],
           chips: [{t:"בחירת מטיילים", c:"gold"}],
@@ -937,6 +976,7 @@
           stars: 3, classText: "3★ Cabins · מדגם קטן",
           score: 9.3, scoreText: "יוצא דופן", reviews: "28–50 ביקורות",
           total: 657, nightly: 328,
+          distReserve: "< 0.8 ק״מ · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "מרכז העיירה · 5 ד׳ נסיעה לכניסה",
           tags: ["מטבח מלא בחלק מהבקתות", "סלון", "בעלים מעורב"],
           chips: [{t:"דירוג 9.3", c:"deal"}],
@@ -959,6 +999,7 @@
           stars: 3, classText: "3★ · Boutique Cabins",
           score: 8.7, scoreText: "מצוין", reviews: "ביקורות מאומתות",
           total: 848, nightly: 424,
+          distReserve: "1 ק״מ · 3 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "פאתי העיירה · בקתות פרטיות",
           tags: ["בקתה פרטית", "מטבח", "מדורות קהילתיות", "כביסה חינם"],
           chips: [],
@@ -981,6 +1022,7 @@
           stars: 3, classText: "3★ · אזהרה",
           score: 8.4, scoreText: "טוב", reviews: "ביקורות מעורבות 2025",
           total: 628, nightly: 313,
+          distReserve: "~3 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "מרכז · הליכה לכניסה",
           tags: ["הזול ביותר 3★", "מרכזי"],
           chips: [{t:"להיזהר", c:"warn"}],
@@ -1002,6 +1044,7 @@
           stars: 3, classText: "3★ Inn · 2,100+ ביקורות",
           score: 8.7, scoreText: "מצוין", reviews: "2,100+ ביקורות",
           total: 770, nightly: 385,
+          distReserve: "~4 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
           loc: "מרכז · הסעה חינם לפארק",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "הסעה לפארק"],
           chips: [{t:"דירוג גבוה", c:"deal"}],
@@ -1023,6 +1066,7 @@
           stars: 4, classText: "4★ Ranch · חוות פעילה",
           score: 9.0, scoreText: "יוצא דופן", reviews: "חוות פעילה",
           total: 858, nightly: 429,
+          distReserve: "9.7 ק״מ · 10 ד׳", distTown: "9.7 ק״מ · 10 ד׳", shower: "yes",
           loc: "5 מ׳ מהכניסה · 200 דונם",
           tags: ["חוות סוסים", "דיג זבובים", "ברביקיו על נחל", "רכיבה"],
           chips: [{t:"חוויה אמיתית", c:"reco"}],
@@ -1044,6 +1088,7 @@
           stars: 4, classText: "Glamping · T+L Top 5 MT 2025",
           score: 8.5, scoreText: "מצוין", reviews: "Travel+Leisure 2025",
           total: 948, nightly: 474,
+          distReserve: "9.7 ק״מ · 10 ד׳", distTown: "9.7 ק״מ · 10 ד׳", shower: "shared",
           loc: "10 ד׳ לכניסה · גלמפינג",
           tags: ["אוהל ספארי", "מיטת קינג", "תנור עצים", "מקלחת חמה"],
           chips: [{t:"ייחודי", c:"gold"}],
@@ -1080,6 +1125,7 @@
           stars: 2, classText: "2★ Cottages · על הנהר",
           score: 9.2, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
           total: 603, nightly: 302,
+          distReserve: "1.6 ק״מ · 2 ד׳", distTown: "בתוך גרדינר", shower: "yes",
           loc: "על נהר ילוסטון · 5 ד׳ לכניסה",
           tags: ["מטבח מלא", "מרפסת לנהר", "ברביקיו", "Keurig"],
           chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"מבצע", c:"deal"}],
@@ -1101,6 +1147,7 @@
           stars: 3, classText: "3★ Apartment Suites",
           score: 9.3, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
           total: 765, nightly: 382,
+          distReserve: "~3 ק״מ · 2 ד׳", distTown: "בתוך גרדינר", shower: "yes",
           loc: "מחוץ לכביש הראשי · שקט",
           tags: ["סוויטה דירתית", "מטבח", "סלון", "מרפסת"],
           chips: [{t:"דירוג 9.3", c:"deal"}],
@@ -1122,6 +1169,7 @@
           stars: 3, classText: "3★ Ascend Collection",
           score: 8.2, scoreText: "טוב מאוד", reviews: "ביקורות 2025",
           total: 608, nightly: 304,
+          distReserve: "1.6 ק״מ · 5 ד׳", distTown: "בתוך גרדינר", shower: "yes",
           loc: "ליד הכניסה · מסעדה במלון",
           tags: ["מסעדה ובר", "סאונה", "ג׳קוזי", "ידידותי לחיות"],
           chips: [{t:"דמי שירות $15", c:"warn"}],
@@ -1144,6 +1192,7 @@
           stars: 3, classText: "Historic 1900 · Hot Springs",
           score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1900",
           total: 1091, nightly: 546,
+          distReserve: "48 ק״מ · 30 ד׳", distTown: "48 ק״מ מגרדינר", shower: "shared",
           loc: "Pray, MT · 30 מ׳ מהכניסה",
           tags: ["בריכות גיאותרמיות", "מסעדת יעד", "700 אקר", "היסטורי"],
           chips: [{t:"יעד מיוחד", c:"gold"}],
@@ -1180,6 +1229,7 @@
           stars: 3, classText: "3★ · Best in Cody",
           score: 9.3, scoreText: "יוצא דופן", reviews: "מומלץ ביותר",
           total: 1306, nightly: 327,
+          distReserve: "80 ק״מ · 50 ד׳", distTown: "מרכז קודי", shower: "yes",
           loc: "מרכז קודי · בוטיק חדש",
           tags: ["בריכה פנימית", "ג׳קוזי", "ארוחת בוקר חמה", "מכון כושר"],
           chips: [{t:"המומלץ שלנו", c:"reco"}],
@@ -1201,6 +1251,7 @@
           stars: 3, classText: "3★ Hilton chain",
           score: 9.2, scoreText: "יוצא דופן", reviews: "#4 מתוך 33",
           total: 1519, nightly: 380,
+          distReserve: "80 ק״מ · ~60 ד׳", distTown: "מרכז קודי", shower: "yes",
           loc: "קודי · #4 מתוך 33 מלונות",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "Hilton Honors"],
           chips: [{t:"רשת מהימנה", c:"deal"}],
@@ -1222,6 +1273,7 @@
           stars: 3, classText: "3★ · Buffalo Bill's hotel",
           score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1902",
           total: 1380, nightly: 345,
+          distReserve: "84 ק״מ · ~60 ד׳", distTown: "מרכז קודי", shower: "yes",
           loc: "מרכז האיר העתיקה · 1902",
           tags: ["היסטורי", "בר מעץ דובדבן", "קרבות יומיים", "מרכזי"],
           chips: [{t:"היסטורי", c:"gold"}],
@@ -1244,6 +1296,7 @@
           stars: 3, classText: "Dude Ranch · רכיבה על סוסים",
           score: 8.4, scoreText: "טוב", reviews: "חוות על סוסים",
           total: 1272, nightly: 318,
+          distReserve: "42 ק״מ · 35 ד׳", distTown: "42 ק״מ מקודי · 10 ד׳ מ-Wapiti", shower: "yes",
           loc: "Wapiti · 25 מ׳ קרוב לכניסה",
           tags: ["רכיבה על סוסים", "מסעדה", "בקתות", "ללא Wi-Fi"],
           chips: [{t:"חוות אמיתית", c:"reco"}],
@@ -1280,6 +1333,7 @@
           stars: 3, classText: "3★ · 1,500+ ביקורות",
           score: 9.0, scoreText: "יוצא דופן", reviews: "1,500+ ביקורות",
           total: 1896, nightly: 474,
+          distReserve: "92 ק״מ · 57 ד׳", distTown: "מרכז ג׳קסון", shower: "yes",
           loc: "10 ד׳ הליכה ל־Town Square",
           tags: ["בריכה פנימית", "ג׳קוזי", "סאונה", "חדר כושר"],
           chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"חיסכון $500", c:"deal"}],
@@ -1302,6 +1356,7 @@
           stars: 2, classText: "2★ Adults-only poshtel",
           score: 8.1, scoreText: "טוב", reviews: "הזול בג׳קסון",
           total: 1224, nightly: 306,
+          distReserve: "92 ק״מ · 57 ד׳", distTown: "מרכז ג׳קסון", shower: "shared",
           loc: "מרכז ג׳קסון · poshtel",
           tags: ["מיטות תאים", "מבוגרים בלבד", "מרכז העיר"],
           chips: [{t:"הכי זול", c:"deal"}, {t:"להיזהר", c:"warn"}],
@@ -1444,6 +1499,23 @@
           <div class="h-tags">
             ${(h.tags||[]).map(t => `<span class="h-tag">${t}</span>`).join("")}
           </div>
+
+          ${(h.distReserve || h.distTown || h.shower) ? `
+          <div class="h-dist">
+            ${h.distReserve ? `<div class="h-dist-cell">
+              <div class="dc-lbl">לפארק</div>
+              <div class="dc-val en">${h.distReserve}</div>
+            </div>` : ""}
+            ${h.distTown ? `<div class="h-dist-cell">
+              <div class="dc-lbl">לעיירה</div>
+              <div class="dc-val">${h.distTown}</div>
+            </div>` : ""}
+            ${h.shower ? `<div class="h-dist-cell ${h.shower === 'yes' ? 'shower-yes' : h.shower === 'shared' ? 'shower-shared' : 'shower-no'}">
+              <div class="dc-lbl">מקלחת פרטית</div>
+              <div class="dc-val">${h.shower === 'yes' ? '✓ כן' : h.shower === 'shared' ? '⚠ משותפת' : '✗ לא'}</div>
+              ${h.shower === 'shared' ? `<div class="dc-sub">${h.id === 'undercanvas' ? 'רק בסוויטת Deluxe' : h.id === 'cachehouse' ? '12 שירותים פרטיים משותפים' : 'בית שיתופי'}</div>` : ""}
+            </div>` : ""}
+          </div>` : ""}
 
           <div class="pcs ${hasMore?'collapsed':''}" data-pcs="${h.id}">
             ${allPros}
