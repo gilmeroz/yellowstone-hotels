@@ -495,13 +495,15 @@
     margin-bottom: 2px;
   }
   .h-dist-cell .dc-val {
+    font-size: 12px;
     font-weight: 700;
     color: var(--ink);
     font-variant-numeric: tabular-nums;
   }
   .h-dist-cell .dc-sub {
-    font-size: 10.5px;
+    font-size: 10px;
     color: var(--muted);
+    margin-top: 1px;
   }
   .h-dist-cell.shower-yes .dc-val { color: var(--good); }
   .h-dist-cell.shower-no  .dc-val { color: var(--rose); }
@@ -1296,7 +1298,7 @@
           stars: 3, classText: "Dude Ranch · רכיבה על סוסים",
           score: 8.4, scoreText: "טוב", reviews: "חוות על סוסים",
           total: 1272, nightly: 318,
-          distReserve: "42 ק״מ · 35 ד׳", distTown: "42 ק״מ מקודי · 10 ד׳ מ-Wapiti", shower: "yes",
+          distReserve: "42 ק״מ · 35 ד׳", distTown: "Wapiti · 5 ד׳", shower: "yes",
           loc: "Wapiti · 25 מ׳ קרוב לכניסה",
           tags: ["רכיבה על סוסים", "מסעדה", "בקתות", "ללא Wi-Fi"],
           chips: [{t:"חוות אמיתית", c:"reco"}],
@@ -1503,17 +1505,19 @@
           ${(h.distReserve || h.distTown || h.shower) ? `
           <div class="h-dist">
             ${h.distReserve ? `<div class="h-dist-cell">
-              <div class="dc-lbl">לפארק</div>
-              <div class="dc-val en">${h.distReserve}</div>
+              <div class="dc-lbl">מרחק לפארק</div>
+              <div class="dc-val en">${h.distReserve.split(" · ")[0]}</div>
+              <div class="dc-sub en">${h.distReserve.split(" · ")[1] || ""}</div>
             </div>` : ""}
             ${h.distTown ? `<div class="h-dist-cell">
-              <div class="dc-lbl">לעיירה</div>
-              <div class="dc-val">${h.distTown}</div>
+              <div class="dc-lbl">עיירה קרובה</div>
+              <div class="dc-val">${h.distTown.split(" · ")[0]}</div>
+              <div class="dc-sub">${h.distTown.split(" · ")[1] || ""}</div>
             </div>` : ""}
             ${h.shower ? `<div class="h-dist-cell ${h.shower === 'yes' ? 'shower-yes' : h.shower === 'shared' ? 'shower-shared' : 'shower-no'}">
-              <div class="dc-lbl">מקלחת פרטית</div>
-              <div class="dc-val">${h.shower === 'yes' ? '✓ כן' : h.shower === 'shared' ? '⚠ משותפת' : '✗ לא'}</div>
-              ${h.shower === 'shared' ? `<div class="dc-sub">${h.id === 'undercanvas' ? 'רק בסוויטת Deluxe' : h.id === 'cachehouse' ? '12 שירותים פרטיים משותפים' : 'בית שיתופי'}</div>` : ""}
+              <div class="dc-lbl">מקלחת בחדר</div>
+              <div class="dc-val">${h.shower === 'yes' ? '✓ פרטית' : h.shower === 'shared' ? '⚠ משותפת' : '✗ אין'}</div>
+              ${h.shower === 'shared' ? `<div class="dc-sub">${h.id === 'undercanvas' ? 'רק Deluxe' : h.id === 'cachehouse' ? 'תא נפרד נעול' : 'ע׳׳פ סוג חדר'}</div>` : ""}
             </div>` : ""}
           </div>` : ""}
 
