@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yellowstone · אוגוסט 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg:        #f4f1ea;
+    --bg-2:      #ebe6d8;
+    --paper:     #ffffff;
+    --ink:       #14181a;
+    --ink-2:     #2a3033;
+    --muted:     #6b7378;
+    --muted-2:   #9aa0a4;
+    --line:      #e6e1d3;
+    --line-2:    #ededed;
+    --brand:     #003b95;     /* booking-ish navy, anchor */
+    --brand-2:   #002766;
+    --brand-on:  #ffffff;
+    --gold:      #c08322;
+    --score:     #003b95;
+    --score-on:  #ffffff;
+    --good:      #1f7a3a;
+    --good-soft: #e2f0e1;
+    --rose:      #b03a2c;
+    --rose-soft: #fbe4dc;
+    --warn-soft: #fcecdc;
+    --warn:      #8a4b1f;
+    --tag:       #f1ece0;
+    --shadow:    0 1px 0 rgba(20,24,26,.04), 0 12px 28px -16px rgba(20,24,26,.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Heebo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  .app { max-width: 460px; margin: 0 auto; min-height: 100vh; background: var(--bg); position: relative; }
+
+  .en { direction: ltr; unicode-bidi: isolate; font-feature-settings: "ss01"; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #1a2530;
+  }
+  .hero img.bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(.92) contrast(.95) brightness(.85);
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.55) 100%);
+  }
+  .hero-content {
+    position: absolute; inset: 0;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    z-index: 2;
+  }
+  .crest {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .crest .dot { width: 5px; height: 5px; border-radius: 999px; background: #ffd87a; }
+  .hero h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -.012em;
+    line-height: 1.1;
+    text-shadow: 0 2px 14px rgba(0,0,0,.4);
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    padding: 4px 9px;
+    border-radius: 999px;
+    line-height: 1.4;
+  }
+  .hero-meta svg { width: 12px; height: 12px; opacity: .85; }
+
+  /* ─── ROUTE STRIP ─── */
+  .route {
+    margin: -28px 14px 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .route .leg { text-align: center; }
+  .route .leg .lbl { font-size: 10.5px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+  .route .leg .place { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 3px; }
+  .route .leg .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .route .arrow {
+    width: 32px; height: 32px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+  }
+  .route .arrow svg { width: 16px; height: 16px; transform: scaleX(-1); }
+
+  /* ─── MAP ─── */
+  .map-wrap { padding: 16px 14px 4px; }
+  .map-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .map-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px 4px;
+  }
+  .map-head h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .map-head .legend {
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .map-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #e9ebd6;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    padding: 18px 18px 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .section-title h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+  .section-title .sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── TABS ─── */
+  .tabs-wrap {
+    background: var(--bg);
+    padding: 10px 14px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px;
+    box-shadow: 0 1px 0 rgba(20,24,26,.03);
+  }
+  .tab {
+    -webkit-appearance: none;
+    appearance: none; border: 0; cursor: pointer;
+    background: transparent;
+    font: inherit;
+    font-weight: 700;
+    color: var(--muted);
+    padding: 9px 4px;
+    border-radius: 9px;
+    font-size: 11px;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .tab .num {
+    font-size: 8.5px; opacity: .75;
+    letter-spacing: .02em; font-weight: 600;
+  }
+  .tab .en { font-size: 10.5px; font-weight: 700; }
+  .tab[aria-selected="true"] {
+    background: var(--ink);
+    color: #fff;
+  }
+  .tab[aria-selected="true"] .num { opacity: .8; }
+
+  /* ─── LOCATION HEADER ─── */
+  .loc-head {
+    padding: 14px 14px 6px;
+  }
+  .loc-head h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.012em;
+  }
+  .loc-head h2 .gold {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    margin-inline-start: 6px;
+    letter-spacing: 0;
+    vertical-align: 2px;
+  }
+  .loc-head .blurb {
+    margin: 6px 0 8px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .loc-head .stats {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+  .loc-head .stats b { color: var(--ink); font-weight: 700; }
+
+  /* ─── SORT BAR ─── */
+  .sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 14px 8px;
+    font-size: 12.5px;
+  }
+  .count { color: var(--muted); }
+  .count b { color: var(--ink); font-weight: 800; }
+  .sort {
+    display: flex; gap: 4px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 3px;
+  }
+  .sort button {
+    -webkit-appearance: none;
+    appearance: none; border: 0; background: transparent;
+    font: inherit; font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 36px;
+  }
+  .sort button[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+  }
+  .sort button.fav-only[aria-pressed="true"] { background: #b8294a; }
+
+  /* ─── HOTEL CARD ─── */
+  .hotel {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin: 0 14px 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .hotel.is-flag { border-color: #e1c0a4; }
+  .hotel.is-fav { box-shadow: 0 0 0 2px #b8294a, var(--shadow); }
+
+  .h-photo {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #2a2a2a;
+  }
+  .h-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .h-photo:active img { transform: scale(1.02); }
+  .h-chips {
+    position: absolute; top: 10px; inset-inline-start: 10px;
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .chip {
+    font-size: 11px; font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.95);
+    color: var(--ink);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  }
+  .chip.gold  { background: #f6c64d; color: #4a3414; }
+  .chip.deal  { background: #1f7a3a; color: #fff; }
+  .chip.warn  { background: #d76243; color: #fff; }
+  .chip.reco  { background: var(--ink); color: #fff; }
+  .fav {
+    position: absolute; top: 8px; inset-inline-end: 8px;
+    width: 44px; height: 44px;
+    border-radius: 999px;
+    border: 0; cursor: pointer;
+    background: rgba(255,255,255,.95);
+    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.16);
+    transition: color .2s, transform .12s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .fav:active { transform: scale(.92); }
+  .fav.is-on { color: #d12d50; }
+  .fav svg { width: 18px; height: 18px; }
+  .h-photo .gallery {
+    position: absolute; bottom: 8px; inset-inline-end: 8px;
+    background: rgba(20,24,26,.65);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .h-photo .gallery svg { width: 11px; height: 11px; }
+
+  /* card body */
+  .h-body { padding: 12px 14px 14px; }
+  .h-row1 {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .h-name {
+    direction: ltr;
+    text-align: start;
+    font-family: "Heebo", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brand);
+    line-height: 1.25;
+    letter-spacing: -.005em;
+    text-decoration: none;
+  }
+  .h-name:hover { text-decoration: underline; }
+  .h-stars {
+    display: inline-flex; gap: 1px;
+    color: var(--gold);
+    font-size: 11px;
+    margin-inline-start: 6px;
+    vertical-align: 2px;
+  }
+  .h-class {
+    font-size: 11px;
+    color: var(--muted);
+    direction: ltr;
+    margin-top: 2px;
+  }
+  .h-loc {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .h-loc svg { width: 12px; height: 12px; color: var(--brand); }
+  .h-loc a { color: var(--brand); text-decoration: none; font-weight: 600; }
+  .h-loc a:hover { text-decoration: underline; }
+
+  .h-score {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    align-items: center;
+    text-align: end;
+  }
+  .h-score-meta { font-size: 11px; color: var(--muted); line-height: 1.25; }
+  .h-score-meta b { color: var(--ink); font-weight: 800; display: block; font-size: 12.5px; }
+  .h-score-box {
+    background: var(--score);
+    color: var(--score-on);
+    font-weight: 800;
+    font-size: 14px;
+    padding: 6px 8px;
+    border-radius: 6px 6px 6px 1px;
+    font-variant-numeric: tabular-nums;
+    min-width: 36px;
+    text-align: center;
+    line-height: 1;
+  }
+  .h-score-box.warn { background: #c75e3a; }
+  .h-score-box.exc { background: #00553f; }
+
+  .h-tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-top: 10px;
+  }
+  .h-tag {
+    font-size: 11.5px;
+    padding: 3px 8px;
+    background: var(--tag);
+    color: var(--ink-2);
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .h-tag.green { background: var(--good-soft); color: var(--good); font-weight: 600; }
+
+  .pcs { margin-top: 12px; display: grid; gap: 5px; }
+  .pcs .row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .pcs .row .ic {
+    flex: 0 0 16px;
+    width: 16px; height: 16px;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .pcs .row.pro .ic { background: var(--good-soft); color: var(--good); }
+  .pcs .row.con .ic { background: var(--rose-soft); color: var(--rose); }
+  .pcs .row .ic svg { width: 9px; height: 9px; stroke-width: 3.5; }
+  .pcs.collapsed .row.extra { display: none; }
+  .pcs-toggle {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brand);
+    background: none;
+    border: 0;
+    padding: 8px 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 36px;
+  }
+
+  .h-foot {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+  }
+  .h-foot .price-meta { font-size: 11px; color: var(--muted); }
+  .h-foot .price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    margin-top: 2px;
+    letter-spacing: -.01em;
+  }
+  .h-foot .price-sub { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .actions { display: flex; gap: 6px; }
+  .btn {
+    -webkit-appearance: none;
+    appearance: none; border: 0; cursor: pointer;
+    font: inherit; font-weight: 700;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+    text-decoration: none;
+    line-height: 1;
+    transition: background .2s, transform .12s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--brand); color: var(--brand-on); }
+  .btn-primary:hover { background: var(--brand-2); }
+  .btn-icon {
+    background: var(--paper); color: var(--muted);
+    border: 1px solid var(--line);
+    width: 38px; padding: 10px; justify-content: center;
+  }
+  .btn-icon.is-open { background: var(--bg-2); color: var(--ink); }
+  .btn svg { width: 13px; height: 13px; }
+
+  .notes { display: none; }
+  .notes.is-open { display: block; margin-top: 10px; }
+  .notes textarea {
+    width: 100%;
+    min-height: 84px;
+    resize: vertical;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .notes textarea:focus { outline: 2px solid var(--brand); outline-offset: -1px; background: #fff; }
+  .notes .hint { font-size: 11px; color: var(--muted); margin-top: 6px; display:flex; gap:5px; align-items:center;}
+  .notes .ok { color: var(--good); font-weight: 700; }
+
+  /* recommended bar */
+  .reco {
+    margin: 0 14px 14px;
+    padding: 11px 13px;
+    background: linear-gradient(180deg, #fff8e6 0%, #fdeec3 100%);
+    border: 1px solid #efd99a;
+    border-radius: 12px;
+    color: #5a3f10;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12.5px; line-height: 1.4;
+  }
+  .reco svg { width: 18px; height: 18px; flex-shrink: 0; color: #c08322; }
+  .reco b { font-weight: 800; }
+
+  /* summary */
+  .summary {
+    margin: 8px 14px 22px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #1d2731 0%, #0e161e 100%);
+    color: #f4f1ea;
+    box-shadow: var(--shadow);
+  }
+  .summary h3 { margin: 0 0 4px; font-size: 16px; font-weight: 800; letter-spacing: -.01em; }
+  .summary p { margin: 0; font-size: 13px; opacity: .85; line-height: 1.55; }
+  .sum-link { color: #ffd87a; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,216,122,.4); }
+  .sum-link:hover { border-bottom-color: #ffd87a; }
+  .summary .nums {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid rgba(244,241,234,.16);
+  }
+  .summary .n .lbl { font-size: 10.5px; letter-spacing: .1em; opacity: .65; font-weight: 700; text-transform: uppercase; }
+  .summary .n .val { font-size: 18px; font-weight: 800; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+  .footnote {
+    margin: 0 14px 30px;
+    padding: 12px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .footnote b { color: var(--ink-2); }
+
+  .panel { display: none; }
+  .panel.is-active { display: block; }
+
+  .tail { height: calc(18px + env(safe-area-inset-bottom, 0px)); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ─── HERO ─── -->
+  <header class="hero">
+    <img class="bg" src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=70&auto=format&fit=crop" alt="Yellowstone">
+    <div class="hero-content">
+      <span class="crest">
+        <span class="dot"></span>
+        Yellowstone · אוגוסט 2026
+      </span>
+      <div>
+        <h1>המלונות שלנו<br>לטיול בילוסטון</h1>
+        <div class="hero-meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            17–21 באוגוסט · 4 לילות
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg>
+            2 מבוגרים
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 7c0 0 2 2 7 2s7-2 7-2"/></svg>
+            300–500$ ללילה
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── ROUTE ─── -->
+  <div class="route">
+    <div class="leg">
+      <div class="lbl">17–19.8</div>
+      <div class="place"><span class="en">West Yellowstone</span></div>
+      <div class="when">2 לילות · גייזרים</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <div class="leg">
+      <div class="lbl">19–21.8</div>
+      <div class="place"><span class="en">Gardiner</span></div>
+      <div class="when">2 לילות · חיות בר</div>
+    </div>
+  </div>
+
+  <!-- ─── MAP ─── -->
+  <div class="map-wrap">
+    <div class="map-card">
+      <div class="map-head">
+        <h3>המסלול שלנו</h3>
+        <span class="legend">דרום → צפון בתוך הפארק</span>
+      </div>
+      <svg class="map-svg" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="topo" width="14" height="14" patternUnits="userSpaceOnUse">
+            <path d="M0 7 Q3.5 4, 7 7 T14 7" stroke="#c8c79c" stroke-width=".7" fill="none" opacity=".4"/>
+          </pattern>
+          <pattern id="forest" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M5 14 L10 6 L15 14 Z" fill="#94a572" opacity=".35"/>
+            <path d="M2 18 L6 12 L10 18 Z" fill="#7a9259" opacity=".25"/>
+          </pattern>
+          <radialGradient id="parkGlow" cx="50%" cy="50%">
+            <stop offset="0" stop-color="#a8b876" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#a8b876" stop-opacity=".15"/>
+          </radialGradient>
+        </defs>
+
+        <!-- ground -->
+        <rect width="460" height="300" fill="#e9ebd6"/>
+        <rect width="460" height="300" fill="url(#topo)"/>
+
+        <!-- state border MT/WY -->
+        <line x1="0" y1="135" x2="460" y2="135" stroke="#bdb792" stroke-width="1" stroke-dasharray="3 3" opacity=".7"/>
+        <text x="14" y="129" fill="#8a8669" font-family="Heebo" font-size="9" font-weight="600" letter-spacing=".1em">MONTANA</text>
+        <text x="14" y="148" fill="#8a8669" font-family="Heebo" font-size="9" font-weight="600" letter-spacing=".1em">WYOMING</text>
+
+        <!-- Yellowstone park -->
+        <path d="M 165 110 Q 175 95 200 95 L 305 95 Q 330 95 335 120 L 340 220 Q 335 240 310 240 L 200 240 Q 165 235 162 215 Z"
+              fill="url(#parkGlow)" stroke="#7d8a4e" stroke-width="1.5" stroke-dasharray="0"/>
+        <path d="M 165 110 Q 175 95 200 95 L 305 95 Q 330 95 335 120 L 340 220 Q 335 240 310 240 L 200 240 Q 165 235 162 215 Z"
+              fill="url(#forest)"/>
+        <text x="252" y="180" text-anchor="middle" fill="#465029" font-family="Heebo" font-size="11" font-weight="800" letter-spacing=".18em">YELLOWSTONE NP</text>
+
+        <!-- mountains -->
+        <g opacity=".55">
+          <path d="M210 190 L222 165 L234 190 Z" fill="#8a8669"/>
+          <path d="M232 195 L244 170 L256 195 Z" fill="#9a9678"/>
+          <path d="M270 200 L284 168 L298 200 Z" fill="#7e7a5a"/>
+          <path d="M295 210 L307 185 L320 210 Z" fill="#9a9678"/>
+        </g>
+
+        <!-- Lakes -->
+        <ellipse cx="280" cy="220" rx="22" ry="8" fill="#9bb8c5" opacity=".7"/>
+        <text x="280" y="234" text-anchor="middle" fill="#4a6772" font-family="Heebo" font-size="8" font-weight="600">Lake</text>
+
+        <!-- roads -->
+        <path d="M 100 105 Q 130 105 165 110 L 250 230" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 100 105 Q 130 105 165 110 L 250 230" fill="none" stroke="#7a8a6a" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"/>
+
+        <!-- BZN airport -->
+        <g transform="translate(120 70)">
+          <circle r="9" fill="#fff" stroke="#444" stroke-width="1.4"/>
+          <path d="M-4 0 L4 0 M0 -3 L0 3 M-2 2 L2 -2" stroke="#444" stroke-width="1.4" stroke-linecap="round" fill="none" transform="rotate(35)"/>
+          <text x="0" y="-13" text-anchor="middle" fill="#1a1a1a" font-family="Heebo" font-size="10" font-weight="700">Bozeman BZN</text>
+          <text x="0" y="22" text-anchor="middle" fill="#6b6b6b" font-family="Heebo" font-size="8.5">איסוף + טיסה הביתה</text>
+        </g>
+
+        <!-- Pin: Gardiner (north) -->
+        <g transform="translate(170 110)">
+          <circle r="11" fill="#003b95" stroke="#fff" stroke-width="2.5"/>
+          <text y="3.5" text-anchor="middle" fill="#fff" font-family="Heebo" font-size="11" font-weight="800">2</text>
+          <g transform="translate(14 -8)">
+            <rect x="-2" y="-12" width="92" height="32" rx="6" fill="#fff" stroke="#003b95" stroke-width="1.2"/>
+            <text x="44" y="0" text-anchor="middle" fill="#003b95" font-family="Heebo" font-size="11" font-weight="800">Gardiner</text>
+            <text x="44" y="13" text-anchor="middle" fill="#5a6068" font-family="Heebo" font-size="9">19–21.8 · 2 לילות</text>
+          </g>
+        </g>
+
+        <!-- Pin: West Yellowstone (west side) -->
+        <g transform="translate(165 175)">
+          <circle r="11" fill="#003b95" stroke="#fff" stroke-width="2.5"/>
+          <text y="3.5" text-anchor="middle" fill="#fff" font-family="Heebo" font-size="11" font-weight="800">1</text>
+          <g transform="translate(-115 -10)">
+            <rect x="0" y="-12" width="110" height="32" rx="6" fill="#fff" stroke="#003b95" stroke-width="1.2"/>
+            <text x="55" y="0" text-anchor="middle" fill="#003b95" font-family="Heebo" font-size="11" font-weight="800">West Yellowstone</text>
+            <text x="55" y="13" text-anchor="middle" fill="#5a6068" font-family="Heebo" font-size="9">17–19.8 · 2 לילות</text>
+          </g>
+        </g>
+
+        <!-- Old Faithful marker -->
+        <g transform="translate(225 200)">
+          <circle r="3.5" fill="#c08322" stroke="#fff" stroke-width="1.5"/>
+          <text x="6" y="4" fill="#7a5614" font-family="Heebo" font-size="9" font-weight="600">Old Faithful</text>
+        </g>
+        <!-- Mammoth marker -->
+        <g transform="translate(195 118)">
+          <circle r="3" fill="#465029" stroke="#fff" stroke-width="1.5"/>
+          <text x="6" y="3" fill="#465029" font-family="Heebo" font-size="9" font-weight="600">Mammoth</text>
+        </g>
+        <!-- Lamar -->
+        <g transform="translate(305 115)">
+          <circle r="3" fill="#465029" stroke="#fff" stroke-width="1.5"/>
+          <text x="-7" y="-6" text-anchor="end" fill="#465029" font-family="Heebo" font-size="9" font-weight="600">Lamar Valley</text>
+        </g>
+
+        <!-- compass -->
+        <g transform="translate(420 30)">
+          <circle r="14" fill="#fff" stroke="#cfc9a6" stroke-width="1"/>
+          <path d="M0 -10 L4 0 L0 4 L-4 0 Z" fill="#003b95"/>
+          <path d="M0 10 L4 0 L0 -4 L-4 0 Z" fill="#bbb"/>
+          <text y="-17" text-anchor="middle" fill="#003b95" font-family="Heebo" font-size="8" font-weight="800">N</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ─── TABS ─── -->
+  <div class="section-title">
+    <h2>בחירת המלון</h2>
+    <span class="sub">15 אפשרויות · 4 יעדים</span>
+  </div>
+  <div class="tabs-wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="west">
+        <span class="num">17–19.8 · 2 לילות</span>
+        <span class="en">West Yellowstone</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="gardiner">
+        <span class="num">19–21.8 · 2 לילות</span>
+        <span class="en">Gardiner</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="cody">
+        <span class="num">17–21.8 · 4 לילות</span>
+        <span class="en">Cody, WY</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="jackson">
+        <span class="num">17–21.8 · 4 לילות</span>
+        <span class="en">Jackson, WY</span>
+      </button>
+    </div>
+  </div>
+
+  <main id="panels"></main>
+
+  <!-- ─── SUMMARY ─── -->
+  <div class="summary">
+    <h3>הבחירה המומלצת לפי המחקר</h3>
+    <p><a href="#hotel-elkhorn" class="sum-link">Elkhorn Cabins</a> (West Yellowstone) + <a href="#hotel-riverside" class="sum-link">Yellowstone Riverside Cottages</a> (Gardiner). שני מלונות מעל 8.8, שניהם במרחק הליכה מהכניסה לפארק, סך הכול הרבה מתחת לתקציב.</p>
+    <div class="nums">
+      <div class="n"><div class="lbl">סה״כ 4 לילות</div><div class="val">$1,251</div></div>
+      <div class="n"><div class="lbl">ממוצע ללילה</div><div class="val">~$313</div></div>
+      <div class="n"><div class="lbl">מתחת לתקציב</div><div class="val">~37%</div></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <b>איך לקרוא את זה:</b> כל מלון מציג מחיר ל־2 לילות (העצירה שלו), דירוג Booking.com מתוך 10, ומשוב מאמיתי מאורחים מ־2025. לוחצים על הלב כדי לסמן מועדפים, ועל ההערה כדי להוסיף מחשבות. הבחירה נשמרת אוטומטית במכשיר. כפתור <b>הזמנה</b> מוביל לדף Booking.com של אותו מלון בתאריכים שלנו.
+  </div>
+
+  <div class="tail"></div>
+</div>
+
+<script>
+  // ───── photo IDs (Unsplash) ─────
+  const PHOTOS = {
+    elkhorn:    "1505691938895-1758d7feb511", // cabin in pines
+    clubhouse:  "1455587734955-081b22074882",
+    barnranch:  "1500076656116-558758c991c1",
+    undercanvas:"1504280390367-361c6d9f38f4",
+    chico:      "1571902943202-507ec2618e8f",
+    thecody:    "1551776235-dde6d482980b",
+    hamptoncody:"1455587734955-081b22074882",
+    irma:       "1518733057094-95b53143d2a7",
+    billcody:   "1530541930197-ff16ac917b0e",
+    parkway:    "1568084680786-a84f91d1153c",
+    cachehouse: "1551776235-dde6d482980b",
+    crosswinds: "1582719508461-905c673771fd", // mountain inn
+    kelly:      "1611892440504-42a792e24d32", // hotel pool
+    ninebar:    "1542718610-a1d656d1884c",    // rustic cabin
+    explorer:   "1551882547-ff40c63fe5fa",    // cabin firepit
+    ypark:      "1564501049412-61c2a3083791", // generic motel
+    riverside:  "1502082553048-f009c37129b9", // riverside
+    gateway:    "1564013799919-ab600027ffc6", // gateway inn vibe
+    ridgeline:  "1566073771259-6a8506099945", // hotel exterior
+  };
+  const photoUrl = (id) => `https://images.unsplash.com/photo-${id}?w=720&q=70&auto=format&fit=crop`;
+
+  // ───── data ─────
+  const LOCATIONS = {
+    west: {
+      name: "West Yellowstone",
+      sub: "Montana · כניסה מערבית",
+      blurb: "כניסה מערבית לפארק במרחק 5 דקות. הבסיס הכי טוב לאולד פייתפול, גרנד פריזמטיק, מדיסון ונוריס. עיירה עם מסעדות, IMAX ומרכז דובים.",
+      nights: 2,
+      nightsLbl: "2 לילות",
+      stats: [
+        { lbl: "נסיעה לכניסה", val: "5 ד׳" },
+        { lbl: "לאולד פייתפול", val: "30 ד׳ · 53 ק״מ" },
+        { lbl: "אופי", val: "תיירותי, חיוני" },
+      ],
+      hotels: [
+        {
+          id: "elkhorn", reco: true,
+          name: "Elkhorn Cabins and Inn",
+          stars: 2, classText: "2★ Cabins & Inn",
+          score: 8.8, scoreText: "מצוין", reviews: "ביקורות מאומתות",
+          total: 648, nightly: 324,
+          loc: "Gibbon Ave · 5 ד׳ הליכה לכניסה",
+          tags: ["מטבח חלקי", "חניה חינם", "Wi-Fi חינם"],
+          chips: [{t:"המומלץ שלנו", c:"reco"}],
+          url: "https://www.booking.com/hotel/us/hadley-39-s-motel-and-cabins.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "בקתות שקטות ברחוב Gibbon, במרחק הליכה מהכניסה",
+            "מדורגים גבוה, נקיים מאוד גם אם בסיסיים",
+            "המחיר הכי טוב ל־2 לילות מבין כל האופציות",
+          ],
+          cons: [
+            "סטנדרט 2 כוכבים — מוטל מטופח, לא בוטיק",
+            "ללא בריכה / חדר כושר",
+          ],
+        },
+        {
+          id: "crosswinds",
+          name: "Crosswinds Inn",
+          stars: 3, classText: "3★ Inn · 2,800+ ביקורות",
+          score: 8.7, scoreText: "מצוין", reviews: "2,800+ ביקורות",
+          total: 635, nightly: 317,
+          loc: "מרכז העיירה · הליכה לכניסה",
+          tags: ["ארוחת בוקר חמה", "בריכה פנימית", "תרסיס דובים חינם", "קפה 24/7"],
+          chips: [],
+          url: "https://www.booking.com/hotel/us/crosswinds-inn.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "ארוחת בוקר חמה אמיתית (לא רק קונטיננטל) — אורחי 2025 התלהבו",
+            "השאלה חינם של תרסיס דובים לאורחים",
+            "בריכה פנימית מחוממת, עוגיות אחה״צ, קפה/תה 24/7",
+            "מרחק הליכה מהכניסה המערבית ומהמרכז",
+          ],
+          cons: [
+            "חדרים פונים לרחוב סובלים מרעש — בקשו חדר אחורי",
+            "אין מסעדה במלון",
+          ],
+        },
+        {
+          id: "kelly",
+          name: "Kelly Inn West Yellowstone",
+          stars: 3, classText: "3★ · Travelers' Choice 2025",
+          score: 8.8, scoreText: "מצוין", reviews: "Travelers' Choice 2025",
+          total: 825, nightly: 412,
+          loc: "מול ה־IMAX · הכי קרוב לכניסה",
+          tags: ["בריכה פנימית", "ג׳קוזי", "טעינת EV", "ארוחת בוקר חינם"],
+          chips: [{t:"בחירת מטיילים", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/kelly-inn-west-yellowstone.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "מדורג #2 מתוך 41 מלונות בעיירה (Tripadvisor)",
+            "הכי קרוב לכניסה המערבית — מול ה־IMAX ומרכז הדובים",
+            "ארוחת בוקר חינם טעימה, חדרים נוחים ושקטים",
+            "בריכה פנימית, ג׳קוזי, עמדת טעינה לרכב חשמלי",
+          ],
+          cons: [
+            "בקצה העליון של התקציב (~$412 ללילה)",
+            "נכס ותיק — חלק מהאורחים מציינים שהעיצוב נראה מיושן",
+          ],
+        },
+        {
+          id: "ninebar",
+          name: "9 Bar W Cabins",
+          stars: 3, classText: "3★ Cabins · מדגם קטן",
+          score: 9.3, scoreText: "יוצא דופן", reviews: "28–50 ביקורות",
+          total: 657, nightly: 328,
+          loc: "מרכז העיירה · 5 ד׳ נסיעה לכניסה",
+          tags: ["מטבח מלא בחלק מהבקתות", "סלון", "בעלים מעורב"],
+          chips: [{t:"דירוג 9.3", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/nine-w-cabins.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "מרחק הליכה מהמרכז, 5 דקות נסיעה מהכניסה",
+            "מיטות נוחות, בקתות נקיות מאוד, מקלחות חמות",
+            "בחלק מהבקתות מטבח מלא וסלון",
+            "הבעלים כריס מעורב ונותן טיפים לטיולים בפארק",
+          ],
+          cons: [
+            "מדיניות ביטול מחמירה — פיקדון לא מוחזר",
+            "אורחים דיווחו על מחלוקת בנוגע לדמי ניקיון",
+            "רק 28–50 ביקורות — מדגם קטן",
+          ],
+        },
+        {
+          id: "explorer",
+          name: "Explorer Cabins at Yellowstone",
+          stars: 3, classText: "3★ · Boutique Cabins",
+          score: 8.7, scoreText: "מצוין", reviews: "ביקורות מאומתות",
+          total: 848, nightly: 424,
+          loc: "פאתי העיירה · בקתות פרטיות",
+          tags: ["בקתה פרטית", "מטבח", "מדורות קהילתיות", "כביסה חינם"],
+          chips: [],
+          url: "https://www.booking.com/hotel/us/explorer-cabins-at-yellowstone.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "בקתות פרטיות עם מטבח, מקלחת רחבה ומיטות נוחות",
+            "אבזרי מרשמלו, מקלות הליכה, משקפות ומשחקים מסופקים",
+            "מדורות קהילתיות גדולות, שקט מוחלט — בלי טריקות דלתות",
+            "כביסה חינם, שוקו וחמים בחינם",
+          ],
+          cons: [
+            "ניקיון רק לפי בקשה — צריך לבקש חידוש מצרכים",
+            "בבקתות הזוגיות יש קירות דקים",
+            "חניה צפופה (10 בקתות / 12 מקומות בחלק מהאזורים)",
+          ],
+        },
+        {
+          id: "ypark", flag: true,
+          name: "Yellowstone Park Hotel",
+          stars: 3, classText: "3★ · אזהרה",
+          score: 8.4, scoreText: "טוב", reviews: "ביקורות מעורבות 2025",
+          total: 628, nightly: 313,
+          loc: "מרכז · הליכה לכניסה",
+          tags: ["הזול ביותר 3★", "מרכזי"],
+          chips: [{t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/yellowstone-park.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "המלון 3★ הכי זול בעיירה",
+            "הליכה קלה לכניסה ולמרכז",
+          ],
+          cons: [
+            "ביקורות 2025: קירות דקים, דלתות רועשות מאוד",
+            "ארוחת בוקר נגמרת ב־7:30 וצוות לא ממלא",
+            "תלונות על שירות בקבלה, Wi־Fi לא יציב",
+            "לא לשינה רגישה או אם מגיעים מאוחר",
+          ],
+        },
+        {
+          id: "clubhouse",
+          name: "Clubhouse Inn",
+          stars: 3, classText: "3★ Inn · 2,100+ ביקורות",
+          score: 8.7, scoreText: "מצוין", reviews: "2,100+ ביקורות",
+          total: 770, nightly: 385,
+          loc: "מרכז · הסעה חינם לפארק",
+          tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "הסעה לפארק"],
+          chips: [{t:"דירוג גבוה", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/clubhouse-inn-west-yellowstone.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "ארוחת בוקר חמה מלאה כלולה — ביצים, מאפים, פירות",
+            "בריכה פנימית מחוממת, ג׳קוזי, מכון כושר",
+            "הסעה חינם להמלון לפארק במדגם רחב",
+            "מרחק הליכה מהמרכז",
+          ],
+          cons: [
+            "מחיר בגבול העליון לעיירה",
+            "לא מרגיש מקומי מיוחד",
+          ],
+        },
+        {
+          id: "barnranch",
+          name: "Bar N Ranch",
+          stars: 4, classText: "4★ Ranch · חוות פעילה",
+          score: 9.0, scoreText: "יוצא דופן", reviews: "חוות פעילה",
+          total: 858, nightly: 429,
+          loc: "5 מ׳ מהכניסה · 200 דונם",
+          tags: ["חוות סוסים", "דיג זבובים", "ברביקיו על נחל", "רכיבה"],
+          chips: [{t:"חוויה אמיתית", c:"reco"}],
+          url: "https://www.booking.com/hotel/us/bar-n-ranch-west-yellowstone.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "אווירה של חוות סוסים אמיתית על Buttermilk Creek",
+            "מסעדת ובר במקום, בריכה מחוממת, מכון כושר",
+            "דיג, רכיבה על סוסים, ברבקיו בנכסים",
+            "שקט — מחוץ לעיירה, אבל קרוב לכניסה",
+          ],
+          cons: [
+            "צריך רכב לכל דבר",
+            "מעט ביקורות יחסית למלונות במרכז",
+          ],
+        },
+        {
+          id: "undercanvas",
+          name: "Under Canvas West Yellowstone",
+          stars: 4, classText: "Glamping · T+L Top 5 MT 2025",
+          score: 8.5, scoreText: "מצוין", reviews: "Travel+Leisure 2025",
+          total: 948, nightly: 474,
+          loc: "10 ד׳ לכניסה · גלמפינג",
+          tags: ["אוהל ספארי", "מיטת קינג", "תנור עצים", "מקלחת חמה"],
+          chips: [{t:"ייחודי", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/yellowstone-under-canvas.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-19&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "אוהלי ספארי יוקרתיים — מיטת קינג, מצעי פלאש, תנור עצים",
+            "מקלחת חמה ושירותים פרטיים בתוך האוהל",
+            "מסעדה במתחם, יוגה, מוסיקה חיה, ערבי מדורה עם מרשמלו",
+            "הזכייה במקום ה־Travel + Leisure 2025",
+          ],
+          cons: [
+            "לילות יורדות ל־6°C — חייבים להזין את התנור",
+            "האוהל הזול עם מקלחון משותף",
+            "אין חשמל — פנס+USB בלבד",
+          ],
+        },
+      ],
+    },
+    gardiner: {
+      name: "Gardiner",
+      sub: "Montana · כניסה צפונית",
+      blurb: "ממש בכניסה הצפונית מתחת לקשת רוזוולט. עמק לאמאר עם זאבים, דובים וביזונים במרחק שעה. מעיינות חמים של מאמות 10 דקות פנימה. עיירה שקטה ואותנטית.",
+      nights: 2,
+      nightsLbl: "2 לילות",
+      stats: [
+        { lbl: "נסיעה לכניסה", val: "2 ד׳" },
+        { lbl: "ללאמאר ואלי", val: "60 ד׳ · 65 ק״מ" },
+        { lbl: "אופי", val: "כפרי, שקט" },
+      ],
+      hotels: [
+        {
+          id: "riverside", reco: true,
+          name: "Yellowstone Riverside Cottages",
+          stars: 2, classText: "2★ Cottages · על הנהר",
+          score: 9.2, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
+          total: 603, nightly: 302,
+          loc: "על נהר ילוסטון · 5 ד׳ לכניסה",
+          tags: ["מטבח מלא", "מרפסת לנהר", "ברביקיו", "Keurig"],
+          chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"מבצע", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/riverside-cottage.html?aid=8132308&checkin=2026-08-19&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "מרפסות שמשקיפות על נהר ילוסטון — ״עוצר נשימה״ חוזר בביקורות",
+            "מטבחים מלאים עם Keurig וקפסולות סטארבקס, אזור ברביקיו",
+            "תרסיס דובים בצ׳ק־אין, רשימת מסעדות לאורחים",
+            "5 דקות לכניסה הצפונית, הליכה לעיירה",
+          ],
+          cons: [
+            "באופן רשמי 2 כוכבים — סגנון מוטל ולא לוקסוס",
+            "מלאי מוגבל — פחות חדרים מנכסים גדולים",
+          ],
+        },
+        {
+          id: "gateway",
+          name: "Yellowstone Gateway Inn",
+          stars: 3, classText: "3★ Apartment Suites",
+          score: 9.3, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
+          total: 765, nightly: 382,
+          loc: "מחוץ לכביש הראשי · שקט",
+          tags: ["סוויטה דירתית", "מטבח", "סלון", "מרפסת"],
+          chips: [{t:"דירוג 9.3", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/yellowstone-gateway-inn.html?aid=8132308&checkin=2026-08-19&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "ביקורת יולי 2025: ״דירה נחמדה מאוד, מתוחזקת ונקייה״",
+            "סוויטות בסגנון דירה — מטבח, סלון, חדר שינה ומרפסת",
+            "שקט, מחוץ לכביש הראשי, מסעדה ומרכול במרחק 100 מ׳",
+            "הצוות השאיל אביזרי טואלטיקה ומשחקים שנשכחו",
+          ],
+          cons: [
+            "ביקורת 2025 אחת ציינה תחזוקה לא עקבית",
+            "אין בריכה / ג׳קוזי באתר",
+          ],
+        },
+        {
+          id: "ridgeline", flag: true,
+          name: "Ridgeline Hotel at Yellowstone",
+          stars: 3, classText: "3★ Ascend Collection",
+          score: 8.2, scoreText: "טוב מאוד", reviews: "ביקורות 2025",
+          total: 608, nightly: 304,
+          loc: "ליד הכניסה · מסעדה במלון",
+          tags: ["מסעדה ובר", "סאונה", "ג׳קוזי", "ידידותי לחיות"],
+          chips: [{t:"דמי שירות $15", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/best-western-plus-by-mammoth-hot-springs.html?aid=8132308&checkin=2026-08-19&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "המלון 3★ הזול ביותר בגרדינר, הליכה לכניסה",
+            "מסעדה, בר, סאונה, ג׳קוזי וקזינו במלון",
+            "ידידותי לחיות מחמד, מדורה חיצונית עם מרשמלו",
+            "בחלק מהחדרים נוף לנהר",
+          ],
+          cons: [
+            "דמי שירות חובה $15 ללילה (15.5–1.10) — מוסיף $30",
+            "החדרים נראים מיושנים, חדרי רחצה קטנים, מזגן רועש",
+            "״לא שווה את המחיר״ חוזר בביקורות 2025",
+          ],
+        },
+        {
+          id: "chico",
+          name: "Chico Hot Springs Resort",
+          stars: 3, classText: "Historic 1900 · Hot Springs",
+          score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1900",
+          total: 1091, nightly: 546,
+          loc: "Pray, MT · 30 מ׳ מהכניסה",
+          tags: ["בריכות גיאותרמיות", "מסעדת יעד", "700 אקר", "היסטורי"],
+          chips: [{t:"יעד מיוחד", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/chico-hot-springs-resort.html?aid=8132308&checkin=2026-08-19&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "שתי בריכות גיאותרמיות טבעיות, פתוחות לאורחים 24/7",
+            "רשום במקומות ההיסטוריים — ריזורט משנת 1900",
+            "מסעדת יעד מהמפורסמות במונטנה",
+            "700 אקר בעמק Paradise Valley — סוסים, רכיבה, נוף",
+          ],
+          cons: [
+            "30 מ׳ (35 ק״מ) רחוק מהכניסה — מוסיף שעה ליום ללמאר",
+            "ביקורות 2025 מעורבות על תחזוקה — היסטורי ≠ מעודכן",
+            "מתאים למיקוד במעיינות, לא טהורה לפארק",
+          ],
+        },
+      ],
+    },
+    cody: {
+      name: "Cody, WY",
+      sub: "Wyoming · כניסה מזרחית",
+      blurb: "בירת המערב הפרוע של Buffalo Bill. רודאו לילי בקיץ, מוזיאון Buffalo Bill (5 גלריות), נהר Shoshone לרפטינג. הפארק במרחק שעה דרך Sylvan Pass — כניסה ציורית עם נוף.",
+      nights: 4,
+      nightsLbl: "4 לילות",
+      stats: [
+        { lbl: "נסיעה לכניסה", val: "50 מ׳" },
+        { lbl: "לאולד פייתפול", val: "2.5 ש׳" },
+        { lbl: "אופי", val: "מערבי, אותנטי" },
+      ],
+      hotels: [
+        {
+          id: "thecody", reco: true,
+          name: "The Cody",
+          stars: 3, classText: "3★ · Best in Cody",
+          score: 9.3, scoreText: "יוצא דופן", reviews: "מומלץ ביותר",
+          total: 1306, nightly: 327,
+          loc: "מרכז קודי · בוטיק חדש",
+          tags: ["בריכה פנימית", "ג׳קוזי", "ארוחת בוקר חמה", "מכון כושר"],
+          chips: [{t:"המומלץ שלנו", c:"reco"}],
+          url: "https://www.booking.com/hotel/us/the-cody.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "״המיטות הכי טובות שישנו עליהן אי פעם״ — חוזר בביקורות",
+            "עוגיות טריות בצ׳ק־אין, שוקו, גרנולה ומים לאורך היום",
+            "ארוחת בוקר חמה משובחת — לא קונטיננטל",
+            "מבנה חדש, בריכה פנימית, אווירה בוטיק",
+          ],
+          cons: [
+            "~50 מ׳ (1.5+ ש׳) לכניסה — ימים ארוכים",
+            "מתמלא מוקדם — רשימת המתנה נפוצה בקיץ",
+          ],
+        },
+        {
+          id: "hamptoncody",
+          name: "Hampton Inn & Suites Cody",
+          stars: 3, classText: "3★ Hilton chain",
+          score: 9.2, scoreText: "יוצא דופן", reviews: "#4 מתוך 33",
+          total: 1519, nightly: 380,
+          loc: "קודי · #4 מתוך 33 מלונות",
+          tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "Hilton Honors"],
+          chips: [{t:"רשת מהימנה", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/hampton-inn-suites-cody-wy.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "בריכה פנימית מי מלח + ג׳קוזי, ״הכי טוב בכל המתחם״",
+            "חדרים מרווחים עם מיקרו, מקרר, Keurig",
+            "ארוחת בוקר חמה חינם, צוות מצוין",
+            "איכות הילטון + נקודות Hilton Honors",
+          ],
+          cons: [
+            "יקר יחסית לרשת Hampton (שיא הקיץ)",
+            "ארוחת הבוקר נגמרת מהר כשמלא",
+          ],
+        },
+        {
+          id: "irma",
+          name: "Irma Hotel",
+          stars: 3, classText: "3★ · Buffalo Bill's hotel",
+          score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1902",
+          total: 1380, nightly: 345,
+          loc: "מרכז האיר העתיקה · 1902",
+          tags: ["היסטורי", "בר מעץ דובדבן", "קרבות יומיים", "מרכזי"],
+          chips: [{t:"היסטורי", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/irma-hotel.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "אתר היסטורי משנת 1902 — בנוי על ידי Buffalo Bill",
+            "בר מעץ דובדבן מתנת המלכה ויקטוריה במקור",
+            "המרפסת מארחת את מופע הקרבות היומי (בת־ש׳בת)",
+            "בלב המרכז — הליכה לכל מקום",
+          ],
+          cons: [
+            "אין מעלית — חלק מהחדרים בקומה השנייה, מדרגות בלבד",
+            "שירותי צ׳קאין/צ׳קאאוט לא עקבי ב־2025",
+            "חלק מהחדרים המקוריים בלי חלונות או עם טמפרטורה מוזרה",
+          ],
+        },
+        {
+          id: "billcody",
+          name: "Bill Cody Ranch",
+          stars: 3, classText: "Dude Ranch · רכיבה על סוסים",
+          score: 8.4, scoreText: "טוב", reviews: "חוות על סוסים",
+          total: 1272, nightly: 318,
+          loc: "Wapiti · 25 מ׳ קרוב לכניסה",
+          tags: ["רכיבה על סוסים", "מסעדה", "בקתות", "ללא Wi-Fi"],
+          chips: [{t:"חוות אמיתית", c:"reco"}],
+          url: "https://www.booking.com/hotel/us/bill-cody-ranch.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "25 מ׳ קרובה יותר לכניסה מהמרכזית",
+            "חוויית רכיבה, מסעדה במקום, בקתות גדולות ונקיות",
+            "ארוחת בוקר וארוחת ערב משובחות",
+            "ידידותי למשפחות",
+          ],
+          cons: [
+            "אין Wi-Fi בבקתות — מנותק לגמרי בחדר",
+            "רכיבה על סוסים בתשלום נפרד, לא כלול",
+            "ביקורת 2025: טיול מבולגן — מדריך ביטל, סוסים חסרים",
+          ],
+        },
+      ],
+    },
+    jackson: {
+      name: "Jackson, WY",
+      sub: "Wyoming · כניסה דרומית",
+      blurb: "לשלב גם את Grand Teton. המסעדות הכי טובות, Town Square ת‏וססת. הכי יקר — והכי רחוק מאולד פייתפול. עיר גדולה אמיתית, לא עיירת שער.",
+      nights: 4,
+      nightsLbl: "4 לילות",
+      stats: [
+        { lbl: "נסיעה לכניסה", val: "60 מ׳" },
+        { lbl: "לאולד פייתפול", val: "2.25 ש׳" },
+        { lbl: "אופי", val: "עיר נופש" },
+      ],
+      hotels: [
+        {
+          id: "parkway", reco: true,
+          name: "Parkway Inn of Jackson Hole",
+          stars: 3, classText: "3★ · 1,500+ ביקורות",
+          score: 9.0, scoreText: "יוצא דופן", reviews: "1,500+ ביקורות",
+          total: 1896, nightly: 474,
+          loc: "10 ד׳ הליכה ל־Town Square",
+          tags: ["בריכה פנימית", "ג׳קוזי", "סאונה", "חדר כושר"],
+          chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"חיסכון $500", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/parkway-inn.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "10 ד׳ הליכה ל־Town Square — הכי טוב מתחת $500",
+            "בריכה מחוממת, ג׳קוזי, סאונה, חדר כושר",
+            "סוויטות עם מרפסות ומטבחון, Starbucks חינם",
+            "צוות ״פנטסטי״ קבל אזכור חוזר ב־2025",
+          ],
+          cons: [
+            "אין מסעדה במלון / ארוחת בוקר חמה",
+            "אורחים חשו ״יקר למה שהוא״",
+            "תלונות מעשן סיגריות בלילה",
+          ],
+        },
+        {
+          id: "cachehouse",
+          name: "Cache House",
+          stars: 2, classText: "2★ Adults-only poshtel",
+          score: 8.1, scoreText: "טוב", reviews: "הזול בג׳קסון",
+          total: 1224, nightly: 306,
+          loc: "מרכז ג׳קסון · poshtel",
+          tags: ["מיטות תאים", "מבוגרים בלבד", "מרכז העיר"],
+          chips: [{t:"הכי זול", c:"deal"}, {t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/cache-house.html?aid=8132308&checkin=2026-08-17&checkout=2026-08-21&no_rooms=1&group_adults=2&selected_currency=USD",
+          pros: [
+            "האופציה הזולה בטווח תקציב במרכז ג׳קסון",
+            "מבוגרים בלבד · חדרים פרטיים עם אמבטיה משותפת",
+            "הליכה לכל המסעדות והחנויות",
+          ],
+          cons: [
+            "שירותים משותפים — לא לכולם",
+            "אין חניה באתר — רכב ברחוב בלבד",
+            "אין בריכה / ג׳קוזי",
+          ],
+        },
+      ],
+    },
+  };
+
+  // ───── persistence ─────
+  const STORE = "ynp-2026-v2";
+  const state = JSON.parse(localStorage.getItem(STORE) || "{}");
+  state.fav  = state.fav  || {};
+  state.note = state.note || {};
+  state.tab  = state.tab  || "west";
+  state.sort = state.sort || { west: "score", gardiner: "score", cody: "score", jackson: "score" };
+  ["west","gardiner","cody","jackson"].forEach(k => { if (!(k in state.sort)) state.sort[k] = "score"; });
+  state.favOnly = state.favOnly || { west: false, gardiner: false, cody: false, jackson: false };
+  ["west","gardiner","cody","jackson"].forEach(k => { if (!(k in state.favOnly)) state.favOnly[k] = false; });
+  function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
+
+  // ───── helpers ─────
+  function stars(n){ return "★".repeat(n) + "☆".repeat(5-n); }
+  const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  const xmark = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  const heart = (f) => f
+    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+
+  function scoreClass(s){
+    if (s >= 9.0) return "exc";
+    if (s < 8.5)  return "warn";
+    return "";
+  }
+
+  // ───── render ─────
+  function renderPanels(){
+    const root = document.getElementById("panels");
+    root.innerHTML = "";
+    Object.entries(LOCATIONS).forEach(([key, loc]) => {
+      const sec = document.createElement("section");
+      sec.className = "panel" + (state.tab === key ? " is-active" : "");
+      sec.dataset.tab = key;
+      sec.innerHTML = renderLocation(key, loc);
+      root.appendChild(sec);
+    });
+    bindEvents();
+  }
+  function renderLocation(key, loc){
+    const sortMode = state.sort[key];
+    const favOnly = state.favOnly[key];
+    let hotels = [...loc.hotels];
+    if (favOnly) hotels = hotels.filter(h => state.fav[h.id]);
+    hotels.sort((a,b) => {
+      if (sortMode === "price") return a.nightly - b.nightly;
+      if (sortMode === "score") return b.score - a.score;
+      return 0;
+    });
+    const reco = loc.hotels.find(h => h.reco);
+
+    return `
+      <div class="loc-head">
+        <h2><span class="en">${loc.name}</span> <span class="gold">${loc.sub}</span></h2>
+        <p class="blurb">${loc.blurb}</p>
+        <div class="stats">
+          ${loc.stats.map(s => `<span><b>${s.val}</b> · ${s.lbl}</span>`).join("")}
+        </div>
+      </div>
+
+      ${reco ? `<div class="reco">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 6 1-4.5 4.5 1 6.5L12 17l-5.5 3 1-6.5L3 9l6-1z"/></svg>
+        <span><b>הבחירה כאן:</b> <span class="en">${reco.name}</span> — ניקוד ${reco.score} ב־$${reco.nightly} ללילה.</span>
+      </div>` : ""}
+
+      <div class="sort-bar">
+        <div class="count"><b>${hotels.length}</b> מלונות${favOnly ? " מסומנים" : ""} · ${loc.nightsLbl}</div>
+        <div class="sort">
+          <button data-sort="score" data-loc="${key}" aria-pressed="${sortMode==='score'}">דירוג</button>
+          <button data-sort="price" data-loc="${key}" aria-pressed="${sortMode==='price'}">מחיר</button>
+          <button class="fav-only" data-favonly="${key}" aria-pressed="${favOnly}">${heart(favOnly)}</button>
+        </div>
+      </div>
+
+      ${hotels.length === 0 ? `<div class="footnote" style="margin:0 14px 14px;">עדיין לא סימנת מלונות מועדפים.</div>` : ""}
+
+      ${hotels.map(h => renderHotel(h, loc.nightsLbl)).join("")}
+    `;
+  }
+  function renderHotel(h, nightsLbl){
+    nightsLbl = nightsLbl || "ללילה";
+    const isFav = !!state.fav[h.id];
+    const note = state.note[h.id] || "";
+    const cls = (h.flag ? "is-flag " : "") + (isFav ? "is-fav " : "");
+    const allPros = h.pros.map((p,i) => `<div class="row pro ${i>=2?'extra':''}"><span class="ic">${check}</span><span>${p}</span></div>`).join("");
+    const allCons = h.cons.map((c,i) => `<div class="row con ${i>=1?'extra':''}"><span class="ic">${xmark}</span><span>${c}</span></div>`).join("");
+    const hasMore = (h.pros.length > 2) || (h.cons.length > 1);
+    return `
+      <article class="hotel ${cls}" id="hotel-${h.id}" data-id="${h.id}">
+        <div class="h-photo">
+          <img src="${photoUrl(PHOTOS[h.id])}" alt="" loading="lazy">
+          <div class="h-chips">
+            ${(h.chips||[]).map(c => `<span class="chip ${c.c||''}">${c.t}</span>`).join("")}
+          </div>
+          <button class="fav ${isFav?'is-on':''}" data-fav="${h.id}" aria-label="שמור">${heart(isFav)}</button>
+          <span class="gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 19l-6-6-9 6"/></svg>
+            תמונה
+          </span>
+        </div>
+
+        <div class="h-body">
+          <div class="h-row1">
+            <div>
+              <a class="h-name en" href="${h.url}" target="_blank" rel="noopener">${h.name}<span class="h-stars">${stars(h.stars)}</span></a>
+              <div class="h-class en">${h.classText}</div>
+              <div class="h-loc">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                ${h.loc} · <a href="#map">הצג במפה</a>
+              </div>
+            </div>
+            <div class="h-score">
+              <div class="h-score-meta">
+                <b>${h.scoreText}</b>
+                ${h.reviews}
+              </div>
+              <div class="h-score-box ${scoreClass(h.score)}">${h.score.toFixed(1)}</div>
+            </div>
+          </div>
+
+          <div class="h-tags">
+            ${(h.tags||[]).map(t => `<span class="h-tag">${t}</span>`).join("")}
+          </div>
+
+          <div class="pcs ${hasMore?'collapsed':''}" data-pcs="${h.id}">
+            ${allPros}
+            ${allCons}
+          </div>
+          ${hasMore ? `<button class="pcs-toggle" data-pcs-toggle="${h.id}">+ עוד ${h.pros.length + h.cons.length - 3} נקודות</button>` : ""}
+
+          <div class="h-foot">
+            <div>
+              <div class="price-meta">סה״כ ל־${nightsLbl}</div>
+              <div class="price">$${h.total.toLocaleString()}</div>
+              <div class="price-sub">≈ $${h.nightly} ללילה · כולל מסים</div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-icon ${note?'is-open':''}" data-note-toggle="${h.id}" aria-label="הערה">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg>
+              </button>
+              <a class="btn btn-primary" href="${h.url}" target="_blank" rel="noopener">
+                להזמנה
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="notes ${note?'is-open':''}" data-note-panel="${h.id}">
+            <textarea data-note="${h.id}" placeholder="המחשבות שלך על המלון הזה…">${note.replace(/</g,'&lt;')}</textarea>
+            <div class="hint"><span class="ok">●</span> נשמר אוטומטית במכשיר שלך</div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // ───── events ─────
+  function switchTab(key) {
+    state.tab = key;
+    save();
+    document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === key ? "true" : "false"));
+    document.querySelectorAll(".panel").forEach(p => p.classList.toggle("is-active", p.dataset.tab === key));
+    const wrap = document.querySelector(".tabs-wrap");
+    if (wrap) wrap.scrollIntoView({ block: "start" });
+  }
+  document.querySelectorAll(".tab").forEach(t => {
+    t.addEventListener("click", () => switchTab(t.dataset.tab));
+  });
+
+  function bindEvents(){
+    document.querySelectorAll("[data-fav]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = b.dataset.fav;
+        state.fav[id] = !state.fav[id];
+        save();
+        renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-note-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const id = b.dataset.noteToggle;
+        const panel = document.querySelector(`[data-note-panel="${id}"]`);
+        const open = panel.classList.toggle("is-open");
+        b.classList.toggle("is-open", open);
+        if (open) setTimeout(() => panel.querySelector("textarea").focus(), 100);
+      });
+    });
+    document.querySelectorAll("[data-note]").forEach(t => {
+      t.addEventListener("input", () => {
+        state.note[t.dataset.note] = t.value;
+        save();
+      });
+    });
+    document.querySelectorAll("[data-sort]").forEach(b => {
+      b.addEventListener("click", () => {
+        state.sort[b.dataset.loc] = b.dataset.sort;
+        save();
+        renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-favonly]").forEach(b => {
+      b.addEventListener("click", () => {
+        const k = b.dataset.favonly;
+        state.favOnly[k] = !state.favOnly[k];
+        save();
+        renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-pcs-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const id = b.dataset.pcsToggle;
+        const pcs = document.querySelector(`[data-pcs="${id}"]`);
+        pcs.classList.remove("collapsed");
+        b.style.display = "none";
+      });
+    });
+  }
+
+  renderPanels();
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === state.tab ? "true" : "false"));
+</script>
+</body>
+</html>
