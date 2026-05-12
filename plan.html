@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חופשת משפחה — LA עד ילוסטון, אוגוסט 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f0eb; color: #2c2c2c; font-size: 16px; line-height: 1.7; }
+    .hero { background: linear-gradient(135deg, #1a5276 0%, #2980b9 35%, #27ae60 70%, #f39c12 100%); color: white; text-align: center; padding: 60px 20px 50px; }
+    .hero h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 10px; text-shadow: 0 2px 6px rgba(0,0,0,.3); }
+    .hero .sub { font-size: 1.15em; opacity: .92; margin-bottom: 24px; }
+    .hero .tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .hero .tag { background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 5px 16px; font-size: .9em; }
+    .nav { background: #2c2c2c; position: sticky; top: 0; z-index: 100; display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 16px; }
+    .nav a { color: #f0c070; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: .88em; transition: background .2s; }
+    .nav a:hover { background: #444; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 16px 60px; }
+    section { margin-top: 48px; }
+    h2 { font-size: 1.6em; color: #1a5276; border-right: 5px solid #f39c12; padding-right: 14px; margin-bottom: 20px; }
+    h3 { font-size: 1.2em; color: #2980b9; margin: 24px 0 10px; }
+    .route-flow { display: grid; grid-template-columns: 1fr 14px; align-items: center; row-gap: 0; column-gap: 14px; background: white; border-radius: 12px; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+    .route-stop { display: contents; }
+    .route-stop .label { font-weight: 600; font-size: 1em; color: #2c2c2c; text-align: right; padding: 6px 0; }
+    .route-stop .label small { display: block; font-weight: 400; font-size: .82em; color: #777; }
+    .route-dot { width: 14px; height: 14px; border-radius: 50%; background: #f39c12; flex-shrink: 0; justify-self: center; }
+    .route-dot.start { background: #27ae60; } .route-dot.end { background: #c0392b; }
+    .route-dot.adi { background: #9b59b6; } .route-dot.rv { background: #1a5276; } .route-dot.europe { background: #e67e22; }
+    .route-line { width: 2px; height: 28px; background: #ddd; justify-self: center; grid-column: 2; }
+    .stops-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .stop-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.06); border-top: 4px solid #f39c12; }
+    .stop-card.must { border-top-color: #27ae60; } .stop-card.opt { border-top-color: #bdc3c7; } .stop-card.rv { border-top-color: #1a5276; }
+    .stop-card .stop-title { font-weight: 800; font-size: 1.05em; margin-bottom: 8px; }
+    .stop-card .stop-badge { display: inline-block; font-size: .75em; padding: 2px 9px; border-radius: 10px; margin-bottom: 8px; font-weight: 700; }
+    .badge-must { background: #27ae60; color: white; } .badge-opt { background: #95a5a6; color: white; } .badge-rv { background: #1a5276; color: white; }
+    .stop-card ul { padding-right: 16px; font-size: .93em; } .stop-card li { margin: 5px 0; }
+    .stop-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .stop-meta span { font-size: .78em; font-weight: 600; padding: 3px 10px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; }
+    .meta-drive { background: #eaf3fb; color: #1a5276; } .meta-time { background: #fef9e7; color: #7d6608; }
+    .weather-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.07); font-size: .93em; }
+    thead tr { background: #2c2c2c; color: white; } thead th { padding: 12px 10px; text-align: right; font-weight: 600; }
+    tbody tr:nth-child(even) { background: #fafafa; } tbody td { padding: 10px; text-align: right; border-bottom: 1px solid #eee; } tbody tr:last-child td { border-bottom: none; }
+    .hot { color: #c0392b; font-weight: 700; } .cool { color: #2980b9; font-weight: 700; } .ok { color: #27ae60; font-weight: 700; }
+    .week-label { background: #2c2c2c; color: white; padding: 10px 20px; border-radius: 8px; margin: 28px 0 16px; font-weight: 700; }
+    .day-card { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); overflow: hidden; }
+    .day-header { display: flex; align-items: center; gap: 14px; padding: 14px 20px; cursor: pointer; justify-content: flex-start; flex-direction: row-reverse; }
+    .day-header:hover { background: #f0f7ff; }
+    .day-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95em; color: white; flex-shrink: 0; }
+    .day-title { font-weight: 700; font-size: 1.05em; text-align: right; }
+    .day-drive { font-size: .82em; color: #888; margin-top: 2px; }
+    .day-body { padding: 6px 20px 18px; border-top: 1px solid #f0f0f0; }
+    .day-body ul { padding-right: 18px; } .day-body li { margin: 6px 0; } .day-body li strong { color: #1a5276; }
+    .tip-box { background: #fffbf0; border-right: 4px solid #f39c12; padding: 10px 14px; border-radius: 6px; margin-top: 10px; font-size: .9em; color: #5a4000; }
+    .rv-box { background: #eaf3fb; border-right: 4px solid #1a5276; padding: 10px 14px; border-radius: 6px; margin-top: 10px; font-size: .9em; color: #1a3a5c; }
+    .d1{background:#27ae60;} .d2{background:#1abc9c;} .d3{background:#16a085;} .d4{background:#e74c3c;}
+    .d5{background:#c0392b;} .d6{background:#e67e22;} .d7{background:#9b59b6;} .d8{background:#8e44ad;}
+    .d9{background:#2980b9;} .d10{background:#1f618d;} .d11{background:#1a5276;} .d12{background:#154360;}
+    .d13{background:#145a32;} .d14{background:#1e8449;} .d15{background:#d35400;} .d16{background:#cb4335;}
+    .d17{background:#922b21;} .d18{background:#6c3483;}
+    .flight-section { display: grid; gap: 20px; }
+    .flight-card { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .flight-card h3 { color: #2980b9; margin-bottom: 14px; } .star-row { background: #fffbf0 !important; }
+    .hotels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .hotel-card { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-top: 4px solid #f39c12; }
+    .hotel-card.urgent { border-top-color: #c0392b; }
+    .hotel-card .city { font-weight: 700; font-size: 1em; margin-bottom: 4px; }
+    .hotel-card .nights { font-size: .82em; color: #888; margin-bottom: 6px; }
+    .hotel-card .name { font-size: .93em; margin-bottom: 6px; }
+    .hotel-card .price { font-size: .88em; color: #27ae60; font-weight: 600; }
+    .sleep-box { background: #f0f7ff; border-right: 4px solid #2980b9; padding: 8px 14px; border-radius: 6px; margin-top: 10px; font-size: .88em; color: #1a3a5c; display: flex; align-items: center; gap: 8px; }
+    .book-tag { display: inline-block; background: #c0392b; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; white-space: nowrap; }
+    .done-tag { display: inline-block; background: #27ae60; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; white-space: nowrap; }
+    .time-tag { display: inline-block; background: #e67e22; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; white-space: nowrap; }
+    .budget-card { background: white; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .budget-total { background: #2c2c2c; color: white; border-radius: 10px; padding: 16px 20px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+    .budget-total span { font-size: 1.3em; font-weight: 800; color: #f0c070; }
+    .kids-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .kid-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .kid-card .kid-title { font-size: 1.1em; font-weight: 800; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid; }
+    .kid-13 .kid-title { color: #27ae60; border-color: #27ae60; } .kid-18 .kid-title { color: #2980b9; border-color: #2980b9; } .kid-21 .kid-title { color: #9b59b6; border-color: #9b59b6; }
+    .kid-card ul { padding-right: 16px; } .kid-card li { margin: 6px 0; font-size: .93em; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { background: white; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 6px rgba(0,0,0,.05); gap: 10px; flex-wrap: wrap; }
+    .check-name { font-weight: 600; font-size: .95em; } .check-where { font-size: .83em; color: #777; }
+    .badge { border-radius: 14px; padding: 3px 12px; font-size: .8em; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+    .badge-red { background: #c0392b; color: white; } .badge-orange { background: #e67e22; color: white; }
+    .badge-yellow { background: #f39c12; color: white; } .badge-green { background: #27ae60; color: white; }
+    .return-box { background: white; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .return-step { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; justify-content: flex-end; }
+    .return-step:last-child { margin-bottom: 0; }
+    .return-step .step-text { text-align: right; } .return-step .step-text strong { color: #1a5276; }
+    .return-step .step-text small { display: block; color: #777; font-size: .85em; }
+    .step-icon { font-size: 1.4em; flex-shrink: 0; width: 36px; text-align: center; }
+    .closing { background: linear-gradient(135deg, #1a5276, #27ae60); color: white; border-radius: 14px; padding: 36px 32px; text-align: center; margin-top: 48px; font-size: 1.1em; line-height: 1.9; }
+    .closing strong { font-size: 1.3em; display: block; margin-top: 16px; }
+    .todo-inline { display: inline-flex; align-items: center; gap: 5px; background: #c0392b; color: white; font-size: .72em; font-weight: 700; padding: 3px 9px; border-radius: 10px; margin-top: 8px; text-decoration: none; vertical-align: middle; }
+    .todo-inline:hover { background: #922b21; }
+    .todo-row { display: flex; align-items: flex-start; gap: 12px; padding: 13px 18px; border-top: 1px solid #f2f2f2; cursor: pointer; transition: background .15s; }
+    .todo-row:first-child { border-top: none; }
+    .todo-row:hover { background: #fafafa; }
+    .todo-row input[type=checkbox] { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; accent-color: #27ae60; cursor: pointer; }
+    .todo-row-text { flex: 1; font-size: .93em; }
+    .todo-row-text strong { display: block; color: #2c2c2c; }
+    .todo-detail { font-size: .82em; color: #888; display: block; margin-top: 2px; }
+    .todo-row.checked .todo-row-text strong { text-decoration: line-through; color: #aaa; }
+    .todo-row.checked .todo-detail { color: #ccc; }
+    .todo-status { font-size: .75em; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; align-self: center; }
+    .todo-status.done { background: #27ae60; color: white; }
+    .todo-status.urgent { background: #c0392b; color: white; }
+    .todo-status.high { background: #e67e22; color: white; }
+    .todo-status.medium { background: #f39c12; color: white; }
+    .todo-status.low { background: #95a5a6; color: white; }
+    .done-row { opacity: .65; }
+    .done-row:hover { opacity: 1; }
+    @media (max-width: 600px) { .hero h1 { font-size: 1.7em; } .nav a { font-size: .78em; padding: 5px 8px; } h2 { font-size: 1.3em; } }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>✈️ חופשת משפחה — חוף המערב + ילוסטון</h1>
+  <p class="sub">ונציה ביץ' · יוניברסל · סן דייגו · אנהיים/דיסנילנד · לאס וגאס · גרנד טטון · ילוסטון · 2 לילות בלונדון · הביתה</p>
+  <div class="tags">
+    <span class="tag">📅 5–23 אוגוסט 2026 בלבד</span>
+    <span class="tag">👨‍👩‍👧‍👧 5 נפשות (שבוע 1) · 4 נפשות (שבוע 2)</span>
+    <span class="tag">🚗 רוד טריפ עצמאי</span>
+    <span class="tag">✈️ יוצאים מנתב"ג</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#family">המשפחה</a>
+  <a href="#route">המסלול</a>
+  <a href="#stops">תחנות</a>
+  <a href="#weather">מזג אוויר</a>
+  <a href="#days">יום יום</a>
+  <a href="#return">חזרה</a>
+  <a href="#flights">טיסות</a>
+  <a href="#hotels">לינה</a>
+  <a href="#budget">תקציב</a>
+  <a href="#kids">לכל אחת</a>
+  <a href="#booking">הזמנות</a>
+  <a href="#todo">✅ טודו</a>
+</nav>
+
+<div class="container">
+
+<section id="family">
+  <h2>👨‍👩‍👧‍👧 המשפחה</h2>
+  <div style="background:white;border-radius:12px;padding:24px 28px;box-shadow:0 2px 10px rgba(0,0,0,.07);">
+    <ul style="padding-right:18px;line-height:2.2;">
+      <li><strong>שבוע 1 (5–14 אוגוסט):</strong> כולם — 5 נפשות (הורים + 3 בנות)</li>
+      <li><strong>שבוע 2 (15–23 אוגוסט):</strong> 4 נפשות — הורים + בת 13 + בת 18</li>
+      <li><strong>עדי (בת 21):</strong> מצטרפת לשבוע הראשון בלבד — טסה הביתה לבד שבת 15/8 בבוקר מוקדם (⚠️ אין טיסות לנתב"ג ביום שישי — חייבת לטוס שבת)</li>
+      <li><strong>יציאה:</strong> נתב"ג 5/8 01:00 לילה · אל-על · <strong>נחיתה:</strong> LAX 5/8 05:00 · ✅ <strong>נרכש (4 נפשות, ללא עדי)</strong></li>
+      <li>✅ <strong>טיסות עדי נרכשו</strong> — round trip TLV→LAX + LAS→LAX→TLV · $1,991 · ₪5,863</li>
+    </ul>
+  </div>
+</section>
+
+<section id="route">
+  <h2>🗺️ המסלול בקצרה</h2>
+  <div class="route-flow">
+    <div class="route-stop">
+      <div class="label">נתב"ג (TLV) — יציאה<small>5 באוגוסט, 01:00 לילה · טיסה ללוס אנג'לס, עצירה אחת</small></div>
+      <div class="route-dot start"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">לוס אנג'לס / Venice Beach — 4 לילות<small>5–8 באוגוסט · נחיתה, הסתגלות, Universal, Santa Monica, יום חופשי</small></div>
+      <div class="route-dot"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">סן דייגו — 2 לילות<small>9–10 באוגוסט · 🐋 לווייתנים (בוקר), גן חיות, La Jolla, Coronado</small></div>
+      <div class="route-dot"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">Disneyland — Anaheim — 2 לילות<small>11–12 באוגוסט · קניות בדרך, יום שלם בפארק</small></div>
+      <div class="route-dot"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">לאס וגאס — 2 לילות<small>13–14 באוגוסט · הסטריפ, יום הולדת לכרן + ארוחת פרידה מעדי</small></div>
+      <div class="route-dot"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">עדי עוזבת לבד — LAS → LAX → ת"א<small>שבת 15 באוגוסט · ⏰ יציאה 19:24 מ-LAS · ₪5,863 · ✅ נרכש · הגעה ת"א ראשון</small></div>
+      <div class="route-dot adi"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">טיסה ל-Bozeman + איסוף רכב<small>שבת 15 באוגוסט · LAS → BZN (אחרי 20:00) · לינה בבוזמן — 4 נפשות (עדי כבר עזבה)</small></div>
+      <div class="route-dot rv"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">ילוסטון — 3 לילות (צפון + מערב)<small>16–19 באוגוסט · Gardiner/Mammoth (16/8) → Starlite West Yellowstone (17–19/8) · Old Faithful, Grand Prismatic, Lamar Valley</small></div>
+      <div class="route-dot rv"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">גרנד טטון — 2 לילות<small>19–21 באוגוסט · Rockwell Inn · Jackson Lake, Jenny Lake, חיות בר</small></div>
+      <div class="route-dot rv"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">Jackson Hole → לונדון<small>שישי 21 באוגוסט · JAC → SLC/DEN → LHR · נחיתה שבת 22/8</small></div>
+      <div class="route-dot europe"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">לונדון — 2 לילות<small>22–23 באוגוסט · נחיתה שבת 09:40 · יום שלם ראשון · LHR → TLV ראשון 23/8</small></div>
+      <div class="route-dot europe"></div>
+    </div><div class="route-line"></div>
+    <div class="route-stop">
+      <div class="label">נתב"ג — חזרה הביתה<small>ראשון 23 באוגוסט 2026</small></div>
+      <div class="route-dot end"></div>
+    </div>
+  </div>
+</section>
+
+<section id="stops">
+  <h2>📍 תחנות הטיול</h2>
+  <div class="stops-grid">
+    <div class="stop-card must">
+      <div class="stop-title">לוס אנג'לס — 4 לילות (אסטרטגיית מלון מפוצל)</div>
+      <span class="stop-badge badge-must">חובה</span>
+      <div class="stop-meta"><span class="meta-drive">✈️ TLV→LAX ~18 שעות</span><span class="meta-time">⏱ 4 לילות (5–8/8)</span></div>
+      <ul>
+        <li>🚨 <strong>לא לשהות בבסיס אחד!</strong> Santa Monica ל-Universal = 22 ק"מ בפקק — 60–90 דקות בכל כיוון</li>
+        <li><strong>לילה 1 (5/8):</strong> Santa Monica — נחיתה, הסתגלות, טיול לחוף. מלון: <strong>Loews Santa Monica Beach Hotel</strong></li>
+        <li><strong>לילה 2 (6/8):</strong> Universal City — יום Universal Studios. מלון: <strong>Hilton LA/Universal City</strong> (פחות מ-1 ק"מ משער הפארק)</li>
+        <li><strong>לילות 3–4 (7–8/8):</strong> Venice Beach / Hollywood — ימים חופשיים, Malibu, The Getty, Venice Boardwalk</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>כיסי כיסים:</strong> טיילת Venice Beach היא אזור ידוע לגניבות — צוותים מסיחים את הדעת וגונבים. לא להניח תיקים לבד, לשמור על הטלפון ותכשיטים יקרים. אחרי חשיכה — פחות בטוח.</div>
+    </div>
+    <div class="stop-card must">
+      <div class="stop-title">Universal Studios Hollywood</div>
+      <span class="stop-badge badge-must">חובה</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~15 ק"מ מהמלון</span><span class="meta-time">⏱ יום שלם · 9:00–20:00</span></div>
+      <ul>
+        <li>Wizarding World of Harry Potter (~2–3 שעות)</li>
+        <li>Jurassic World, Revenge of the Mummy</li>
+        <li>Studio Tour קלאסי (~1 שעה)</li>
+        <li>לקנות Express Pass מראש — קיץ = תורים ענקיים</li>
+      </ul>
+    </div>
+    <div class="stop-card must">
+      <div class="stop-title">סן דייגו — 2 לילות</div>
+      <span class="stop-badge badge-must">חובה</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~200 ק"מ דרומה מ-LA</span><span class="meta-time">⏱ 2 לילות (9–10/8)</span></div>
+      <ul>
+        <li>🐋 <strong>צפייה בלווייתנים</strong> — בוקר 9/8, Point Loma · הזמנה מראש!</li>
+        <li>גן חיות סן דייגו — אחד הטובים בעולם</li>
+        <li>La Jolla Cove — כלבי ים, שנורקל</li>
+        <li>חוף Coronado — שחייה באוקיינוס</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>בים:</strong> ~1,200 תקריות עם נחשוני ים בשנה בסן דייגו — לגרור רגליים כשנכנסים למים. <strong>זרמי שאיבה:</strong> נפוצים — אם נכנסים לזרם, לא להילחם בו, לצוף ולאותת לחיפוש הצלה. <strong>פריצות לרכב:</strong> נפוצות באזורי תיירות — לא להשאיר דבר גלוי ברכב.</div>
+    </div>
+    <div class="stop-card must">
+      <div class="stop-title">Disneyland — Anaheim · 2 לילות</div>
+      <span class="stop-badge badge-must">חובה</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~120 ק"מ צפונה מ-סן דייגו</span><span class="meta-time">⏱ 2 לילות (11–12/8)</span></div>
+      <ul>
+        <li>קניות ב-South Coast Plaza בדרך (11/8)</li>
+        <li>יום מלא — Magic Kingdom + California Adventure (12/8)</li>
+        <li>מצעד + מופע אורות ולייזרים (~21:00)</li>
+        <li>להזמין Lightning Lane מראש</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>כיסי כיסים:</strong> כנופיות גניבה פעילות בפארקי שעשועים וחניונים — לשמור ארנקים וטלפונים בכיסי הקדמה. לא להשאיר שום דבר גלוי ברכב.</div>
+    </div>
+    <div class="stop-card opt">
+      <div class="stop-title">לאס וגאס — 2 לילות</div>
+      <span class="stop-badge badge-opt">ביניים</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~440 ק"מ מ-LA</span><span class="meta-time">⏱ 3 לילות (12–14/8)</span></div>
+      <ul>
+        <li>הסטריפ בלילה — High Roller, אוכל, אורות</li>
+        <li><strong>אוגוסט: ~40°C</strong> — פעילות ערב בלבד אחרי 18:00</li>
+        <li>🎂 <strong>יום הולדת לכרן (15/8)</strong> — חגיגה במסעדה בלילה שישי 14/8 עם עדי עוד כאן</li>
+        <li>ארוחת פרידה מעדי + יום הולדת ביחד בלילה 14/8</li>
+        <li>⚠️ עדי טסה שבת 15/8 בבוקר מוקדם — אין טיסות לנתב"ג ביום שישי</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>חום קיצוני:</strong> כביש אספלט יכול לגרום לכוויות תוך שניות ביחפים. פעילות בחוץ — לפני 10:00 או אחרי 19:00 בלבד. שתייה מרובה, קירור מזגן בשעות הצהריים.</div>
+    </div>
+    <div class="stop-card rv">
+      <div class="stop-title">גרנד טטון — 2 לילות</div>
+      <span class="stop-badge badge-rv">רכב + לודג'</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~90 ק"מ מ-West Yellowstone</span><span class="meta-time">⏱ 2 לילות (19–21/8)</span></div>
+      <ul>
+        <li>Jenny Lake Scenic Drive, Oxbow Bend</li>
+        <li>חיות בר בשקיעה — אלקים, דובים, בייזונים</li>
+        <li>Jackson Lake Lodge — נוף ישיר לפסגות</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>דובים:</strong> דובי גריזלי ושחורים פעילים באוגוסט — בעיקר אמהות עם גורים. מרחק מינימלי 100 מ'. <strong>אחסון מזון חובה:</strong> כל מזון, זבל ופריטים בעלי ריח חייבים בקופסאות עמידות לדוב כשאין השגחה. ב-2025 הופצו מעל 1,800 אזהרות — עם קנסות. ליד אגמים — שימו לב כפול.</div>
+    </div>
+    <div class="stop-card rv">
+      <div class="stop-title">ילוסטון — 3 לילות (צפון + מערב)</div>
+      <span class="stop-badge badge-rv">רכב + לודג'</span>
+      <div class="stop-meta"><span class="meta-drive">🚗 ~130 ק"מ מ-Bozeman</span><span class="meta-time">⏱ 3 לילות (16–19/8)</span></div>
+      <ul>
+        <li>Old Faithful — התפרצות כל ~90 דקות</li>
+        <li>Grand Prismatic Spring — צבעים מדהימים</li>
+        <li>Lamar Valley בזריחה — זאבים, דובים, בייזונים</li>
+        <li>Mammoth Hot Springs, Tower Fall</li>
+      </ul>
+      <div class="tip-box">⚠️ <strong>דובים:</strong> לשאת ספריי דוב ולדעת להשתמש בו. לעשות רעש בשבילים. אחסון מזון חובה (כנ"ל גרנד טטון). <strong>ביזונים:</strong> מסוכנים ובלתי צפויים — רצים פי 3 מבני אדם. מרחק מינימום 25 מ' בכל עת. לא לעמוד מולם.</div>
+    </div>
+  </div>
+</section>
+
+<section id="weather">
+  <h2>🌡️ מזג האוויר — אוגוסט</h2>
+  <div class="weather-wrap">
+    <table>
+      <thead><tr><th>יעד</th><th>טמפ' (°C)</th><th>הערה</th></tr></thead>
+      <tbody>
+        <tr><td>סן דייגו</td><td class="ok">22–26°C</td><td>מושלם — ים חמם, שמש מלאה</td></tr>
+        <tr><td>לוס אנג'לס</td><td class="ok">26–30°C</td><td>חם אך יבש — נסבל בצל</td></tr>
+        <tr><td>לאס וגאס</td><td class="hot">38–42°C</td><td>קיצוני — לינה קצרה, ערב בלבד בחוץ</td></tr>
+        <tr><td>גרנד טטון</td><td class="cool">20–26°C</td><td>נעים, מתאים להליכות</td></tr>
+        <tr><td>ילוסטון</td><td class="cool">18–24°C</td><td>הנוח ביותר במסלול</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="days">
+  <h2>📅 יום יום</h2>
+
+  <div class="week-label">שבוע 1 — 5 נפשות (כולל עדי) | 5–14 אוגוסט</div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d1">1</div>
+      <div><div class="day-title">יציאה מנתב"ג + נחיתה ב-LA ✈️🌴</div>
+      <div class="day-drive">📅 רביעי, 5 באוגוסט · <span class="time-tag">⏰ TLV 00:10</span> → LAX 06:00 · אל-על</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>טיסת אל-על</strong> — <span class="time-tag">⏰ יציאה TLV 00:10</span> לילה · נחיתה LAX 06:00 בבוקר</li>
+        <li>לינה 1 ללא רכב — להגיע למלון Santa Monica ב-Uber/Lyft (לא לשכור רכב היום — עייפים ורכב נאסף מחר)</li>
+        <li>צ'ק-אין מלון <strong>Santa Monica</strong> (לילה 1 בלבד — לא בסיס קבוע)</li>
+        <li>ארוחת בוקר, Santa Monica Pier, Venice Beach, שינה מוקדמת</li>
+      </ul>
+      <div class="tip-box">💡 אסטרטגיית מלון מפוצל: Santa Monica (לילה 1) ← Universal City (לילה 2) ← Venice/Hollywood (לילות 3–4). LA פקוקה — לא לנסוע 22 ק"מ בבוקר ל-Universal אחרי לילה ב-Venice</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Santa Monica — <strong>Loews Santa Monica Beach Hotel</strong> · לילה 1 מתוך 4</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d2">2</div>
+      <div><div class="day-title">Universal Studios Hollywood 🎬</div>
+      <div class="day-drive">📅 חמישי, 6 באוגוסט · <span class="time-tag">⏰ פתיחה 09:00</span> · צ'ק-אאוט מ-Santa Monica → צ'ק-אין Universal City</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><span class="time-tag">⏰ 07:00</span> איסוף רכב שכור ב-LAX: <span class="done-tag">✅ Ofran · הזמנה 65071522</span> SUV גדול / מיניוואן (5 נפשות)</li>
+        <li>צ'ק-אאוט מ-Loews Santa Monica, נסיעה ~22 ק"מ צפונה → צ'ק-אין <strong>Hilton LA/Universal City</strong> (פחות מ-1 ק"מ משער הפארק)</li>
+        <li><strong>Super Nintendo World</strong> (Mario Kart) — להזמין Early Access 07:00–08:00 לפני פתיחת הפארק לבנות</li>
+        <li><strong>Wizarding World of Harry Potter</strong> — הגיע לשיא הגיל הנכון</li>
+        <li>Jurassic World The Ride (מים!), Revenge of the Mummy, Studio Tour</li>
+        <li>ערב: Hollywood Walk of Fame + CityWalk</li>
+      </ul>
+      <div class="tip-box">⚡ <span class="book-tag">📋 Express Pass</span> — חובה בקיץ (90–120 דקות המתנה בלי זה). לקנות מראש ב-universalstudios.com · Super Nintendo World Early Access = ההשקעה הכי טובה לבנות</div>
+      <a href="#todo" class="todo-inline">📋 TODO: Universal Express Pass + Early Access</a>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Universal City — <strong>Hilton LA/Universal City</strong> · לילה 2 מתוך 4</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d3">3</div>
+      <div><div class="day-title">LA — יום חופשי: Malibu / Getty / Santa Monica 🌊</div>
+      <div class="day-drive">📅 שישי, 7 באוגוסט · לוס אנג'לס — ללא נסיעות ארוכות</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Malibu Beach</strong> — חוף פרסתי ציורי (~50 ק"מ צפונה)</li>
+        <li><strong>The Getty Center</strong> — <span class="time-tag">⏰ פתוח 10:00–17:30</span> מוזיאון חינם עם נוף פנורמי (סגור בשני)</li>
+        <li>Venice Boardwalk — קניות, אוכל, שוק רחוב</li>
+        <li>ארוחת ערב ב-Santa Monica 3rd Street Promenade</li>
+      </ul>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Venice Beach / Hollywood — אותו מלון · לילה 3 מתוך 4</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d4">4</div>
+      <div><div class="day-title">LA — יום חופשי נוסף 🌴 (או: יציאה לסן דייגו)</div>
+      <div class="day-drive">📅 שבת, 8 באוגוסט · אפשרות: להישאר LA או לצאת מוקדם לסן דייגו</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>יום גמיש — Venice Beach, קניות, אוכל</li>
+        <li>או: נסיעה מוקדמת לסן דייגו (~200 ק"מ, ~2 שעות)</li>
+        <li>הגעה לסן דייגו בערב — צ'ק-אין מלון, מנוחה</li>
+      </ul>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> סן דייגו — Hotel del Coronado (חוף!) או Marriott Gaslamp · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d5">5</div>
+      <div><div class="day-title">סן דייגו — 🐋 צפייה בלווייתנים + גן חיות</div>
+      <div class="day-drive">📅 ראשון, 9 באוגוסט · סן דייגו — יום פעיל</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>🐋 צפייה בלווייתנים</strong> — <span class="time-tag">⏰ יציאה 08:00–09:00</span> מ-Point Loma/Fisherman's Landing · ~3–4 שעות בים · אוגוסט = עונת שיא · ~₪130–160/נפש · <span class="book-tag">📋 להזמין מראש</span></li>
+        <li><strong>גן חיות סן דייגו</strong> — <span class="book-tag">📋 כרטיסים מראש</span> אחה"צ, אחד מגני החיות הטובים בעולם</li>
+        <li>Balboa Park — גנים, ארכיטקטורה ספרדית, שקיעה</li>
+        <li>ארוחת ערב ב-Gaslamp Quarter</li>
+      </ul>
+      <a href="#todo" class="todo-inline">📋 TODO: כרטיסי גן חיות סן דייגו + צפייה בלווייתנים</a>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> סן דייגו — אותו מלון · לילה 2 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d6">6</div>
+      <div><div class="day-title">סן דייגו → Anaheim — קניות ב-South Coast Plaza 🛍️</div>
+      <div class="day-drive">📅 שני, 10 באוגוסט · סן דייגו → קוסטה מסה → Anaheim · ~120 ק"מ</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>South Coast Plaza</strong> (קוסטה מסה) — <span class="time-tag">⏰ פתוח 11:00–21:00</span> ~10 ק"מ לפני Anaheim · 250+ חנויות: H&amp;M, Zara, Nike, Apple</li>
+        <li><strong>Fashion Island</strong> (ניופורט ביץ') — קניון פתוח נעים, ~5 ק"מ ממנו</li>
+        <li>הגעה ל-Anaheim בערב, צ'ק-אין מלון</li>
+        <li>🛒 מרצ'נדייז Disney — ב-<strong>Target / Walmart באנהיים</strong>, לא בפארק (חיסכון 50%+)</li>
+      </ul>
+      <div class="tip-box">💡 להגיע ל-Anaheim לפני 18:00 — שינה מוקדמת לפני Disneyland</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Anaheim — Hilton Anaheim או Marriott Anaheim · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d7">7</div>
+      <div><div class="day-title">Disneyland — יום שלם 🎢</div>
+      <div class="day-drive">📅 שלישי, 11 באוגוסט · Anaheim · <span class="time-tag">⏰ פתיחה 08:00</span></div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Magic Kingdom:</strong> Fantasyland, Adventureland, Haunted Mansion, Pirates of the Caribbean</li>
+        <li><strong>California Adventure:</strong> Galaxy's Edge (סטאר וורס), Cars Land, Incredicoaster</li>
+        <li>מצעד היום + <span class="time-tag">⏰ מופע אורות ולייזרים ~21:00</span></li>
+      </ul>
+      <div class="tip-box">⚡ <span class="book-tag">📋 Lightning Lane</span> — לקנות מראש ב-Disneyland.com · להגיע 30 דקות לפני הפתיחה</div>
+      <a href="#todo" class="todo-inline">📋 TODO: Disneyland Park Hopper + Lightning Lane ×5</a>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Anaheim — אותו מלון · לילה 2 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d8">8</div>
+      <div><div class="day-title">Anaheim → לאס וגאס 🌵</div>
+      <div class="day-drive">📅 רביעי, 12 באוגוסט · ~440 ק"מ · ~4 שעות נסיעה</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><span class="time-tag">⏰ יציאה בבוקר ~09:00</span> — הגעה לאס וגאס בצהרים, צ'ק-אין מלון, בריכה</li>
+        <li><strong>הסטריפ בלילה</strong> — <span class="time-tag">⏰ אחרי 18:00 בלבד (40°C)</span> High Roller, אוכל, אורות</li>
+        <li>Fremont Street Experience — הסטריפ הישן, קנופי אורות מרהיב</li>
+      </ul>
+      <div class="tip-box">⚡ לאס וגאס באוגוסט = 40°C. כל הפעילויות אחרי 18:00 בלבד</div>
+      <a href="#todo" class="todo-inline">📋 TODO: MSG Sphere — כרטיסים לאירוע</a>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> לאס וגאס — Vdara או Park MGM (ללא מעבר דרך קזינו) · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d9">9</div>
+      <div><div class="day-title">לאס וגאס — יום שני 🌆</div>
+      <div class="day-drive">📅 חמישי, 13 באוגוסט · לאס וגאס — יום פנאי</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>בריכה במלון, ארוחת בוקר, קניות קצרות</li>
+        <li>Fremont Street Experience — תקרת אורות ולייזרים בלילה</li>
+        <li>High Roller, Bellagio Fountains, CityCenter</li>
+        <li>ארוחת ערב — יום פנאי</li>
+      </ul>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> לאס וגאס — אותו מלון · לילה 2 מתוך 3</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d10">10</div>
+      <div><div class="day-title">לאס וגאס — יום שלישי + יום הולדת כרן 🎂 + פרידה מעדי 💜</div>
+      <div class="day-drive">📅 שישי, 14 באוגוסט · יום הולדת לכרן (15/8) + ארוחת פרידה מעדי · עדי נשארת הלילה</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>בריכה, קניות אחרונות, וינד דאון לפני שבוע הטבע</li>
+        <li>🎂 <strong>יום הולדת לכרן!</strong> — (15/8) חגיגה מוקדמת כדי שעדי תהיה שם</li>
+        <li><strong>ארוחה במסעדה 💜</strong> — יום הולדת + פרידה מעדי, ארוחה אחרונה של 5 ביחד</li>
+        <li><strong>עדי נשארת הלילה</strong> — טסה מחר שבת 15/8 ב-<span class="time-tag">⏰ 19:24</span> · <span class="done-tag">✅ נרכש · ₪5,863</span></li>
+        <li>עדי טסה שבת 15/8 — LAS → LAX → ת"א, הגעה ראשון</li>
+      </ul>
+      <div class="tip-box">💜 עדי: טיסה שבת 15/8 ב-<span class="time-tag">⏰ 19:24</span> מ-LAS — להגיע שדה תעופה ~17:00 · LAS → LAX → ת"א · הגעה ראשון</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> לאס וגאס — אותו מלון · לילה 3 (אחרון) — כולם, כולל עדי</div>
+    </div>
+  </div>
+
+  <div class="week-label">שבוע 2 — 4 נפשות (ללא עדי) | 15–23 אוגוסט | עדי עוזבת 15/8 ב-19:24 · LAS→BZN (בוזמן 15/8) → ילוסטון צפון (16/8) → Starlite Yellowstone (17–19/8) → Rockwell Inn גרנד טטון (19–21/8) → JAC → לונדון → הביתה</div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d11">11</div>
+      <div><div class="day-title">עדי טסה הביתה + המשפחה: LAS → Bozeman ✈️💜🏙️</div>
+      <div class="day-drive">📅 שבת, 15 באוגוסט · עדי: LAS→LAX→ת"א | המשפחה: LAS→BZN (נחיתה אחרי 20:00) → לינה בבוזמן</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>עדי עוזבת:</strong> <span class="time-tag">⏰ 19:24</span> טיסה מ-LAS — LAS → LAX → ת"א · הגעה ראשון · <span class="done-tag">✅ נרכש · ₪5,863</span></li>
+        <li><strong>המשפחה (4 נפשות):</strong> <span class="time-tag">⏰ LAS → BZN</span> (~2 שעות) · נחיתה בוזמן <strong>אחרי 20:00</strong> · <span class="book-tag">📋 להזמין</span></li>
+        <li>איסוף רכב שכור ב-BZN: <span class="book-tag">📋 להזמין מראש</span> SUV רגיל (Ford Explorer, Chevy Traverse) — לוודא שהמשרד פתוח עם הגעה מאוחרת</li>
+        <li>צ'ק-אין מלון בוזמן (ליד שדה התעופה) — <span class="book-tag">📋 להזמין</span></li>
+        <li>מנוחה — לא לנסות לנסוע לפארק הלילה (130+ ק"מ ובחושך)</li>
+      </ul>
+      <div class="tip-box">💡 בוזמן היא עיר נחמדה עם מסעדות טובות — ארוחת ערב נוחה לפני יום נסיעה גדול מחר</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> בוזמן (ליד BZN) — <span class="book-tag">📋 להזמין</span> (Hyatt Place, Hilton Garden Inn Bozeman וכד')</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d12">12</div>
+      <div><div class="day-title">בוזמן → ילוסטון צפון: Mammoth + Tower Fall + Lamar Valley 🦌</div>
+      <div class="day-drive">📅 ראשון, 16 באוגוסט · בוזמן → Gardiner, MT (~130 ק"מ) → כניסה צפונית לילוסטון</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><span class="time-tag">⏰ יציאה בבוקר</span> — נסיעה מבוזמן ~130 ק"מ דרומה לכניסה הצפונית (Gardiner, MT)</li>
+        <li><strong>Mammoth Hot Springs ★</strong> — מדרגות סיד לבנות צמוד לכניסה, נראה כמו כוכב אחר</li>
+        <li><strong>Tower Fall</strong> — מפל 40 מ' בתוך קניון בזלת שחור, הליכה קלה ~45 דקות</li>
+        <li><strong>Lamar Valley</strong> — "הסרנגטי של אמריקה": בייזונים, זאבים, דובים — <span class="time-tag">⏰ שעת שקיעה הכי טובה</span></li>
+        <li><strong>Boiling River ★</strong> (אופציונלי) — רחצה בנהר חם-קר טבעי ליד Mammoth (לפעמים סגור — לבדוק)</li>
+      </ul>
+      <div class="tip-box">💡 Lamar Valley = ההזדמנות הטובה בעולם לראות זאבים — עם הנסיעה לשם. ערב עדיף על בוקר ל-Lamar</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Gardiner, MT (כניסה צפונית) — <span class="book-tag">📋 להזמין</span> (Absaroka Lodge, Jim Bridger Court, Mammoth Hot Springs Hotel)</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d13">13</div>
+      <div><div class="day-title">ילוסטון מערב — Old Faithful + Grand Prismatic 🌋</div>
+      <div class="day-drive">📅 שני, 17 באוגוסט · Gardiner → Norris → Madison → West Yellowstone (~160 ק"מ בתוך הפארק)</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>נסיעה מ-Gardiner דרך Norris Geyser Basin לכיוון West Yellowstone — <span class="time-tag">⏰ עצירה ב-Norris</span> (הבסין הגיאותרמי הפעיל ביותר)</li>
+        <li>צ'ק-אין <strong>Starlite Yellowstone</strong> ב-<span class="time-tag">⏰ 16:00</span>, מיקום נוח ליד הכניסה המערבית</li>
+        <li><strong>Old Faithful ★★★</strong> — <span class="time-tag">⏰ התפרצות כל ~90 דקות</span> 50 מ' גובה</li>
+        <li>Old Faithful Inn — בניין עץ מ-1903, ארוחת צהריים</li>
+        <li><strong>Grand Prismatic Spring</strong> — הבריכה הגיאותרמית הצבעונית ביותר בעולם</li>
+        <li>Midway Geyser Basin — ממש ליד Grand Prismatic</li>
+      </ul>
+      <div class="rv-box">🏨 <span style="display:inline-block;background:#27ae60;color:white;font-size:.72em;font-weight:700;padding:2px 7px;border-radius:8px;margin-right:4px;">✅ הוזמן</span> <strong>Starlite Yellowstone, Tapestry Collection by Hilton</strong> — West Yellowstone (כניסה מערבית) · ₪2,547 · ביטול עד 2/8 23:59 · צ'ק-אין 16:00 / צ'ק-אאוט 11:00</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Starlite Yellowstone (כניסה מערבית) · ✅ הוזמן · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d14">14</div>
+      <div><div class="day-title">ילוסטון — Lamar Valley וחיות בר 🐺</div>
+      <div class="day-drive">📅 שלישי, 18 באוגוסט · בתוך הפארק — ~100 ק"מ סבב</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Lamar Valley ★★★</strong> — <span class="time-tag">⏰ 05:30 בבוקר!</span> ה"סרנגטי של אמריקה" — זאבים, דובים, בייזונים</li>
+        <li>Hayden Valley — עדרי בייזונים חוסמים את הכביש</li>
+        <li>Grand Canyon of the Yellowstone — מפל צהוב ענק</li>
+        <li>Artist Point — נקודת תצפית אייקונית</li>
+      </ul>
+      <div class="tip-box">🐺 זאבים: הזדמנות הטובה ביותר בעולם לראות זאבים בטבע. לצאת עם הזריחה!</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> Starlite Yellowstone (כניסה מערבית) · ✅ הוזמן · לילה 2 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d15">15</div>
+      <div><div class="day-title">ילוסטון → גרנד טטון: צ'ק-אאוט Starlite + כניסה ל-Rockwell Inn 🏔️</div>
+      <div class="day-drive">📅 רביעי, 19 באוגוסט · West Yellowstone → Grand Teton (~90 ק"מ)</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><span class="time-tag">⏰ צ'ק-אאוט 11:00</span> מ-Starlite Yellowstone — טיול קצר בוקר ליד הכניסה המערבית לפני העזיבה</li>
+        <li>נסיעה ~90 ק"מ דרומה לגרנד טטון (~1.5 שעות)</li>
+        <li><span class="time-tag">⏰ צ'ק-אין 16:00</span> ב-<strong>Rockwell Inn, Grand Teton</strong> · ✅ הוזמן</li>
+        <li><strong>Jackson Lake</strong> — נוף ראשון לפסגות הטטון — קפה בוקר עם נוף ישיר</li>
+        <li><strong>Oxbow Bend</strong> — <span class="time-tag">⏰ שעת בין-ערביים</span> השתקפות פסגות מושלמת במים</li>
+      </ul>
+      <div class="rv-box">🏨 <span style="display:inline-block;background:#27ae60;color:white;font-size:.72em;font-weight:700;padding:2px 7px;border-radius:8px;margin-right:4px;">✅ הוזמן</span> <strong>The Rockwell Inn</strong> — Grand Teton · 19–21/8 · ₪3,584 · booking.com</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> The Rockwell Inn — Grand Teton · ✅ הוזמן · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d16">16</div>
+      <div><div class="day-title">גרנד טטון — יום מלא: Jenny Lake + חיות בר 🦌</div>
+      <div class="day-drive">📅 חמישי, 20 באוגוסט · Grand Teton NP — בתוך הפארק</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Oxbow Bend ★</strong> — <span class="time-tag">⏰ עדיף בזריחה</span> השתקפות פסגות מושלמת</li>
+        <li><strong>Jenny Lake</strong> — סירה לעבר הפסגות, שביל Inspiration Point</li>
+        <li><strong>Jackson Lake Drive</strong> — נוף פנורמי לרכס הטטון</li>
+        <li><strong>חיות בר בשקיעה:</strong> <span class="time-tag">⏰ 17:00–19:00</span> — אלקים, דובים, בייזונים ב-Antelope Flats</li>
+        <li><span class="time-tag">⏰ אחה"צ:</span> הכנת מזוודות — מחר יוצאים ל-JAC לטיסה</li>
+      </ul>
+      <div class="tip-box">💡 מחר יוצאים מוקדם! טיסה מ-JAC שישי 21/8 — לישון מוקדם</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> The Rockwell Inn — Grand Teton · ✅ הוזמן · לילה 2 (אחרון)</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num d17">17</div>
+      <div><div class="day-title">גרנד טטון → Jackson Hole → טיסה לאירופה ✈️🗼</div>
+      <div class="day-drive">📅 שישי, 21 באוגוסט · גרנד טטון → Jackson Hole (JAC) → <span class="time-tag">⏰ טיסה JAC→LHR</span></div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><span class="time-tag">⏰ יציאה עד 11:00</span> — נסיעה ל-Jackson Hole Airport (JAC) ~50–70 ק"מ, ~1 שעה</li>
+        <li><strong>החזרת הרכב השכור</strong> — צ'ק-אאוט בתחנת ההשכרה</li>
+        <li><strong>טיסה:</strong> JAC → SLC/DEN → LHR · <span class="done-tag">✅ נרכש · ₪5,020</span></li>
+        <li>נחיתה לונדון LHR — <span class="time-tag">⏰ שבת 22/8 בוקר</span></li>
+      </ul>
+      <div class="tip-box">✅ JAC → LHR נרכש · $1,709.86 · ₪5,020</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> לונדון — מלון מרכזי (West End / South Kensington) · לילה 1 מתוך 2</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num" style="background:#922b21;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95em;color:white;flex-shrink:0;">18</div>
+      <div><div class="day-title">לונדון — יום שלם 🎡</div>
+      <div class="day-drive">📅 שבת, 22 באוגוסט · לונדון — נחיתה LHR 09:40 · לילה ראשון</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>נחיתה LHR 09:40 — <span class="time-tag">⏰ צ'ק-אין מוקדם אם אפשר</span> · צ'ק-אין מלון</li>
+        <li>Hyde Park, Notting Hill, Borough Market, Covent Garden</li>
+        <li>מוזיאונים (British Museum, V&amp;A), שוקים, טיול ברגל</li>
+        <li>ארוחת ערב בריטית / בינלאומית</li>
+      </ul>
+      <div class="tip-box">💡 2 לילות בלונדון = זמן אמיתי לעיר, לא רק מעבר. להזמין מלון מרכזי</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> לונדון — אותו מלון · לילה 2 (אחרון)</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+      <div class="day-num" style="background:#6c3483;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95em;color:white;flex-shrink:0;">19</div>
+      <div><div class="day-title">לונדון → נתב"ג — הביתה ✈️</div>
+      <div class="day-drive">📅 ראשון, 23 באוגוסט · לונדון LHR 17:15 → נתב"ג · הזמנה 3J8A-XD2S · ✅ נרכש</div></div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>בוקר חופשי בלונדון — קפה, טיול אחרון, קניות</li>
+        <li><strong>טיסה לנתב"ג</strong> — <span class="time-tag">⏰ LHR 17:15</span> · ~4–5 שעות · הזמנה 3J8A-XD2S · ✅ נרכש</li>
+        <li>נחיתה: ראשון 23 באוגוסט 2026 — הביתה!</li>
+      </ul>
+      <div class="sleep-box">🏠 <strong>בית!</strong> נחיתה נתב"ג, ראשון 23 באוגוסט 2026</div>
+    </div>
+  </div>
+
+</section>
+
+<section id="return">
+  <h2>🔄 אסטרטגיית החזרה — למה דרך אירופה?</h2>
+  <div class="return-box">
+    <div class="return-step">
+      <div class="step-text"><strong>מסיימים ב-Jackson Hole (JAC) — דרומית לגרנד טטון</strong><small>אין צורך לחזור ל-LA — נחסכים ~1,800 ק"מ</small></div>
+      <div class="step-icon">📍</div>
+    </div>
+    <div class="return-step">
+      <div class="step-text"><strong>טיסה: Jackson Hole → לונדון (JAC→LHR)</strong><small>✅ נרכש · JAC 21/8 → LHR 22/8 · ₪5,020</small></div>
+      <div class="step-icon">✈️</div>
+    </div>
+    <div class="return-step">
+      <div class="step-text"><strong>2 לילות בלונדון</strong><small>בונוס אמיתי + חיץ לפני הביתה + שינוי קצב</small></div>
+      <div class="step-icon">🗼</div>
+    </div>
+    <div class="return-step">
+      <div class="step-text"><strong>טיסה לנתב"ג — הזמנה 3J8A-XD2S</strong><small>LHR → TLV · 23/8 · ✅ נרכש · alice.co.il · ₪5,725</small></div>
+      <div class="step-icon">🏠</div>
+    </div>
+    <div style="background:#eaf3fb;border-radius:10px;padding:16px 20px;margin-top:16px;">
+      <strong>סה"כ חזרה:</strong> JAC (שישי 21/8) → SLC/DEN → LHR (שבת 22/8) · 2 לילות לונדון · LHR → TLV (ראשון 23/8)
+    </div>
+  </div>
+</section>
+
+<section id="flights">
+  <h2>✈️ טיסות</h2>
+  <div class="flight-section">
+    <div class="flight-card">
+      <h3>טיסת יציאה: נתב"ג → לוס אנג'לס (LAX) — 4 נפשות | 5 אוגוסט</h3>
+      <table>
+        <thead><tr><th>אפשרות</th><th>מסלול</th><th>נחיתה</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="star-row"><td>✅ נרכש!</td><td>אל-על — נתב"ג → LAX · 5/8 01:00 · <strong>4 נפשות (ללא עדי)</strong> · הזמנה: <strong>Y53M72</strong></td><td>5/8, 05:00</td><td>₪11,535</td></tr>
+          <tr><td>✅ נרכש!</td><td>אל-על — נתב"ג → LAX · 5/8 01:00 · <strong>עדי × 1 · אותה טיסה, כרטיס נפרד</strong></td><td>5/8, 05:00</td><td>כלול בעסקת round trip ₪5,863</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flight-card">
+      <h3>טיסת עדי חזרה לבד — LAS → נתב"ג | שבת, 15 באוגוסט · 19:24</h3>
+      <table>
+        <thead><tr><th>סטטוס</th><th>מסלול</th><th>הגעה לת"א</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="star-row"><td>✅ נרכש!</td><td>LAS 19:24 → LAX → ת"א · שבת 15/8 (טיסה נפרדת לעדי)</td><td>ראשון 16/8</td><td>₪5,863</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">✅ טיסת עדי נרכשה · LAS 19:24 שבת 15/8 → LAX → ת"א ראשון 16/8 · להגיע לשדה תעופה ~17:00</div>
+    </div>
+    <div class="flight-card">
+      <h3>טיסת חזרה: JAC → לונדון (LHR) → נתב"ג — 4 נפשות | 21–23 אוגוסט</h3>
+      <table>
+        <thead><tr><th>אפשרות</th><th>מסלול</th><th>פרטים</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="star-row"><td>✅ נרכש!</td><td>JAC → SLC/DEN → LHR · שישי 21/8</td><td>$1,709.86 ($22+$212.96+$1,474.90)</td><td>₪5,020</td></tr>
+          <tr class="star-row"><td>✅ נרכש!</td><td>LHR → TLV (23 אוגוסט) · הזמנה: <strong>3J8A-XD2S</strong> · alice.co.il</td><td>~4–5 שעות · 4 נפשות</td><td>₪5,725</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">✅ כל טיסות החזרה נרכשו: JAC→LHR (₪5,020) + LHR→TLV הזמנה 3J8A-XD2S (₪5,725)</div>
+    </div>
+  </div>
+</section>
+
+<section id="hotels">
+  <h2>🏨 לינה</h2>
+  <div class="hotels-grid">
+    <div class="hotel-card must">
+      <div class="city">לוס אנג'לס — מלון מפוצל (3 בסיסים)</div>
+      <div class="nights">4 לילות (5–8 באוגוסט)</div>
+      <div class="name">לילה 1: Loews Santa Monica Beach Hotel | לילה 2: Hilton LA/Universal City | לילות 3–4: Venice/Hollywood</div>
+      <div class="price">₪900–₪1,600 ללילה (2 חדרים) · 3 הזמנות נפרדות</div>
+    </div>
+    <div class="hotel-card">
+      <div class="city">סן דייגו</div>
+      <div class="nights">2 לילות (8–9 באוגוסט)</div>
+      <div class="name">Hotel del Coronado (חוף!) או Marriott Gaslamp Quarter</div>
+      <div class="price">₪1,100–₪2,200 ללילה (2 חדרים)</div>
+    </div>
+    <div class="hotel-card must">
+      <div class="city">Anaheim — Disneyland</div>
+      <div class="nights">2 לילות (10–11 באוגוסט)</div>
+      <div class="name">Hilton Anaheim או Marriott Anaheim (צמוד ל-Disneyland)</div>
+      <div class="price">₪800–₪1,400 ללילה (2 חדרים)</div>
+    </div>
+    <div class="hotel-card">
+      <div class="city">לאס וגאס</div>
+      <div class="nights">3 לילות (12–14 באוגוסט)</div>
+      <div class="name">Vdara או Park MGM (ללא מעבר דרך קזינו)</div>
+      <div class="price">₪600–₪1,200 ללילה (2 חדרים)</div>
+    </div>
+    <div class="hotel-card rv">
+      <div class="city">בוזמן (BZN) — לילה 1</div>
+      <div class="nights">1 לילה (15 באוגוסט — נחיתה אחרי 20:00)</div>
+      <div class="name">Hyatt Place Bozeman / Hilton Garden Inn Bozeman (ליד שדה התעופה)</div>
+      <div class="price">₪600–₪900 (2 חדרים) — <span style="color:#c0392b;font-weight:700;">📋 להזמין</span></div>
+    </div>
+    <div class="hotel-card rv">
+      <div class="city">Gardiner, MT — כניסה צפונית ילוסטון</div>
+      <div class="nights">1 לילה (16 באוגוסט)</div>
+      <div class="name">Absaroka Lodge / Jim Bridger Court / Mammoth Hot Springs Hotel</div>
+      <div class="price">₪600–₪1,000 (2 חדרים) — <span style="color:#c0392b;font-weight:700;">📋 להזמין</span></div>
+    </div>
+    <div class="hotel-card must">
+      <div class="city">ילוסטון — לילות 1–2 · ✅ הוזמן</div>
+      <div class="nights">17–19 באוגוסט (2 לילות)</div>
+      <div class="name">Starlite Yellowstone, Tapestry Collection by Hilton — West Yellowstone (כניסה מערבית)</div>
+      <div class="price" style="color:#27ae60;">₪2,547 · ✅ הוזמן · ביטול עד 2/8 23:59</div>
+    </div>
+    <div class="hotel-card must">
+      <div class="city">גרנד טטון — The Rockwell Inn · ✅ הוזמן</div>
+      <div class="nights">2 לילות (19–21 באוגוסט)</div>
+      <div class="name">The Rockwell Inn, Grand Teton</div>
+      <div class="price" style="color:#27ae60;">₪3,584 · ✅ הוזמן · booking.com</div>
+    </div>
+    <div class="hotel-card">
+      <div class="city">לונדון</div>
+      <div class="nights">2 לילות (22–23 באוגוסט)</div>
+      <div class="name">מלון עירוני מרכזי — West End / South Kensington</div>
+      <div class="price">₪1,000–₪2,000 ללילה (2 חדרים)</div>
+    </div>
+  </div>
+  <p style="margin-top:14px;font-size:.88em;color:#777;">✅ לינה בפארקים מכוסה: Starlite Yellowstone (17–19/8) + Rockwell Inn Grand Teton (19–21/8) · 🔴 עדיין להזמין: בוזמן (15/8) + Gardiner (16/8)</p>
+</section>
+
+<section id="budget">
+  <h2>💰 תקציב משוער</h2>
+  <div class="budget-card">
+    <table>
+      <thead><tr><th>קטגוריה</th><th>הערכה (₪)</th><th>הערות</th></tr></thead>
+      <tbody>
+        <tr><td>טיסת יציאה: נתב"ג → LAX × 4 (5/8) · הזמנה Y53M72</td><td>₪11,535</td><td>✅ נרכש · ללא עדי</td></tr>
+        <tr><td>טיסת עדי round trip: TLV→LAX (5/8) + LAS→LAX→TLV (15/8) · $1,991</td><td>₪5,863</td><td>✅ נרכש</td></tr>
+        <tr><td>JAC → LHR (21/8) × 4</td><td>₪5,020</td><td>✅ נרכש · $1,709.86</td></tr>
+        <tr><td>LHR → TLV (23/8) × 4 · הזמנה 3J8A-XD2S</td><td>₪5,725</td><td>✅ נרכש · alice.co.il</td></tr>
+        <tr><td>LAS → BZN (15/8) × 4 — להזמין</td><td>₪2,000–₪3,600</td><td>🔴 להזמין</td></tr>
+        <tr><td>השכרת רכב שבוע 1 — LAX → LAS (6–15/8) · חד-כיווני · Ofran · הזמנה 65071522</td><td>₪3,602.63</td><td>✅ נרכש · SUV גדול / מיניוואן · 5 נפשות · איסוף LAX 07:00 / החזרה LAS 15:30</td></tr>
+        <tr><td>השכרת רכב שבוע 2 — BZN → JAC (15–21/8) · חד-כיווני · Ofran · הזמנה 85071362</td><td>₪2,689.06</td><td>✅ נרכש · SUV רגיל · 4 נפשות</td></tr>
+        <tr><td>Starlite Yellowstone (17–19/8) · 2 לילות · West Yellowstone</td><td>₪2,547</td><td>✅ נרכש · ביטול עד 2/8 23:59</td></tr>
+        <tr><td>The Rockwell Inn — Grand Teton (19–21/8) · 2 לילות</td><td>₪3,584</td><td>✅ נרכש · booking.com</td></tr>
+        <tr><td>לינה שאר הלילות (~14 לילות — LA, SD, אנהיים, LV, בוזמן/Gardiner, לונדון)</td><td>₪13,000–₪24,000</td><td>2 חדרים · מלונות שבוע 1 + 2 לילות Bozeman+Gardiner 15–16/8 + לונדון ×2</td></tr>
+        <tr><td>Disneyland ×5 + Lightning Lane</td><td>₪5,000–₪7,000</td><td>לקנות מראש</td></tr>
+        <tr><td>Universal Studios ×5 + Express Pass</td><td>₪5,500–₪7,500</td><td>לקנות מראש</td></tr>
+        <tr><td>America the Beautiful (כרטיס פארקים)</td><td>₪300</td><td>$80 לרכב</td></tr>
+        <tr style="background:#fdf2f0"><td>⚠️ כניסה לפארקים — תוספת לזרים (2026): גרנד טטון ×5 + ילוסטון ×4</td><td>~₪2,642</td><td>$100/נפש לזרים (לא ישראלים) — לאמת ב-nps.gov לפני הנסיעה</td></tr>
+        <tr><td>אוכל (19 יום)</td><td>₪14,000–₪19,000</td><td>מסעדות לאורך כל המסלול</td></tr>
+        <tr><td>פעילויות שונות (גן חיות, לווייתנים, סירה וכו')</td><td>₪2,000–₪3,500</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="budget-total">
+      <span>סה"כ משוער (בינוני)</span>
+      <span>₪82,000–₪106,000</span>
+    </div>
+    <p style="margin-top:12px;font-size:.88em;color:#777;">חסכוני (מלונות פשוטים): ~₪90,000 | מפנק (Hotel del Coronado + דרגת עסקים): ~₪200,000+</p>
+  </div>
+</section>
+
+<section id="kids">
+  <h2>💛 מה יאהב כל אחת</h2>
+  <div class="kids-grid">
+    <div class="kid-card kid-13">
+      <div class="kid-title">בת 13</div>
+      <ul>
+        <li>Harry Potter ב-Universal — בדיוק בגיל הנכון</li>
+        <li>Disneyland — Galaxy's Edge, Cars Land</li>
+        <li>כלבי ים ב-La Jolla — לגעת ולשחות ליד</li>
+        <li>גן חיות סן דייגו — פנדות, זברות, ג'ירפות</li>
+        <li>Old Faithful מתפרץ מולך — רגע שתזכרי כל החיים</li>
+        <li>בייזונים חוסמים את הכביש ב-Hayden Valley</li>
+        <li>לינה ב-Old Faithful Inn — לישון ממש ליד הגייזר</li>
+      </ul>
+    </div>
+    <div class="kid-card kid-18">
+      <div class="kid-title">בת 18</div>
+      <ul>
+        <li>Universal Studios + Hollywood Walk of Fame</li>
+        <li>La Jolla Cove — שנורקל עם כלבי ים</li>
+        <li>Grand Prismatic Spring — תמונה שלא תשכחי</li>
+        <li>Lamar Valley בזריחה — לראות זאבים בטבע</li>
+        <li>Grand Canyon of the Yellowstone — מפל צהוב ענק</li>
+        <li>Oxbow Bend — השתקפות מושלמת</li>
+        <li>ערב בלונדון לפני הביתה</li>
+      </ul>
+    </div>
+    <div class="kid-card kid-21">
+      <div class="kid-title">עדי (בת 21) — שבוע ראשון בלבד</div>
+      <ul>
+        <li>Disneyland + Universal — רגרסיה מכוונת</li>
+        <li>Santa Monica / Venice Beach — וייב קליפורני מלא</li>
+        <li>La Jolla — שנורקל + שמש</li>
+        <li>לאס וגאס — הסטריפ, בר גג, High Roller</li>
+        <li>עוזבת עם שבוע מלא של זיכרונות — טסה לבד</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <h2>✅ רשימת הזמנות — סטטוס</h2>
+
+  <div style="background:white;border-radius:12px;padding:18px 24px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div style="font-size:1.5em;font-weight:800;min-width:100px;" id="todo-progress">—</div>
+    <div style="flex:1;min-width:160px;">
+      <div style="background:#eee;border-radius:8px;height:12px;overflow:hidden;">
+        <div id="todo-bar" style="height:100%;width:0%;transition:width .4s;border-radius:8px;"></div>
+      </div>
+      <div style="font-size:.83em;color:#888;margin-top:5px;" id="todo-sub">מתוך כלל הפריטים</div>
+    </div>
+    <button onclick="resetTodo()" style="background:none;border:1px solid #ddd;border-radius:6px;padding:5px 14px;font-size:.82em;color:#888;cursor:pointer;">אפס סימונים פתוחים</button>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#e8f8ef;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#1e8449;font-size:.93em;">✅ נרכש / הושלם</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <label class="todo-row done-row" data-id="t1"><input type="checkbox" class="todo-cb" id="t1" checked onchange="saveTodo()"><div class="todo-row-text"><strong>טיסת יציאה: TLV → LAX · 4 נפשות · 5/8 01:00 → 06:00</strong><span class="todo-detail">אל-על · הזמנה: Y53M72 · ₪11,535</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t2"><input type="checkbox" class="todo-cb" id="t2" checked onchange="saveTodo()"><div class="todo-row-text"><strong>JAC → LHR (21/8) · 4 נפשות</strong><span class="todo-detail">$1,709.86 ($22+$212.96+$1,474.90) · ₪5,020</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t6"><input type="checkbox" class="todo-cb" id="t6" checked onchange="saveTodo()"><div class="todo-row-text"><strong>טיסות עדי round trip — TLV→LAX (5/8) + LAS→LAX→TLV (15/8 · 19:24)</strong><span class="todo-detail">$1,991 · ₪5,863 · אל-על יציאה (Y53M72) + LAS→LAX→TLV · הגעה ראשון 16/8</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t3"><input type="checkbox" class="todo-cb" id="t3" checked onchange="saveTodo()"><div class="todo-row-text"><strong>LHR → TLV (23/8) · 17:15 · 4 נפשות</strong><span class="todo-detail">alice.co.il · הזמנה: 3J8A-XD2S · ₪5,725</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t-starlite"><input type="checkbox" class="todo-cb" id="t-starlite" checked onchange="saveTodo()"><div class="todo-row-text"><strong>Starlite Yellowstone, Tapestry Collection by Hilton — West Yellowstone · 17–19/8 · 2 לילות</strong><span class="todo-detail">₪2,547 · ביטול עד 2/8 23:59 · צ'ק-אין 16:00 / צ'ק-אאוט 11:00</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t5"><input type="checkbox" class="todo-cb" id="t5" checked onchange="saveTodo()"><div class="todo-row-text"><strong>The Rockwell Inn — Grand Teton · 19–21/8 · 2 לילות</strong><span class="todo-detail">₪3,584 · booking.com · Gil's account · צ'ק-אין 16:00 / צ'ק-אאוט 11:00</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t8"><input type="checkbox" class="todo-cb" id="t8" checked onchange="saveTodo()"><div class="todo-row-text"><strong>השכרת רכב שבוע 2 — BZN → JAC (15–21/8) · SUV רגיל · 4 נפשות · Ofran</strong><span class="todo-detail">₪2,689.06 · הזמנה: 85071362</span></div><span class="todo-status done">✓ נרכש</span></label>
+      <label class="todo-row done-row" data-id="t7"><input type="checkbox" class="todo-cb" id="t7" checked onchange="saveTodo()"><div class="todo-row-text"><strong>השכרת רכב שבוע 1 — LAX → LAS (6–15/8) · SUV גדול / מיניוואן · 5 נפשות · Ofran</strong><span class="todo-detail">₪3,602.63 · הזמנה: 65071522 · איסוף LAX 07:00 אוג' 6 / החזרה LAS 15:30 אוג' 15</span></div><span class="todo-status done">✓ נרכש</span></label>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#fff8e1;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#a04000;font-size:.93em;">⏳ הוזמן, ממתין לאישור</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#fdf0ef;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#922b21;font-size:.93em;">🔴 דחוף — להזמין עכשיו</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <label class="todo-row" data-id="t4"><input type="checkbox" class="todo-cb" id="t4" onchange="saveTodo()"><div class="todo-row-text"><strong>מלון בוזמן — 15/8 (לילה אחד, נחיתה אחרי 20:00)</strong><span class="todo-detail">Hyatt Place Bozeman / Hilton Garden Inn Bozeman — לוודא שמשרד ההשכרה פתוח עם הגעה מאוחרת</span></div><span class="todo-status urgent">🔴 עכשיו</span></label>
+      <label class="todo-row" data-id="t4b"><input type="checkbox" class="todo-cb" id="t4b" onchange="saveTodo()"><div class="todo-row-text"><strong>מלון Gardiner, MT — 16/8 (לילה אחד, כניסה צפונית ילוסטון)</strong><span class="todo-detail">Absaroka Lodge / Jim Bridger Court / Mammoth Hot Springs Hotel — Gardiner ליד הכניסה הצפונית</span></div><span class="todo-status urgent">🔴 עכשיו</span></label>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#fef4ec;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#a04000;font-size:.93em;">🟠 גבוהה — בהקדם</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <label class="todo-row" data-id="t-esta-us"><input type="checkbox" class="todo-cb" id="t-esta-us" onchange="saveTodo()"><div class="todo-row-text"><strong>ESTA USA — 5 נפשות (כל בני המשפחה, דרכון ישראלי)</strong><span class="todo-detail">esta.cbp.dhs.gov · נדרש לפני עלייה לטיסה · הגשה אונליין</span></div><span class="todo-status high">🟠 גבוהה</span></label>
+      <label class="todo-row" data-id="t-esta-uk"><input type="checkbox" class="todo-cb" id="t-esta-uk" onchange="saveTodo()"><div class="todo-row-text"><strong>ESTA UK (ETA) — 4 נפשות (עצירה בלונדון 21–23/8)</strong><span class="todo-detail">gov.uk/electronic-travel-authorisation · נדרש לפני עלייה לטיסה · הגשה אונליין</span></div><span class="todo-status high">🟠 גבוהה</span></label>
+      <label class="todo-row" data-id="t9"><input type="checkbox" class="todo-cb" id="t9" onchange="saveTodo()"><div class="todo-row-text"><strong>MSG Sphere לאס וגאס — כרטיסים (12–14/8)</strong><span class="todo-detail">msg.com/sphere · הופעות קיץ 2026 נמכרות מהר</span></div><span class="todo-status high">🟠 גבוהה</span></label>
+      <label class="todo-row" data-id="t10"><input type="checkbox" class="todo-cb" id="t10" onchange="saveTodo()"><div class="todo-row-text"><strong>רישיונות נהיגה בינלאומיים (IDP) — לכל נהג</strong><span class="todo-detail">דרך מועדון הרכב (MEMSI / AACI) — לטפל לפחות חודש לפני</span></div><span class="todo-status high">🟠 גבוהה</span></label>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#fefbe8;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#7d6608;font-size:.93em;">🟡 בינונית — 1–2 חודשים לפני</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <label class="todo-row" data-id="t11"><input type="checkbox" class="todo-cb" id="t11" onchange="saveTodo()"><div class="todo-row-text"><strong>Universal Studios — כרטיסים + Express Pass ×5 + Super Nintendo World Early Access</strong><span class="todo-detail">universalstudios.com · Express Pass חובה באוגוסט — בלי זה יום 1 נכשל</span></div><span class="todo-status medium">🟡 בינונית</span></label>
+      <label class="todo-row" data-id="t12"><input type="checkbox" class="todo-cb" id="t12" onchange="saveTodo()"><div class="todo-row-text"><strong>Disneyland Park Hopper + Lightning Lane Multi Pass ×5</strong><span class="todo-detail">disneyland.com · Park Hopper חובה לשני הפארקים ביום אחד · Lightning Lane חובה באוגוסט</span></div><span class="todo-status medium">🟡 בינונית</span></label>
+      <label class="todo-row" data-id="t13"><input type="checkbox" class="todo-cb" id="t13" onchange="saveTodo()"><div class="todo-row-text"><strong>America the Beautiful — כרטיס כניסה לפארקים לאומיים</strong><span class="todo-detail">store.usgs.gov · $80 לרכב · ⚠️ לא פוטר מתוספת $100/נפש לזרים שאינם אמריקאים</span></div><span class="todo-status medium">🟡 בינונית</span></label>
+      <label class="todo-row" data-id="t14"><input type="checkbox" class="todo-cb" id="t14" onchange="saveTodo()"><div class="todo-row-text"><strong>צפייה בלווייתנים ×5 — סן דייגו (9/8 בבוקר)</strong><span class="todo-detail">whalesandmore.com / sportfishing.com · אוגוסט = עונת שיא לכחולים וסנפירים</span></div><span class="todo-status medium">🟡 בינונית</span></label>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="background:#f0faf4;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#1e8449;font-size:.93em;">🟢 נמוכה — כמה שבועות לפני</div>
+    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <label class="todo-row" data-id="t15"><input type="checkbox" class="todo-cb" id="t15" onchange="saveTodo()"><div class="todo-row-text"><strong>גן חיות סן דייגו ×5</strong><span class="todo-detail">sandiegozoo.org · לקנות אונליין — חוסך תור בקופה</span></div><span class="todo-status low">🟢 נמוכה</span></label>
+      <label class="todo-row" data-id="t16"><input type="checkbox" class="todo-cb" id="t16" onchange="saveTodo()"><div class="todo-row-text"><strong>Neon Museum Night Tour — לאס וגאס</strong><span class="todo-detail">neonmuseum.org · הסיור הלילי נמכר — לנסות 4–6 שבועות מראש</span></div><span class="todo-status low">🟢 נמוכה</span></label>
+      <label class="todo-row" data-id="t17"><input type="checkbox" class="todo-cb" id="t17" onchange="saveTodo()"><div class="todo-row-text"><strong>Jenny Lake Scenic Cruise — גרנד טטון (אופציונלי)</strong><span class="todo-detail">jennylakeboating.com · אם רוצים סיור מונחה ולא רק מעבורת לצד</span></div><span class="todo-status low">🟢 נמוכה</span></label>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'vacation2026-todo-v2';
+    const FIXED_DONE = ['t1','t2','t3','t6','t-starlite','t5','t8','t7'];
+
+    function applyStyle(cb) {
+      const row = cb.closest('.todo-row');
+      if (cb.checked) row.classList.add('checked'); else row.classList.remove('checked');
+    }
+
+    function saveTodo() {
+      const state = {};
+      document.querySelectorAll('.todo-cb').forEach(cb => {
+        if (!FIXED_DONE.includes(cb.id)) state[cb.id] = cb.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateProgress();
+    }
+
+    function loadTodo() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      document.querySelectorAll('.todo-cb').forEach(cb => {
+        if (FIXED_DONE.includes(cb.id)) {
+          cb.checked = true; cb.disabled = true;
+        } else if (cb.id in saved) {
+          cb.checked = saved[cb.id];
+        }
+        applyStyle(cb);
+      });
+      updateProgress();
+    }
+
+    document.querySelectorAll('.todo-cb').forEach(cb => {
+      cb.addEventListener('change', () => { applyStyle(cb); saveTodo(); });
+    });
+
+    function updateProgress() {
+      const all = document.querySelectorAll('.todo-cb');
+      const done = [...all].filter(cb => cb.checked).length;
+      const pct = Math.round(done / all.length * 100);
+      document.getElementById('todo-progress').textContent = done + ' / ' + all.length + ' הושלמו';
+      const bar = document.getElementById('todo-bar');
+      bar.style.width = pct + '%';
+      bar.style.background = pct === 100 ? '#27ae60' : pct >= 60 ? '#f39c12' : '#c0392b';
+      document.getElementById('todo-sub').textContent = pct + '% מוכן לטיול';
+    }
+
+    function resetTodo() {
+      if (!confirm('לאפס את כל הסימונים הפתוחים?')) return;
+      document.querySelectorAll('.todo-cb').forEach(cb => {
+        if (!FIXED_DONE.includes(cb.id)) { cb.checked = false; applyStyle(cb); }
+      });
+      saveTodo();
+    }
+
+    loadTodo();
+  </script>
+</section>
+
+<div class="closing">
+  הטיול הזה מתחיל ב-5 באוגוסט בבוקר קליפורני שמשי עם אוזני מיקי, עובר דרך אוקיינוס פציפי, מגיע לשיא ב-Old Faithful Inn מוקף בייזונים ובפסגות שלג — ומסיים בשני ימים בלונדון לפני הביתה ב-23 באוגוסט.
+  <strong>זה לא טיול. זה סרט שכולכם מככבים בו.</strong>
+</div>
+
+</div><!-- /container -->
+
+</body>
+</html>
