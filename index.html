@@ -475,9 +475,13 @@
   .h-dist {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px;
   }
+  .h-dist-cell.parking-free .dc-val { color: var(--good); }
+  .h-dist-cell.parking-paid .dc-val { color: var(--warn); }
+  .h-dist-cell.parking-none .dc-val { color: var(--rose); }
+  .h-dist-cell.room-two .dc-val { color: var(--brand); }
   .h-dist-cell {
     background: var(--bg);
     border: 1px solid var(--line);
@@ -542,6 +546,194 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     min-height: 36px;
+  }
+
+  /* ─── TOP REVIEWS ─── */
+  .rv-section {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .rv-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .rv-head .rv-title {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+  .rv-head .rv-chevron {
+    width: 14px; height: 14px;
+    color: var(--muted);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .rv-section.is-open .rv-chevron { transform: rotate(90deg); }
+  .rv-list {
+    padding: 0 12px 10px;
+  }
+  .rv-card {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-2);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .rv-card:last-child { border-bottom: 0; }
+  .rv-card.rv-hidden { display: none; }
+  .rv-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rv-type {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    color: var(--muted);
+    background: var(--tag);
+  }
+  .rv-card[data-sentiment="pos"] .rv-type {
+    background: var(--good-soft);
+    color: var(--good);
+  }
+  .rv-card[data-sentiment="neg"] .rv-type {
+    background: var(--rose-soft);
+    color: var(--rose);
+  }
+  .rv-date { font-size: 11px; color: var(--muted-2); }
+  .rv-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    padding-right: 4px;
+    border-right: 2.5px solid var(--line);
+  }
+  .rv-card[data-sentiment="pos"] .rv-text { border-color: var(--good); }
+  .rv-card[data-sentiment="neg"] .rv-text { border-color: var(--rose); }
+  .rv-show-more {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brand);
+    background: none;
+    border: 0;
+    padding: 8px 0 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    width: 100%;
+    text-align: right;
+    min-height: 34px;
+  }
+
+  /* ─── REVIEW INSIGHTS PANEL ─── */
+  .ri {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+  .ri-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .ri-head .ri-title {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-2);
+    letter-spacing: .01em;
+  }
+  .ri-head .ri-meta {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .ri-head .ri-chevron {
+    width: 14px; height: 14px;
+    color: var(--muted);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .ri.is-open .ri-chevron { transform: rotate(90deg); }
+  .ri-body {
+    display: none;
+    padding: 10px 12px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ri.is-open .ri-body { display: flex; }
+  .ri-trend {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: var(--good-soft);
+    color: var(--good);
+  }
+  .ri-trend.warn { background: var(--warn-soft); color: var(--warn); }
+  .ri-trend.neutral { background: var(--tag); color: var(--muted); }
+  .ri-cats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+  }
+  .ri-cat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .ri-cat-lbl { color: var(--muted); flex: 0 0 50px; }
+  .ri-cat-bar-wrap { flex: 1; height: 4px; background: var(--line); border-radius: 2px; }
+  .ri-cat-bar { height: 4px; border-radius: 2px; background: var(--brand); }
+  .ri-cat-val { color: var(--ink-2); font-weight: 600; flex: 0 0 26px; text-align: left; }
+  .ri-themes { display: flex; flex-direction: column; gap: 4px; }
+  .ri-theme {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .ri-theme .ti { flex-shrink: 0; font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 5px; }
+  .ri-theme .ti.pos { background: var(--good-soft); color: var(--good); }
+  .ri-theme .ti.neg { background: var(--rose-soft); color: var(--rose); }
+  .ri-theme .tc { color: var(--ink-2); }
+  .ri-mix {
+    font-size: 11.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+  .ri-quotes { display: flex; flex-direction: column; gap: 7px; }
+  .ri-quote {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding: 7px 10px;
+    background: var(--bg);
+    border-right: 3px solid var(--brand);
+    border-radius: 0 6px 6px 0;
   }
 
   .h-foot {
@@ -916,6 +1108,20 @@
           score: 8.8, scoreText: "מצוין", reviews: "ביקורות מאומתות",
           total: 648, nightly: 324,
           distReserve: "1.1 ק״מ · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "בקתה · 2 חדרות שינה + סלון",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "הבקתות נקיות ומטופחות, ממש ליד הכניסה לפארק. ישנו נפלא ויצאנו בבוקר ישר לפארק בלי לבזבז זמן. מחיר שווה ערך.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "בדיוק מה שצריך — בקתה נחמדה, חניה בחינם, עובדים אדיבים. אין פינוקים אבל לא צריך אותם כשנמצאים בפארק כל היום.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "מיקום מושלם לכניסה המערבית. הבקתה הייתה רחבה מספיק לארבעתנו עם מטבחון קטן. ממליצים בחום.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "הבקתה הייתה בסדר אבל הצנרת הייתה רועשת בלילה. כשמחפשים שינה עמוקה אחרי יום ארוך בפארק זה מטריד.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "Gibbon Ave · 5 ד׳ הליכה לכניסה",
           tags: ["מטבח חלקי", "חניה חינם", "Wi-Fi חינם"],
           chips: [{t:"המומלץ שלנו", c:"reco"}],
@@ -937,6 +1143,20 @@
           score: 8.7, scoreText: "מצוין", reviews: "2,800+ ביקורות",
           total: 635, nightly: 317,
           distReserve: "1.4 ק״מ · 3 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "2 חדרות · Connecting rooms זמינות",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "ארוחת הבוקר החמה הייתה מדהימה — ביצים, בייקון, מאפים טריים. עוגיות אחר הצהריים היו בונוס נחמד. הצוות מאוד ידידותי.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "תרסיס הדובים בהשאלה חינם זה שירות מדהים שלא ציפינו לו. הבריכה הפנימית מחוממת — הילדים לא רצו לצאת ממנה בלילה.", type: "משפחה", date: "יולי 2024", sentiment: "pos" },
+            { text: "מלון עם לב — קפה וחמים כל הלילה, צוות שמסביר על הפארק ברצון. נשוב בשנה הבאה.", type: "זוג", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "ביקשנו חדר אחורי ובדיוק קיבלנו חדר רחוב. הרעש מהמכוניות הפריע לשינה. הארוחת בוקר מצוינת מכפרת על הכל.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "מרכז העיירה · הליכה לכניסה",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "תרסיס דובים חינם", "קפה 24/7"],
           chips: [],
@@ -959,6 +1179,20 @@
           score: 8.8, scoreText: "מצוין", reviews: "Travelers' Choice 2025",
           total: 825, nightly: 412,
           distReserve: "~3 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "2 חדרות · Connecting rooms זמינות",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "ארוחת הבוקר החינמית הייתה מפתיעה לטובה — מגוון עשיר ואיכותי. הבריכה הפנימית נקייה ומחוממת, ילדים אהבו את הג׳קוזי.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "המיקום הכי טוב בעיירה — ממש מול ה-IMAX ובלוקים ספורים מהכניסה. חדרים נקיים ומרווחים יחסית לרמת 3 כוכבים.", type: "זוג", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "עמדת טעינה לרכב חשמלי בחניה — ממש שימושי. הצוות עוזר ונותן עצות טובות לפארק.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "החדר נראה מעט מיושן — ריהוט ישן וחלונות לא אטומים מספיק. לא מה שציפינו מ-Travelers Choice.", type: "יחיד", date: "יוני 2025", sentiment: "neg" },
+          ],
           loc: "מול ה־IMAX · הכי קרוב לכניסה",
           tags: ["בריכה פנימית", "ג׳קוזי", "טעינת EV", "ארוחת בוקר חינם"],
           chips: [{t:"בחירת מטיילים", c:"gold"}],
@@ -981,6 +1215,20 @@
           score: 9.3, scoreText: "יוצא דופן", reviews: "28–50 ביקורות",
           total: 657, nightly: 328,
           distReserve: "< 0.8 ק״מ · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "בקתה · מטבח מלא + סלון",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "כריס הבעלים ממש עוזר עם טיפים לפארק — הוא ידע בדיוק איפה לראות דובים בבוקר. הבקתה עם המטבח המלא היה נוח מאוד למשפחה.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "ניקוד 9.3 מוצדק לחלוטין — נקייה, שקטה, ממוקמת מצוין. מיטות נוחות ומקלחות חמות.", type: "זוג", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "ערך מצוין למחיר. הבקתה מרגישה כמו בית קטן ולא חדר מלון. מומלץ מאוד לאלה שאוהבים אוירה אינטימית.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "מדיניות הביטול מחמירה מאוד — שילמנו על לילה שלא הגענו בגלל עיכוב בלתי צפוי ולא קיבלנו החזר. כדאי לדעת מראש.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "מרכז העיירה · 5 ד׳ נסיעה לכניסה",
           tags: ["מטבח מלא בחלק מהבקתות", "סלון", "בעלים מעורב"],
           chips: [{t:"דירוג 9.3", c:"deal"}],
@@ -1004,6 +1252,20 @@
           score: 8.7, scoreText: "מצוין", reviews: "ביקורות מאומתות",
           total: 848, nightly: 424,
           distReserve: "1 ק״מ · 3 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "בקתה פרטית · מטבח + 1 חדר שינה",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "בקתה פרטית ממש שקטה, ללא רעשי שכנים — בדיוק מה שצריך אחרי יום ארוך בפארק. המדורות הקהילתיות בלילה היו חוויה מיוחדת לכל המשפחה.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "אהבנו שנתנו מקלות הליכה ומשקפות בלי עלות נוספת. המטבח הקטן איפשר לנו להכין ארוחות בוקר ולחסוך כסף.", type: "זוג", date: "יולי 2024", sentiment: "pos" },
+            { text: "הכביסה החינמית הצילה אותנו באמצע הטיול. המיקום שקט יחסית לשאר העיירה. ממליצים.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "הבקתה עצמה נחמדה אבל קירות דקים מאוד — שמענו את השיחות של השכנים. גם החניה הצפופה הייתה מאתגרת עם ה-SUV שלנו.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "פאתי העיירה · בקתות פרטיות",
           tags: ["בקתה פרטית", "מטבח", "מדורות קהילתיות", "כביסה חינם"],
           chips: [],
@@ -1027,6 +1289,19 @@
           score: 8.4, scoreText: "טוב", reviews: "ביקורות מעורבות 2025",
           total: 628, nightly: 313,
           distReserve: "~3 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "2 חדרות · חדרים נפרדים ללא connecting",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "המחיר הוא היתרון היחיד כאן. המיקום מרכזי ויוצאים לפארק בקלות. לא מסעדה אבל הכל נגיש ברגל.", type: "יחיד", date: "יולי 2025", sentiment: "pos" },
+            { text: "הקירות ממש דקים — שמענו כל שיעול מהחדר הסמוך. קשה לישון אחרי יום ארוך בפארק.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+            { text: "ארוחת הבוקר נגמרה ב-7:30 וכשירדנו ב-7:40 לא נשאר כלום. הצוות לא הציע פיצוי. לא מה שציפינו.", type: "זוג", date: "ספטמבר 2024", sentiment: "neg" },
+          ],
           loc: "מרכז · הליכה לכניסה",
           tags: ["הזול ביותר 3★", "מרכזי"],
           chips: [{t:"להיזהר", c:"warn"}],
@@ -1049,6 +1324,20 @@
           score: 8.7, scoreText: "מצוין", reviews: "2,100+ ביקורות",
           total: 770, nightly: 385,
           distReserve: "~4 בלוקים · 2 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "2 חדרות · Connecting rooms זמינות",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "ארוחת הבוקר החמה הייתה הייתה ממש שווה — ביצים, בייקון, לביבות. הבריכה הפנימית נקייה וחמה. ילדים אהבו.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "ההסעה החינמית לפארק פינקה אותנו — לא צריך לדאוג לחניה בתוך הפארק. שירות מצוין.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "מלון טוב ואמין. אין הפתעות — בדיוק מה שמצוין באתר. הצוות מסביר על הפארק ברצון.", type: "זוג", date: "ספטמבר 2025", sentiment: "pos" },
+            { text: "המחיר קצת גבוה לרמת המלון. לא מרגיש מקומי ייחודי — יכול להיות כל מלון שרשת בכל עיר.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "מרכז · הסעה חינם לפארק",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "הסעה לפארק"],
           chips: [{t:"דירוג גבוה", c:"deal"}],
@@ -1071,6 +1360,20 @@
           score: 9.0, scoreText: "יוצא דופן", reviews: "חוות פעילה",
           total: 858, nightly: 429,
           distReserve: "9.7 ק״מ · 10 ד׳", distTown: "9.7 ק״מ · 10 ד׳", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "קאבין · 2 חדרות שינה + סלון",
+          distPlaces: [
+            "Old Faithful: 58 ק״מ · 50 ד׳",
+            "Grand Prismatic: 52 ק״מ · 45 ד׳",
+            "Norris Geyser: 43 ק״מ · 40 ד׳",
+            "Madison Junction: 32 ק״מ · 28 ד׳",
+          ],
+          topReviews: [
+            { text: "חוות סוסים אמיתית — הילדים התאהבו ברכיבה. הנוף על Buttermilk Creek בבוקר עם הקפה — חוויה שלא נשכח.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "המסעדה בחווה מעולה — בשר אמיתי, תפריט מקומי. הבריכה המחוממת ייבשה אותנו אחרי הטיולים.", type: "זוג", date: "יולי 2025", sentiment: "pos" },
+            { text: "שקט מוחלט, מחוץ לעיירה הסואנת. 10 דקות נסיעה לכניסה לפארק — לא מרגיש מרוחק בכלל.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "רכב הכרחי לכל דבר — אין כלום ברגל. אם אתם מחפשים לצאת בלי לנהוג בערב, זה לא המקום.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "5 מ׳ מהכניסה · 200 דונם",
           tags: ["חוות סוסים", "דיג זבובים", "ברביקיו על נחל", "רכיבה"],
           chips: [{t:"חוויה אמיתית", c:"reco"}],
@@ -1093,6 +1396,20 @@
           score: 8.5, scoreText: "מצוין", reviews: "Travel+Leisure 2025",
           total: 948, nightly: 474,
           distReserve: "9.7 ק״מ · 10 ד׳", distTown: "9.7 ק״מ · 10 ד׳", shower: "shared",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "אוהל סטאר בד · 2 מיטות קווין ניתן לבקש",
+          distPlaces: [
+            "Old Faithful: 58 ק״מ · 50 ד׳",
+            "Grand Prismatic: 52 ק״מ · 45 ד׳",
+            "Norris Geyser: 43 ק״מ · 40 ד׳",
+            "Madison Junction: 32 ק״מ · 28 ד׳",
+          ],
+          topReviews: [
+            { text: "חוויה בלתי נשכחת — שמיים מלאי כוכבים, מדורה ליד האוהל, נוף מדהים. ממש לא ציפינו למקלחת חמה פרטית בתוך האוהל.", type: "זוג", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "הארוחות במסעדה של המתחם היו מפתיעות לטובה. יוגה בבוקר עם נוף על ההרים — פינוק לא צפוי.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "לילות קרים מאוד גם באוגוסט — 6 מעלות. התנור עצים מהמם אבל צריך להיות ערניים. הילדים מצאו את זה מגניב.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "האוהל הבסיסי עם מקלחון משותף — הדרך למתקן הייתה ארוכה בקור הלילה. כדאי לשלם לשדרג לאוהל עם מקלחת פרטית.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "10 ד׳ לכניסה · גלמפינג",
           tags: ["אוהל ספארי", "מיטת קינג", "תנור עצים", "מקלחת חמה"],
           chips: [{t:"ייחודי", c:"gold"}],
@@ -1116,6 +1433,20 @@
           score: 8.3, scoreText: "טוב מאוד", reviews: "782 ביקורות",
           total: 1197, nightly: 599,
           distReserve: "< 0.5 ק״מ · 2 ד׳ הליכה", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "קאבין South Fork · 3 מיטות קווין + מטבח",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "בקתות South Fork גדולות באמת — 3 מיטות, מטבח מלא ומרפסת. הכי קרוב לכניסה בכל העיירה, חזרנו ישר מהפארק לבקתה.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "הג׳קוזי החיצוני בלילה, מתחת לכוכבים, אחרי יום בפארק — זו הייתה ההגדרה של חופשה מושלמת. הצוות מצוין.", type: "זוג", date: "יולי 2024", sentiment: "pos" },
+            { text: "מרחק הליכה מהכניסה זה יתרון עצום — חסכנו הרבה זמן בהיסעים. הבקתה גדולה ונקייה למשפחה של 4.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "המחיר גבוה מאוד — כמעט $600 ללילה לרמה של 3 כוכבים. Wi-Fi לא עובד בחדר, רק בלובי. לא מצדיק את המחיר.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "212 Gray Wolf Ave · בלוק אחד מהכניסה",
           tags: ["בקתות בולי עצים", "ג׳קוזי חיצוני", "מטבחון", "אח בחלק מהבקתות"],
           chips: [],
@@ -1139,6 +1470,20 @@
           score: 8.7, scoreText: "מצוין", reviews: "18 ביקורות",
           total: 1055, nightly: 528,
           distReserve: "1.6 ק״מ · 3 ד׳", distTown: "בתוך העיירה", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "2 חדרות · חדרים Connecting זמינים",
+          distPlaces: [
+            "Old Faithful: 53 ק״מ · 45 ד׳",
+            "Grand Prismatic: 47 ק״מ · 40 ד׳",
+            "Norris Geyser: 38 ק״מ · 35 ד׳",
+            "Madison Junction: 27 ק״מ · 25 ד׳",
+          ],
+          topReviews: [
+            { text: "מלון חדש לגמרי — הכל רענן ומודרני. בריכה עם מגלשה הייתה אטרקציה לבד לילדים. החדרים מרווחים עם שתי כיורים — מושלם למשפחה.", type: "משפחה", date: "ספטמבר 2025", sentiment: "pos" },
+            { text: "המסעדה במלון הייתה הפתעה נעימה — אוכל טוב, מחירים סבירים. לא היינו צריכים לצאת לחפש אוכל בסוף יום עייף.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "חדר כושר עם הידרומסאז׳ לאחר יום של הליכה בפארק — גן עדן. המלון נראה כאילו נבנה אתמול.", type: "זוג", date: "יולי 2025", sentiment: "pos" },
+            { text: "הבריכה הייתה בשיפוץ בספטמבר 2025 — לא אמרו לנו מראש. כדאי לאמת לפני הנסיעה.", type: "משפחה", date: "ספטמבר 2025", sentiment: "neg" },
+          ],
           loc: "301 Madison Ave · מרכז העיירה",
           tags: ["בריכה פנימית + מגלשה", "מסעדה ובר", "חדר משחקים", "חדר כושר + הידרומסאז׳"],
           chips: [{t:"חדש ב-2025", c:"gold"}],
@@ -1176,6 +1521,20 @@
           score: 9.2, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
           total: 603, nightly: 302,
           distReserve: "1.6 ק״מ · 2 ד׳", distTown: "בתוך גרדינר", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "קוטג׳ · מטבח מלא + 2 חדרות שינה",
+          distPlaces: [
+            "Mammoth Hot Springs: 10 ק״מ · 10 ד׳",
+            "Lamar Valley: 65 ק״מ · 60 ד׳",
+            "Tower Falls: 45 ק״מ · 45 ד׳",
+            "Roosevelt Arch: 0.5 ק״מ · 2 ד׳",
+          ],
+          topReviews: [
+            { text: "המרפסת מול נהר ילוסטון — בוקר עם קפה ונוף מדהים. הקוטג׳ עם המטבח המלא חסך לנו הרבה כסף על מסעדות.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "תרסיס דובים בצ׳ק-אין — פרט קטן שמראה שהמלון חושב על האורחים. הצוות נתן המלצות מצוינות על הפארק.", type: "זוג", date: "יולי 2025", sentiment: "pos" },
+            { text: "ממש 5 דקות מהכניסה הצפונית. שמענו זאבים בלילה מהמרפסת. חוויה אמיתית ולא מדומה.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "הקוטג׳ קטן לארבעה אנשים עם מזוודות גדולות. מקום האחסון מוגבל. לצרכי לינה בסיסיים — מצוין.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "על נהר ילוסטון · 5 ד׳ לכניסה",
           tags: ["מטבח מלא", "מרפסת לנהר", "ברביקיו", "Keurig"],
           chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"מבצע", c:"deal"}],
@@ -1198,6 +1557,20 @@
           score: 9.3, scoreText: "יוצא דופן", reviews: "ביקורות מאומתות",
           total: 765, nightly: 382,
           distReserve: "~3 ק״מ · 2 ד׳", distTown: "בתוך גרדינר", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "סוויטה דירתית · מטבח + סלון + חדר שינה",
+          distPlaces: [
+            "Mammoth Hot Springs: 10 ק״מ · 10 ד׳",
+            "Lamar Valley: 65 ק״מ · 60 ד׳",
+            "Tower Falls: 45 ק״מ · 45 ד׳",
+            "Roosevelt Arch: 0.5 ק״מ · 2 ד׳",
+          ],
+          topReviews: [
+            { text: "הסוויטה הייתה רחבה ממה שציפינו — מטבח אמיתי, סלון ושולחן אוכל. מרגיש כמו דירה ולא חדר מלון. מושלם לשבוע.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "השקט ממש מרגיש — מחוץ לכביש הראשי, שמיים נקיים, ציוץ ציפורים בבוקר. הצוות יצר קשר אישי עם כל אורח.", type: "זוג", date: "יולי 2024", sentiment: "pos" },
+            { text: "הצוות השאיל לנו מטען לטלפון שנשכח — בלי שאלות. שירות ברמת 5 כוכבים בנכס 3 כוכבים.", type: "משפחה", date: "ספטמבר 2025", sentiment: "pos" },
+            { text: "ביקורת אחת ב-2025 ציינה אינסטלציה שנתנה בעיות. לא פגשנו בזה אבל כדאי לדעת שהתחזוקה לא תמיד עקבית.", type: "יחיד", date: "יוני 2025", sentiment: "neg" },
+          ],
           loc: "מחוץ לכביש הראשי · שקט",
           tags: ["סוויטה דירתית", "מטבח", "סלון", "מרפסת"],
           chips: [{t:"דירוג 9.3", c:"deal"}],
@@ -1220,6 +1593,20 @@
           score: 8.2, scoreText: "טוב מאוד", reviews: "ביקורות 2025",
           total: 608, nightly: 304,
           distReserve: "1.6 ק״מ · 5 ד׳", distTown: "בתוך גרדינר", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "חדר אחד · ללא connecting — 2 חדרים נפרדים",
+          distPlaces: [
+            "Mammoth Hot Springs: 10 ק״מ · 10 ד׳",
+            "Lamar Valley: 65 ק״מ · 60 ד׳",
+            "Tower Falls: 45 ק״מ · 45 ד׳",
+            "Roosevelt Arch: 0.5 ק״מ · 2 ד׳",
+          ],
+          topReviews: [
+            { text: "הסאונה אחרי יום הליכה בפארק — מדהים. המסעדה בסיסית אבל זמינה ונוחה. המחיר הכי אטרקטיבי בגרדינר.", type: "זוג", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "מדורה חיצונית בלילה עם מרשמלו — הילדים אהבו. הצוות נחמד ומסייע.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "דמי השירות של $15 ללילה לא מוזכרים בצורה בולטת בהזמנה — הפתיע אותנו. מוסיף $30 לשהות של יומיים.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+            { text: "החדרים נראים מיושנים יחסית למחיר. מזגן רועש מאוד ומפריע לשינה. ״לא שווה את המחיר״ — ביקורת שמייצגת כמה אחרים.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "ליד הכניסה · מסעדה במלון",
           tags: ["מסעדה ובר", "סאונה", "ג׳קוזי", "ידידותי לחיות"],
           chips: [{t:"דמי שירות $15", c:"warn"}],
@@ -1243,6 +1630,20 @@
           score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1900",
           total: 1091, nightly: 546,
           distReserve: "48 ק״מ · 30 ד׳", distTown: "48 ק״מ מגרדינר", shower: "shared",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "חדר היסטורי · חדרי Bath משותפים בחלק מהחדרים",
+          distPlaces: [
+            "Mammoth Hot Springs: 58 ק״מ · 40 ד׳",
+            "Lamar Valley: 113 ק״מ · 100 ד׳",
+            "Tower Falls: 93 ק״מ · 85 ד׳",
+            "Roosevelt Arch: 48 ק״מ · 30 ד׳",
+          ],
+          topReviews: [
+            { text: "בריכות הגיאותרמיות הטבעיות ב-24/7 — אין תחרות. שחינו בלילה תחת כוכבים עם קיטור עולה מהמים. חוויה מכשפת.", type: "זוג", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "המסעדה היא אחת הטובות במונטנה — תפריט עם בשר מקומי מעולה. גם אם לא לנים שם, כדאי לאכול.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "700 אקר של עמק paradise valley — סוסים, דיג, ציפורים. מרגיש שיצאנו מהמאה ה-21 לרגע.", type: "זוג", date: "יולי 2025", sentiment: "pos" },
+            { text: "החדרים ההיסטוריים מיושנים מאוד ולא תמיד מתוחזקים. אם ביישנתם לנות שם כי אוהבים ריזורט — תאכזבו. הבריכות — כן, החדרים — פחות.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "Pray, MT · 30 מ׳ מהכניסה",
           tags: ["בריכות גיאותרמיות", "מסעדת יעד", "700 אקר", "היסטורי"],
           chips: [{t:"יעד מיוחד", c:"gold"}],
@@ -1280,6 +1681,19 @@
           score: 9.3, scoreText: "יוצא דופן", reviews: "מומלץ ביותר",
           total: 1306, nightly: 327,
           distReserve: "80 ק״מ · 50 ד׳", distTown: "מרכז קודי", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "2 חדרות · Connecting rooms זמינות",
+          distPlaces: [
+            "East Entrance Yellowstone: 80 ק״מ · 55 ד׳",
+            "Buffalo Bill Center of the West: 1.5 ק״מ · 5 ד׳",
+            "Shoshone Canyon: 8 ק״מ · 10 ד׳",
+          ],
+          topReviews: [
+            { text: "המיטות ממש הכי נוחות שישנו עליהן — כתב כך בביקורת שלנו וגם אחרים. ארוחת הבוקר החמה מצוינת ומגוונת.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "עוגיות בצ׳ק-אין, שוקו חם, גרנולה ומים לאורך היום — מלון שמפנק את האורחים בפרטים קטנים. אווירה בוטיק אמיתית.", type: "זוג", date: "יולי 2025", sentiment: "pos" },
+            { text: "הבריכה הפנימית נקייה, ג׳קוזי חמים. המרחק לפארק הוא שעה אבל זה ממש שווה בזכות חוויית המלון.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "המלון מתמלא מוקדם מאוד — ניסינו להוסיף לילה ולא היה מקום. כדאי להזמין חצי שנה מראש לקיץ.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "מרכז קודי · בוטיק חדש",
           tags: ["בריכה פנימית", "ג׳קוזי", "ארוחת בוקר חמה", "מכון כושר"],
           chips: [{t:"המומלץ שלנו", c:"reco"}],
@@ -1302,6 +1716,19 @@
           score: 9.2, scoreText: "יוצא דופן", reviews: "#4 מתוך 33",
           total: 1519, nightly: 380,
           distReserve: "80 ק״מ · ~60 ד׳", distTown: "מרכז קודי", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "Suite · 2 חדרות שינה זמינות",
+          distPlaces: [
+            "East Entrance Yellowstone: 80 ק״מ · 55 ד׳",
+            "Buffalo Bill Center of the West: 2 ק״מ · 6 ד׳",
+            "Shoshone Canyon: 8 ק״מ · 10 ד׳",
+          ],
+          topReviews: [
+            { text: "בריכת מי מלח פנימית — מי שחייה עדיפים בבירור על מי מתוקים. חדרים מרווחים עם מקרר ומיקרו — חסכנו על ארוחות.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "ארוחת הבוקר חינמית וטובה. הילטון Honours מוסיף נקודות. צוות המלון מסביר ומסייע בתכנון ביקורי פארק.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "Hampton אמין ועקבי — בדיוק מה שרצינו לשבוע ארוך. הג׳קוזי הוא הזה האמיתי עם בועות חמות.", type: "זוג", date: "ספטמבר 2025", sentiment: "pos" },
+            { text: "ארוחת הבוקר נגמרת מהר כשהמלון מלא. היינו צריכים לרוץ ב-7:15 כדי להגיע לפני שנגמר כל דבר טוב.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "קודי · #4 מתוך 33 מלונות",
           tags: ["ארוחת בוקר חמה", "בריכה פנימית", "ג׳קוזי", "Hilton Honors"],
           chips: [{t:"רשת מהימנה", c:"deal"}],
@@ -1324,6 +1751,19 @@
           score: 8.0, scoreText: "טוב", reviews: "היסטורי · 1902",
           total: 1380, nightly: 345,
           distReserve: "84 ק״מ · ~60 ד׳", distTown: "מרכז קודי", shower: "yes",
+          parking: "חינם · חניה בחוץ",
+          roomConfig: "חדר היסטורי · ללא connecting — חדרים נפרדים",
+          distPlaces: [
+            "East Entrance Yellowstone: 84 ק״מ · 60 ד׳",
+            "Buffalo Bill Center of the West: 0.5 ק״מ · 2 ד׳",
+            "Shoshone Canyon: 8 ק״מ · 10 ד׳",
+          ],
+          topReviews: [
+            { text: "ישנו ממש בהיסטוריה — מלון של Buffalo Bill משנת 1902. הבר מעץ דובדבן מתנת המלכה ויקטוריה מרהיב. חוויה שאין כמוה.", type: "זוג", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "מופע הקרבות על המרפסת בשעת הצהריים — הילדים לא הפסיקו לדבר על זה. חלק מהחוויה המערבית האמיתית של קודי.", type: "משפחה", date: "יולי 2025", sentiment: "pos" },
+            { text: "המיקום הכי טוב בעיר — הליכה לכל מסעדה, חנות ואטרקציה. מרגיש כמו מרכז של הכל.", type: "יחיד", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "הצ׳ק-אין היה בלאגן — חיכינו 45 דקות. החדר בקומה שנייה בלי מעלית — קשה עם מזוודות. הצוות לא תמיד מגיב.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "מרכז האיר העתיקה · 1902",
           tags: ["היסטורי", "בר מעץ דובדבן", "קרבות יומיים", "מרכזי"],
           chips: [{t:"היסטורי", c:"gold"}],
@@ -1347,6 +1787,19 @@
           score: 8.4, scoreText: "טוב", reviews: "חוות על סוסים",
           total: 1272, nightly: 318,
           distReserve: "42 ק״מ · 35 ד׳", distTown: "Wapiti · 5 ד׳", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "קאבין · 2 חדרות שינה + סלון",
+          distPlaces: [
+            "East Entrance Yellowstone: 42 ק״מ · 35 ד׳",
+            "Buffalo Bill Center of the West: 55 ק״מ · 45 ד׳",
+            "Shoshone Canyon: 47 ק״מ · 40 ד׳",
+          ],
+          topReviews: [
+            { text: "הבקתות גדולות ונקיות, ארוחת הבוקר וארוחת הערב מצוינות. אווירת חווה אמיתית — ממש לא מוטל.", type: "משפחה", date: "יולי 2024", sentiment: "pos" },
+            { text: "25 ק״מ קרוב יותר לכניסה לפארק מאשר קודי — זה חוסך 20 דקות כל יום. הילדים אהבו שרואים סוסים בבוקר.", type: "משפחה", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "ידידותי למשפחות מאוד — המדריכים סבלניים גם עם ילדים שלא רכבו מעולם. אוכל טוב ואמין.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "אין Wi-Fi בבקתה בכלל. הייתי צריכה לצאת ללובי לכל הודעה. טיול הרכיבה שהזמנו בוטל ברגע האחרון בלי התראה מוקדמת.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "Wapiti · 25 מ׳ קרוב לכניסה",
           tags: ["רכיבה על סוסים", "מסעדה", "בקתות", "ללא Wi-Fi"],
           chips: [{t:"חוות אמיתית", c:"reco"}],
@@ -1384,6 +1837,20 @@
           score: 9.0, scoreText: "יוצא דופן", reviews: "1,500+ ביקורות",
           total: 1896, nightly: 474,
           distReserve: "92 ק״מ · 57 ד׳", distTown: "מרכז ג׳קסון", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "Suite · 2 חדרות שינה + מרפסת זמינות",
+          distPlaces: [
+            "Jenny Lake: 42 ק״מ · 40 ד׳",
+            "Moose Entrance Grand Teton: 30 ק״מ · 30 ד׳",
+            "Jackson Town Square: 1 ק״מ · 10 ד׳ הליכה",
+            "Jackson Lake Lodge: 72 ק״מ · 65 ד׳",
+          ],
+          topReviews: [
+            { text: "הסוויטה הייתה מרווחת ומפנקת — מרפסת פרטית, מטבחון, בריכה ב-3 דקות הליכה. הכי טוב שמצאנו מתחת ל-$500 ללילה בג׳קסון.", type: "משפחה", date: "אוגוסט 2025", sentiment: "pos" },
+            { text: "הצוות פנטסטי — ביקורות לא מגזימות. ביקשנו ספה נוספת ובדיוק 10 דקות הביאו. Starbucks חינם בלובי מתחיל את היום טוב.", type: "זוג", date: "יולי 2024", sentiment: "pos" },
+            { text: "10 דקות הליכה ל-Town Square אבל לא שמנו לב לזה — הבריכה והג׳קוזי החזיקו אותנו בערב. סאונה אחרי הליכה בטטון — פינוק.", type: "משפחה", date: "ספטמבר 2024", sentiment: "pos" },
+            { text: "לפעמים יש ריח סיגריות ליד הכניסה בלילה. גם ארוחת בוקר אין — צריך לצאת כל בוקר למסעדה, וזה מייגע עם ילדים.", type: "משפחה", date: "אוגוסט 2025", sentiment: "neg" },
+          ],
           loc: "10 ד׳ הליכה ל־Town Square",
           tags: ["בריכה פנימית", "ג׳קוזי", "סאונה", "חדר כושר"],
           chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"חיסכון $500", c:"deal"}],
@@ -1407,6 +1874,20 @@
           score: 8.1, scoreText: "טוב", reviews: "הזול בג׳קסון",
           total: 1224, nightly: 306,
           distReserve: "92 ק״מ · 57 ד׳", distTown: "מרכז ג׳קסון", shower: "shared",
+          parking: "אין",
+          roomConfig: "חדר פרטי · שירותי אמבטיה משותפים",
+          distPlaces: [
+            "Jenny Lake: 42 ק״מ · 40 ד׳",
+            "Moose Entrance Grand Teton: 30 ק״מ · 30 ד׳",
+            "Jackson Town Square: 0.3 ק״מ · 4 ד׳ הליכה",
+            "Jackson Lake Lodge: 72 ק״מ · 65 ד׳",
+          ],
+          topReviews: [
+            { text: "המחיר הנמוך ביותר בג׳קסון לחדר פרטי — ממש ליד ה-Town Square. חדר נקי ונוח לשנות יחיד.", type: "יחיד", date: "יולי 2025", sentiment: "pos" },
+            { text: "הליכה לכל המסעדות והחנויות — אין צורך ברכב בכלל בערב. מושלם אם מבלים ביום את הזמן בפארק.", type: "זוג", date: "אוגוסט 2024", sentiment: "pos" },
+            { text: "שירותים משותפים עם אנשים זרים — לא נוח לאשתי. אין חניה באתר ורחוב בג׳קסון בקיץ זה לא פיקניק.", type: "זוג", date: "אוגוסט 2025", sentiment: "neg" },
+            { text: "מבוגרים בלבד — לא מתאים למשפחות עם ילדים בכלל. כדאי לדעת לפני שמזמינים.", type: "משפחה", date: "ספטמבר 2024", sentiment: "neg" },
+          ],
           loc: "מרכז ג׳קסון · poshtel",
           tags: ["מיטות תאים", "מבוגרים בלבד", "מרכז העיר"],
           chips: [{t:"הכי זול", c:"deal"}, {t:"להיזהר", c:"warn"}],
@@ -1505,6 +1986,82 @@
       ${hotels.map(h => renderHotel(h, loc.nightsLbl)).join("")}
     `;
   }
+  function renderTopReviews(hotelId, reviews) {
+    if (!reviews || reviews.length === 0) return "";
+    const typeLabel = { "משפחה": "משפחה", "זוג": "זוג", "יחיד": "יחיד", "עסקים": "עסקים" };
+    const cards = reviews.map((r, i) => {
+      const hidden = i >= 2 ? "rv-hidden" : "";
+      const type = typeLabel[r.type] || r.type || "";
+      return `<div class="rv-card ${hidden}" data-sentiment="${r.sentiment || 'pos'}">
+        <div class="rv-card-meta">
+          <span class="rv-type">${type}</span>
+          <span class="rv-date">${r.date || ""}</span>
+        </div>
+        <div class="rv-text">${r.text}</div>
+      </div>`;
+    }).join("");
+    const hidden = reviews.length - 2;
+    const moreBtn = hidden > 0
+      ? `<button class="rv-show-more" data-rv-more="${hotelId}">+ עוד ${hidden} ביקורות</button>`
+      : "";
+    return `
+      <div class="rv-section" id="rv-${hotelId}">
+        <div class="rv-head" data-rv="${hotelId}">
+          <svg class="rv-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="rv-title">ביקורות אורחים · ${reviews.length} נבחרות</span>
+        </div>
+        <div class="rv-list">
+          ${cards}
+          ${moreBtn}
+        </div>
+      </div>`;
+  }
+
+  function renderReviewInsights(hotelId, ri) {
+    const trendCls = ri.trend && ri.trend.startsWith("⚠") ? "warn"
+                   : ri.trend && ri.trend.includes("שיפור") ? ""
+                   : "neutral";
+
+    const catRows = (ri.categoryScores || []).map(s => {
+      const m = s.match(/^(.+):\s*([\d.]+)$/);
+      if (!m) return "";
+      const [, lbl, valStr] = m;
+      const val = parseFloat(valStr);
+      const pct = Math.round((val / 10) * 100);
+      return `<div class="ri-cat">
+        <span class="ri-cat-lbl">${lbl}</span>
+        <span class="ri-cat-bar-wrap"><span class="ri-cat-bar" style="width:${pct}%"></span></span>
+        <span class="ri-cat-val">${val.toFixed(1)}</span>
+      </div>`;
+    }).join("");
+
+    const themeRows = (ri.themes || []).map(t => {
+      const isPos = t.startsWith("pos:");
+      const text = t.replace(/^(pos|neg):\s*/, "");
+      return `<div class="ri-theme"><span class="ti ${isPos ? 'pos' : 'neg'}">${isPos ? '+' : '−'}</span><span class="tc">${text}</span></div>`;
+    }).join("");
+
+    const quoteRows = (ri.quotes || []).map(q =>
+      `<div class="ri-quote">${q}</div>`
+    ).join("");
+
+    return `
+      <div class="ri" id="ri-${hotelId}">
+        <div class="ri-head" data-ri="${hotelId}">
+          <svg class="ri-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="ri-title">תובנות מ־${ri.count} ביקורות</span>
+          <span class="ri-meta">${ri.period || ""}</span>
+        </div>
+        <div class="ri-body">
+          ${ri.trend ? `<div class="ri-trend ${trendCls}">${ri.trend}</div>` : ""}
+          ${catRows ? `<div class="ri-cats">${catRows}</div>` : ""}
+          ${themeRows ? `<div class="ri-themes">${themeRows}</div>` : ""}
+          ${quoteRows ? `<div class="ri-quotes">${quoteRows}</div>` : ""}
+          ${ri.reviewerMix ? `<div class="ri-mix">${ri.reviewerMix}</div>` : ""}
+        </div>
+      </div>`;
+  }
+
   function renderHotel(h, nightsLbl){
     nightsLbl = nightsLbl || "ללילה";
     const isFav = !!state.fav[h.id];
@@ -1550,15 +2107,15 @@
             ${(h.tags||[]).map(t => `<span class="h-tag">${t}</span>`).join("")}
           </div>
 
-          ${(h.distReserve || h.distTown || h.shower) ? `
+          ${(h.distReserve || h.distTown || h.shower || h.parking || h.roomConfig || (h.distPlaces && h.distPlaces.length)) ? `
           <div class="h-dist">
             ${h.distReserve ? `<div class="h-dist-cell">
-              <div class="dc-lbl">מרחק לפארק</div>
+              <div class="dc-lbl">כניסה לפארק</div>
               <div class="dc-val en">${h.distReserve.split(" · ")[0]}</div>
               <div class="dc-sub en">${h.distReserve.split(" · ")[1] || ""}</div>
             </div>` : ""}
             ${h.distTown ? `<div class="h-dist-cell">
-              <div class="dc-lbl">עיירה קרובה</div>
+              <div class="dc-lbl">מרכז עיירה</div>
               <div class="dc-val">${h.distTown.split(" · ")[0]}</div>
               <div class="dc-sub">${h.distTown.split(" · ")[1] || ""}</div>
             </div>` : ""}
@@ -1567,6 +2124,33 @@
               <div class="dc-val">${h.shower === 'yes' ? '✓ פרטית' : h.shower === 'shared' ? '⚠ משותפת' : '✗ אין'}</div>
               ${h.shower === 'shared' ? `<div class="dc-sub">${h.id === 'undercanvas' ? 'רק Deluxe' : h.id === 'cachehouse' ? 'תא נפרד נעול' : 'ע׳׳פ סוג חדר'}</div>` : ""}
             </div>` : ""}
+            ${h.parking ? (()=>{
+              const cls = h.parking.startsWith("חינם") ? "parking-free" : h.parking === "אין" ? "parking-none" : "parking-paid";
+              const parts = h.parking.split(" · ");
+              return `<div class="h-dist-cell ${cls}">
+                <div class="dc-lbl">חניה</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${h.roomConfig ? (()=>{
+              const parts = h.roomConfig.split(" · ");
+              const isTwo = h.roomConfig.includes("2") || h.roomConfig.includes("שני");
+              return `<div class="h-dist-cell ${isTwo ? 'room-two' : ''}">
+                <div class="dc-lbl">חדרים</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${(h.distPlaces||[]).map(p => {
+              const m = p.match(/^(.+?):\s*(.+?)(?:\s*·\s*(.+))?$/);
+              if (!m) return "";
+              return `<div class="h-dist-cell">
+                <div class="dc-lbl">${m[1]}</div>
+                <div class="dc-val en">${m[2]}</div>
+                ${m[3] ? `<div class="dc-sub en">${m[3]}</div>` : ""}
+              </div>`;
+            }).join("")}
           </div>` : ""}
 
           <div class="pcs ${hasMore?'collapsed':''}" data-pcs="${h.id}">
@@ -1574,6 +2158,9 @@
             ${allCons}
           </div>
           ${hasMore ? `<button class="pcs-toggle" data-pcs-toggle="${h.id}">+ עוד ${h.pros.length + h.cons.length - 3} נקודות</button>` : ""}
+
+          ${h.topReviews && h.topReviews.length > 0 ? renderTopReviews(h.id, h.topReviews) : ""}
+          ${h.reviewInsights && h.reviewInsights.count > 0 ? renderReviewInsights(h.id, h.reviewInsights) : ""}
 
           <div class="h-foot">
             <div>
@@ -1660,6 +2247,26 @@
         const pcs = document.querySelector(`[data-pcs="${id}"]`);
         pcs.classList.remove("collapsed");
         b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-rv]").forEach(h => {
+      h.addEventListener("click", () => {
+        const id = h.dataset.rv;
+        document.getElementById(`rv-${id}`).classList.toggle("is-open");
+      });
+    });
+    document.querySelectorAll("[data-rv-more]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = b.dataset.rvMore;
+        document.getElementById(`rv-${id}`).querySelectorAll(".rv-hidden").forEach(c => c.classList.remove("rv-hidden"));
+        b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-ri]").forEach(h => {
+      h.addEventListener("click", () => {
+        const id = h.dataset.ri;
+        document.getElementById(`ri-${id}`).classList.toggle("is-open");
       });
     });
   }
