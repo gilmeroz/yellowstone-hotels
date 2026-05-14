@@ -46,7 +46,7 @@
     .day-card { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); overflow: hidden; }
     .day-header { display: flex; align-items: center; gap: 14px; padding: 14px 20px; cursor: pointer; justify-content: flex-start; flex-direction: row-reverse; }
     .day-header:hover { background: #f0f7ff; }
-    .day-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95em; color: white; flex-shrink: 0; }
+    .day-num { min-width: 54px; height: 26px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .72em; color: white; flex-shrink: 0; padding: 0 8px; letter-spacing: .02em; }
     .day-title { font-weight: 700; font-size: 1.05em; text-align: right; }
     .day-drive { font-size: .82em; color: #888; margin-top: 2px; }
     .day-body { padding: 6px 20px 18px; border-top: 1px solid #f0f0f0; }
@@ -325,7 +325,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d1">1</div>
+      <div class="day-num d1">Aug 5</div>
       <div><div class="day-title">יציאה מנתב"ג + נחיתה ב-LA ✈️🌴</div>
       <div class="day-drive">📅 רביעי, 5 באוגוסט · <span class="time-tag">⏰ TLV 00:10</span> → LAX 06:00 · אל-על</div></div>
     </div>
@@ -343,7 +343,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d2">2</div>
+      <div class="day-num d2">Aug 6</div>
       <div><div class="day-title">Universal Studios Hollywood 🎬</div>
       <div class="day-drive">📅 חמישי, 6 באוגוסט · <span class="time-tag">⏰ פתיחה 09:00</span> · צ'ק-אאוט מ-Santa Monica → צ'ק-אין Universal City</div></div>
     </div>
@@ -364,7 +364,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d3">3</div>
+      <div class="day-num d3">Aug 7</div>
       <div><div class="day-title">LA — יום חופשי: Malibu / Getty / Santa Monica 🌊</div>
       <div class="day-drive">📅 שישי, 7 באוגוסט · לוס אנג'לס — ללא נסיעות ארוכות</div></div>
     </div>
@@ -381,7 +381,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d4">4</div>
+      <div class="day-num d4">Aug 8</div>
       <div><div class="day-title">LA — יום חופשי נוסף 🌴 (או: יציאה לסן דייגו)</div>
       <div class="day-drive">📅 שבת, 8 באוגוסט · אפשרות: להישאר LA או לצאת מוקדם לסן דייגו</div></div>
     </div>
@@ -397,7 +397,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d5">5</div>
+      <div class="day-num d5">Aug 9</div>
       <div><div class="day-title">סן דייגו — 🐋 צפייה בלווייתנים + גן חיות</div>
       <div class="day-drive">📅 ראשון, 9 באוגוסט · סן דייגו — יום פעיל</div></div>
     </div>
@@ -415,7 +415,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d6">6</div>
+      <div class="day-num d6">Aug 10</div>
       <div><div class="day-title">סן דייגו → Anaheim — קניות ב-South Coast Plaza 🛍️</div>
       <div class="day-drive">📅 שני, 10 באוגוסט · סן דייגו → קוסטה מסה → Anaheim · ~120 ק"מ</div></div>
     </div>
@@ -433,7 +433,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d7">7</div>
+      <div class="day-num d7">Aug 11</div>
       <div><div class="day-title">Disneyland — יום שלם 🎢</div>
       <div class="day-drive">📅 שלישי, 11 באוגוסט · Anaheim · <span class="time-tag">⏰ פתיחה 08:00</span></div></div>
     </div>
@@ -451,7 +451,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d8">8</div>
+      <div class="day-num d8">Aug 12</div>
       <div><div class="day-title">Anaheim → לאס וגאס 🌵</div>
       <div class="day-drive">📅 רביעי, 12 באוגוסט · ~440 ק"מ · ~4 שעות נסיעה</div></div>
     </div>
@@ -469,7 +469,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d9">9</div>
+      <div class="day-num d9">Aug 13</div>
       <div><div class="day-title">לאס וגאס — יום שני 🌆</div>
       <div class="day-drive">📅 חמישי, 13 באוגוסט · לאס וגאס — יום פנאי</div></div>
     </div>
@@ -486,7 +486,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d10">10</div>
+      <div class="day-num d10">Aug 14</div>
       <div><div class="day-title">לאס וגאס — יום שלישי + יום הולדת כרן 🎂 + פרידה מעדי 💜</div>
       <div class="day-drive">📅 שישי, 14 באוגוסט · יום הולדת לכרן (15/8) + ארוחת פרידה מעדי · עדי נשארת הלילה</div></div>
     </div>
@@ -507,7 +507,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d11">11</div>
+      <div class="day-num d11">Aug 15</div>
       <div><div class="day-title">עדי טסה הביתה + המשפחה: LAS → Bozeman ✈️💜🏙️</div>
       <div class="day-drive">📅 שבת, 15 באוגוסט · עדי: LAS→LAX→ת"א | המשפחה: LAS→BZN (נחיתה אחרי 20:00) → לינה בבוזמן</div></div>
     </div>
@@ -516,17 +516,17 @@
         <li><strong>עדי עוזבת:</strong> <span class="time-tag">⏰ 19:24</span> טיסה מ-LAS — LAS → LAX → ת"א · הגעה ראשון · <span class="done-tag">✅ נרכש · ₪5,863</span></li>
         <li><strong>המשפחה (4 נפשות):</strong> <span class="time-tag">⏰ LAS → BZN</span> (~2 שעות) · נחיתה בוזמן <strong>אחרי 20:00</strong> · <span class="book-tag">📋 להזמין</span></li>
         <li>איסוף רכב שכור ב-BZN: <span class="book-tag">📋 להזמין מראש</span> SUV רגיל (Ford Explorer, Chevy Traverse) — לוודא שהמשרד פתוח עם הגעה מאוחרת</li>
-        <li>צ'ק-אין מלון בוזמן (ליד שדה התעופה) — <span class="book-tag">📋 להזמין</span></li>
+        <li>צ'ק-אין מלון בוזמן (ליד שדה התעופה) — <span class="done-tag">✅ הוזמן · EVEN Hotel Bozeman Yellowstone Intl Arpt (IHG)</span></li>
         <li>מנוחה — לא לנסות לנסוע לפארק הלילה (130+ ק"מ ובחושך)</li>
       </ul>
       <div class="tip-box">💡 בוזמן היא עיר נחמדה עם מסעדות טובות — ארוחת ערב נוחה לפני יום נסיעה גדול מחר</div>
-      <div class="sleep-box">🛏️ <strong>לינה:</strong> בוזמן (ליד BZN) — <span class="book-tag">📋 להזמין</span> (Hyatt Place, Hilton Garden Inn Bozeman וכד')</div>
+      <div class="sleep-box">🛏️ <strong>לינה:</strong> <span class="done-tag">✅ הוזמן</span> — <strong>EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG</strong> · 406 Belgrade Blvd, Belgrade, MT · צ'ק-אין 15:00 · צ'ק-אאוט 11:00 · ביטול חינם עד 14/8 16:00 MDT · שולם ב-Booking.com</div>
     </div>
   </div>
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d12">12</div>
+      <div class="day-num d12">Aug 16</div>
       <div><div class="day-title">בוזמן → ילוסטון צפון: Mammoth + Tower Fall + Lamar Valley 🦌</div>
       <div class="day-drive">📅 ראשון, 16 באוגוסט · בוזמן → Gardiner, MT (~130 ק"מ) → כניסה צפונית לילוסטון</div></div>
     </div>
@@ -546,7 +546,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d13">13</div>
+      <div class="day-num d13">Aug 17</div>
       <div><div class="day-title">ילוסטון מערב — Old Faithful + Grand Prismatic 🌋</div>
       <div class="day-drive">📅 שני, 17 באוגוסט · Gardiner → Norris → Madison → West Yellowstone (~160 ק"מ בתוך הפארק)</div></div>
     </div>
@@ -566,7 +566,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d14">14</div>
+      <div class="day-num d14">Aug 18</div>
       <div><div class="day-title">ילוסטון — Lamar Valley וחיות בר 🐺</div>
       <div class="day-drive">📅 שלישי, 18 באוגוסט · בתוך הפארק — ~100 ק"מ סבב</div></div>
     </div>
@@ -584,7 +584,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d15">15</div>
+      <div class="day-num d15">Aug 19</div>
       <div><div class="day-title">ילוסטון → גרנד טטון: צ'ק-אאוט Starlite + כניסה ל-Rockwell Inn 🏔️</div>
       <div class="day-drive">📅 רביעי, 19 באוגוסט · West Yellowstone → Grand Teton (~90 ק"מ)</div></div>
     </div>
@@ -603,7 +603,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d16">16</div>
+      <div class="day-num d16">Aug 20</div>
       <div><div class="day-title">גרנד טטון — יום מלא: Jenny Lake + חיות בר 🦌</div>
       <div class="day-drive">📅 חמישי, 20 באוגוסט · Grand Teton NP — בתוך הפארק</div></div>
     </div>
@@ -623,7 +623,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d17">17</div>
+      <div class="day-num d17">Aug 21</div>
       <div><div class="day-title">גרנד טטון → Jackson Hole → טיסה לאירופה ✈️🗼</div>
       <div class="day-drive">📅 שישי, 21 באוגוסט · גרנד טטון → Jackson Hole (JAC) → <span class="time-tag">⏰ טיסה JAC→LHR</span></div></div>
     </div>
@@ -641,7 +641,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num" style="background:#922b21;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95em;color:white;flex-shrink:0;">18</div>
+      <div class="day-num" style="background:#922b21;">Aug 22</div>
       <div><div class="day-title">לונדון — יום שלם 🎡</div>
       <div class="day-drive">📅 שבת, 22 באוגוסט · לונדון — נחיתה LHR 09:40 · לילה ראשון</div></div>
     </div>
@@ -659,7 +659,7 @@
 
   <div class="day-card">
     <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num" style="background:#6c3483;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95em;color:white;flex-shrink:0;">19</div>
+      <div class="day-num" style="background:#6c3483;">Aug 23</div>
       <div><div class="day-title">לונדון → נתב"ג — הביתה ✈️</div>
       <div class="day-drive">📅 ראשון, 23 באוגוסט · לונדון LHR 17:15 → נתב"ג · הזמנה 3J8A-XD2S · ✅ נרכש</div></div>
     </div>
@@ -765,10 +765,10 @@
       <div class="price">₪600–₪1,200 ללילה (2 חדרים)</div>
     </div>
     <div class="hotel-card rv">
-      <div class="city">בוזמן (BZN) — לילה 1</div>
+      <div class="city">בוזמן (BZN) — לילה 1 · ✅ הוזמן</div>
       <div class="nights">1 לילה (15 באוגוסט — נחיתה אחרי 20:00)</div>
-      <div class="name">Hyatt Place Bozeman / Hilton Garden Inn Bozeman (ליד שדה התעופה)</div>
-      <div class="price">₪600–₪900 (2 חדרים) — <span style="color:#c0392b;font-weight:700;">📋 להזמין</span></div>
+      <div class="name">EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG · 406 Belgrade Blvd, Belgrade, MT · צ'ק-אין 15:00 · צ'ק-אאוט 11:00 · 3 מבוגרים + ילד 13</div>
+      <div class="price" style="color:#27ae60;font-weight:700;">₪1,128 ($384.32) · ✅ הוזמן · ביטול חינם עד 14/8 16:00 MDT</div>
     </div>
     <div class="hotel-card rv">
       <div class="city">Gardiner, MT — כניסה צפונית ילוסטון · ✅ הוזמן</div>
@@ -795,7 +795,7 @@
       <div class="price">₪1,000–₪2,000 ללילה (2 חדרים)</div>
     </div>
   </div>
-  <p style="margin-top:14px;font-size:.88em;color:#777;">✅ לינה בפארקים מכוסה: Starlite Yellowstone (17–19/8) + Rockwell Inn Grand Teton (19–21/8) + Yellowstone Riverside Cottages Gardiner (16/8 ✅ הוזמן) · 🔴 עדיין להזמין: בוזמן (15/8)</p>
+  <p style="margin-top:14px;font-size:.88em;color:#27ae60;">✅ לינה בבוזמן ובפארקים מכוסה: EVEN Hotel Bozeman (15/8 ✅) · Yellowstone Riverside Cottages Gardiner (16/8 ✅) · Starlite Yellowstone (17–19/8 ✅) · Rockwell Inn Grand Teton (19–21/8 ✅)</p>
 </section>
 
 <section id="budget">
@@ -814,7 +814,8 @@
         <tr><td>Starlite Yellowstone (17–19/8) · 2 לילות · West Yellowstone</td><td>₪2,547</td><td>✅ נרכש · ביטול עד 2/8 23:59</td></tr>
         <tr><td>The Rockwell Inn — Grand Teton (19–21/8) · 2 לילות</td><td>₪3,584</td><td>✅ נרכש · booking.com · ביטול חינם עד 15/8</td></tr>
         <tr><td>Yellowstone Riverside Cottages — Gardiner (16/8) · 1 לילה · הזמנה 5856245753 · צ'ק-אין 16:00–20:00 · צ'ק-אאוט 11:00</td><td>₪1,407</td><td>✅ נרכש · $479.25 · ביטול חינם עד 1/8 23:59 GMT</td></tr>
-        <tr><td>לינה שאר הלילות (~13 לילות — LA, SD, אנהיים, LV, בוזמן, לונדון)</td><td>₪12,000–₪23,000</td><td>2 חדרים · מלונות שבוע 1 + לילה 1 Bozeman 15/8 + לונדון ×2</td></tr>
+        <tr><td>EVEN Hotel Bozeman Yellowstone Intl Arpt (IHG) — Belgrade, MT (15/8 · לילה 1) · 3 מבוגרים + ילד</td><td>₪1,128</td><td>✅ נרכש · $384.32 · ביטול חינם עד 14/8 16:00 MDT · שולם ב-Booking.com</td></tr>
+        <tr><td>לינה שאר הלילות (~12 לילות — LA, SD, אנהיים, LV, לונדון)</td><td>₪12,000–₪23,000</td><td>2 חדרים · מלונות שבוע 1 + לונדון ×2</td></tr>
         <tr><td>Disneyland ×5 + Lightning Lane</td><td>₪5,000–₪7,000</td><td>לקנות מראש</td></tr>
         <tr><td>Universal Studios ×5 + Express Pass</td><td>₪5,500–₪7,500</td><td>לקנות מראש</td></tr>
         <tr><td>Non-Resident Annual Pass — כניסה לפארקים לאומיים (2026)</td><td>~₪734</td><td>$250 · כולל 4 נפשות לכל הפארקים ללא תוספת · הכי משתלם לתושבי חוץ · nps.gov</td></tr>
@@ -824,7 +825,7 @@
     </table>
     <div class="budget-total" style="background:#1a5276;margin-bottom:8px;">
       <span style="font-size:1em;">✅ שולם + הזמנות לחיוב</span>
-      <span>₪41,973</span>
+      <span>₪43,101</span>
     </div>
     <div class="budget-total">
       <span>סה"כ משוער (בינוני)</span>
@@ -906,13 +907,7 @@
     <div style="background:#fff8e1;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#a04000;font-size:.93em;">⏳ הוזמן, ממתין לאישור</div>
     <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
       <label class="todo-row done-row" data-id="t4b"><input type="checkbox" class="todo-cb" id="t4b" checked onchange="saveTodo()"><div class="todo-row-text"><strong>Yellowstone Riverside Cottages — Gardiner 16/8 (לילה אחד)</strong><span class="todo-detail">521 Scott St · הזמנה 5856245753 · קוד 0601 · $479.25 / ₪1,407 · בונגלו 1 · 4 אורחים · צ'ק-אין 16:00–20:00 · צ'ק-אאוט 11:00 · ביטול חינם עד 1/8 23:59 GMT · מ-2/8: חיוב $557.17</span></div><span class="todo-status done">✓ נרכש</span></label>
-    </div>
-  </div>
-
-  <div style="margin-bottom:14px;">
-    <div style="background:#fdf0ef;border-radius:10px 10px 0 0;padding:11px 18px;font-weight:700;color:#922b21;font-size:.93em;">🔴 דחוף — להזמין עכשיו</div>
-    <div style="background:white;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
-      <label class="todo-row" data-id="t4"><input type="checkbox" class="todo-cb" id="t4" onchange="saveTodo()"><div class="todo-row-text"><strong>מלון בוזמן — 15/8 (לילה אחד, נחיתה אחרי 20:00)</strong><span class="todo-detail">Hyatt Place Bozeman / Hilton Garden Inn Bozeman — לוודא שמשרד ההשכרה פתוח עם הגעה מאוחרת</span></div><span class="todo-status urgent">🔴 עכשיו</span></label>
+      <label class="todo-row done-row" data-id="t4"><input type="checkbox" class="todo-cb" id="t4" checked onchange="saveTodo()"><div class="todo-row-text"><strong>EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG — 15/8 (לילה אחד, נחיתה אחרי 20:00)</strong><span class="todo-detail">406 Belgrade Blvd, Belgrade, MT · 3 מבוגרים + ילד 13 · חדר קווין × 2 מיטות · צ'ק-אין 15:00 · צ'ק-אאוט 11:00 · ביטול חינם עד 14/8 16:00 MDT · שולם ב-Booking.com</span></div><span class="todo-status done">✓ נרכש</span></label>
     </div>
   </div>
 
