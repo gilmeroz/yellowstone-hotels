@@ -1085,6 +1085,10 @@
         <span class="num">19–21.8 · 2 לילות</span>
         <span class="en">Jackson, WY</span>
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="anaheim">
+        <span class="num">9–11.8 · 2 לילות</span>
+        <span class="en">Anaheim</span>
+      </button>
     </div>
   </div>
 
@@ -1144,6 +1148,11 @@
     ridgeline:  "1566073771259-6a8506099945", // hotel exterior
     hibernation:"1542718610-a1d656d1884c",    // log cabin
     starlite:   "1611892440504-42a792e24d32", // hotel with pool
+    "sheraton-park-anaheim": "1611892440504-42a792e24d32", // hotel with pool
+    "howard-johnson-anaheim": "1611892440504-42a792e24d32", // hotel with water playground
+    "westin-anaheim": "1566073771259-6a8506099945",          // luxury hotel exterior
+    "anaheim-majestic": "1566073771259-6a8506099945",        // hotel exterior
+    "anaheim-resort-suites": "1611892440504-42a792e24d32",   // hotel with pool
   };
   const photoUrl = (id) => `https://images.unsplash.com/photo-${id}?w=720&q=70&auto=format&fit=crop`;
 
@@ -2271,6 +2280,334 @@
         },
       ],
     },
+    anaheim: {
+      name: "Anaheim / Disneyland",
+      sub: "דרום קליפורניה · Walt Disney Resort",
+      blurb: "אנהיים היא עיר התיירות הגדולה של דרום קליפורניה, ביתו של Disneyland Resort — פארק השעשועים האייקוני של דיסני הכולל שני פארקים (Disneyland ו-Disney California Adventure). כל המלונות באזור ממוקמים במרחק הליכה קצר מהשערים, עם גישה קלה גם לאטרקציות נוספות באזור כמו Knott's Berry Farm ו-Universal Studios. האזור הוא מרכז תיירותי צבעוני עם מסעדות ומרכזי קניות ב-Downtown Disney.",
+      nights: 2,
+      nightsLbl: "2 לילות",
+      stats: [
+        { lbl: "הליכה לשערי דיסני", val: "10–20 ד׳" },
+        { lbl: "DCA (California Adventure)", val: "צמוד לדיסנילנד" },
+        { lbl: "אופי", val: "תיירותי · מרכז דיסני" },
+      ],
+      hotels: [
+        {
+          id: "sheraton-park-anaheim", reco: true,
+          name: "Sheraton Park Hotel at the Anaheim Resort",
+          stars: 4, classText: "4★ מלון · 930 ביקורות",
+          score: 8.9, scoreText: "מצוין", reviews: "930 ביקורות",
+          total: 900, nightly: 450,
+          distReserve: "1 ק״מ · 15 ד׳ הליכה", distTown: "ב-Harbor Blvd · לב האזור התיירותי", shower: "yes",
+          parking: "$30 ללילה · חניה פרטית",
+          roomConfig: "2 חדרות · חדרים מרווחים, חיבור (connecting) זמין לפי בקשה",
+          distPlaces: [
+            "Disney California Adventure: 1 ק״מ · 15 ד׳ הליכה",
+            "Downtown Disney: 1 ק״מ · 15 ד׳ הליכה",
+            "Knott's Berry Farm: 4 ק״מ · 8 ד׳ נסיעה",
+            "Universal Studios Hollywood: 50 ק״מ · 40 ד׳ נסיעה",
+          ],
+          loc: "1855 South Harbor Boulevard, Anaheim · ישירות על Harbor Blvd מול כניסת הפארק",
+          tags: [
+            "15 ד׳ הליכה לדיסני",
+            "בריכה מחוממת",
+            "חדרים נקיים ומרווחים",
+            "מסעדה ובר באתר",
+            "Hot tub/Jacuzzi",
+          ],
+          chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"דירוג גבוה", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/sheraton-park-at-the-anaheim-resort.html?checkin=2026-08-09&checkout=2026-08-11&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום מעולה — 14 ביקורות מציינות הליכה ישירה של 10–15 דקות לשערי דיסנילנד",
+            "חדרים נקיים ומרווחים — 10 ביקורות מדגישות איכות החדר, מיטות נוחות ומקלחת מצוינת",
+            "בריכה גדולה ועמוקה (עד 3 מ׳) שהוזכרה לשבח בביקורות משפחתיות",
+            "צוות ידידותי ומגיב — 4 ביקורות על שירות מצוין",
+          ],
+          cons: [
+            "חניה בתשלום (~$30 ללילה) — 6 ביקורות מציינות מחיר גבוה לחניה ולמסעדות האתר",
+            "מיזוג אוויר חזק מדי — 6 ביקורות על קור מופרז בחדרים, ניתן לכיוון ידנית",
+            "בריכה דיווחה על לכלוך אחת מהפעמים (ביקורת בודדת, מאי 2026)",
+          ],
+          reviewInsights: {
+            period: "מרץ 2026 – מאי 2026",
+            count: 50,
+            reviewerMix: "נתוני מוצא לא זמינים במדגם זה",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: ["ניקיון: 8.8", "נוחות: 9.0", "מיקום: 9.5", "מתקנים: 8.7", "שירות: 8.8", "ערך: 7.9"],
+            themes: [
+              "pos: מיקום · הליכה לדיסני — 14 אזכורים",
+              "pos: חדר · נקיון ונוחות — 10 אזכורים",
+              "pos: ניקיון כללי — 5 אזכורים",
+              "pos: שירות צוות — 4 אזכורים",
+              "pos: בריכה — 4 אזכורים",
+              "neg: מחיר גבוה (חניה + מסעדות) — 6 אזכורים",
+              "neg: מיזוג חזק/קר — 6 אזכורים",
+              "neg: מצב החדר (מיעוט) — 5 אזכורים",
+            ],
+            quotes: [
+              "\"בחירה מצוינת לדיסני. 15 דקות הליכה ישירה לשערים. בריכה מדהימה. אוכל ומגוון מסעדות מצוין.\" (מאי 2026)",
+              "\"מיקום מושלם להליכה לדיסנילנד. חדרים נקיים מאוד, מיטות נוחות בצורה יוצאת דופן, הצוות היה מקסים.\" (מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "בחירה מצוינת לביקור בדיסני. 15 דקות הליכה שטוחה לשערים. מתקנים מעולים — הבריכה הייתה נהדרת (עמוקה עד 3 מ׳). מגוון האוכל היה מצוין. בהחלט נחזור.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום מושלם — הליכה של 10 דקות לדיסנילנד. החדר היה נקי להפליא, המיטות נוחות ביותר, הצוות היה ידידותי ועשה הכל כדי לעזור.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "החדר — שקט, חשוך, נוח. החניה יקרה מדי.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום נהדר. חדרים מודרניים ואהבנו את הבריכה. המסעדה והבר יקרים מאוד.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "howard-johnson-anaheim",
+          name: "Howard Johnson by Wyndham Anaheim Hotel and Water Playground",
+          stars: 3, classText: "3★ מלון משפחתי · 2,702 ביקורות",
+          score: 8.5, scoreText: "מצוין", reviews: "2,702 ביקורות",
+          total: 1227, nightly: 614,
+          distReserve: "0.5 ק״מ · 7 ד׳ הליכה", distTown: "על Harbor Blvd · מרחק הליכה מהשערים", shower: "yes",
+          parking: "$20 ללילה · חניה פרטית",
+          roomConfig: "2 חדרות · חדרים משפחתיים עם מקרר + מיקרוגל; חדרי בלקון עם נוף לפירוורקס דיסני",
+          distPlaces: [
+            "Disney California Adventure: 0.5 ק״מ · 7 ד׳ הליכה",
+            "Downtown Disney: 0.5 ק״מ · 7 ד׳ הליכה",
+            "Knott's Berry Farm: 5 ק״מ · 10 ד׳ נסיעה",
+            "Universal Studios Hollywood: 50 ק״מ · 40 ד׳ נסיעה",
+          ],
+          loc: "1380 South Harbor Boulevard, Anaheim · ישירות על Harbor Blvd, פחות מ-500 מ׳ מהשערים",
+          tags: [
+            "מגרש מים עם מגלשות לילדים",
+            "7 ד׳ הליכה לדיסני",
+            "בלקון עם נוף לפירוורקס",
+            "מקרר ומיקרוגל בחדר",
+            "בריכה נפרדת למבוגרים",
+          ],
+          chips: [{t:"דירוג גבוה", c:"deal"}, {t:"בחירת מטיילים", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/howard-johnson-anaheim-and-water-playground.html?checkin=2026-08-09&checkout=2026-08-11&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "הקרוב ביותר לשערי דיסנילנד — 21 ביקורות מציינות את ההליכה הקצרה של 7–10 דקות כיתרון מרכזי",
+            "Water Playground עם מגלשות מים — 10 ביקורות של משפחות על הכיף של הילדים במגרש המים",
+            "חדרי בלקון עם נוף ישיר לזיקוקי דיסני — פיצ׳ר ייחודי שהוזכר בחדווה בביקורות",
+            "חדרים משופצים לאחרונה עם מקרר ומיקרוגל — נוחות לארוחות קלות",
+          ],
+          cons: [
+            "מיזוג חזק/קר — 8 ביקורות על טמפרטורה נמוכה מדי בחדרים",
+            "מצב חדרים (ישנים) — 7 ביקורות על חדרים ישנים; חדרים משופצים טובים יותר, כדאי לבקש",
+            "יקר יחסית לרמה — 3 ביקורות על מחיר גבוה ביחס לאיכות ה-3★",
+            "רעש — 3 ביקורות על רעש מחדרים שכנים ומהלובי",
+          ],
+          reviewInsights: {
+            period: "אפריל 2026 – מאי 2026",
+            count: 50,
+            reviewerMix: "נתוני מוצא לא זמינים במדגם זה",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: ["ניקיון: 8.5", "נוחות: 8.2", "מיקום: 9.3", "מתקנים: 8.8", "שירות: 8.5", "ערך: 8.0"],
+            themes: [
+              "pos: מיקום · הליכה קצרה לדיסני — 21 אזכורים",
+              "pos: Water Playground / מגלשות מים — 10 אזכורים",
+              "pos: חדרים משפחתיים — 7 אזכורים",
+              "neg: מיזוג אוויר — 8 אזכורים",
+              "neg: מצב חדרים ישנים — 7 אזכורים",
+              "neg: מחיר גבוה ביחס לרמה — 3 אזכורים",
+            ],
+            quotes: [
+              "\"הבריכה הנפרדת מצד אחד ומגרש המים לילדים מהצד השני — קרבה לשערי דיסני. אפשרות לחדר עם בלקון לפירוורקס.\" (מאי 2026)",
+              "\"המיטה לא נוחה. יקר מדי עבור מה שמקבלים.\" (מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "בריכה נפרדת ממגרש המים לילדים — נהדר. קרבה לשערי דיסני. חדר עם בלקון ונוף לפירוורקס בלילה שווה מאוד. גם מקרר ומיקרוגל בחדר.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "חדר משופץ מאוד נחמד ונוח. מאוד מזמין למשפחה.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "הליכה קלה לדיסנילנד. הצוות ידידותי. הבריכה ומגרש המים — אהבנו מאוד.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "המיטה לא נוחה. יקר יחסית למה שמקבלים.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "westin-anaheim",
+          name: "The Westin Anaheim Resort",
+          stars: 4, classText: "4★ ריזורט · 827 ביקורות",
+          score: 8.9, scoreText: "מצוין", reviews: "827 ביקורות",
+          total: 1614, nightly: 807,
+          distReserve: "1.8 ק״מ · 20 ד׳ הליכה", distTown: "ליד Anaheim Convention Center · אזור Katella Ave", shower: "yes",
+          parking: "ויאלט · בתשלום",
+          roomConfig: "2 חדרות · סוויטות גדולות זמינות; חדרי פינה עם נוף לעיר",
+          distPlaces: [
+            "Disney California Adventure: 1.8 ק״מ · 20 ד׳ הליכה",
+            "Downtown Disney: 1.8 ק״מ · 20 ד׳ הליכה",
+            "Knott's Berry Farm: 6 ק״מ · 10 ד׳ נסיעה",
+            "Universal Studios Hollywood: 50 ק״מ · 40 ד׳ נסיעה",
+          ],
+          loc: "1030 West Katella Avenue, Anaheim · ליד Convention Center, 20 ד׳ הליכה מהפארק",
+          tags: [
+            "ריזורט יוקרה 4★",
+            "בריכה חיצונית",
+            "מסעדה ובר",
+            "שירות יוצא דופן",
+            "חדרים מרווחים ומעוצבים",
+          ],
+          chips: [{t:"דירוג גבוה", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/westin-anaheim-resort.html?checkin=2026-08-09&checkout=2026-08-11&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "שירות ברמה גבוהה — 11 ביקורות מציינות צוות אדיב, קשוב ומסור",
+            "קרוב לדיסנילנד — 11 ביקורות מציינות מיקום נוח (20 ד׳ הליכה)",
+            "ניקיון יוצא דופן — 7 ביקורות על חדרים נקיים ומבריקים",
+            "חדרים מרווחים ומעוצבים — 6 ביקורות על גודל ונוחות החדר",
+          ],
+          cons: [
+            "⚠️ מגמה שלילית בדירוג — הממוצע ירד מ-9.1 ל-8.4 בחודשים האחרונים (3 חודשים vs 9 קודמים)",
+            "מיזוג אוויר קר מאוד — 8 ביקורות על קור חריג בכל רחבי המלון",
+            "חניה יקרה (ויאלט) + Wi-Fi בתשלום — 6 ביקורות על עלויות נלוות גבוהות",
+            "אין שאטל חינם לפארק — 20 ד׳ הליכה או חניה בתשלום",
+          ],
+          reviewInsights: {
+            period: "דצמבר 2025 – מאי 2026",
+            count: 50,
+            reviewerMix: "נתוני מוצא לא זמינים במדגם זה",
+            trend: "⚠️ ירידה בדירוג — ביקורות אחרונות חלשות יותר (8.4 vs 9.1 בחודשים קודמים)",
+            categoryScores: ["ניקיון: 8.9", "נוחות: 8.5", "מיקום: 9.0", "מתקנים: 8.8", "שירות: 9.2", "ערך: 7.8"],
+            themes: [
+              "pos: שירות ואדיבות — 11 אזכורים",
+              "pos: מיקום · קרבה לדיסני — 11 אזכורים",
+              "pos: ניקיון — 7 אזכורים",
+              "pos: חדרים מרווחים — 6 אזכורים",
+              "neg: מצב חדרים (קטנות) — 9 אזכורים",
+              "neg: מיזוג קר מאוד — 8 אזכורים",
+              "neg: חניה יקרה — 6 אזכורים",
+            ],
+            quotes: [
+              "\"מלון מדהים! הצוות אדיב להפליא, החדר נוח, ומיקום קרוב לפארקי דיסני.\" (מאי 2026)",
+              "\"קר בצורה חריגה בכל המלון — הקר ביותר שחוויתי בכל מלון בזיכרוני.\" (מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "נהנינו מאוד מהשהייה מהרגע הראשון! הצוות היה קשוב, החדר נוח, וקרוב לפארקי דיסני.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "נכס יפה עם כל מה שצריך. הצוות היה מדהים וידידותי.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "אוירה נקייה ואורית. קרבה לדיסני. ארוחת הבוקר — הייתי שמח לגיוון רב יותר.", type: "משפחה", date: "אפריל 2026", sentiment: "pos" },
+            { text: "קר בצורה חריגה בכל המלון — הקר ביותר בזיכרוני בכל מלון. לא ברור אם זו בעיית מזג אוויר.", type: "זוג", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "anaheim-majestic", flag: true,
+          name: "Anaheim Majestic Garden Hotel",
+          stars: 3, classText: "3★ מלון · 5,378 ביקורות",
+          score: 8.1, scoreText: "טוב מאוד", reviews: "5,378 ביקורות",
+          total: 727, nightly: 364,
+          distReserve: "1 ק״מ · 10 ד׳ הליכה", distTown: "על Disneyland Drive · שאטל חינם לפארק", shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "2 חדרות · חדרי סטנדרט, connecting זמין לפי בקשה",
+          distPlaces: [
+            "Disney California Adventure: 1 ק״מ · 10 ד׳ הליכה",
+            "Downtown Disney: 1 ק״מ · 10 ד׳ הליכה",
+            "Knott's Berry Farm: 4 ק״מ · 8 ד׳ נסיעה",
+            "Universal Studios Hollywood: 50 ק״מ · 40 ד׳ נסיעה",
+          ],
+          loc: "900 South Disneyland Drive, Anaheim · על Disneyland Drive עם שאטל חינם",
+          tags: [
+            "שאטל חינם לדיסני",
+            "חניה חינם",
+            "בריכה חיצונית",
+            "הזול ביותר ברשימה",
+          ],
+          chips: [{t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/sheraton-anaheim.html?checkin=2026-08-09&checkout=2026-08-11&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום נוח — 13 ביקורות מציינות הליכה לפארק ושאטל חינם",
+            "חניה ושאטל חינם — יתרון כלכלי משמעותי ביחס לשאר",
+            "הזול ביותר ברשימה — $364/לילה לשני חדרים",
+          ],
+          cons: [
+            "⚠️ חדרים מוזנחים ועם ריח עפש — 12 ביקורות על חדרים ישנים ומוזנחים; 5 ביקורות ספציפיות על ריח עפש/עובש",
+            "⚠️ היגיינה — ביקורות מציינות חדרים שלא נוקו כראוי (ריח שתן, קורי עכביש)",
+            "שירות חדרים לא עקבי — ביקורות על כך שחדרים לא נוקו גם לאחר בקשה",
+            "יקר ביחס לרמה — 4 ביקורות על אכזבה ממחיר גבוה עבור חדרים ישנים",
+          ],
+          reviewInsights: {
+            period: "מאי 2026",
+            count: 50,
+            reviewerMix: "נתוני מוצא לא זמינים במדגם זה",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: ["ניקיון: 6.5", "נוחות: 7.0", "מיקום: 9.2", "מתקנים: 7.8", "שירות: 7.5", "ערך: 6.8"],
+            themes: [
+              "pos: מיקום · קרבה לפארק — 13 אזכורים",
+              "pos: חדרים — 6 אזכורים",
+              "pos: ערך כסף (חניה + שאטל חינם) — 3 אזכורים",
+              "neg: מצב חדרים מוזנח — 12 אזכורים",
+              "neg: ריח עפש/חוסר ניקיון — 5 אזכורים",
+              "neg: מחיר גבוה ביחס לאיכות — 4 אזכורים",
+            ],
+            quotes: [
+              "\"החדר מוזנח מאוד ומריח עפש. השירותים לא נוקו כראוי. במחיר כזה צריך שיפוץ דחוף.\" (מאי 2026)",
+              "\"המלון קרוב מאוד לפארק — יתרון גדול. אבל החדרים מאכזבים.\" (מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "קרוב מאוד לפארק — יתרון גדול. אבל החדרים מאוד מוזנחים ומריחים עפש. השירותים לא נוקו כמו שצריך. במחיר הזה הם חייבים שיפוץ.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "המלון קסום! הכל בו נועד להפתיע את האורחים — חוץ מהחדר עצמו שהיה בסדר אבל חסר לו קסם.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "שהינו כאן שנים. מושלם למשפחה שלנו. נוח לכל אטרקציות אנהיים.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "החדר שלנו הריח כמו שתן. מגעיל. לא מתאים לילדים.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "anaheim-resort-suites", flag: true,
+          name: "Anaheim Resort Suites (Cambria Hotel)",
+          stars: 4, classText: "4★ ריזורט סוויטות · 2,099 ביקורות",
+          score: 8.7, scoreText: "מצוין", reviews: "2,099 ביקורות",
+          total: 582, nightly: 291,
+          distReserve: "2.2 ק״מ · 25 ד׳ הליכה", distTown: "על Katella Ave · קצת מרוחק מהשערים", shower: "yes",
+          parking: "$20 ללילה · חניה פרטית",
+          roomConfig: "סוויטות · סוויטות גדולות, מטבחון, מתאים למשפחה; אפשרות 1 סוויטה גדולה ל-5 אנשים",
+          distPlaces: [
+            "Disney California Adventure: 2.2 ק״מ · 25 ד׳ הליכה",
+            "Downtown Disney: 2.2 ק״מ · 25 ד׳ הליכה",
+            "Knott's Berry Farm: 5 ק״מ · 10 ד׳ נסיעה",
+            "Universal Studios Hollywood: 50 ק״מ · 40 ד׳ נסיעה",
+          ],
+          loc: "101 East Katella Avenue, Anaheim · על Katella Ave, 25 ד׳ הליכה מהפארק (אין שאטל)",
+          tags: [
+            "סוויטות עם מטבחון",
+            "Water park עם מגלשות",
+            "ארוחת בוקר כלולה",
+            "בריכה חיצונית",
+          ],
+          chips: [{t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/cambria-anaheim-resort-area.html?checkin=2026-08-09&checkout=2026-08-11&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "ארוחת בוקר חמה כלולה — 5 ביקורות על ארוחת הבוקר היומית הכלולה",
+            "מיקום נוח לאזור — 9 ביקורות על גישה לאטרקציות ומסעדות",
+            "שירות נחמד — 8 ביקורות על צוות ידידותי",
+            "Water park עם מגלשות (כאשר פתוח) — 7 ביקורות",
+          ],
+          cons: [
+            "⚠️ מזיקים — ביקורת מאי 2026 מדווחת על ג׳וקים בחניה ובאזור ארוחת הבוקר",
+            "⚠️ Water park סגור לעיתים תכופות — 3+ ביקורות על סגירה בלתי צפויה של הבריכה ומגלשות המים",
+            "חדרים לא נקיים — 3 ביקורות על שטיח מלוכלך, אורות שבורים, ניקיון כללי ירוד",
+            "אין שאטל לדיסני — 25 ד׳ הליכה או חניה בתשלום בפארק",
+          ],
+          reviewInsights: {
+            period: "אפריל 2026 – מאי 2026",
+            count: 50,
+            reviewerMix: "נתוני מוצא לא זמינים במדגם זה",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: ["ניקיון: 7.0", "נוחות: 7.5", "מיקום: 8.5", "מתקנים: 8.0", "שירות: 8.3", "ערך: 8.0"],
+            themes: [
+              "pos: מיקום · נגישות — 9 אזכורים",
+              "pos: שירות ידידותי — 8 אזכורים",
+              "pos: Water park / מגלשות — 7 אזכורים",
+              "pos: ניקיון — 7 אזכורים",
+              "neg: מיזוג/חום — 7 אזכורים",
+              "neg: מצב חדרים — 6 אזכורים",
+              "neg: ג׳וקים / ניקיון (חמור) — 3 אזכורים",
+            ],
+            quotes: [
+              "\"הגענו ובחניה היו ג׳וקים מיד. בבוקר הראשון בארוחת הבוקר ראינו ג׳וקים קטנים ליד המאפים. הבריכה ומגרש הכדורסל היו סגורים שבועיים.\" (מאי 2026)",
+              "\"אהבנו את המתקנים, המיקום ואיך שהחדרים היו נקיים.\" (מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "הגענו ובחניה היו ג׳וקים מיד עם ההגעה. בבוקר הראשון ראינו ג׳וקים קטנים ליד קייס המאפינס בארוחת הבוקר. בנוסף, הבריכה ומגרש הכדורסל היו סגורים שבועיים שלמים.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "הזמנו את הנכס בגלל מגלשות המים ובריכה — הגענו ונודע לנו פחות מ-24 שעות לפני צ׳ק-אין שהכל סגור. שיטות עסקיות מפוקפקות.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "אהבתי את האזור החיצוני לילדים! הצוות היה מקסים.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+          ],
+        },
+      ],
+    },
   };
 
   // ───── persistence ─────
@@ -2279,10 +2616,10 @@
   state.fav  = state.fav  || {};
   state.note = state.note || {};
   state.tab  = state.tab  || "west";
-  state.sort = state.sort || { bozeman: "score", west: "score", gardiner: "score", jackson: "score" };
-  ["bozeman","west","gardiner","jackson"].forEach(k => { if (!(k in state.sort)) state.sort[k] = "score"; });
-  state.favOnly = state.favOnly || { bozeman: false, west: false, gardiner: false, jackson: false };
-  ["bozeman","west","gardiner","jackson"].forEach(k => { if (!(k in state.favOnly)) state.favOnly[k] = false; });
+  state.sort = state.sort || { bozeman: "score", west: "score", gardiner: "score", jackson: "score", anaheim: "score" };
+  ["bozeman","west","gardiner","jackson","anaheim"].forEach(k => { if (!(k in state.sort)) state.sort[k] = "score"; });
+  state.favOnly = state.favOnly || { bozeman: false, west: false, gardiner: false, jackson: false, anaheim: false };
+  ["bozeman","west","gardiner","jackson","anaheim"].forEach(k => { if (!(k in state.favOnly)) state.favOnly[k] = false; });
   function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
 
   // ───── helpers ─────
