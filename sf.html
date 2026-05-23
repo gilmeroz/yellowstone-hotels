@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>San Francisco · Fisherman's Wharf · אוגוסט 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg:        #f4f1ea;
+    --bg-2:      #ebe6d8;
+    --paper:     #ffffff;
+    --ink:       #14181a;
+    --ink-2:     #2a3033;
+    --muted:     #6b7378;
+    --muted-2:   #9aa0a4;
+    --line:      #e6e1d3;
+    --line-2:    #ededed;
+    --brand:     #003b95;
+    --brand-2:   #002766;
+    --brand-on:  #ffffff;
+    --gold:      #c08322;
+    --score:     #003b95;
+    --score-on:  #ffffff;
+    --good:      #1f7a3a;
+    --good-soft: #e2f0e1;
+    --rose:      #b03a2c;
+    --rose-soft: #fbe4dc;
+    --warn-soft: #fcecdc;
+    --warn:      #8a4b1f;
+    --tag:       #f1ece0;
+    --shadow:    0 1px 0 rgba(20,24,26,.04), 0 12px 28px -16px rgba(20,24,26,.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Heebo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  .app { max-width: 460px; margin: 0 auto; min-height: 100vh; background: var(--bg); position: relative; }
+  .en { direction: ltr; unicode-bidi: isolate; font-feature-settings: "ss01"; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #1a2530;
+  }
+  .hero img.bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(.92) contrast(.95) brightness(.82);
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.55) 100%);
+  }
+  .hero-content {
+    position: absolute; inset: 0;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    z-index: 2;
+  }
+  .crest {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .crest .dot { width: 5px; height: 5px; border-radius: 999px; background: #ffd87a; }
+  .hero h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -.012em;
+    line-height: 1.1;
+    text-shadow: 0 2px 14px rgba(0,0,0,.4);
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    padding: 4px 9px;
+    border-radius: 999px;
+    line-height: 1.4;
+  }
+  .hero-meta svg { width: 12px; height: 12px; opacity: .85; }
+
+  /* ─── ROUTE STRIP ─── */
+  .route {
+    margin: -28px 14px 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .route .leg { text-align: center; }
+  .route .leg .lbl { font-size: 10.5px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+  .route .leg .place { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 3px; }
+  .route .leg .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .route .arrow {
+    width: 32px; height: 32px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+  }
+  .route .arrow svg { width: 16px; height: 16px; transform: scaleX(-1); }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    padding: 18px 18px 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .section-title h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); }
+  .section-title .sub { font-size: 12px; color: var(--muted); }
+
+  /* ─── LOCATION HEADER ─── */
+  .loc-head { padding: 14px 14px 6px; }
+  .loc-head h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -.012em; }
+  .loc-head h2 .gold { color: var(--gold); font-size: 13px; font-weight: 700; margin-inline-start: 6px; letter-spacing: 0; vertical-align: 2px; }
+  .loc-head .blurb { margin: 6px 0 8px; font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+  .loc-head .stats { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+  .loc-head .stats b { color: var(--ink); font-weight: 700; }
+
+  /* ─── SORT BAR ─── */
+  .sort-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px 8px; font-size: 12.5px; }
+  .count { color: var(--muted); }
+  .count b { color: var(--ink); font-weight: 800; }
+  .sort { display: flex; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 3px; }
+  .sort button { -webkit-appearance: none; appearance: none; border: 0; background: transparent; font: inherit; font-size: 12px; font-weight: 700; color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 36px; }
+  .sort button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .sort button.fav-only[aria-pressed="true"] { background: #b8294a; }
+
+  /* ─── HOTEL CARD ─── */
+  .hotel { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; margin: 0 14px 14px; overflow: hidden; box-shadow: var(--shadow); }
+  .hotel.is-flag { border-color: #e1c0a4; }
+  .hotel.is-fav { box-shadow: 0 0 0 2px #b8294a, var(--shadow); }
+  .h-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #2a2a2a; }
+  .h-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .h-photo:active img { transform: scale(1.02); }
+  .h-chips { position: absolute; top: 10px; inset-inline-start: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,.95); color: var(--ink); backdrop-filter: blur(6px); box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+  .chip.gold  { background: #f6c64d; color: #4a3414; }
+  .chip.deal  { background: #1f7a3a; color: #fff; }
+  .chip.warn  { background: #d76243; color: #fff; }
+  .chip.reco  { background: var(--ink); color: #fff; }
+  .fav { position: absolute; top: 8px; inset-inline-end: 8px; width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer; background: rgba(255,255,255,.95); color: var(--muted); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.16); transition: color .2s, transform .12s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .fav:active { transform: scale(.92); }
+  .fav.is-on { color: #d12d50; }
+  .fav svg { width: 18px; height: 18px; }
+  .h-photo .gallery { position: absolute; bottom: 8px; inset-inline-end: 8px; background: rgba(20,24,26,.65); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; backdrop-filter: blur(4px); display: inline-flex; align-items: center; gap: 4px; }
+  .h-photo .gallery svg { width: 11px; height: 11px; }
+
+  .h-body { padding: 12px 14px 14px; }
+  .h-row1 { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: flex-start; }
+  .h-name { direction: ltr; text-align: start; font-family: "Heebo", sans-serif; font-size: 17px; font-weight: 700; color: var(--brand); line-height: 1.25; letter-spacing: -.005em; text-decoration: none; }
+  .h-name:hover { text-decoration: underline; }
+  .h-stars { display: inline-flex; gap: 1px; color: var(--gold); font-size: 11px; margin-inline-start: 6px; vertical-align: 2px; }
+  .h-class { font-size: 11px; color: var(--muted); direction: ltr; margin-top: 2px; }
+  .h-loc { margin-top: 4px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .h-loc svg { width: 12px; height: 12px; color: var(--brand); }
+  .h-loc a { color: var(--brand); text-decoration: none; font-weight: 600; }
+  .h-loc a:hover { text-decoration: underline; }
+  .h-score { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; text-align: end; }
+  .h-score-meta { font-size: 11px; color: var(--muted); line-height: 1.25; }
+  .h-score-meta b { color: var(--ink); font-weight: 800; display: block; font-size: 12.5px; }
+  .h-score-box { background: var(--score); color: var(--score-on); font-weight: 800; font-size: 14px; padding: 6px 8px; border-radius: 6px 6px 6px 1px; font-variant-numeric: tabular-nums; min-width: 36px; text-align: center; line-height: 1; }
+  .h-score-box.warn { background: #c75e3a; }
+  .h-score-box.exc { background: #00553f; }
+  .h-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .h-tag { font-size: 11.5px; padding: 3px 8px; background: var(--tag); color: var(--ink-2); border-radius: 6px; font-weight: 500; }
+
+  /* ─── DISTANCE ROW ─── */
+  .h-dist { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .h-dist-cell.parking-free .dc-val { color: var(--good); }
+  .h-dist-cell.parking-paid .dc-val { color: var(--warn); }
+  .h-dist-cell.parking-none .dc-val { color: var(--rose); }
+  .h-dist-cell.room-two .dc-val { color: var(--brand); }
+  .h-dist-cell { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 11.5px; line-height: 1.35; }
+  .h-dist-cell .dc-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .h-dist-cell .dc-val { font-size: 12px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .h-dist-cell .dc-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .h-dist-cell.shower-yes .dc-val { color: var(--good); }
+  .h-dist-cell.shower-no  .dc-val { color: var(--rose); }
+  .h-dist-cell.shower-shared .dc-val { color: var(--warn); }
+
+  .pcs { margin-top: 12px; display: grid; gap: 5px; }
+  .pcs .row { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+  .pcs .row .ic { flex: 0 0 16px; width: 16px; height: 16px; border-radius: 999px; display: flex; align-items: center; justify-content: center; margin-top: 3px; flex-shrink: 0; }
+  .pcs .row.pro .ic { background: var(--good-soft); color: var(--good); }
+  .pcs .row.con .ic { background: var(--rose-soft); color: var(--rose); }
+  .pcs .row .ic svg { width: 9px; height: 9px; stroke-width: 3.5; }
+  .pcs.collapsed .row.extra { display: none; }
+  .pcs-toggle { margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--brand); background: none; border: 0; padding: 8px 0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 36px; }
+
+  /* ─── TOP REVIEWS ─── */
+  .rv-section { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .rv-head { display: flex; align-items: center; gap: 7px; padding: 8px 12px; background: var(--bg-2); border-bottom: 1px solid var(--line); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+  .rv-head .rv-title { flex: 1; font-size: 12px; font-weight: 700; color: var(--ink-2); }
+  .rv-head .rv-chevron { width: 14px; height: 14px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+  .rv-section.is-open .rv-chevron { transform: rotate(90deg); }
+  .rv-list { padding: 0 12px 10px; }
+  .rv-card { padding: 10px 0; border-bottom: 1px solid var(--line-2); display: flex; flex-direction: column; gap: 5px; }
+  .rv-card:last-child { border-bottom: 0; }
+  .rv-card.rv-hidden { display: none; }
+  .rv-card-meta { display: flex; align-items: center; gap: 6px; }
+  .rv-type { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 20px; color: var(--muted); background: var(--tag); }
+  .rv-card[data-sentiment="pos"] .rv-type { background: var(--good-soft); color: var(--good); }
+  .rv-card[data-sentiment="neg"] .rv-type { background: var(--rose-soft); color: var(--rose); }
+  .rv-date { font-size: 11px; color: var(--muted-2); }
+  .rv-text { font-size: 13px; line-height: 1.6; color: var(--ink-2); padding-right: 4px; border-right: 2.5px solid var(--line); }
+  .rv-card[data-sentiment="pos"] .rv-text { border-color: var(--good); }
+  .rv-card[data-sentiment="neg"] .rv-text { border-color: var(--rose); }
+  .rv-show-more { font-size: 12px; font-weight: 700; color: var(--brand); background: none; border: 0; padding: 8px 0 2px; cursor: pointer; -webkit-tap-highlight-color: transparent; display: block; width: 100%; text-align: right; min-height: 34px; }
+
+  /* ─── REVIEW INSIGHTS ─── */
+  .ri { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 13px; }
+  .ri-head { display: flex; align-items: center; gap: 7px; padding: 8px 12px; background: var(--bg-2); border-bottom: 1px solid var(--line); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+  .ri-head .ri-title { flex: 1; font-size: 12px; font-weight: 700; color: var(--ink-2); letter-spacing: .01em; }
+  .ri-head .ri-meta { font-size: 11px; color: var(--muted); }
+  .ri-head .ri-chevron { width: 14px; height: 14px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+  .ri.is-open .ri-chevron { transform: rotate(90deg); }
+  .ri-body { display: none; padding: 10px 12px; flex-direction: column; gap: 10px; }
+  .ri.is-open .ri-body { display: flex; }
+  .ri-trend { font-size: 12px; font-weight: 600; padding: 5px 9px; border-radius: 6px; background: var(--good-soft); color: var(--good); }
+  .ri-trend.warn { background: var(--warn-soft); color: var(--warn); }
+  .ri-trend.neutral { background: var(--tag); color: var(--muted); }
+  .ri-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+  .ri-cat { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .ri-cat-lbl { color: var(--muted); flex: 0 0 50px; }
+  .ri-cat-bar-wrap { flex: 1; height: 4px; background: var(--line); border-radius: 2px; }
+  .ri-cat-bar { height: 4px; border-radius: 2px; background: var(--brand); }
+  .ri-cat-val { color: var(--ink-2); font-weight: 600; flex: 0 0 26px; text-align: left; }
+  .ri-themes { display: flex; flex-direction: column; gap: 4px; }
+  .ri-theme { display: flex; align-items: baseline; gap: 6px; font-size: 12.5px; line-height: 1.4; }
+  .ri-theme .ti { flex-shrink: 0; font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 5px; }
+  .ri-theme .ti.pos { background: var(--good-soft); color: var(--good); }
+  .ri-theme .ti.neg { background: var(--rose-soft); color: var(--rose); }
+  .ri-theme .tc { color: var(--ink-2); }
+  .ri-mix { font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+  .ri-quotes { display: flex; flex-direction: column; gap: 7px; }
+  .ri-quote { font-size: 12.5px; line-height: 1.55; color: var(--ink-2); padding: 7px 10px; background: var(--bg); border-right: 3px solid var(--brand); border-radius: 0 6px 6px 0; }
+
+  .h-foot { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .h-foot .price-meta { font-size: 11px; color: var(--muted); }
+  .h-foot .price { font-size: 22px; font-weight: 800; color: var(--ink); line-height: 1.1; font-variant-numeric: tabular-nums; margin-top: 2px; letter-spacing: -.01em; }
+  .h-foot .price-sub { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .actions { display: flex; gap: 6px; }
+  .btn { -webkit-appearance: none; appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 700; border-radius: 8px; padding: 10px 14px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; line-height: 1; transition: background .2s, transform .12s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 44px; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--brand); color: var(--brand-on); }
+  .btn-primary:hover { background: var(--brand-2); }
+  .btn-icon { background: var(--paper); color: var(--muted); border: 1px solid var(--line); width: 38px; padding: 10px; justify-content: center; }
+  .btn-icon.is-open { background: var(--bg-2); color: var(--ink); }
+  .btn svg { width: 13px; height: 13px; }
+
+  .notes { display: none; }
+  .notes.is-open { display: block; margin-top: 10px; }
+  .notes textarea { width: 100%; min-height: 84px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: inherit; font-size: 14px; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  .notes textarea:focus { outline: 2px solid var(--brand); outline-offset: -1px; background: #fff; }
+  .notes .hint { font-size: 11px; color: var(--muted); margin-top: 6px; display: flex; gap: 5px; align-items: center; }
+  .notes .ok { color: var(--good); font-weight: 700; }
+
+  .reco { margin: 0 14px 14px; padding: 11px 13px; background: linear-gradient(180deg, #fff8e6 0%, #fdeec3 100%); border: 1px solid #efd99a; border-radius: 12px; color: #5a3f10; display: flex; align-items: center; gap: 10px; font-size: 12.5px; line-height: 1.4; }
+  .reco svg { width: 18px; height: 18px; flex-shrink: 0; color: #c08322; }
+  .reco b { font-weight: 800; }
+
+  .sort-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px 8px; font-size: 12.5px; }
+
+  /* ─── SUMMARY ─── */
+  .summary { margin: 16px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+  .summary h3 { margin: 0 0 8px; font-size: 15px; font-weight: 800; color: var(--ink); }
+  .summary p { margin: 0 0 14px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .summary .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .summary .n { background: var(--bg); border-radius: 10px; padding: 10px; }
+  .summary .n .lbl { font-size: 10.5px; letter-spacing: .1em; opacity: .65; font-weight: 700; text-transform: uppercase; }
+  .summary .n .val { font-size: 15px; font-weight: 800; margin-top: 3px; }
+
+  .footnote { padding: 6px 18px 24px; font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .tail { height: 40px; }
+
+  /* panel always active — no tabs in single-destination view */
+  .panel { display: none; }
+  .panel.is-active { display: block; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ─── HERO ─── -->
+  <div class="hero">
+    <img class="bg" src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=920&q=75&auto=format&fit=crop" alt="Golden Gate Bridge, San Francisco">
+    <div class="hero-content">
+      <div class="crest">
+        <div class="dot"></div>
+        <span>VACATION 2026 · WEST COAST</span>
+      </div>
+      <div>
+        <h1>San Francisco</h1>
+        <div class="hero-meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            5.8 · לילה אחד
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Fisherman's Wharf
+          </span>
+          <span>5 מלונות להשוואה</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ROUTE STRIP ─── -->
+  <div class="route">
+    <div class="leg">
+      <div class="lbl">הגעה</div>
+      <div class="place en">SFO</div>
+      <div class="when">5.8 · בוקר</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="leg">
+      <div class="lbl">לינה</div>
+      <div class="place">פישרמנס וורף</div>
+      <div class="when">1 לילה</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="leg">
+      <div class="lbl">יציאה</div>
+      <div class="place en">Route 1</div>
+      <div class="when">6.8 · בוקר</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION TITLE ─── -->
+  <div class="section-title" style="margin-top:16px;">
+    <h2>בחירת המלון</h2>
+    <span class="sub">5 אפשרויות · לילה אחד</span>
+  </div>
+
+  <main id="panels"></main>
+
+  <!-- ─── SUMMARY ─── -->
+  <div class="summary">
+    <h3>סן פרנסיסקו · לילה אחד · 5–6 באוגוסט</h3>
+    <p>
+      <strong>5/8 · הגעה מ-SFO</strong> — צ'ק-אין Fisherman's Wharf, ערב ב-Pier 39. <br>
+      <strong>6/8 · יציאה לדרך</strong> — ארוחת בוקר, איסוף הרכב, התחלת Route 1 דרומה.
+    </p>
+    <div class="nums">
+      <div class="n"><div class="lbl">תאריכים</div><div class="val">5–6 אוג׳</div></div>
+      <div class="n"><div class="lbl">אורחים</div><div class="val">5 אנשים</div></div>
+      <div class="n"><div class="lbl">חדרים</div><div class="val">2 חדרים</div></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <b>איך לקרוא את זה:</b> כל מלון מציג מחיר ללילה אחד, דירוג Booking.com מתוך 10, ומשוב אמיתי מאורחים מ-2025–2026. לוחצים על הלב לסימון מועדפים, ועל ההערה להוספת מחשבות. הבחירה נשמרת אוטומטית. כפתור <b>להזמנה</b> מוביל לדף Booking.com עם תאריכים ומספר אורחים מוכנסים.
+  </div>
+
+  <div class="tail"></div>
+</div>
+
+<script>
+  // ───── photo IDs (Unsplash) ─────
+  const PHOTOS = {
+    "argonaut-hotel":               "1502082553048-f009c37129b9",
+    "fairmont-heritage-ghirardelli":"1611892440504-42a792e24d32",
+    "riu-plaza-fishermans-wharf":   "1611892440504-42a792e24d32",
+    "hotel-zephyr-sf":              "1502082553048-f009c37129b9",
+    "courtyard-fishermans-wharf":   "1566073771259-6a8506099945",
+  };
+  const photoUrl = (id) => `https://images.unsplash.com/photo-${id}?w=720&q=70&auto=format&fit=crop`;
+
+  // ───── data ─────
+  const LOCATIONS = {
+    sf: {
+      name: "San Francisco",
+      sub: "California · Fisherman's Wharf",
+      blurb: "פישרמנס וורף הוא לב התיירות של סן פרנסיסקו — שכונת הנמל הסואנת עם פיר 39, מסעדות שרימפס וסרטנים טריים, ג׳קוזי ים ותצפית על האריות. לינה כאן מאפשרת להיכנס מיד לאווירת העיר לאחר הנחיתה מ-SFO, לפני יציאה למסע Route 1 בבוקר שלמחרת.",
+      nights: 1,
+      nightsLbl: "לילה אחד",
+      stats: [
+        { lbl: "לגולדן גייט", val: "~10–15 ד׳ נסיעה" },
+        { lbl: "לפיר 39", val: "הליכה · 5–10 ד׳" },
+        { lbl: "אופי", val: "תיירותי · על קו המים" },
+      ],
+      hotels: [
+        {
+          id: "riu-plaza-fishermans-wharf", reco: true,
+          name: "Riu Plaza Fisherman's Wharf",
+          stars: 4, classText: "4★ מלון עירוני · 11,571 ביקורות",
+          score: 8.4, scoreText: "טוב מאוד", reviews: "11,571 ביקורות",
+          total: 749, nightly: 749,
+          distTown: "10 ד׳ הליכה לפיר 39",
+          shower: "yes",
+          parking: "$62.50 ללילה · חניון",
+          roomConfig: "2 חדרים סטנדרטיים · 2 אורחים בכל חדר",
+          distPlaces: [
+            "Pier 39: 0.9 ק״מ · 10 ד׳ הליכה",
+            "Golden Gate Bridge: 4.2 ק״מ · 12 ד׳ נסיעה",
+            "Alcatraz Ferry (Pier 33): 1.1 ק״מ · 13 ד׳ הליכה",
+          ],
+          loc: "2500 Mason Street · פישרמנס וורף",
+          tags: [
+            "בריכה מחוממת כל השנה",
+            "מסעדת בוקר איכותית במקום",
+            "מיקום מושלם — הליכה לפיר 39",
+            "צוות ידידותי ומסייע",
+            "11,571 ביקורות — אמינות גבוהה",
+          ],
+          chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"בריכה מחוממת", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/riu-plaza-fishermans-wharf.html?checkin=2026-08-05&checkout=2026-08-06&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום יוצא דופן — הליכה קצרה לפיר 39 ולכל אטרקציות הוורף — 19 אזכורים",
+            "ארוחת בוקר מצוינת עם מגוון רחב (בתשלום, בנפרד) — 13 אזכורים",
+            "צוות ידידותי ומסייע — 11 אזכורים; ציון שירות 8.9",
+            "חדרים נקיים ומסודרים — 6–8 אזכורים; ציון ניקיון 8.6",
+            "בריכה מחוממת כל השנה — יתרון משמעותי עם ילדים — 2 אזכורים",
+          ],
+          cons: [
+            "רעש — מזגן חלונות רועש, רעש מקומה עליונה ומחדרים סמוכים — 9 אזכורים",
+            "חדרי אמבטיה קטנים — 4 אזכורים",
+            "חניה יקרה — $62.50 ללילה — 3 אזכורים",
+            "חלונות שאינם נפתחים — אין אוורור טבעי — 2 אזכורים",
+          ],
+          reviewInsights: {
+            period: "מאי 2025 – מאי 2026",
+            count: 50,
+            reviewerMix: "תיירים בינלאומיים — ארה״ב, אירופה, ישראל, דרום אמריקה",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 8.6", "נוחות: 8.3", "מיקום: 9.2",
+              "מתקנים: 7.9", "שירות: 8.9", "ערך: 7.8",
+            ],
+            themes: [
+              "pos: מיקום מצוין קרוב לפיר 39 — 19 אזכורים",
+              "pos: ארוחת בוקר איכותית ומגוונת — 13 אזכורים",
+              "pos: צוות ידידותי ומסייע — 11 אזכורים",
+              "pos: חדרים נקיים ומסודרים — 6 אזכורים",
+              "neg: רעש (מזגן/קומה עליונה) — 9 אזכורים",
+              "neg: חדרי אמבטיה קטנים — 4 אזכורים",
+              "neg: חניה יקרה — 3 אזכורים",
+            ],
+            quotes: [
+              "\"המיקום לפישרמנס וורף היה מושלם. יכולנו ללכת לכל מקום. הצוות ידידותי מאוד. ארוחת הבוקר הייתה מאורגנת יוצאי דופן.\" (ביקור משפחתי, מאי 2026)",
+              "\"מקום פנטסטי. בריכה נהדרת. צוות נחמד ותחושת מבוך שהבת שלי אהבה.\" (משפחה, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "המיקום לפישרמנס וורף היה מושלם — הלכנו לכל מקום ברגל. הצוות היה ידידותי ומסייע. ארוחת הבוקר הייתה מאורגנת מצוין, לעולם לא הייתה המתנה.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "החדר שלנו היה נקי, המיקום מושלם, הצוות מסייע וידידותי. ארוחת בוקר עם מגוון רחב. השהייה הייתה נעימה מאוד.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מקום נהדר, בריכה מעולה, צוות נחמד ותחושת מבוך שהבת שלי מאוד אהבה.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מלון במיקום נהדר עם ארוחת בוקר יוצאת דופן וצוות מצוין — אבל רמת החדרים כמו מלון תקציבי במחיר גבוה.", type: "נוסע", date: "מאי 2026", sentiment: "mixed" },
+          ],
+        },
+        {
+          id: "argonaut-hotel", reco: false,
+          name: "Argonaut Hotel, a Noble House Hotel",
+          stars: 4, classText: "4★ בוטיק · 1,724 ביקורות",
+          score: 8.6, scoreText: "מצוין", reviews: "1,724 ביקורות",
+          total: 862, nightly: 862,
+          distTown: "6 ד׳ הליכה לפיר 39",
+          shower: "yes",
+          parking: "$75 ללילה + מע״מ · ואלה עם כניסה/יציאה חופשית",
+          roomConfig: "סוויטות וחדרים מחוברים לפי בקשה · מיטה מתגלגלת $20–30",
+          distPlaces: [
+            "Pier 39: 0.5 ק״מ · 6 ד׳ הליכה",
+            "Golden Gate Bridge: 4.8 ק״מ · 15 ד׳ נסיעה",
+            "Alcatraz Ferry (Pier 33): 0.8 ק״מ · 10 ד׳ הליכה",
+          ],
+          loc: "495 Jefferson Street · לב פישרמנס וורף, מול הים",
+          tags: [
+            "מיקום מעולה — לב פישרמנס וורף",
+            "מלון בוטיק היסטורי — בניין מחסן 1908",
+            "חדרים חודשו ב-2025",
+            "השכרת אופניים חינמית לאורחים",
+            "מסעדת Blue Mermaid במקום",
+          ],
+          chips: [{t:"שופץ 2025", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/argonaut-sf.html?checkin=2026-08-05&checkout=2026-08-06&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום יוצא דופן — 10 אזכורים; ציון מיקום 9.6",
+            "צוות אדיב ושירותי — 6 אזכורים; ציון צוות 9.1",
+            "ניקיון גבוה — 4 אזכורים; ציון ניקיון 9.1",
+            "חדרים מרווחים ונוחים לאחר שיפוץ 2025 — 3 אזכורים; ציון נוחות 9.2",
+          ],
+          cons: [
+            "חניה יקרה — ואלה $75+ ללילה; 3 אזכורים",
+            "ערך לכסף נמוך — ציון 7.8; מחיר גבוה ביחס לשירות",
+            "אין קומקום/קפה חינמי בחדר — 3 ביקורות",
+            "בעיות שירות ספורדיות — 2 ביקורות",
+          ],
+          reviewInsights: {
+            period: "אפריל–מאי 2026",
+            count: 30,
+            reviewerMix: "מגוון בינלאומי — 27% אנגלית, 10% גרמנית, 7% ספרדית, אחרות",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע (ממוצע 8.70)",
+            categoryScores: [
+              "ניקיון: 9.1", "נוחות: 9.2", "מיקום: 9.6",
+              "מתקנים: 8.7", "שירות: 9.1", "ערך: 7.8",
+            ],
+            themes: [
+              "pos: מיקום מרכזי בפישרמנס וורף — 10 אזכורים",
+              "pos: צוות מסייע ואדיב — 6 אזכורים",
+              "pos: ניקיון וחדרים מטופחים — 4 אזכורים",
+              "neg: עלות חניה ואלה גבוהה — 3 אזכורים",
+              "neg: מחיר כולל גבוה / ערך לכסף — 3 אזכורים",
+              "neg: חוסר קומקום/קפה חינמי בחדר — 3 אזכורים",
+            ],
+            quotes: [
+              "\"המיקום מצוין — הליכה קצרה לפישרמנס וורף ופיר 39. המון אטרקציות בסביבה. הצוות נחמד מאוד.\" (גרמנית, מאי 2026)",
+              "\"אין קומקום ואין תה/קפה/סוכר חינמי בחדר — חסרון בולט למחיר הזה.\" (אנגלית, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "מיקום ואנשי הצוות מעולים. החדרים חודשו לאחרונה והמלון שמר על האופי הבוטיקי שלו. חסר רק קומקום ומוצרי קפה חינמיים בחדר.", type: "נסיעה כללית", date: "מאי 2026", sentiment: "pos" },
+            { text: "שהינו נהדר! מרחק הליכה ממקומות רבים. אהבנו מאוד את האווירה ואת הצוות.", type: "נסיעה כללית", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום מצוין בנמל, נוח לסיור בעיר. עלות החניה גבוהה מאוד — כדאי להיערך.", type: "נסיעה כללית", date: "מאי 2026", sentiment: "mixed" },
+            { text: "שירות מעולה, מתקן נקי, מסעדה טובה, קפה נהדר!", type: "נסיעה כללית", date: "מאי 2026", sentiment: "pos" },
+          ],
+        },
+        {
+          id: "courtyard-fishermans-wharf", reco: false,
+          name: "Courtyard by Marriott Fishermans Wharf",
+          stars: 4, classText: "4★ רשת מריוט · 485 ביקורות",
+          score: 8.4, scoreText: "טוב מאוד", reviews: "485 ביקורות",
+          total: 536, nightly: 536,
+          distTown: "10 ד׳ הליכה לפיר 39",
+          shower: "yes",
+          parking: "$80 ללילה · ואלה (חניון נפרד)",
+          roomConfig: "2 חדרים סטנדרטיים · ספה נפתחת זמינה (פחות נוחה)",
+          distPlaces: [
+            "Pier 39: 0.8 ק״מ · 10 ד׳ הליכה",
+            "Golden Gate Bridge: 4.5 ק״מ · 12 ד׳ נסיעה",
+            "Alcatraz Ferry (Pier 33): 0.5 ק״מ · 6 ד׳ הליכה",
+          ],
+          loc: "580 Beach Street · פישרמנס וורף",
+          tags: [
+            "מיקום מנצח בפישרמנס וורף",
+            "חדרים נקיים ומרווחים",
+            "הליכה לפיר 39 וגירארדלי",
+            "מגמה חיובית — שיפור אחרון",
+            "ללא בריכה",
+          ],
+          chips: [{t:"מגמה חיובית", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/courtyard-fishermans-wharf.html?checkin=2026-08-05&checkout=2026-08-06&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום מנצח — 20/50 ביקורות מציינות את המיקום; ציון מיקום 9.5",
+            "חדרים נקיים ומרווחים — 10 אזכורים; סטנדרט מריוט אמין",
+            "קרוב לפיר 39, גירארדלי ואלקטרז — 10 אזכורים",
+            "צוות ידידותי ומקצועי — 6 אזכורים",
+            "מיטות נוחות, חדרים פנימיים שקטים — 6 אזכורים",
+          ],
+          cons: [
+            "רעש מהרחוב בלילה — 4 אזכורים; חדרים לכיוון הרחוב חשופים",
+            "שיפוצים פעילים — 4 אזכורים (קומה 2 סגורה, ינואר 2026)",
+            "שירות קבלה — 3 תלונות על טעויות בהזמנה",
+            "ארוחת בוקר לא כלולה — 3 אזכורים",
+            "חניה יקרה — ואלה $80 ללילה",
+          ],
+          reviewInsights: {
+            period: "ספטמבר 2025 – מאי 2026",
+            count: 50,
+            reviewerMix: "~42% אנגלית, ~16% גרמנית/צרפתית/ספרדית/יפנית/קוריאנית, ~42% קצרות ללא טקסט",
+            trend: "מגמה חיובית — ממוצע 3 חודשים אחרונים 8.68 לעומת 8.19 קודם",
+            categoryScores: [
+              "ניקיון: 8.5", "נוחות: 8.2", "מיקום: 9.5",
+              "מתקנים: 7.8", "שירות: 8.1", "ערך: 7.6",
+            ],
+            themes: [
+              "pos: מיקום מנצח לטיול ברגל — 20 אזכורים",
+              "pos: חדרים נקיים ומרווחים — 10 אזכורים",
+              "pos: קרוב לפיר 39 וגירארדלי — 10 אזכורים",
+              "pos: צוות אדיב ומקצועי — 6 אזכורים",
+              "neg: רעש מהרחוב בלילה — 4 אזכורים",
+              "neg: שיפוצים פעילים — 4 אזכורים",
+              "neg: שירות קבלה בעייתי במקרים בודדים — 3 אזכורים",
+            ],
+            quotes: [
+              "\"המלון ממוקם מושלם — הכל נגיש ברגל, החדר מרווח ונקי, המיטה נוחה במיוחד.\" (אנגלית, אפריל 2026)",
+              "\"מיקום מצוין לביקור בסן פרנסיסקו. חדרים מרווחים ונקיים, צוות מקצועי מאוד.\" (צרפתית, אוקטובר 2025)",
+            ],
+          },
+          topReviews: [
+            { text: "המיקום מושלם לחקירת האזור. ביקשנו חדר שקט — קיבלנו קומה 4 לכיוון החצר, גדול ושקט מאוד.", type: "אורח", date: "אפריל 2026", sentiment: "pos" },
+            { text: "המלון ממוקם מצוין — קרוב לפיר 39, גירארדלי סקוור ואטרקציות. החדר מרווח ונוח.", type: "אורח", date: "ינואר 2026", sentiment: "pos" },
+            { text: "מיקום טוב, ניקיון תקין. אבל החנייה של $80 ללילה יקרה בצורה מופרזת, ובלילה יש רעש מהרחוב.", type: "אורח", date: "נובמבר 2025", sentiment: "mixed" },
+            { text: "הגעתי עם אישור הזמנה בידי, אך הצוות התעקש שאין לי הזמנה. לאחר 40 דקות מצאו את הטעות. חוויה מתסכלת.", type: "אורח", date: "מרץ 2026", sentiment: "neg" },
+            { text: "קרוב לפישרמנס וורף ולאטרקציות. בסוף שבוע יש רעש מרכבים עד אמצע הלילה — בימות חול שקט.", type: "אורח", date: "ספטמבר 2025", sentiment: "mixed" },
+          ],
+        },
+        {
+          id: "hotel-zephyr-sf", reco: false,
+          name: "Hotel Zephyr San Francisco",
+          stars: 4, classText: "4★ בוטיק נאוטי · 6,624 ביקורות",
+          score: 8.2, scoreText: "טוב מאוד", reviews: "6,624 ביקורות",
+          total: 600, nightly: 600,
+          distTown: "6 ד׳ הליכה לפיר 39",
+          shower: "yes",
+          parking: "$65 ללילה · חניון",
+          roomConfig: "2 חדרים נפרדים · נוף למפרץ · ללא חדרים מחוברים",
+          distPlaces: [
+            "Pier 39: 0.5 ק״מ · 6 ד׳ הליכה",
+            "Golden Gate Bridge: 5 ק״מ · 15 ד׳ נסיעה",
+            "Alcatraz Ferry (Pier 33): 0.8 ק״מ · 10 ד׳ הליכה",
+          ],
+          loc: "250 Beach Street · ממש מול Pier 39",
+          tags: [
+            "מיקום מושלם — צעדים מ-Pier 39",
+            "עיצוב בוטיק נאוטי ייחודי",
+            "חצר עם אש מדורה וסמורס",
+            "נוף למפרץ ולאלקטרז",
+            "גיים רום + מגרש משחקים לילדים",
+          ],
+          chips: [{t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/zephyr-san-francisco.html?checkin=2026-08-05&checkout=2026-08-06&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום יוצא דופן — ממש ליד Pier 39 — 24 אזכורים; ציון מיקום 9.5",
+            "צוות ידידותי ומסייע מאוד — 11 אזכורים",
+            "חדרים נקיים ומרווחים, מיטות נוחות — 7 אזכורים",
+            "חצר חיצונית עם אש מדורה וסמורס — 7 אזכורים; אטרקציה לילדים",
+            "נוף מרהיב למפרץ ואלקטרז — 3 אזכורים",
+          ],
+          cons: [
+            "בלאי ניכר בריהוט — 5 אזכורים; אינו תואם מחיר 4★",
+            "אין מסעדה בתוך המלון — 6 אזכורים",
+            "חניה יקרה מאוד — $65+ ללילה — 4 אזכורים",
+            "רעש מהחצר ומחדרים סמוכים בלילה — 3 אזכורים",
+          ],
+          reviewInsights: {
+            period: "מאי 2025 – מאי 2026",
+            count: 50,
+            reviewerMix: "58% אנגלית · 16% גרמנית · 12% ספרדית · 8% צרפתית · 6% אחרות",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 8.0", "נוחות: 8.2", "מיקום: 9.5",
+              "מתקנים: 8.0", "שירות: 8.3", "ערך: 7.8",
+            ],
+            themes: [
+              "pos: מיקום מצוין — Pier 39 בצעידה — 24 אזכורים",
+              "pos: צוות ידידותי ומסייע — 11 אזכורים",
+              "pos: חדרים נקיים ומרווחים — 7 אזכורים",
+              "pos: חצר עם אש מדורה וסמורס — 7 אזכורים",
+              "neg: אין מסעדה / ארוחת בוקר לא כלולה — 6 אזכורים",
+              "neg: בלאי בחדרים וריהוט ישן — 5 אזכורים",
+              "neg: חניה יקרה ($65+/לילה) — 4 אזכורים",
+              "neg: רעש מהחצר — 3 אזכורים",
+            ],
+            quotes: [
+              "\"המלון מדהים! הצוות נפלא ומועיל ביותר! החדר ענק עם מקלחת נהדרת. המיקום מצוין, קרוב ל-Pier 39.\" (אנגלית, מאי 2026)",
+              "\"מיקום מושלם ליד Fisherman's Wharf, חצר פנימית גדולה לשבת בערב עם משקה וסמורס!\" (אנגלית, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "המלון פנטסטי — נוח, נקי, ממש על Fisherman's Wharf. נוף נהדר לחזית המים. הצוות מאוד ידידותי. יש חצר עם בורות אש — מומלץ.", type: "אורח", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום מדהים קרוב ל-Pier 39. צוות ידידותי. חניה זמינה אבל יקרה מאוד — $65 ללילה. אין מסעדה אבל יש הרבה ב-Pier 39.", type: "אורח", date: "מאי 2026", sentiment: "pos" },
+            { text: "ניקיון, מיטות נוחות, חדר מרווח. ערכת הסמורס — מגע נחמד. המיקום מצוין. המקלחת קצת ישנה ויש רעש מהחצר בלילה.", type: "אורח", date: "מאי 2026", sentiment: "pos" },
+            { text: "הריהוט בחדר במצב ממש לא טוב. ניקיון לוקה בחסר חלקית. המיקום קרוב ל-Pier 39 — יתרון, אבל החדר לא מתאים למחיר.", type: "אורח", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "fairmont-heritage-ghirardelli", reco: false,
+          name: "The Fairmont Heritage Place Ghirardelli Square",
+          stars: 5, classText: "5★ בוטיק יוקרה · 153 ביקורות",
+          score: 9.2, scoreText: "יוצא דופן", reviews: "153 ביקורות",
+          total: 1422, nightly: 1422,
+          distTown: "10 ד׳ הליכה לפיר 39",
+          shower: "yes",
+          parking: "ואלה בתשלום · מתאים לרכב גדול (SUV)",
+          roomConfig: "2 דירות עצמאיות · 2 ח״ש + 2 אמבטיות + מטבח מלא · אידיאלי למשפחות",
+          distPlaces: [
+            "Pier 39: 1.3 ק״מ · 10 ד׳ הליכה",
+            "Golden Gate Bridge: 4.5 ק״מ · 10 ד׳ נסיעה",
+            "Ghirardelli Square: צמוד · 2 ד׳ הליכה",
+          ],
+          loc: "900 North Point Square · Ghirardelli Square, על קו המים",
+          tags: [
+            "נוף ישיר למפרץ ואלקטרז",
+            "דירות 2 ח״ש עם מטבח מלא",
+            "צמוד ל-Ghirardelli Square",
+            "מושלם למשפחות גדולות",
+            "בניין היסטורי — תקרות גבוהות",
+          ],
+          chips: [{t:"דירוג גבוה", c:"deal"}],
+          url: "https://www.booking.com/hotel/us/the-fairmont-heritage-place-ghirardelli-square.html?checkin=2026-08-05&checkout=2026-08-06&no_rooms=2&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום יוצא דופן — Ghirardelli Square, הליכה לפישרמנס וורף ופיר 39 — 18 אזכורים",
+            "דירות מרווחות עם 2 ח״ש + מטבח — אידיאלי למשפחות — 8 אזכורים",
+            "צוות ידידותי ושירות קונסיירז׳ מצוין — 7 אזכורים",
+            "נוף מרהיב למפרץ ואלקטרז — 4 אזכורים",
+            "ואלה זמין לרכב גדול — 2 אזכורים",
+          ],
+          cons: [
+            "מחיר גבוה מאוד — מעל $1,000 ללילה; ציפיות שלא תמיד מתממשות — 4 אזכורים",
+            "ריהוט מיושן ובלוי חלקית — לא תואם 5 כוכבים ומחיר — 3 אזכורים",
+            "אין ארוחת בוקר — מתפקד כדירות שירות — 2 אזכורים",
+            "חדרים בקומת הקרקע — פרטיות מוגבלת — 1 אזכור",
+          ],
+          reviewInsights: {
+            period: "מאי 2025 – מאי 2026",
+            count: 37,
+            reviewerMix: "46% אנגלית, 38% שפות אחרות (רוסית, הולנדית, גרמנית, צרפתית, פיליפינית), 16% לא ידוע",
+            trend: "מגמה חיובית — שיפור ניכר בחודשים האחרונים",
+            categoryScores: [
+              "ניקיון: 8.8", "נוחות: 9.1", "מיקום: 9.8",
+              "מתקנים: 8.5", "שירות: 8.9", "ערך: 7.8",
+            ],
+            themes: [
+              "pos: מיקום מעולה — Ghirardelli Square, הליכה לפיר 39 — 18 אזכורים",
+              "pos: דירות מרווחות עם מטבח למשפחות — 8 אזכורים",
+              "pos: צוות ידידותי, קונסיירז׳ מצוין — 7 אזכורים",
+              "pos: נוף מרהיב למפרץ ואלקטרז — 4 אזכורים",
+              "neg: מחיר גבוה, ציפיות לא מתממשות — 4 אזכורים",
+              "neg: ריהוט מיושן, לא תואם 5 כוכבים — 3 אזכורים",
+              "neg: אין ארוחת בוקר — מתפקד כדירות שירות — 2 אזכורים",
+            ],
+            quotes: [
+              "\"הדירה עם נוף המפרץ המהמם מכל חדר הייתה חוויה בלתי נשכחת. הצוות מעולה, המיקום מושלם.\" (משפחה, מאי 2026)",
+              "\"כבר לא מה שהיה פעם — ריהוט מיושן ושרוט. בשביל $1,300 ללילה ציפיתי ליותר. המיקום — מעולה.\" (זוג, אפריל 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "הדירה עם הנוף למפרץ הייתה הדבר הכי טוב בחופשתנו. מיקום מעולה, צוות נהדר, חדר מרווח ומאובזר. שווה כל שקל גם אם יקר.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום פנטסטי — שלבי הליכה ממסעדות ומטיילת Fisherman's Wharf. נוף לאלקטרז! הצוות היה ידידותי והדירה גדולה ומאובזרת מעולה.", type: "משפחה", date: "אפריל 2026", sentiment: "pos" },
+            { text: "מקום מדהים למשפחה גדולה — דירה עם מטבח, הרבה מקום לכולם, תקרות גבוהות ואווירה ייחודית. ואלה לרכב גדול — מצוין.", type: "משפחה", date: "מרץ 2026", sentiment: "pos" },
+            { text: "כבר לא מה שהיה פעם — ריהוט מיושן ושרוט. בשביל $1,300 ללילה ציפיתי ליותר. המיקום והשטח — מעולים.", type: "זוג", date: "אפריל 2026", sentiment: "neg" },
+            { text: "אהבנו את היכולת לשהות ביחד בדירת 2 חדרי שינה ו-2 אמבטיות. המיקום מושלם. הכל היה מעולה עבורנו.", type: "קבוצה", date: "אוקטובר 2025", sentiment: "pos" },
+          ],
+        },
+      ],
+    },
+  };
+
+  // ───── persistence ─────
+  const STORE = "sf-2026-v1";
+  const state = JSON.parse(localStorage.getItem(STORE) || "{}");
+  state.fav  = state.fav  || {};
+  state.note = state.note || {};
+  state.tab  = state.tab  || "sf";
+  state.sort = state.sort || { sf: "score" };
+  if (!("sf" in state.sort)) state.sort.sf = "score";
+  state.favOnly = state.favOnly || { sf: false };
+  if (!("sf" in state.favOnly)) state.favOnly.sf = false;
+  function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
+
+  // ───── helpers ─────
+  function stars(n){ return "★".repeat(n) + "☆".repeat(5-n); }
+  const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  const xmark = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  const heart = (f) => f
+    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+  function scoreClass(s){ return s >= 9.0 ? "exc" : s < 8.5 ? "warn" : ""; }
+
+  // ───── render ─────
+  function renderPanels(){
+    const root = document.getElementById("panels");
+    root.innerHTML = "";
+    Object.entries(LOCATIONS).forEach(([key, loc]) => {
+      const sec = document.createElement("section");
+      sec.className = "panel" + (state.tab === key ? " is-active" : "");
+      sec.dataset.tab = key;
+      sec.innerHTML = renderLocation(key, loc);
+      root.appendChild(sec);
+    });
+    bindEvents();
+  }
+
+  function renderLocation(key, loc){
+    const sortMode = state.sort[key];
+    const favOnly = state.favOnly[key];
+    let hotels = [...loc.hotels];
+    if (favOnly) hotels = hotels.filter(h => state.fav[h.id]);
+    hotels.sort((a,b) => sortMode === "price" ? a.nightly - b.nightly : b.score - a.score);
+    const reco = loc.hotels.find(h => h.reco);
+    return `
+      <div class="loc-head">
+        <h2><span class="en">${loc.name}</span> <span class="gold">${loc.sub}</span></h2>
+        <p class="blurb">${loc.blurb}</p>
+        <div class="stats">
+          ${loc.stats.map(s => `<span><b>${s.val}</b> · ${s.lbl}</span>`).join("")}
+        </div>
+      </div>
+      ${reco ? `<div class="reco">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 6 1-4.5 4.5 1 6.5L12 17l-5.5 3 1-6.5L3 9l6-1z"/></svg>
+        <span><b>הבחירה כאן:</b> <span class="en">${reco.name}</span> — ניקוד ${reco.score}${reco.nightly != null ? ' ב־$'+reco.nightly+' ללילה' : ''}.</span>
+      </div>` : ""}
+      <div class="sort-bar">
+        <div class="count"><b>${hotels.length}</b> מלונות${favOnly ? " מסומנים" : ""} · ${loc.nightsLbl}</div>
+        <div class="sort">
+          <button data-sort="score" data-loc="${key}" aria-pressed="${sortMode==='score'}">דירוג</button>
+          <button data-sort="price" data-loc="${key}" aria-pressed="${sortMode==='price'}">מחיר</button>
+          <button class="fav-only" data-favonly="${key}" aria-pressed="${favOnly}">${heart(favOnly)}</button>
+        </div>
+      </div>
+      ${hotels.length === 0 ? `<div class="footnote" style="margin:0 14px 14px;">עדיין לא סימנת מלונות מועדפים.</div>` : ""}
+      ${hotels.map(h => renderHotel(h, loc.nightsLbl)).join("")}
+    `;
+  }
+
+  function renderTopReviews(hotelId, reviews) {
+    if (!reviews || reviews.length === 0) return "";
+    const cards = reviews.map((r, i) => {
+      const hidden = i >= 2 ? "rv-hidden" : "";
+      return `<div class="rv-card ${hidden}" data-sentiment="${r.sentiment || 'pos'}">
+        <div class="rv-card-meta">
+          <span class="rv-type">${r.type || ""}</span>
+          <span class="rv-date">${r.date || ""}</span>
+        </div>
+        <div class="rv-text">${r.text}</div>
+      </div>`;
+    }).join("");
+    const hidden = reviews.length - 2;
+    const moreBtn = hidden > 0 ? `<button class="rv-show-more" data-rv-more="${hotelId}">+ עוד ${hidden} ביקורות</button>` : "";
+    return `
+      <div class="rv-section" id="rv-${hotelId}">
+        <div class="rv-head" data-rv="${hotelId}">
+          <svg class="rv-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="rv-title">ביקורות אורחים · ${reviews.length} נבחרות</span>
+        </div>
+        <div class="rv-list">${cards}${moreBtn}</div>
+      </div>`;
+  }
+
+  function renderReviewInsights(hotelId, ri) {
+    const trendCls = ri.trend && ri.trend.startsWith("⚠") ? "warn" : ri.trend && ri.trend.includes("שיפור") ? "" : "neutral";
+    const catRows = (ri.categoryScores || []).map(s => {
+      const m = s.match(/^(.+):\s*([\d.]+)$/);
+      if (!m) return "";
+      const val = parseFloat(m[2]);
+      const pct = Math.round((val / 10) * 100);
+      return `<div class="ri-cat">
+        <span class="ri-cat-lbl">${m[1]}</span>
+        <span class="ri-cat-bar-wrap"><span class="ri-cat-bar" style="width:${pct}%"></span></span>
+        <span class="ri-cat-val">${val.toFixed(1)}</span>
+      </div>`;
+    }).join("");
+    const themeRows = (ri.themes || []).map(t => {
+      const isPos = t.startsWith("pos:");
+      const text = t.replace(/^(pos|neg):\s*/, "");
+      return `<div class="ri-theme"><span class="ti ${isPos ? 'pos' : 'neg'}">${isPos ? '+' : '−'}</span><span class="tc">${text}</span></div>`;
+    }).join("");
+    const quoteRows = (ri.quotes || []).map(q => `<div class="ri-quote">${q}</div>`).join("");
+    return `
+      <div class="ri" id="ri-${hotelId}">
+        <div class="ri-head" data-ri="${hotelId}">
+          <svg class="ri-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="ri-title">תובנות מ־${ri.count} ביקורות</span>
+          <span class="ri-meta">${ri.period || ""}</span>
+        </div>
+        <div class="ri-body">
+          ${ri.trend ? `<div class="ri-trend ${trendCls}">${ri.trend}</div>` : ""}
+          ${catRows ? `<div class="ri-cats">${catRows}</div>` : ""}
+          ${themeRows ? `<div class="ri-themes">${themeRows}</div>` : ""}
+          ${quoteRows ? `<div class="ri-quotes">${quoteRows}</div>` : ""}
+          ${ri.reviewerMix ? `<div class="ri-mix">${ri.reviewerMix}</div>` : ""}
+        </div>
+      </div>`;
+  }
+
+  function renderHotel(h, nightsLbl){
+    nightsLbl = nightsLbl || "ללילה";
+    const isFav = !!state.fav[h.id];
+    const note = state.note[h.id] || "";
+    const cls = (h.flag ? "is-flag " : "") + (isFav ? "is-fav " : "");
+    const allPros = h.pros.map((p,i) => `<div class="row pro ${i>=2?'extra':''}"><span class="ic">${check}</span><span>${p}</span></div>`).join("");
+    const allCons = h.cons.map((c,i) => `<div class="row con ${i>=1?'extra':''}"><span class="ic">${xmark}</span><span>${c}</span></div>`).join("");
+    const hasMore = (h.pros.length > 2) || (h.cons.length > 1);
+    return `
+      <article class="hotel ${cls}" id="hotel-${h.id}" data-id="${h.id}">
+        <div class="h-photo">
+          <img src="${photoUrl(PHOTOS[h.id])}" alt="" loading="lazy">
+          <div class="h-chips">
+            ${(h.chips||[]).map(c => `<span class="chip ${c.c||''}">${c.t}</span>`).join("")}
+          </div>
+          <button class="fav ${isFav?'is-on':''}" data-fav="${h.id}" aria-label="שמור">${heart(isFav)}</button>
+          <span class="gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 19l-6-6-9 6"/></svg>
+            תמונה
+          </span>
+        </div>
+        <div class="h-body">
+          <div class="h-row1">
+            <div>
+              <a class="h-name en" href="${h.url}" target="_blank" rel="noopener">${h.name}<span class="h-stars">${stars(h.stars)}</span></a>
+              <div class="h-class en">${h.classText}</div>
+              <div class="h-loc">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                ${h.loc}
+              </div>
+            </div>
+            <div class="h-score">
+              <div class="h-score-meta">
+                <b>${h.scoreText}</b>
+                ${h.reviews}
+              </div>
+              <div class="h-score-box ${scoreClass(h.score)}">${h.score.toFixed(1)}</div>
+            </div>
+          </div>
+          <div class="h-tags">
+            ${(h.tags||[]).map(t => `<span class="h-tag">${t}</span>`).join("")}
+          </div>
+          ${(h.distTown || h.shower || h.parking || h.roomConfig || (h.distPlaces && h.distPlaces.length)) ? `
+          <div class="h-dist">
+            ${h.distTown ? `<div class="h-dist-cell">
+              <div class="dc-lbl">לפיר 39</div>
+              <div class="dc-val">${h.distTown.split(" · ")[0]}</div>
+              <div class="dc-sub">${h.distTown.split(" · ")[1] || ""}</div>
+            </div>` : ""}
+            ${h.shower ? `<div class="h-dist-cell ${h.shower === 'yes' ? 'shower-yes' : 'shower-no'}">
+              <div class="dc-lbl">מקלחת</div>
+              <div class="dc-val">${h.shower === 'yes' ? '✓ פרטית' : '✗ אין'}</div>
+            </div>` : ""}
+            ${h.parking ? (()=>{
+              const cls = h.parking.startsWith("חינם") ? "parking-free" : h.parking === "אין" ? "parking-none" : "parking-paid";
+              const parts = h.parking.split(" · ");
+              return `<div class="h-dist-cell ${cls}">
+                <div class="dc-lbl">חניה</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${h.roomConfig ? (()=>{
+              const parts = h.roomConfig.split(" · ");
+              const isTwo = h.roomConfig.includes("2") || h.roomConfig.includes("שני");
+              return `<div class="h-dist-cell ${isTwo ? 'room-two' : ''}">
+                <div class="dc-lbl">חדרים</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${(h.distPlaces||[]).map(p => {
+              const m = p.match(/^(.+?):\s*(.+?)(?:\s*·\s*(.+))?$/);
+              if (!m) return "";
+              return `<div class="h-dist-cell">
+                <div class="dc-lbl">${m[1]}</div>
+                <div class="dc-val en">${m[2]}</div>
+                ${m[3] ? `<div class="dc-sub en">${m[3]}</div>` : ""}
+              </div>`;
+            }).join("")}
+          </div>` : ""}
+          <div class="pcs ${hasMore?'collapsed':''}" data-pcs="${h.id}">
+            ${allPros}
+            ${allCons}
+          </div>
+          ${hasMore ? `<button class="pcs-toggle" data-pcs-toggle="${h.id}">+ עוד ${h.pros.length + h.cons.length - 3} נקודות</button>` : ""}
+          ${h.topReviews && h.topReviews.length > 0 ? renderTopReviews(h.id, h.topReviews) : ""}
+          ${h.reviewInsights && h.reviewInsights.count > 0 ? renderReviewInsights(h.id, h.reviewInsights) : ""}
+          <div class="h-foot">
+            <div>
+              <div class="price-meta">סה״כ ל־${nightsLbl}</div>
+              <div class="price">${h.total != null ? '$'+h.total.toLocaleString() : 'בדוק Booking.com'}</div>
+              <div class="price-sub">${h.nightly != null ? '≈ $'+h.nightly+' ללילה · כולל מסים' : 'מחיר לא זמין — לחץ לבדיקה'}</div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-icon ${note?'is-open':''}" data-note-toggle="${h.id}" aria-label="הערה">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg>
+              </button>
+              <a class="btn btn-primary" href="${h.url}" target="_blank" rel="noopener">
+                להזמנה
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="notes ${note?'is-open':''}" data-note-panel="${h.id}">
+            <textarea data-note="${h.id}" placeholder="המחשבות שלך על המלון הזה…">${note.replace(/</g,'&lt;')}</textarea>
+            <div class="hint"><span class="ok">●</span> נשמר אוטומטית במכשיר שלך</div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // ───── events ─────
+  function bindEvents(){
+    document.querySelectorAll("[data-fav]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.preventDefault();
+        state.fav[b.dataset.fav] = !state.fav[b.dataset.fav];
+        save(); renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-note-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const id = b.dataset.noteToggle;
+        const panel = document.querySelector(`[data-note-panel="${id}"]`);
+        const open = panel.classList.toggle("is-open");
+        b.classList.toggle("is-open", open);
+        if (open) setTimeout(() => panel.querySelector("textarea").focus(), 100);
+      });
+    });
+    document.querySelectorAll("[data-note]").forEach(t => {
+      t.addEventListener("input", () => { state.note[t.dataset.note] = t.value; save(); });
+    });
+    document.querySelectorAll("[data-sort]").forEach(b => {
+      b.addEventListener("click", () => { state.sort[b.dataset.loc] = b.dataset.sort; save(); renderPanels(); });
+    });
+    document.querySelectorAll("[data-favonly]").forEach(b => {
+      b.addEventListener("click", () => {
+        const k = b.dataset.favonly;
+        state.favOnly[k] = !state.favOnly[k];
+        save(); renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-pcs-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const pcs = document.querySelector(`[data-pcs="${b.dataset.pcsToggle}"]`);
+        pcs.classList.remove("collapsed");
+        b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-rv]").forEach(h => {
+      h.addEventListener("click", () => document.getElementById(`rv-${h.dataset.rv}`).classList.toggle("is-open"));
+    });
+    document.querySelectorAll("[data-rv-more]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById(`rv-${b.dataset.rvMore}`).querySelectorAll(".rv-hidden").forEach(c => c.classList.remove("rv-hidden"));
+        b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-ri]").forEach(h => {
+      h.addEventListener("click", () => document.getElementById(`ri-${h.dataset.ri}`).classList.toggle("is-open"));
+    });
+  }
+
+  renderPanels();
+</script>
+</body>
+</html>
