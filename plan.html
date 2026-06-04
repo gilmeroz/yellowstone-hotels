@@ -684,29 +684,76 @@
 
 <section id="flights">
   <h2>✈️ טיסות</h2>
-  <div class="flight-section">
-    <div class="flight-card">
-      <h3>✅ נרכשו</h3>
-      <table>
-        <thead><tr><th>סטטוס</th><th>מסלול</th><th>מחיר</th></tr></thead>
-        <tbody>
-          <tr class="star-row"><td>✅ נרכש</td><td>TLV→LAX 5/8 · <strong>LY 5</strong> · Y53M72 / 8Y6E8U · 4 נפשות</td><td>₪11,535</td></tr>
-          <tr class="star-row"><td>✅ נרכש</td><td>LAX→SFO 5/8 · AA6277 · 09:37→11:14 · AIKSXY · 5 נפשות</td><td>₪2,418</td></tr>
-          <tr class="star-row"><td>✅ נרכש</td><td>LAS 19:24→LAX→TLV (עדי · 15/8)</td><td>₪5,863</td></tr>
-          <tr class="star-row"><td>✅ נרכש</td><td>JAC→DEN→לונדון · <strong>UA 2258</strong> · ISE59S · 21/8 · הגעה לונדון שבת 22/8</td><td>₪5,020</td></tr>
-          <tr class="star-row"><td>✅ נרכש</td><td><strong>STN</strong>→TLV (23/8) · 17:15→00:10+1 · 3J8A-XD2S · לונדון סטנסטד</td><td>₪5,725</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="flight-card" style="border-top:3px solid #27ae60;">
-      <h3 style="color:#27ae60;">✅ הוזמן — LAS→BZN (15/8) · CYU86I · ₪2,095</h3>
-      <table>
-        <thead><tr><th>תאריך</th><th>מסלול</th><th>נוסעים</th><th>מחיר</th></tr></thead>
-        <tbody>
-          <tr><td>15/8 אחרי 20:00</td><td>LAS → BZN</td><td>4 נפשות</td><td>₪2,095 · ✅ CYU86I</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;direction:rtl;text-align:right;">
+      <thead>
+        <tr style="background:#2c3e50;color:#fff;">
+          <th style="padding:10px 12px;white-space:nowrap;">תאריך</th>
+          <th style="padding:10px 12px;white-space:nowrap;">מסלול</th>
+          <th style="padding:10px 12px;white-space:nowrap;">מס׳ טיסה</th>
+          <th style="padding:10px 12px;white-space:nowrap;">אישור</th>
+          <th style="padding:10px 12px;white-space:nowrap;">נוסעים</th>
+          <th style="padding:10px 12px;white-space:nowrap;">מחיר</th>
+          <th style="padding:10px 12px;white-space:nowrap;">סטטוס</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#eafaf1;">
+          <td style="padding:9px 12px;white-space:nowrap;">5/8 00:10</td>
+          <td style="padding:9px 12px;white-space:nowrap;">TLV → LAX (El Al)</td>
+          <td style="padding:9px 12px;white-space:nowrap;font-weight:bold;">LY 5</td>
+          <td style="padding:9px 12px;white-space:nowrap;">Y53M72 / 8Y6E8U</td>
+          <td style="padding:9px 12px;white-space:nowrap;">4 נפשות</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪11,535</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 12px;white-space:nowrap;">5/8 09:37</td>
+          <td style="padding:9px 12px;white-space:nowrap;">LAX → SFO (American Eagle)</td>
+          <td style="padding:9px 12px;white-space:nowrap;font-weight:bold;">AA 6277</td>
+          <td style="padding:9px 12px;white-space:nowrap;">AIKSXY</td>
+          <td style="padding:9px 12px;white-space:nowrap;">5 נפשות</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪2,418</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+        <tr style="background:#eafaf1;">
+          <td style="padding:9px 12px;white-space:nowrap;">15/8 19:24</td>
+          <td style="padding:9px 12px;white-space:nowrap;">LAS → TLV (עדי — סולו)</td>
+          <td style="padding:9px 12px;white-space:nowrap;color:#888;">—</td>
+          <td style="padding:9px 12px;white-space:nowrap;color:#888;">—</td>
+          <td style="padding:9px 12px;white-space:nowrap;">עדי בלבד</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪5,863</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 12px;white-space:nowrap;">15/8 אחרי 20:00</td>
+          <td style="padding:9px 12px;white-space:nowrap;">LAS → BZN (Southwest)</td>
+          <td style="padding:9px 12px;white-space:nowrap;color:#888;">—</td>
+          <td style="padding:9px 12px;white-space:nowrap;">CYU86I</td>
+          <td style="padding:9px 12px;white-space:nowrap;">4 נפשות</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪2,095</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+        <tr style="background:#eafaf1;">
+          <td style="padding:9px 12px;white-space:nowrap;">21/8</td>
+          <td style="padding:9px 12px;white-space:nowrap;">JAC → DEN → לונדון (United)</td>
+          <td style="padding:9px 12px;white-space:nowrap;font-weight:bold;">UA 2258</td>
+          <td style="padding:9px 12px;white-space:nowrap;">ISE59S</td>
+          <td style="padding:9px 12px;white-space:nowrap;">4 נפשות</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪5,020</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 12px;white-space:nowrap;">23/8 17:15</td>
+          <td style="padding:9px 12px;white-space:nowrap;">STN → TLV (לונדון סטנסטד)</td>
+          <td style="padding:9px 12px;white-space:nowrap;color:#888;">—</td>
+          <td style="padding:9px 12px;white-space:nowrap;">3J8A-XD2S</td>
+          <td style="padding:9px 12px;white-space:nowrap;">4 נפשות</td>
+          <td style="padding:9px 12px;white-space:nowrap;">₪5,725</td>
+          <td style="padding:9px 12px;white-space:nowrap;">✅ נרכש</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
