@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monterey · Route 1 · אוגוסט 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg:        #f4f1ea;
+    --bg-2:      #ebe6d8;
+    --paper:     #ffffff;
+    --ink:       #14181a;
+    --ink-2:     #2a3033;
+    --muted:     #6b7378;
+    --muted-2:   #9aa0a4;
+    --line:      #e6e1d3;
+    --line-2:    #ededed;
+    --brand:     #003b95;
+    --brand-2:   #002766;
+    --brand-on:  #ffffff;
+    --gold:      #c08322;
+    --score:     #003b95;
+    --score-on:  #ffffff;
+    --good:      #1f7a3a;
+    --good-soft: #e2f0e1;
+    --rose:      #b03a2c;
+    --rose-soft: #fbe4dc;
+    --warn-soft: #fcecdc;
+    --warn:      #8a4b1f;
+    --tag:       #f1ece0;
+    --shadow:    0 1px 0 rgba(20,24,26,.04), 0 12px 28px -16px rgba(20,24,26,.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Heebo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  .app { max-width: 460px; margin: 0 auto; min-height: 100vh; background: var(--bg); position: relative; }
+  .en { direction: ltr; unicode-bidi: isolate; font-feature-settings: "ss01"; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #1a2530;
+  }
+  .hero img.bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(.92) contrast(.95) brightness(.82);
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.55) 100%);
+  }
+  .hero-content {
+    position: absolute; inset: 0;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    z-index: 2;
+  }
+  .crest {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .crest .dot { width: 5px; height: 5px; border-radius: 999px; background: #ffd87a; }
+  .hero h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -.012em;
+    line-height: 1.1;
+    text-shadow: 0 2px 14px rgba(0,0,0,.4);
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    padding: 4px 9px;
+    border-radius: 999px;
+    line-height: 1.4;
+  }
+  .hero-meta svg { width: 12px; height: 12px; opacity: .85; }
+
+  /* ─── ROUTE STRIP ─── */
+  .route {
+    margin: -28px 14px 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .route .leg { text-align: center; }
+  .route .leg .lbl { font-size: 10.5px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+  .route .leg .place { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 3px; }
+  .route .leg .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .route .arrow {
+    width: 32px; height: 32px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+  }
+  .route .arrow svg { width: 16px; height: 16px; transform: scaleX(-1); }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    padding: 18px 18px 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .section-title h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); }
+  .section-title .sub { font-size: 12px; color: var(--muted); }
+
+  /* ─── LOCATION HEADER ─── */
+  .loc-head { padding: 14px 14px 6px; }
+  .loc-head h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -.012em; }
+  .loc-head h2 .gold { color: var(--gold); font-size: 13px; font-weight: 700; margin-inline-start: 6px; letter-spacing: 0; vertical-align: 2px; }
+  .loc-head .blurb { margin: 6px 0 8px; font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+  .loc-head .stats { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+  .loc-head .stats b { color: var(--ink); font-weight: 700; }
+
+  /* ─── SORT BAR ─── */
+  .sort-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px 8px; font-size: 12.5px; }
+  .count { color: var(--muted); }
+  .count b { color: var(--ink); font-weight: 800; }
+  .sort { display: flex; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 3px; }
+  .sort button { -webkit-appearance: none; appearance: none; border: 0; background: transparent; font: inherit; font-size: 12px; font-weight: 700; color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 36px; }
+  .sort button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .sort button.fav-only[aria-pressed="true"] { background: #b8294a; }
+
+  /* ─── HOTEL CARD ─── */
+  .hotel { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; margin: 0 14px 14px; overflow: hidden; box-shadow: var(--shadow); }
+  .hotel.is-flag { border-color: #e1c0a4; }
+  .hotel.is-fav { box-shadow: 0 0 0 2px #b8294a, var(--shadow); }
+  .h-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #2a2a2a; }
+  .h-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .h-photo:active img { transform: scale(1.02); }
+  .h-chips { position: absolute; top: 10px; inset-inline-start: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,.95); color: var(--ink); backdrop-filter: blur(6px); box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+  .chip.gold  { background: #f6c64d; color: #4a3414; }
+  .chip.deal  { background: #1f7a3a; color: #fff; }
+  .chip.warn  { background: #d76243; color: #fff; }
+  .chip.reco  { background: var(--ink); color: #fff; }
+  .fav { position: absolute; top: 8px; inset-inline-end: 8px; width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer; background: rgba(255,255,255,.95); color: var(--muted); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.16); transition: color .2s, transform .12s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .fav:active { transform: scale(.92); }
+  .fav.is-on { color: #d12d50; }
+  .fav svg { width: 18px; height: 18px; }
+  .h-photo .gallery { position: absolute; bottom: 8px; inset-inline-end: 8px; background: rgba(20,24,26,.65); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; backdrop-filter: blur(4px); display: inline-flex; align-items: center; gap: 4px; }
+  .h-photo .gallery svg { width: 11px; height: 11px; }
+
+  .h-body { padding: 12px 14px 14px; }
+  .h-row1 { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: flex-start; }
+  .h-name { direction: ltr; text-align: start; font-family: "Heebo", sans-serif; font-size: 17px; font-weight: 700; color: var(--brand); line-height: 1.25; letter-spacing: -.005em; text-decoration: none; }
+  .h-name:hover { text-decoration: underline; }
+  .h-stars { display: inline-flex; gap: 1px; color: var(--gold); font-size: 11px; margin-inline-start: 6px; vertical-align: 2px; }
+  .h-class { font-size: 11px; color: var(--muted); direction: ltr; margin-top: 2px; }
+  .h-loc { margin-top: 4px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .h-loc svg { width: 12px; height: 12px; color: var(--brand); }
+  .h-loc a { color: var(--brand); text-decoration: none; font-weight: 600; }
+  .h-loc a:hover { text-decoration: underline; }
+  .h-score { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; text-align: end; }
+  .h-score-meta { font-size: 11px; color: var(--muted); line-height: 1.25; }
+  .h-score-meta b { color: var(--ink); font-weight: 800; display: block; font-size: 12.5px; }
+  .h-score-box { background: var(--score); color: var(--score-on); font-weight: 800; font-size: 14px; padding: 6px 8px; border-radius: 6px 6px 6px 1px; font-variant-numeric: tabular-nums; min-width: 36px; text-align: center; line-height: 1; }
+  .h-score-box.warn { background: #c75e3a; }
+  .h-score-box.exc { background: #00553f; }
+  .h-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .h-tag { font-size: 11.5px; padding: 3px 8px; background: var(--tag); color: var(--ink-2); border-radius: 6px; font-weight: 500; }
+
+  /* ─── DISTANCE ROW ─── */
+  .h-dist { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .h-dist-cell.parking-free .dc-val { color: var(--good); }
+  .h-dist-cell.parking-paid .dc-val { color: var(--warn); }
+  .h-dist-cell.parking-none .dc-val { color: var(--rose); }
+  .h-dist-cell.room-two .dc-val { color: var(--brand); }
+  .h-dist-cell { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 11.5px; line-height: 1.35; }
+  .h-dist-cell .dc-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .h-dist-cell .dc-val { font-size: 12px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .h-dist-cell .dc-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .h-dist-cell.shower-yes .dc-val { color: var(--good); }
+  .h-dist-cell.shower-no  .dc-val { color: var(--rose); }
+  .h-dist-cell.shower-shared .dc-val { color: var(--warn); }
+
+  .pcs { margin-top: 12px; display: grid; gap: 5px; }
+  .pcs .row { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+  .pcs .row .ic { flex: 0 0 16px; width: 16px; height: 16px; border-radius: 999px; display: flex; align-items: center; justify-content: center; margin-top: 3px; flex-shrink: 0; }
+  .pcs .row.pro .ic { background: var(--good-soft); color: var(--good); }
+  .pcs .row.con .ic { background: var(--rose-soft); color: var(--rose); }
+  .pcs .row .ic svg { width: 9px; height: 9px; stroke-width: 3.5; }
+  .pcs.collapsed .row.extra { display: none; }
+  .pcs-toggle { margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--brand); background: none; border: 0; padding: 8px 0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 36px; }
+
+  /* ─── TOP REVIEWS ─── */
+  .rv-section { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .rv-head { display: flex; align-items: center; gap: 7px; padding: 8px 12px; background: var(--bg-2); border-bottom: 1px solid var(--line); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+  .rv-head .rv-title { flex: 1; font-size: 12px; font-weight: 700; color: var(--ink-2); }
+  .rv-head .rv-chevron { width: 14px; height: 14px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+  .rv-section.is-open .rv-chevron { transform: rotate(90deg); }
+  .rv-list { padding: 0 12px 10px; }
+  .rv-card { padding: 10px 0; border-bottom: 1px solid var(--line-2); display: flex; flex-direction: column; gap: 5px; }
+  .rv-card:last-child { border-bottom: 0; }
+  .rv-card.rv-hidden { display: none; }
+  .rv-card-meta { display: flex; align-items: center; gap: 6px; }
+  .rv-type { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 20px; color: var(--muted); background: var(--tag); }
+  .rv-card[data-sentiment="pos"] .rv-type { background: var(--good-soft); color: var(--good); }
+  .rv-card[data-sentiment="neg"] .rv-type { background: var(--rose-soft); color: var(--rose); }
+  .rv-date { font-size: 11px; color: var(--muted-2); }
+  .rv-text { font-size: 13px; line-height: 1.6; color: var(--ink-2); padding-right: 4px; border-right: 2.5px solid var(--line); }
+  .rv-card[data-sentiment="pos"] .rv-text { border-color: var(--good); }
+  .rv-card[data-sentiment="neg"] .rv-text { border-color: var(--rose); }
+  .rv-show-more { font-size: 12px; font-weight: 700; color: var(--brand); background: none; border: 0; padding: 8px 0 2px; cursor: pointer; -webkit-tap-highlight-color: transparent; display: block; width: 100%; text-align: right; min-height: 34px; }
+
+  /* ─── REVIEW INSIGHTS ─── */
+  .ri { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 13px; }
+  .ri-head { display: flex; align-items: center; gap: 7px; padding: 8px 12px; background: var(--bg-2); border-bottom: 1px solid var(--line); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+  .ri-head .ri-title { flex: 1; font-size: 12px; font-weight: 700; color: var(--ink-2); letter-spacing: .01em; }
+  .ri-head .ri-meta { font-size: 11px; color: var(--muted); }
+  .ri-head .ri-chevron { width: 14px; height: 14px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+  .ri.is-open .ri-chevron { transform: rotate(90deg); }
+  .ri-body { display: none; padding: 10px 12px; flex-direction: column; gap: 10px; }
+  .ri.is-open .ri-body { display: flex; }
+  .ri-trend { font-size: 12px; font-weight: 600; padding: 5px 9px; border-radius: 6px; background: var(--good-soft); color: var(--good); }
+  .ri-trend.warn { background: var(--warn-soft); color: var(--warn); }
+  .ri-trend.neutral { background: var(--tag); color: var(--muted); }
+  .ri-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+  .ri-cat { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .ri-cat-lbl { color: var(--muted); flex: 0 0 50px; }
+  .ri-cat-bar-wrap { flex: 1; height: 4px; background: var(--line); border-radius: 2px; }
+  .ri-cat-bar { height: 4px; border-radius: 2px; background: var(--brand); }
+  .ri-cat-val { color: var(--ink-2); font-weight: 600; flex: 0 0 26px; text-align: left; }
+  .ri-themes { display: flex; flex-direction: column; gap: 4px; }
+  .ri-theme { display: flex; align-items: baseline; gap: 6px; font-size: 12.5px; line-height: 1.4; }
+  .ri-theme .ti { flex-shrink: 0; font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 5px; }
+  .ri-theme .ti.pos { background: var(--good-soft); color: var(--good); }
+  .ri-theme .ti.neg { background: var(--rose-soft); color: var(--rose); }
+  .ri-theme .tc { color: var(--ink-2); }
+  .ri-mix { font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+  .ri-quotes { display: flex; flex-direction: column; gap: 7px; }
+  .ri-quote { font-size: 12.5px; line-height: 1.55; color: var(--ink-2); padding: 7px 10px; background: var(--bg); border-right: 3px solid var(--brand); border-radius: 0 6px 6px 0; }
+
+  .h-foot { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .h-foot .price-meta { font-size: 11px; color: var(--muted); }
+  .h-foot .price { font-size: 22px; font-weight: 800; color: var(--ink); line-height: 1.1; font-variant-numeric: tabular-nums; margin-top: 2px; letter-spacing: -.01em; }
+  .h-foot .price-sub { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .actions { display: flex; gap: 6px; }
+  .btn { -webkit-appearance: none; appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 700; border-radius: 8px; padding: 10px 14px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; line-height: 1; transition: background .2s, transform .12s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 44px; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--brand); color: var(--brand-on); }
+  .btn-primary:hover { background: var(--brand-2); }
+  .btn-icon { background: var(--paper); color: var(--muted); border: 1px solid var(--line); width: 38px; padding: 10px; justify-content: center; }
+  .btn-icon.is-open { background: var(--bg-2); color: var(--ink); }
+  .btn svg { width: 13px; height: 13px; }
+
+  .notes { display: none; }
+  .notes.is-open { display: block; margin-top: 10px; }
+  .notes textarea { width: 100%; min-height: 84px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: inherit; font-size: 14px; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  .notes textarea:focus { outline: 2px solid var(--brand); outline-offset: -1px; background: #fff; }
+  .notes .hint { font-size: 11px; color: var(--muted); margin-top: 6px; display: flex; gap: 5px; align-items: center; }
+  .notes .ok { color: var(--good); font-weight: 700; }
+
+  .reco { margin: 0 14px 14px; padding: 11px 13px; background: linear-gradient(180deg, #fff8e6 0%, #fdeec3 100%); border: 1px solid #efd99a; border-radius: 12px; color: #5a3f10; display: flex; align-items: center; gap: 10px; font-size: 12.5px; line-height: 1.4; }
+  .reco svg { width: 18px; height: 18px; flex-shrink: 0; color: #c08322; }
+  .reco b { font-weight: 800; }
+
+  /* ─── SUMMARY ─── */
+  .summary { margin: 16px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+  .summary h3 { margin: 0 0 8px; font-size: 15px; font-weight: 800; color: var(--ink); }
+  .summary p { margin: 0 0 14px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .summary .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .summary .n { background: var(--bg); border-radius: 10px; padding: 10px; }
+  .summary .n .lbl { font-size: 10.5px; letter-spacing: .1em; opacity: .65; font-weight: 700; text-transform: uppercase; }
+  .summary .n .val { font-size: 15px; font-weight: 800; margin-top: 3px; }
+
+  .footnote { padding: 6px 18px 24px; font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .tail { height: 40px; }
+
+  /* panel always active — no tabs in single-destination view */
+  .panel { display: none; }
+  .panel.is-active { display: block; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ─── HERO ─── -->
+  <div class="hero">
+    <img class="bg" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=920&q=75&auto=format&fit=crop" alt="Monterey · חוף קליפורניה">
+    <div class="hero-content">
+      <div class="crest">
+        <div class="dot"></div>
+        <span>VACATION 2026 · WEST COAST</span>
+      </div>
+      <div>
+        <h1>Monterey</h1>
+        <div class="hero-meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            6.8 · לילה אחד
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Route 1 · Cannery Row
+          </span>
+          <span>6 מלונות להשוואה</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ROUTE STRIP ─── -->
+  <div class="route">
+    <div class="leg">
+      <div class="lbl">הגעה</div>
+      <div class="place en">Route 1</div>
+      <div class="when">6.8 · אחה״צ</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="leg">
+      <div class="lbl">לינה</div>
+      <div class="place">מונטריי</div>
+      <div class="when">1 לילה</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="leg">
+      <div class="lbl">יציאה</div>
+      <div class="place">🐋 Moss Landing</div>
+      <div class="when">7.8 · 08:15</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION TITLE ─── -->
+  <div class="section-title" style="margin-top:16px;">
+    <h2>בחירת המלון</h2>
+    <span class="sub">6 אפשרויות · לילה אחד</span>
+  </div>
+
+  <main id="panels"></main>
+
+  <!-- ─── SUMMARY ─── -->
+  <div class="summary">
+    <h3>מונטריי · לילה אחד · 6–7 באוגוסט</h3>
+    <p>
+      <strong>6/8 · הגעה מ-Route 1</strong> — אחרי יום נהיגה חופי מסן פרנסיסקו (Half Moon Bay · Santa Cruz · Cannery Row · 17-Mile Drive · Point Lobos), צ'ק-אין באזור מונטריי ~19:00. <br>
+      <strong>7/8 · יציאה מוקדמת</strong> — נהיגה ~25–30 ד׳ צפונה ל-Moss Landing לסיור צפיית הלווייתנים ב-09:00 (להגיע 08:40), ואז המשך דרומה ל-Big Sur ו-SLO.
+    </p>
+    <div class="nums">
+      <div class="n"><div class="lbl">תאריכים</div><div class="val">6–7 אוג׳</div></div>
+      <div class="n"><div class="lbl">אורחים</div><div class="val">5 אנשים</div></div>
+      <div class="n"><div class="lbl">חדרים</div><div class="val">1–2 חדרים</div></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <b>איך לקרוא את זה:</b> כל מלון מציג מחיר ללילה אחד, דירוג Booking.com מתוך 10, ומשוב אמיתי מאורחים מ-2025–2026. שורת המרחקים מציגה כמה רחוק כל מלון מ-<b>Moss Landing</b> (נמל היציאה לסיור הלווייתנים בבוקר), וכמה מתאים לחמשתנו (חדר אחד / 2 חדרים). לוחצים על הלב לסימון מועדפים, ועל ההערה להוספת מחשבות. כפתור <b>להזמנה</b> מוביל לדף Booking.com עם תאריכים ומספר אורחים מוכנסים.
+  </div>
+
+  <div class="tail"></div>
+</div>
+
+<script>
+  // ───── photo IDs (Unsplash) ─────
+  const PHOTOS = {
+    "pacific-grove-inn":        "1582719478250-c89cae4dc85b",
+    "portola-hotel":            "1566073771259-6a8506099945",
+    "intercontinental-clement": "1520250497591-112f2f40a3f4",
+    "monterey-plaza":           "1571896349842-33c89424de2d",
+    "hotel-pacific":            "1611892440504-42a792e24d32",
+    "carmel-mission-inn":       "1564501049412-61c2a3083791",
+  };
+  const photoUrl = (id) => `https://images.unsplash.com/photo-${id}?w=720&q=70&auto=format&fit=crop`;
+
+  // ───── data ─────
+  const LOCATIONS = {
+    monterey: {
+      name: "Monterey",
+      sub: "California · Route 1 · לפני 🐋 Whale Watching",
+      blurb: "מונטריי היא תחנת הלינה של היום הראשון ב-Route 1 — אחרי יום נהיגה חופי מסן פרנסיסקו דרך Half Moon Bay ו-Santa Cruz, עם עצירות ב-Cannery Row, 17-Mile Drive ו-Point Lobos. הלינה כאן (מונטריי / פסיפיק גרוב / כרמל) ממקמת אתכם קרוב לנמל Moss Landing, שממנו יוצא בבוקר שלמחרת ב-09:00 סיור צפיית הלווייתנים. ערב חופי קריר וערפילי — כדאי לארוז שכבות.",
+      nights: 1,
+      nightsLbl: "לילה אחד",
+      stats: [
+        { lbl: "לנמל הסיור (Moss Landing)", val: "~25–32 ד׳ · ~30 ק״מ" },
+        { lbl: "ל-17-Mile Drive", val: "~3–15 ד׳" },
+        { lbl: "אופי", val: "חופי · קריר · ערפילי" },
+      ],
+      hotels: [
+        {
+          id: "pacific-grove-inn", reco: true,
+          name: "Pacific Gardens Inn",
+          stars: 3, classText: "3★ פונדק · 532 ביקורות",
+          score: 8.6, scoreText: "מצוין", reviews: "532 ביקורות",
+          total: 245, nightly: 245,
+          distTown: "בתוך Pacific Grove",
+          shower: "yes",
+          parking: "חינם · חניה פרטית",
+          roomConfig: "סוויטה ל-5 · חדר אחד",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 30 ק״מ · 30 ד׳",
+            "17-Mile Drive: 1 ק״מ · 3 ד׳",
+            "Cannery Row: 5 ק״מ · 10 ד׳",
+            "Point Lobos: 11 ק״מ · 17 ד׳",
+          ],
+          loc: "701 Asilomar Blvd, Pacific Grove · צמוד לחוף Asilomar וכניסת 17-Mile Drive",
+          tags: [
+            "סוויטות עם אח ומטבחון",
+            "ארוחת בוקר חינם",
+            "צמוד לחוף Asilomar",
+            "ידידותי למשפחות",
+            "חניה חינם",
+          ],
+          chips: [{t:"המומלץ שלנו", c:"reco"}, {t:"מצוין", c:"deal"}, {t:"בחירת מטיילים", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/pacific-grove-701-asilomar-boulevard.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום מצוין צמוד לחוף Asilomar ולכניסת 17-Mile Drive — האזכור הנפוץ ביותר בביקורות (29 אזכורים, ציון מיקום 9.5)",
+            "אח אמיתי בחדר ואווירה קסומה ושקטה — נושא חוזר חיובי (8 אזכורים)",
+            "ארוחת בוקר חינם עם וופלים טריים ומאפים, צוות אדיב (7 אזכורים לארוחה, ציון צוות 9.1)",
+            "כל המשפחה (5) נכנסת לסוויטה אחת + חניה חינם — הערך הטוב ביותר ללינה הזו",
+          ],
+          cons: [
+            "מתקנים מיושנים — ריהוט, אמבטיה וריצוף זקוקים לחידוש (7+ אזכורים, ציון מתקנים 8.5)",
+            "קירות דקים ורעש אינסטלציה/שכנים — נשמע מהחדר הסמוך (3 אזכורים)",
+            "ארוחת הבוקר בסיסית/מינימלית לחלק מהאורחים — בעיקר 'הכן בעצמך' וופלים (4-5 אזכורים)",
+          ],
+          reviewInsights: {
+            period: "Mar 2026 – Jun 2026",
+            count: 50,
+            reviewerMix: "סוג נוסע לא דווח בביקורות (תמהיל לא זמין)",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 8.9", "נוחות: 8.9", "מיקום: 9.5",
+              "מתקנים: 8.5", "שירות: 9.1", "ערך: 8.7",
+            ],
+            themes: [
+              "pos: מיקום וקרבה לחוף — 29 אזכורים",
+              "pos: אח בחדר ואווירה קסומה — 8 אזכורים",
+              "pos: ארוחת בוקר ווופלים טריים — 7 אזכורים",
+              "neg: מתקנים מיושנים זקוקים לחידוש — 7 אזכורים",
+              "neg: ארוחת בוקר בסיסית/מינימלית — 4 אזכורים",
+              "neg: קירות דקים ורעש — 3 אזכורים",
+            ],
+            quotes: [
+              "\"אוהבים את המיקום ליד חוף Asilomar והאח בכל חדר — נהדר לטיולים ארוכים\" (אורח חוזר, Jun 2026)",
+              "\"המתקנים זקוקים לשדרוג — הכיור והריצוף ישנים, וניתן לשמוע שיחות מהחדר הסמוך\" (יחיד, Jun 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "כל כך מקסים ובשכונה שקטה. אהבנו את המיקום ואת מאפי ארוחת הבוקר, הג'קוזי היה נהדר והיתה עמדת טעינה לרכב חשמלי. האחים פשוט מהממים.", type: "משפחה", date: "Jun 2026", sentiment: "pos" },
+            { text: "מתארחים כאן כבר שנים ואוהבים את הקרבה לחוף Asilomar, מצוין להליכות ארוכות. גם אוהבים את האח האמיתי בכל חדר.", type: "זוג", date: "Jun 2026", sentiment: "pos" },
+            { text: "חום בחדר היה מצוין, האח והפופקורן נגיעה נחמדה. מיקום בטוח ונוח בהליכה לחוף Asilomar, והמחיר היה סביר.", type: "משפחה", date: "May 2026", sentiment: "pos" },
+            { text: "המתקנים זקוקים לחידוש — הכיור באמבטיה צריך החלפה והריצוף נראה ישן. שמענו שיחות מהחדר הסמוך וארוחת הבוקר היתה דלה.", type: "זוג", date: "Jun 2026", sentiment: "neg" },
+            { text: "האינסטלציה רועשת מאוד — בכל פעם שהשכנים התקלחו או הורידו מים נשמע כמו רכבת משא. גם הקבלה בצ'ק-אין היתה קצת נוקשה.", type: "יחיד", date: "May 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "portola-hotel", reco: false,
+          name: "Portola Hotel & Spa at Monterey Bay",
+          stars: 4, classText: "4★ מלון · 1,132 ביקורות",
+          score: 8.6, scoreText: "מצוין", reviews: "1,132 ביקורות",
+          total: 320, nightly: 320,
+          distTown: "בתוך העיירה",
+          shower: "yes",
+          parking: "$32 ללילה · מוסך",
+          roomConfig: "2 חדרים · אין חדר ל-5",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 31 ק״מ · 24 ד׳",
+            "Cannery Row: 1.5 ק״מ · 5 ד׳",
+            "17-Mile Drive: 9 ק״מ · 15 ד׳",
+            "Point Lobos: 13 ק״מ · 18 ד׳",
+          ],
+          loc: "Two Portola Plaza, Monterey · 4 דק׳ הליכה מ-Fisherman's Wharf, במרכז העיר",
+          tags: [
+            "מיקום מצוין במרכז",
+            "ספא ובריכה חיצונית",
+            "2 מסעדות במקום",
+            "צמוד למזח הדייגים",
+            "AAA Four Diamond",
+          ],
+          chips: [{t:"מצוין", c:"deal"}, {t:"בחירת מטיילים", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/portola-spa.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום מצוין במרכז ובמרחק הליכה מהמזח והמסעדות — התמה הנפוצה ביותר (10 אזכורים חיוביים, ציון מיקום 9.4)",
+            "צוות אדיב ומקצועי, כולל שירות חניין מצוין (6 אזכורים חיוביים)",
+            "חדרים נקיים, מרווחים ובהירים (6 אזכורים, ציון ניקיון 9.0)",
+          ],
+          cons: [
+            "בידוד אקוסטי חלש — שומעים את המסדרון והחדרים הסמוכים; רעש מאירועים בלובי (כ-7 אזכורי חדר/רעש)",
+            "יקר יחסית לתמורה, וחניה וארוחת בוקר בתשלום נפרד (ציון תמורה 7.9, מספר אזכורים)",
+            "ניקיון חדר רק לפי בקשה — לא ברור בצ׳ק-אין (3 אזכורים)",
+          ],
+          reviewInsights: {
+            period: "אפר׳ 2026 – יוני 2026",
+            count: 50,
+            reviewerMix: "סוג נוסע לא דווח בביקורות שנמשכו",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 9.0", "נוחות: 9.0", "מיקום: 9.4",
+              "מתקנים: 8.8", "שירות: 8.8", "ערך: 7.9",
+            ],
+            themes: [
+              "pos: מיקום מרכזי ליד המזח — 10 אזכורים",
+              "pos: צוות ושירות חניין אדיבים — 6 אזכורים",
+              "pos: חדרים נקיים ומרווחים — 6 אזכורים",
+              "neg: רעש מהמסדרון/חדרים סמוכים — 4 אזכורים",
+              "neg: יקר + חניה/ארוחת בוקר בתשלום — 3 אזכורים",
+              "neg: ניקיון חדר רק לפי בקשה — 3 אזכורים",
+            ],
+            quotes: [
+              "\"מיקום מצוין להליכה, חדרים מרווחים וצוות אדיב\" (זוג, יוני 2026)",
+              "\"יקר מעט ביחס לחוויה, ושמענו הכל מהמסדרון והחדרים הסמוכים\" (יחיד, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "שהייה מעולה במונטריי — היו לנו שני חדרים, הכל היה נקי ונוח בדיוק כפי שתואר, והשירות היה מצוין.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום מושלם ליד הנמל וקרוב למסעדות, פאב נחמד עם הפי האוור מצוין. חדר מרווח לשלושה אנשים והכל נקי מאוד.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום נהדר לטיולים, צוות חניין מעולה. חבל שצוות המסעדה היה כמעט בלתי נראה והיינו צריכים לחפש אותם כדי לקבל שירות.", type: "זוג", date: "מאי 2026", sentiment: "pos" },
+            { text: "חדרים מרווחים וצוות אדיב, אבל לא מנקים את החדר אלא אם מבקשים — וזה לא הובהר בצ׳ק-אין.", type: "זוג", date: "יוני 2026", sentiment: "neg" },
+            { text: "המיקום מעולה אבל החדר היה בסיסי מאוד ורועש מאוד, והכריות לא נוחות לשינה.", type: "יחיד", date: "מאי 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "intercontinental-clement", reco: false,
+          name: "InterContinental The Clement Monterey, an IHG Hotel",
+          stars: 4, classText: "4★ מלון יוקרה על קו המים · 751 ביקורות",
+          score: 8.7, scoreText: "מצוין", reviews: "751 ביקורות",
+          total: 429, nightly: 429,
+          distTown: "בתוך העיירה",
+          shower: "yes",
+          parking: "$45 ללילה · מוסך",
+          roomConfig: "2 חדרים · אין חדר ל-5",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 30 ק״מ · 25 ד׳",
+            "Cannery Row: 0 ק״מ · 1 ד׳",
+            "17-Mile Drive: 6 ק״מ · 12 ד׳",
+            "Point Lobos: 14 ק״מ · 18 ד׳",
+          ],
+          loc: "750 Cannery Row, Monterey · על קו המים, צמוד למצפה הימי (Monterey Bay Aquarium)",
+          tags: [
+            "על קו המים",
+            "צמוד למצפה הימי",
+            "מיקום מצוין (9.6)",
+            "חדרים מרווחים",
+            "Cannery Row",
+          ],
+          chips: [{t:"מצוין", c:"deal"}, {t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/intercontinental-the-clement-monterey.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום יוצא דופן על Cannery Row וצמוד למצפה הימי — הנושא החיובי הבולט ביותר (15 אזכורים, ציון מיקום 9.6)",
+            "חדרים מרווחים ויפים עם מיטות נוחות — נושא חוזר (7 אזכורים; ניקיון 9.3, נוחות 9.3)",
+            "צוות אדיב ומלון נקי — מצוינים שוב ושוב (7 אזכורי צוות, 5 אזכורי ניקיון)",
+          ],
+          cons: [
+            "חניית valet יקרה ($45/לילה) ומתנהלת בעומס/בלבול — התלונה השכיחה ביותר (5 אזכורים)",
+            "תמורה למחיר נמוכה יחסית (ציון 8.0, הקטגוריה החלשה) — 5 אזכורים של 'יקר'/'לא שווה את המחיר'",
+            "פערים בין חדר 'ocean view' שהוזמן למה שהתקבל, ותלונות בודדות על שירות/תחזוקה לא עקביים (2 אזכורים כל אחד)",
+          ],
+          reviewInsights: {
+            period: "אפר׳ 2026 – יוני 2026",
+            count: 50,
+            reviewerMix: "סוג הנוסע לא דווח בביקורות (תערובת משפחות/זוגות/יחידים לפי תוכן)",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 9.3", "נוחות: 9.3", "מיקום: 9.6",
+              "מתקנים: 9.0", "שירות: 9.1", "ערך: 8.0",
+            ],
+            themes: [
+              "pos: מיקום מצוין (Cannery Row / מצפה ימי) — 15 אזכורים",
+              "pos: חדרים מרווחים ומיטות נוחות — 7 אזכורים",
+              "pos: צוות אדיב ומלון נקי — 7 אזכורים",
+              "neg: חניית valet יקרה ($45) ובעייתית — 5 אזכורים",
+              "neg: תמורה למחיר / יקר — 5 אזכורים",
+              "neg: פער בחדר ocean view שהוזמן — 2 אזכורים",
+            ],
+            quotes: [
+              "\"המיקום מצוין והחדרים גדולים ויפים עם מיטות נוחות. ארוחת הבוקר טעימה מאוד.\" (משפחה, אפריל 2026)",
+              "\"החניה היקרה ב-valet היתה חוויה גרועה — מגרש מלא תמיד והרחובות עמוסים.\" (זוג, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "המיקום מדהים והעיירה ציורית מאוד. החדר היה מקסים ומרווח ונקי, וצוות הניקיון היה קשוב.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "מיקום מצוין, צוות מעולה ומלון נקי מאוד — קרוב לכל מה שתרצו לעשות.", type: "זוג", date: "מאי 2026", sentiment: "pos" },
+            { text: "מלון מהמם, מיקום מצוין וצוות אדיב. הייתי חוזר שוב ושוב.", type: "זוג", date: "מאי 2026", sentiment: "pos" },
+            { text: "חניית ה-valet מטורפת — שהיתי בהרבה מלונות עם valet ומעולם לא היתה לי חוויה כה גרועה, המגרש היה מלא ולא היה לי איך להיכנס.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "הזמנתי חדר עם נוף לים אך קיבלתי נוף חלקי בלבד שצריך לעמוד בפינה כדי לראות — המחיר ממש לא הוצדק, מאכזב מרשת כמו IHG.", type: "זוג", date: "אפריל 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "monterey-plaza", reco: false,
+          name: "Monterey Plaza Hotel & Spa",
+          stars: 4, classText: "4★ מלון יוקרה על קו המים · 714 ביקורות",
+          score: 8.8, scoreText: "מצוין", reviews: "714 ביקורות",
+          total: null, nightly: null,
+          distTown: "בתוך העיירה",
+          shower: "yes",
+          parking: "$48 ללילה · מוסך",
+          roomConfig: "Suite/2 חדרים · עד 4 בחדר",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 29 ק״מ · 25 ד׳",
+            "Cannery Row: 0 ק״מ · בצמוד",
+            "17-Mile Drive: 9 ק״מ · 13 ד׳",
+            "Point Lobos: 16 ק״מ · 20 ד׳",
+          ],
+          loc: "400 Cannery Row, Monterey · על קו המים בלב Cannery Row, צמוד למצפה הימי",
+          flag: true,
+          tags: [
+            "נוף לים",
+            "מיקום מצוין",
+            "ספא",
+            "יוקרה",
+            "חניית ולט בתשלום",
+          ],
+          chips: [{t:"מצוין", c:"deal"}, {t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/monterey-park-spa.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום הוא הנושא החיובי הבולט ביותר (15 אזכורים) — צמוד ל-Cannery Row ו'קרוב לכל דבר', נקודת עצירה מצוינת בדרך",
+            "חדרים מודרניים, נקיים ומרווחים עם נוף לים זכו לשבחים חוזרים (16 אזכורי חדר, 8 אזכורי נוף) — 'נקי ומרווח', 'אפשר לראות חיות בר מהחדר'",
+            "דירוג גבוה ויציב — ממוצע 9.06 ב-50 הביקורות האחרונות (כולן ב-12 החודשים האחרונים)",
+          ],
+          cons: [
+            "תלונות על נוחות החדר הן הנושא השלילי הבולט (15 אזכורים): רעש מהרחוב בלילה ומשאיות בחצר השירות שמעירות מוקדם בבוקר",
+            "מספר אורחים ציינו חוסר חניה עצמית — חניית ולט בתשלום בלבד (3 אזכורים)",
+            "תלונות נקודתיות על תמורה למחיר ועל מלון 'מיושן'",
+            "מחיר לתאריכים/הרכב המבוקש לא אומת ב-Booking.com — יש לאמת ידנית (סוויטה ל-5 צפויה לעלות > $450)",
+          ],
+          reviewInsights: {
+            period: "ינואר 2026 – יוני 2026",
+            count: 50,
+            reviewerMix: "לא מסווג בנתוני הספק (סוג מטייל לא זמין ב-50 הביקורות)",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 9.1", "נוחות: 8.9", "מיקום: 9.4",
+              "מתקנים: 8.8", "שירות: 8.9", "ערך: 8.4",
+            ],
+            themes: [
+              "pos: מיקום צמוד ל-Cannery Row — 15 אזכורים",
+              "pos: חדר נקי/מרווח ונוף לים — 16 אזכורים",
+              "neg: רעש (רחוב + חצר שירות) ובעיות נוחות בחדר — 4 אזכורי רעש",
+              "neg: חניה עצמית חסרה / ולט בתשלום — 3 אזכורים",
+            ],
+            quotes: [
+              "\"מיקום על המפרץ — קרוב לכל דבר, צ'ק-אאוט בצהריים היה מעולה, קיבלנו גם צ'ק-אין מוקדם, נוף מהמרפסת מקסים\" (זוג, אפריל 2026)",
+              "\"החדרים פונים לרחוב יכולים להיות רועשים בלילה, שומעים מכוניות חולפות; נרגע אחרי 21:00\" (יחיד, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "מקום יפהפה, קרוב לכל דבר, נקי ומרווח מאוד. נקודת עצירה מצוינת בדרך.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "המיקום מעולה והנוף מהחלון מרהיב. נהנינו מקול הגלים ויכולנו לראות הרבה חיות בר מהחדר.", type: "זוג", date: "מאי 2026", sentiment: "pos" },
+            { text: "המיקום על המפרץ קרוב לכל דבר, צ'ק-אאוט בצהריים וקיבלנו גם צ'ק-אין מוקדם, אהבנו את הנוף מהמרפסת.", type: "זוג", date: "אפריל 2026", sentiment: "pos" },
+            { text: "המיקום נהדר אבל החדר היה מעל חצר השירות של המלון — העירו אותנו משאיות בנסיעה לאחור כל בוקר ב-5:30.", type: "זוג", date: "אפריל 2026", sentiment: "neg" },
+            { text: "ממש לא שווה את המחיר. כשנכנסנו לחדר, אנשים מהחדר הניצב עמדו במרחק 3 מטר והביטו פנימה, ולקח 40 דקות לקבל את המזוודות.", type: "זוג", date: "יוני 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "hotel-pacific", reco: false,
+          name: "Hotel Pacific",
+          stars: 4, classText: "4★ all-suite boutique · 676 ביקורות",
+          score: 7.8, scoreText: "טוב", reviews: "676 ביקורות",
+          total: 429, nightly: 429,
+          distTown: "בתוך העיירה",
+          shower: "yes",
+          parking: "$22 ללילה · מוסך",
+          roomConfig: "Family Suite · עד 7 אורחים",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 30 ק״מ · 25 ד׳",
+            "Cannery Row: 1.5 ק״מ · 5 ד׳",
+            "17-Mile Drive: 6 ק״מ · 12 ד׳",
+            "Point Lobos: 13 ק״מ · 18 ד׳",
+          ],
+          loc: "300 Pacific St, Monterey · מרכז העיר, צמוד למרכז הכנסים, מרחק הליכה לכל מקום",
+          tags: [
+            "אול-סוויטס",
+            "מרכז העיר — הליכה לכל מקום",
+            "אח גז + מרפסת בכל סוויטה",
+            "ארוחת בוקר חינם",
+            "Family Suite ל-5 נוסעים",
+          ],
+          chips: [{t:"בחירת מטיילים", c:"gold"}],
+          url: "https://www.booking.com/hotel/us/pacific.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום מרכזי מצוין — מרחק הליכה לכל מקום (8 אזכורים, ציון מיקום ~9.2)",
+            "סוויטות מרווחות עם אופי ייחודי — חצרות, מזרקות, אח גז (6 אזכורים)",
+            "מיטות נוחות וחדרים נקיים (4 אזכורים)",
+          ],
+          cons: [
+            "ארוחת הבוקר מאכזבת — נגמרת מוקדם / מנות פושרות (6 אזכורים)",
+            "חדרים מיושנים ומעט מוזנחים — חלקם חשוכים / ריח חיות מחמד (5 אזכורים)",
+            "תקלות תפעוליות — מעלית מושבתת, צ׳ק-אין איטי, מים לא חמים (4 אזכורים)",
+          ],
+          reviewInsights: {
+            period: "אפר׳ 2026 – יוני 2026",
+            count: 50,
+            reviewerMix: "40% משפחות, 45% זוגות, 15% יחידים",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 8.2", "נוחות: 8.3", "מיקום: 9.2",
+              "מתקנים: 7.9", "שירות: 8.1", "ערך: 7.4",
+            ],
+            themes: [
+              "pos: מיקום מרכזי — 8 אזכורים",
+              "pos: סוויטות מרווחות / אופי ייחודי — 6 אזכורים",
+              "pos: מיטות נוחות וניקיון — 4 אזכורים",
+              "neg: ארוחת בוקר חלשה — 6 אזכורים",
+              "neg: חדרים מיושנים — 4 אזכורים",
+              "neg: תקלות תפעוליות (מעלית/צ׳ק-אין) — 4 אזכורים",
+            ],
+            quotes: [
+              "\"המיקום מושלם — שני מקלחות ואמבטיה היו מצוינים למשפחה שלנו.\" (משפחה, אפריל 2026)",
+              "\"החדרים מרווחים ואהבנו את האח, אבל ארוחת הבוקר הייתה מאכזבת.\" (זוג, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "המיקום היה מושלם וזוג מקלחות ואמבטיה התאימו בדיוק למשפחה שלנו. הסגנון של המלון ייחודי עם מזרקות וחצרות יפות.", type: "משפחה", date: "אפריל 2026", sentiment: "pos" },
+            { text: "הסוויטה הזוטרה הייתה סופר נחמדה והמיקום מצוין — מרחק הליכה לכל מקום. חבל שהמעלית לא עבדה.", type: "משפחה", date: "מאי 2026", sentiment: "pos" },
+            { text: "האח חימם את החדר והמיקום המרכזי נהדר. החדרים יפים ונקיים.", type: "זוג", date: "אפריל 2026", sentiment: "pos" },
+            { text: "החדרים מרווחים ואהבנו את האח, אבל ארוחת הבוקר אכזבה — אמורה להיות עד 10:00 ובשעה 9:15 כבר חסרו מנות.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "המיקום מצוין אבל היו ריחות חזקים של חיות מחמד בשני החדרים והנכס לא מתוחזק. ארוחת הבוקר דלה.", type: "משפחה", date: "אפריל 2026", sentiment: "neg" },
+          ],
+        },
+        {
+          id: "carmel-mission-inn", reco: false,
+          name: "Carmel Mission Inn",
+          stars: 3, classText: "3★ מלון בוטיק · 1,609 ביקורות",
+          score: 8.2, scoreText: "טוב מאוד", reviews: "1,609 ביקורות",
+          total: 445, nightly: 445,
+          distTown: "3.9 ק״מ ממרכז Carmel",
+          shower: "yes",
+          parking: "$30 ללילה · חניה פתוחה",
+          roomConfig: "Family Suite ל-5 · חדר אחד",
+          distPlaces: [
+            "Moss Landing (🐋 מחר): 30 ק״מ · 32 ד׳",
+            "Point Lobos: 8 ק״מ · 11 ד׳",
+            "17-Mile Drive: 11 ק״מ · 16 ד׳",
+            "Cannery Row: 9 ק״מ · 13 ד׳",
+          ],
+          loc: "3665 Rio Rd, Carmel-by-the-Sea · צמוד ל-Barnyard Shopping Village, ~4 ק״מ ממרכז כרמל",
+          flag: true,
+          tags: [
+            "בריכה מחוממת + ג'קוזי",
+            "מתאים למשפחות",
+            "Family Suite ל-5",
+            "ידידותי לכלבים",
+            "30 ק״מ מנמל הסיור מחר",
+          ],
+          chips: [{t:"טוב מאוד", c:"deal"}, {t:"להיזהר", c:"warn"}],
+          url: "https://www.booking.com/hotel/us/carmel-mission-inn.html?checkin=2026-08-06&checkout=2026-08-07&group_adults=4&group_children=1&age=13",
+          pros: [
+            "מיקום נוח עם חניה זמינה והרבה מסעדות בהליכה — התמה הכי נפוצה (18 אזכורים), ציון מיקום ~8.5",
+            "חדרים מרווחים ונקיים, מיטות נוחות ואזור בריכה/ג'קוזי נעים (9 אזכורי חדר, 4 אזכורי בריכה)",
+            "מלון מאוד ידידותי לכלבים ומראה/עיצוב יפים של השטחים הציבוריים (5 אזכורי צוות חברי)",
+          ],
+          cons: [
+            "אגרת חניה חובה ~$30-40 ללילה שמפתיעה אורחים — התלונה הדומיננטית בהרבה ביקורות (22 אזכורים)",
+            "רעש מהכביש המהיר משני צידי המלון פוגע בחדרים מסוימים (אזכורים חוזרים)",
+            "ניקיון/שירות חדרים לא עקבי — סדינים, מים חמים, ושירות חדרים שנשכח (3-4 אזכורים)",
+            "הכי רחוק מנמל הסיור — ~32 ד׳ נסיעה בבוקר לפני סיור הלווייתנים ב-09:00",
+          ],
+          reviewInsights: {
+            period: "אפר 2026 – יוני 2026",
+            count: 50,
+            reviewerMix: "מגוון נוסעים — חלוקה לפי סוג לא פורסמה בנתוני המקור",
+            trend: "יציב — ביקורות אחרונות בקנה אחד עם הממוצע",
+            categoryScores: [
+              "ניקיון: 8.1", "נוחות: 8.3", "מיקום: 8.5",
+              "מתקנים: 8.0", "שירות: 8.2", "ערך: 7.6",
+            ],
+            themes: [
+              "pos: מיקום נוח + חניה זמינה — 18 אזכורים",
+              "pos: חדרים מרווחים ונקיים — 9 אזכורים",
+              "pos: בריכה/ג'קוזי + ידידותי לכלבים — 6 אזכורים",
+              "neg: אגרת חניה חובה $30-40 ללילה — 22 אזכורים",
+              "neg: מחיר/ערך גבוה ביחס לתמורה — 7 אזכורים",
+              "neg: רעש מכביש מהיר + ניקיון לא עקבי — 5 אזכורים",
+            ],
+            quotes: [
+              "\"מיקום נהדר, חניה בשפע, חדרים נקיים וממש ידידותי לכלבים\" (זוג, מאי 2026)",
+              "\"מעבר למחיר הלינה משלמים אגרת חובה של $40 לחניה — מעצבן\" (משפחה, מאי 2026)",
+            ],
+          },
+          topReviews: [
+            { text: "אהבנו את המרחב בחדר, המיטה והג'קוזי. פחות אהבנו שצריך לשלם על חניה בתוך המלון.", type: "משפחה", date: "מאי 2026", sentiment: "neg" },
+            { text: "חניה בשפע, חדרים נקיים וממש ידידותי לכלבים, עם הרבה מסעדות בהליכה. רק לא ממש קרוב למרכז העיר או לחוף — עדיין צריך לקחת את הרכב.", type: "זוג", date: "מאי 2026", sentiment: "pos" },
+            { text: "המיקום והעיצוב והאווירה הכללית של המלון מדהימים, מרגיש יוקרתי. אגרת הכלבים נראתה גבוהה מדי וצוות הניקיון משך את הסדינים בזמן שלא היינו.", type: "משפחה", date: "אפר 2026", sentiment: "pos" },
+            { text: "המיקום קרוב לכרמל ויש המון מקום סביב. רעש מהכביש המהיר משני צידי המלון הפריע — שמעתי רכבים מאיצים במעלה הגבעה כל הלילה.", type: "יחיד", date: "מאי 2026", sentiment: "neg" },
+            { text: "מלון יפה עם חדרים גדולים ומעוצבים בטוב טעם ומיטות נוחות. החניה קצת יקרה בהתחשב בכך שיש המון מקום מסביב.", type: "זוג", date: "אפר 2026", sentiment: "pos" },
+          ],
+        },
+      ],
+    },
+  };
+
+  // ───── persistence ─────
+  const STORE = "monterey-2026-v1";
+  const state = JSON.parse(localStorage.getItem(STORE) || "{}");
+  state.fav  = state.fav  || {};
+  state.note = state.note || {};
+  state.tab  = state.tab  || "monterey";
+  state.sort = state.sort || { monterey: "score" };
+  if (!("monterey" in state.sort)) state.sort.monterey = "score";
+  state.favOnly = state.favOnly || { monterey: false };
+  if (!("monterey" in state.favOnly)) state.favOnly.monterey = false;
+  function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
+
+  // ───── helpers ─────
+  function stars(n){ return "★".repeat(n) + "☆".repeat(5-n); }
+  const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  const xmark = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  const heart = (f) => f
+    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+  function scoreClass(s){ return s >= 9.0 ? "exc" : s < 8.5 ? "warn" : ""; }
+
+  // ───── render ─────
+  function renderPanels(){
+    const root = document.getElementById("panels");
+    root.innerHTML = "";
+    Object.entries(LOCATIONS).forEach(([key, loc]) => {
+      const sec = document.createElement("section");
+      sec.className = "panel" + (state.tab === key ? " is-active" : "");
+      sec.dataset.tab = key;
+      sec.innerHTML = renderLocation(key, loc);
+      root.appendChild(sec);
+    });
+    bindEvents();
+  }
+
+  function renderLocation(key, loc){
+    const sortMode = state.sort[key];
+    const favOnly = state.favOnly[key];
+    let hotels = [...loc.hotels];
+    if (favOnly) hotels = hotels.filter(h => state.fav[h.id]);
+    hotels.sort((a,b) => sortMode === "price" ? (a.nightly ?? Infinity) - (b.nightly ?? Infinity) : b.score - a.score);
+    const reco = loc.hotels.find(h => h.reco);
+    return `
+      <div class="loc-head">
+        <h2><span class="en">${loc.name}</span> <span class="gold">${loc.sub}</span></h2>
+        <p class="blurb">${loc.blurb}</p>
+        <div class="stats">
+          ${loc.stats.map(s => `<span><b>${s.val}</b> · ${s.lbl}</span>`).join("")}
+        </div>
+      </div>
+      ${reco ? `<div class="reco">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 6 1-4.5 4.5 1 6.5L12 17l-5.5 3 1-6.5L3 9l6-1z"/></svg>
+        <span><b>הבחירה כאן:</b> <span class="en">${reco.name}</span> — ניקוד ${reco.score}${reco.nightly != null ? ' ב־$'+reco.nightly+' ללילה' : ''} · חמשתנו בסוויטה אחת + חניה חינם.</span>
+      </div>` : ""}
+      <div class="sort-bar">
+        <div class="count"><b>${hotels.length}</b> מלונות${favOnly ? " מסומנים" : ""} · ${loc.nightsLbl}</div>
+        <div class="sort">
+          <button data-sort="score" data-loc="${key}" aria-pressed="${sortMode==='score'}">דירוג</button>
+          <button data-sort="price" data-loc="${key}" aria-pressed="${sortMode==='price'}">מחיר</button>
+          <button class="fav-only" data-favonly="${key}" aria-pressed="${favOnly}">${heart(favOnly)}</button>
+        </div>
+      </div>
+      ${hotels.length === 0 ? `<div class="footnote" style="margin:0 14px 14px;">עדיין לא סימנת מלונות מועדפים.</div>` : ""}
+      ${hotels.map(h => renderHotel(h, loc.nightsLbl)).join("")}
+    `;
+  }
+
+  function renderTopReviews(hotelId, reviews) {
+    if (!reviews || reviews.length === 0) return "";
+    const cards = reviews.map((r, i) => {
+      const hidden = i >= 2 ? "rv-hidden" : "";
+      return `<div class="rv-card ${hidden}" data-sentiment="${r.sentiment || 'pos'}">
+        <div class="rv-card-meta">
+          <span class="rv-type">${r.type || ""}</span>
+          <span class="rv-date">${r.date || ""}</span>
+        </div>
+        <div class="rv-text">${r.text}</div>
+      </div>`;
+    }).join("");
+    const hidden = reviews.length - 2;
+    const moreBtn = hidden > 0 ? `<button class="rv-show-more" data-rv-more="${hotelId}">+ עוד ${hidden} ביקורות</button>` : "";
+    return `
+      <div class="rv-section" id="rv-${hotelId}">
+        <div class="rv-head" data-rv="${hotelId}">
+          <svg class="rv-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="rv-title">ביקורות אורחים · ${reviews.length} נבחרות</span>
+        </div>
+        <div class="rv-list">${cards}${moreBtn}</div>
+      </div>`;
+  }
+
+  function renderReviewInsights(hotelId, ri) {
+    const trendCls = ri.trend && ri.trend.startsWith("⚠") ? "warn" : ri.trend && ri.trend.includes("שיפור") ? "" : "neutral";
+    const catRows = (ri.categoryScores || []).map(s => {
+      const m = s.match(/^(.+):\s*([\d.]+)$/);
+      if (!m) return "";
+      const val = parseFloat(m[2]);
+      const pct = Math.round((val / 10) * 100);
+      return `<div class="ri-cat">
+        <span class="ri-cat-lbl">${m[1]}</span>
+        <span class="ri-cat-bar-wrap"><span class="ri-cat-bar" style="width:${pct}%"></span></span>
+        <span class="ri-cat-val">${val.toFixed(1)}</span>
+      </div>`;
+    }).join("");
+    const themeRows = (ri.themes || []).map(t => {
+      const isPos = t.startsWith("pos:");
+      const text = t.replace(/^(pos|neg):\s*/, "");
+      return `<div class="ri-theme"><span class="ti ${isPos ? 'pos' : 'neg'}">${isPos ? '+' : '−'}</span><span class="tc">${text}</span></div>`;
+    }).join("");
+    const quoteRows = (ri.quotes || []).map(q => `<div class="ri-quote">${q}</div>`).join("");
+    return `
+      <div class="ri" id="ri-${hotelId}">
+        <div class="ri-head" data-ri="${hotelId}">
+          <svg class="ri-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="ri-title">תובנות מ־${ri.count} ביקורות</span>
+          <span class="ri-meta">${ri.period || ""}</span>
+        </div>
+        <div class="ri-body">
+          ${ri.trend ? `<div class="ri-trend ${trendCls}">${ri.trend}</div>` : ""}
+          ${catRows ? `<div class="ri-cats">${catRows}</div>` : ""}
+          ${themeRows ? `<div class="ri-themes">${themeRows}</div>` : ""}
+          ${quoteRows ? `<div class="ri-quotes">${quoteRows}</div>` : ""}
+          ${ri.reviewerMix ? `<div class="ri-mix">${ri.reviewerMix}</div>` : ""}
+        </div>
+      </div>`;
+  }
+
+  function renderHotel(h, nightsLbl){
+    nightsLbl = nightsLbl || "ללילה";
+    const isFav = !!state.fav[h.id];
+    const note = state.note[h.id] || "";
+    const cls = (h.flag ? "is-flag " : "") + (isFav ? "is-fav " : "");
+    const allPros = h.pros.map((p,i) => `<div class="row pro ${i>=2?'extra':''}"><span class="ic">${check}</span><span>${p}</span></div>`).join("");
+    const allCons = h.cons.map((c,i) => `<div class="row con ${i>=1?'extra':''}"><span class="ic">${xmark}</span><span>${c}</span></div>`).join("");
+    const hasMore = (h.pros.length > 2) || (h.cons.length > 1);
+    return `
+      <article class="hotel ${cls}" id="hotel-${h.id}" data-id="${h.id}">
+        <div class="h-photo">
+          <img src="${photoUrl(PHOTOS[h.id])}" alt="" loading="lazy">
+          <div class="h-chips">
+            ${(h.chips||[]).map(c => `<span class="chip ${c.c||''}">${c.t}</span>`).join("")}
+          </div>
+          <button class="fav ${isFav?'is-on':''}" data-fav="${h.id}" aria-label="שמור">${heart(isFav)}</button>
+          <span class="gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 19l-6-6-9 6"/></svg>
+            תמונה
+          </span>
+        </div>
+        <div class="h-body">
+          <div class="h-row1">
+            <div>
+              <a class="h-name en" href="${h.url}" target="_blank" rel="noopener">${h.name}<span class="h-stars">${stars(h.stars)}</span></a>
+              <div class="h-class en">${h.classText}</div>
+              <div class="h-loc">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                ${h.loc}
+              </div>
+            </div>
+            <div class="h-score">
+              <div class="h-score-meta">
+                <b>${h.scoreText}</b>
+                ${h.reviews}
+              </div>
+              <div class="h-score-box ${scoreClass(h.score)}">${h.score.toFixed(1)}</div>
+            </div>
+          </div>
+          <div class="h-tags">
+            ${(h.tags||[]).map(t => `<span class="h-tag">${t}</span>`).join("")}
+          </div>
+          ${(h.distTown || h.shower || h.parking || h.roomConfig || (h.distPlaces && h.distPlaces.length)) ? `
+          <div class="h-dist">
+            ${h.distTown ? `<div class="h-dist-cell">
+              <div class="dc-lbl">מרכז העיר</div>
+              <div class="dc-val">${h.distTown.split(" · ")[0]}</div>
+              <div class="dc-sub">${h.distTown.split(" · ")[1] || ""}</div>
+            </div>` : ""}
+            ${h.shower ? `<div class="h-dist-cell ${h.shower === 'yes' ? 'shower-yes' : 'shower-no'}">
+              <div class="dc-lbl">מקלחת</div>
+              <div class="dc-val">${h.shower === 'yes' ? '✓ פרטית' : '✗ אין'}</div>
+            </div>` : ""}
+            ${h.parking ? (()=>{
+              const cls = h.parking.startsWith("חינם") ? "parking-free" : h.parking === "אין" ? "parking-none" : "parking-paid";
+              const parts = h.parking.split(" · ");
+              return `<div class="h-dist-cell ${cls}">
+                <div class="dc-lbl">חניה</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${h.roomConfig ? (()=>{
+              const parts = h.roomConfig.split(" · ");
+              const isTwo = h.roomConfig.includes("2 חדרים") || h.roomConfig.includes("שני");
+              return `<div class="h-dist-cell ${isTwo ? 'room-two' : ''}">
+                <div class="dc-lbl">חדרים</div>
+                <div class="dc-val">${parts[0]}</div>
+                ${parts[1] ? `<div class="dc-sub">${parts[1]}</div>` : ""}
+              </div>`;
+            })() : ""}
+            ${(h.distPlaces||[]).map(p => {
+              const m = p.match(/^(.+?):\s*(.+?)(?:\s*·\s*(.+))?$/);
+              if (!m) return "";
+              return `<div class="h-dist-cell">
+                <div class="dc-lbl">${m[1]}</div>
+                <div class="dc-val en">${m[2]}</div>
+                ${m[3] ? `<div class="dc-sub en">${m[3]}</div>` : ""}
+              </div>`;
+            }).join("")}
+          </div>` : ""}
+          <div class="pcs ${hasMore?'collapsed':''}" data-pcs="${h.id}">
+            ${allPros}
+            ${allCons}
+          </div>
+          ${hasMore ? `<button class="pcs-toggle" data-pcs-toggle="${h.id}">+ עוד ${h.pros.length + h.cons.length - 3} נקודות</button>` : ""}
+          ${h.topReviews && h.topReviews.length > 0 ? renderTopReviews(h.id, h.topReviews) : ""}
+          ${h.reviewInsights && h.reviewInsights.count > 0 ? renderReviewInsights(h.id, h.reviewInsights) : ""}
+          <div class="h-foot">
+            <div>
+              <div class="price-meta">סה״כ ל־${nightsLbl}</div>
+              <div class="price">${h.total != null ? '$'+h.total.toLocaleString() : 'בדוק Booking.com'}</div>
+              <div class="price-sub">${h.nightly != null ? '≈ $'+h.nightly+' ללילה · כולל מסים' : 'מחיר לא זמין — לחץ לבדיקה'}</div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-icon ${note?'is-open':''}" data-note-toggle="${h.id}" aria-label="הערה">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg>
+              </button>
+              <a class="btn btn-primary" href="${h.url}" target="_blank" rel="noopener">
+                להזמנה
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="notes ${note?'is-open':''}" data-note-panel="${h.id}">
+            <textarea data-note="${h.id}" placeholder="המחשבות שלך על המלון הזה…">${note.replace(/</g,'&lt;')}</textarea>
+            <div class="hint"><span class="ok">●</span> נשמר אוטומטית במכשיר שלך</div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // ───── events ─────
+  function bindEvents(){
+    document.querySelectorAll("[data-fav]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.preventDefault();
+        state.fav[b.dataset.fav] = !state.fav[b.dataset.fav];
+        save(); renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-note-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const id = b.dataset.noteToggle;
+        const panel = document.querySelector(`[data-note-panel="${id}"]`);
+        const open = panel.classList.toggle("is-open");
+        b.classList.toggle("is-open", open);
+        if (open) setTimeout(() => panel.querySelector("textarea").focus(), 100);
+      });
+    });
+    document.querySelectorAll("[data-note]").forEach(t => {
+      t.addEventListener("input", () => { state.note[t.dataset.note] = t.value; save(); });
+    });
+    document.querySelectorAll("[data-sort]").forEach(b => {
+      b.addEventListener("click", () => { state.sort[b.dataset.loc] = b.dataset.sort; save(); renderPanels(); });
+    });
+    document.querySelectorAll("[data-favonly]").forEach(b => {
+      b.addEventListener("click", () => {
+        const k = b.dataset.favonly;
+        state.favOnly[k] = !state.favOnly[k];
+        save(); renderPanels();
+      });
+    });
+    document.querySelectorAll("[data-pcs-toggle]").forEach(b => {
+      b.addEventListener("click", () => {
+        const pcs = document.querySelector(`[data-pcs="${b.dataset.pcsToggle}"]`);
+        pcs.classList.remove("collapsed");
+        b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-rv]").forEach(h => {
+      h.addEventListener("click", () => document.getElementById(`rv-${h.dataset.rv}`).classList.toggle("is-open"));
+    });
+    document.querySelectorAll("[data-rv-more]").forEach(b => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById(`rv-${b.dataset.rvMore}`).querySelectorAll(".rv-hidden").forEach(c => c.classList.remove("rv-hidden"));
+        b.style.display = "none";
+      });
+    });
+    document.querySelectorAll("[data-ri]").forEach(h => {
+      h.addEventListener("click", () => document.getElementById(`ri-${h.dataset.ri}`).classList.toggle("is-open"));
+    });
+  }
+
+  renderPanels();
+</script>
+</body>
+</html>
