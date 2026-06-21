@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפת כביש 1 — Route 1 (SF → LA, Aug 6–8)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  :root{
+    --d1:#2563eb; --d2:#16a34a; --d3:#ea580c; --hotel:#dc2626; --bg:#0f172a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif;}
+  header{background:var(--bg);color:#fff;padding:14px 20px;}
+  header h1{margin:0 0 4px;font-size:20px;}
+  header p{margin:0;font-size:13px;opacity:.85;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;padding:10px 20px;background:#f1f5f9;
+    font-size:13px;border-bottom:1px solid #e2e8f0;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:22px;height:5px;border-radius:3px;display:inline-block;}
+  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;
+    box-shadow:0 0 0 1px #94a3b8;}
+  #map{height:calc(100vh - 122px);width:100%;}
+  .num-icon{background:#fff;border:2px solid #334155;border-radius:50%;width:26px;height:26px;
+    line-height:22px;text-align:center;font-weight:700;font-size:13px;color:#0f172a;}
+  .hotel-icon{font-size:24px;line-height:30px;text-align:center;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
+  .leaflet-popup-content{font-size:13px;direction:rtl;text-align:right;line-height:1.5;}
+  .leaflet-popup-content b{font-size:14px;}
+  .leg{color:#475569;font-size:12px;}
+  @media(max-width:600px){#map{height:calc(100vh - 150px);}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🗺️ כביש 1 — Route 1 · SF → Los Angeles</h1>
+  <p>6–8 באוגוסט 2026 · ~770 ק"מ סה"כ · 🏨 = לינה (Monterey · SLO)</p>
+</header>
+<div class="legend">
+  <span><i class="swatch" style="background:var(--d1)"></i> יום 1 — SF→Monterey (~240 ק"מ)</span>
+  <span><i class="swatch" style="background:var(--d2)"></i> יום 2 — Monterey→SLO (~230 ק"מ)</span>
+  <span><i class="swatch" style="background:var(--d3)"></i> יום 3 — SLO→LA (~300 ק"מ)</span>
+  <span>🏨 לינה</span>
+</div>
+<div id="map"></div>
+<script>
+// All points in Route 1 order. leg = drive from the PREVIOUS point.
+const pts = [
+  // ---- Day 1 (blue) ----
+  {day:1, name:"San Francisco — יציאה", time:"08:30", leg:"—", ll:[37.7793,-122.4193]},
+  {day:1, name:"Half Moon Bay — תצפית + קפה", time:"09:30–10:00", leg:"50 ק\"מ · 60 דק'", ll:[37.4636,-122.4286]},
+  {day:1, name:"Santa Cruz — ארוחת בוקר", time:"11:20–12:20", leg:"75 ק\"מ · 80 דק'", ll:[36.9741,-122.0308]},
+  {day:1, name:"Monterey — Fisherman's Wharf + Cannery Row", time:"13:10–15:30", leg:"60 ק\"מ · 50 דק'", ll:[36.6055,-121.8918]},
+  {day:1, name:"17-Mile Drive — שעת זהב", time:"15:45–17:15", leg:"10 ק\"מ · 15 דק'", ll:[36.5710,-121.9665]},
+  {day:1, name:"Point Lobos State Reserve ⭐", time:"17:30–18:45 · כניסה אחרונה 18:30", leg:"5 ק\"מ · 10 דק'", ll:[36.5158,-121.9430]},
+  {day:1, name:"🏨 Portola Hotel & Spa, Monterey", time:"צ'ק-אין ~19:00 · לילה 1", leg:"~15 ק\"מ", ll:[36.6010,-121.8947], hotel:true,
+   note:"לינה #1 · 2 חדרים · Conf 5209813535 · קוד 9144 · ₪2,304"},
+
+  // ---- Day 2 (green) ----
+  {day:2, name:"🐋 Moss Landing Harbor — Whale Watching", time:"08:15 הגעה · יציאה 09:00", leg:"20 ק\"מ · 25 דק'", ll:[36.8027,-121.7869],
+   note:"Blue Ocean Whale Watch · Conf 350653606 · 5 נוסעים"},
+  {day:2, name:"Bixby Creek Bridge 📸", time:"~13:00–13:20", leg:"~40 ק\"מ · 50 דק'", ll:[36.3717,-121.9015]},
+  {day:2, name:"McWay Falls — מפל לים", time:"~14:20–14:45", leg:"50 ק\"מ · 60 דק'", ll:[36.1577,-121.6716]},
+  {day:2, name:"Elephant Seals — San Simeon", time:"~16:10–16:55", leg:"65 ק\"מ · 85 דק' ⚠️ איטי", ll:[35.6606,-121.1893]},
+  {day:2, name:"Morro Bay — מגדל הסלע + ארוחת ערב", time:"~17:50–18:30", leg:"50 ק\"מ · 55 דק'", ll:[35.3658,-120.8499]},
+  {day:2, name:"🏨 Quality Suites Downtown SLO", time:"צ'ק-אין ~18:55 · לילה 2", leg:"25 ק\"מ · 25 דק'", ll:[35.2876,-120.6596], hotel:true,
+   note:"לינה #2 · 1631 Monterey St · 2 חדרים · ₪2,084 · ארוחת בוקר כלולה"},
+
+  // ---- Day 3 (orange) ----
+  {day:3, name:"San Luis Obispo — יציאה", time:"08:30 · צ'ק-אאוט עד 12:00", leg:"—", ll:[35.2828,-120.6596]},
+  {day:3, name:"Pismo Beach — ארוחת בוקר", time:"09:00–09:30", leg:"20 ק\"מ · 20 דק'", ll:[35.1428,-120.6413]},
+  {day:3, name:"Santa Barbara — עיירה ספרדית + חוף", time:"~11:30–13:00", leg:"170 ק\"מ · 120 דק'", ll:[34.4208,-119.6982]},
+  {day:3, name:"Camarillo Premium Outlets — קניות", time:"~13:30–17:00", leg:"45 ק\"מ · 45 דק'", ll:[34.2164,-119.0573]},
+  {day:3, name:"Los Angeles — Loews Hollywood Hotel", time:"~17:45", leg:"80 ק\"מ · 50 דק'", ll:[34.1016,-118.3387]},
+];
+
+const colors = {1:"#2563eb", 2:"#16a34a", 3:"#ea580c"};
+
+const map = L.map('map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:18, attribution:'© OpenStreetMap'
+}).addTo(map);
+
+// One polyline per day, colored
+const bounds = [];
+[1,2,3].forEach(d=>{
+  const dayPts = pts.filter(p=>p.day===d).map(p=>p.ll);
+  if(dayPts.length>1){
+    L.polyline(dayPts,{color:colors[d],weight:4,opacity:.8}).addTo(map);
+  }
+});
+
+// Markers
+pts.forEach((p,i)=>{
+  bounds.push(p.ll);
+  let icon;
+  if(p.hotel){
+    icon = L.divIcon({className:'', html:'<div class="hotel-icon">🏨</div>',
+      iconSize:[30,30], iconAnchor:[15,28]});
+  } else {
+    icon = L.divIcon({className:'', html:`<div class="num-icon" style="border-color:${colors[p.day]}">${i+1}</div>`,
+      iconSize:[26,26], iconAnchor:[13,13]});
+  }
+  const popup = `<b>${p.name}</b><br>🕐 ${p.time}<br>`+
+    (p.leg && p.leg!=="—" ? `<span class="leg">🚗 מהנקודה הקודמת: ${p.leg}</span><br>` : "")+
+    (p.note ? `<span class="leg">${p.note}</span>` : "");
+  L.marker(p.ll,{icon}).addTo(map).bindPopup(popup);
+});
+
+map.fitBounds(bounds,{padding:[40,40]});
+</script>
+</body>
+</html>
