@@ -1,832 +1,848 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>חופשה 2026 — LA + SF + Route 1 + ילוסטון, אוגוסט 2026</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f0eb; color: #2c2c2c; font-size: 16px; line-height: 1.7; }
-    .hero { background: linear-gradient(135deg, #1a5276 0%, #8e44ad 30%, #1abc9c 65%, #f39c12 100%); color: white; text-align: center; padding: 60px 20px 50px; }
-    .hero h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 10px; text-shadow: 0 2px 6px rgba(0,0,0,.3); }
-    .hero .sub { font-size: 1.1em; opacity: .92; margin-bottom: 24px; }
-    .hero .tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .hero .tag { background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 5px 16px; font-size: .9em; }
-    .alt-banner { background: #1abc9c; color: white; text-align: center; padding: 12px 20px; font-size: .95em; font-weight: 700; }
-    .nav { background: #2c2c2c; position: sticky; top: 0; z-index: 100; display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 16px; }
-    .nav a { color: #f0c070; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: .88em; transition: background .2s; }
-    .nav a:hover { background: #444; }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 16px 60px; }
-    section { margin-top: 48px; scroll-margin-top: 52px; }
-    h2 { font-size: 1.6em; color: #1a5276; border-right: 5px solid #f39c12; padding-right: 14px; margin-bottom: 20px; }
-    .route-flow { display: grid; grid-template-columns: 1fr 14px; align-items: center; row-gap: 0; column-gap: 14px; background: white; border-radius: 12px; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
-    .route-stop { display: contents; }
-    .route-stop .label { font-weight: 600; font-size: 1em; color: #2c2c2c; text-align: right; padding: 6px 0; }
-    .route-stop .label small { display: block; font-weight: 400; font-size: .82em; color: #777; }
-    .route-dot { width: 14px; height: 14px; border-radius: 50%; background: #f39c12; flex-shrink: 0; justify-self: center; }
-    .route-dot.start { background: #27ae60; } .route-dot.end { background: #c0392b; }
-    .route-dot.adi { background: #9b59b6; } .route-dot.rv { background: #1a5276; }
-    .route-dot.europe { background: #e67e22; } .route-dot.sf { background: #8e44ad; }
-    .route-dot.r1 { background: #1abc9c; }
-    .route-line { width: 2px; height: 28px; background: #ddd; justify-self: center; grid-column: 2; }
-    .route-line.r1 { background: #1abc9c; }
-    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.07); font-size: .93em; }
-    thead tr { background: #2c2c2c; color: white; } thead th { padding: 12px 10px; text-align: right; font-weight: 600; }
-    tbody tr:nth-child(even) { background: #fafafa; } tbody td { padding: 10px; text-align: right; border-bottom: 1px solid #eee; }
-    .hot { color: #c0392b; font-weight: 700; } .cool { color: #2980b9; font-weight: 700; } .ok { color: #27ae60; font-weight: 700; }
-    .week-label { background: #2c2c2c; color: white; padding: 10px 20px; border-radius: 8px; margin: 28px 0 16px; font-weight: 700; }
-    .day-card { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); overflow: hidden; }
-    .day-header { display: flex; align-items: center; gap: 14px; padding: 14px 20px; cursor: pointer; justify-content: flex-start; flex-direction: row-reverse; }
-    .day-header:hover { background: #f0f7ff; }
-    .day-num { min-width: 54px; height: 26px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .72em; color: white; flex-shrink: 0; padding: 0 8px; }
-    .day-title { font-weight: 700; font-size: 1.05em; text-align: right; }
-    .day-drive { font-size: .82em; color: #888; margin-top: 2px; }
-    .day-body { padding: 6px 20px 18px; border-top: 1px solid #f0f0f0; }
-    .day-body ul { padding-right: 18px; } .day-body li { margin: 6px 0; } .day-body li strong { color: #1a5276; }
-    .tip-box { background: #fffbf0; border-right: 4px solid #f39c12; padding: 10px 14px; border-radius: 6px; margin-top: 10px; font-size: .9em; color: #5a4000; }
-    .r1-box { background: #e8f8f5; border-right: 4px solid #1abc9c; padding: 10px 14px; border-radius: 6px; margin-top: 10px; font-size: .9em; color: #0e6655; }
-    .rv-box { background: #eaf3fb; border-right: 4px solid #1a5276; padding: 10px 14px; border-radius: 6px; margin-top: 10px; font-size: .9em; color: #1a3a5c; }
-    .d1{background:#27ae60;} .d2{background:#1abc9c;} .d3{background:#16a085;}
-    .d4f{background:#8e44ad;}
-    .d5s{background:#7d3c98;} .d6s{background:#6c3483;}
-    .d5r{background:#1abc9c;}
-    .d7r{background:#1abc9c;} .d8r{background:#16a085;} .d9r{background:#0e8472;}
-    .d10{background:#e67e22;} .d11{background:#d35400;}
-    .d12{background:#c0392b;} .d13{background:#154360;} .d14{background:#145a32;}
-    .d15{background:#1e8449;} .d16{background:#d35400;} .d17{background:#cb4335;}
-    .d18{background:#922b21;} .d19{background:#6c3483;}
-    .sleep-box { background: #f0f7ff; border-right: 4px solid #2980b9; padding: 8px 14px; border-radius: 6px; margin-top: 10px; font-size: .88em; color: #1a3a5c; }
-    .todo-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1.5px solid #8e44ad; color: #8e44ad; font-size: .82em; font-weight: 700; padding: 4px 12px; border-radius: 20px; cursor: pointer; margin-top: 10px; transition: background .15s, color .15s; }
-    .todo-btn:hover { background: #8e44ad; color: white; }
-    .todo-box { background: #faf5ff; border-right: 4px solid #8e44ad; padding: 10px 14px; border-radius: 6px; margin-top: 8px; font-size: .88em; color: #4a235a; display: none; }
-    .todo-box ul { padding-right: 16px; list-style: none; }
-    .todo-box li { margin: 7px 0; padding-right: 4px; }
-    .todo-box li::before { content: "▸ "; color: #8e44ad; font-weight: 700; }
-    .book-tag { display: inline-block; background: #c0392b; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; }
-    .done-tag { display: inline-block; background: #27ae60; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; }
-    .time-tag { display: inline-block; background: #e67e22; color: white; font-size: .72em; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-right: 4px; vertical-align: middle; }
-    .maplink { text-decoration: none; font-size: .95em; margin: 0 3px; vertical-align: middle; cursor: pointer; } .maplink:hover { filter: brightness(1.15); }
-    .hotels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .hotel-card { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-top: 4px solid #f39c12; }
-    .hotel-card.sf { border-top-color: #8e44ad; } .hotel-card.r1 { border-top-color: #1abc9c; } .hotel-card.rv { border-top-color: #1a5276; }
-    .hotel-card .city { font-weight: 700; font-size: 1em; margin-bottom: 4px; }
-    .hotel-card .nights { font-size: .82em; color: #888; margin-bottom: 6px; }
-    .hotel-card .price { font-size: .88em; color: #27ae60; font-weight: 600; }
-    .budget-card { background: white; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
-    .budget-total { background: #2c2c2c; color: white; border-radius: 10px; padding: 16px 20px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
-    .budget-total span { font-size: 1.3em; font-weight: 800; color: #f0c070; }
-    .closing { background: linear-gradient(135deg, #1a5276, #1abc9c); color: white; border-radius: 14px; padding: 36px 32px; text-align: center; margin-top: 48px; font-size: 1.1em; line-height: 1.9; }
-    .closing strong { font-size: 1.3em; display: block; margin-top: 16px; }
-    .flight-section { display: grid; gap: 20px; }
-    .flight-card { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
-    .flight-card h3 { color: #2980b9; margin-bottom: 14px; } .star-row { background: #fffbf0 !important; }
-    @media (max-width: 600px) { .hero h1 { font-size: 1.6em; } .nav a { font-size: .78em; padding: 5px 8px; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #F2F2F2; }
+  body { font-family: 'Heebo', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #171717; -webkit-font-smoothing: antialiased; }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  a { color: inherit; }
+  ::selection { background: #BBDFFF; }
+</style>
+</helmet>
+<div dir="rtl" lang="he" style="background:#F2F2F2; min-height:100vh; font-family:'Heebo','Helvetica Neue',Helvetica,Arial,sans-serif; color:#171717; line-height:1.65;">
 
-<div class="alt-banner">✅ התוכנית הרשמית — ✈️ TLV → SF · 3 ימי Route 1 · 🛍️ Camarillo · Disneyland · יוניברסל · Cabazon · Vegas · ילוסטון · לונדון · הביתה</div>
-
-<div class="hero">
-  <h1>✈️ חופשה 2026 — LA + SF + Route 1 (3 ימים) + ילוסטון</h1>
-  <p class="sub">✈️ נוחתים LAX, ממשיכים ישר ל-SF · Golden Gate · 🌊 Big Sur · Monterey · Morro Bay · Santa Barbara · 🛍️ Camarillo Outlets · Disneyland · יוניברסל · ונציה ביץ' · Cabazon · Vegas · ילוסטון · לונדון · הביתה</p>
-  <div class="tags">
-    <span class="tag">📅 5–23 אוגוסט 2026</span>
-    <span class="tag">👨‍👩‍👧‍👧 5 נפשות שבוע 1 · 4 שבוע 2</span>
-    <span class="tag">🌉 SF ראשון — ביום הנחיתה!</span>
-    <span class="tag">🌊 Route 1 — 3 ימים</span>
-    <span class="tag">🏙️ 3 לילות LA — אחרי Disneyland</span>
-  </div>
-</div>
-
-<nav class="nav">
-  <a href="#route">מסלול</a>
-  <a href="#weather">מזג אוויר</a>
-  <a href="#days">יום יום</a>
-  <a href="#flights">טיסות</a>
-  <a href="#hotels">לינה</a>
-  <a href="#budget">תקציב</a>
-  <a href="#booking">הזמנות</a>
-</nav>
-
-<div class="container">
-
-<section id="route">
-  <h2>🗺️ המסלול</h2>
-  <p style="margin:0 0 16px;"><a href="route1-map.html" target="_blank" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">🗺️ מפת כביש 1 האינטראקטיבית — כל הנקודות + מרחקים + לינות (Aug 6–8)</a></p>
-  <div class="route-flow">
-    <div class="route-stop">
-      <div class="label">נתב"ג → LAX — יציאה<small>5 אוגוסט 01:00 · אל-על · נחיתה 06:00 · ✅ נרכש</small></div>
-      <div class="route-dot start"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">✈️ LAX → SFO ✅ AIKSXY — ביום הנחיתה!<small>5 אוגוסט · AA6277 · 09:37→11:14 · רכב נאסף ב-SFO (SFO→LAS one-way, 5–15/8)</small></div>
-      <div class="route-dot sf"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">סן פרנסיסקו — 1 לילה · היילייטס בלבד<small>5 אוגוסט · Golden Gate שקיעה · Fisherman's Wharf · שינה מוקדמת</small></div>
-      <div class="route-dot sf"></div>
-    </div><div class="route-line r1"></div>
-    <div class="route-stop">
-      <div class="label">🌊 Route 1 יום 1: SF → Half Moon Bay 📸 → 17-Mile Drive → Carmel 🍽️ (≥3 שעות) → Point Lobos ⭐ → לינה Monterey<small>6 אוגוסט · ~240 ק"מ · יציאה 08:30 · מדלגים על Monterey באמצע (חוזרים ללינה) · Carmel 14:00–17:15 (3+ שעות) · Point Lobos 17:30 · צ'ק-אין ~19:05</small></div>
-      <div class="route-dot r1"></div>
-    </div><div class="route-line r1"></div>
-    <div class="route-stop">
-      <div class="label">🌊 Route 1 יום 2: 🐋 Whale Watching Monterey → Bixby Bridge → McWay Falls → Elephant Seals → Morro Bay → SLO<small>7 אוגוסט · ~230 ק"מ · כל היום דרומה · Whale Watching 09:00 · הגעה SLO ~19:00</small></div>
-      <div class="route-dot r1"></div>
-    </div><div class="route-line r1"></div>
-    <div class="route-stop">
-      <div class="label">🌊 Route 1 יום 3: SLO → Pismo Beach → Santa Barbara → 🛍️ Camarillo Outlets → לוס אנג'לס<small>8 אוגוסט · ~300 ק"מ · Route 1 מסתיים ישר ב-LA על ה-101!</small></div>
-      <div class="route-dot r1"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">לוס אנג'לס — 3 לילות · Universal Studios<small>8–10 אוגוסט · ✅ Loews Hollywood · Universal (9/8) · Venice Beach / Malibu / Getty</small></div>
-      <div class="route-dot"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">Disneyland — Anaheim — יום שלם<small>12 אוגוסט · Disneyland Park + California Adventure</small></div>
-      <div class="route-dot"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">🛍️ Desert Hills Outlets, Cabazon → Vegas<small>13 אוגוסט · ~120 ק"מ מ-Anaheim · בדרך לוגאס</small></div>
-      <div class="route-dot"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">לאס וגאס — 2 לילות<small>13 אוגוסט (הגעה ערב) · ✅ The Palazzo at The Venetian® · 🎂 יום הולדת לקרן + פרידה מעדי</small></div>
-      <div class="route-dot"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">עדי עוזבת LAS → LAX → ת"א<small>שבת 15 אוגוסט · 19:24 מ-LAS · ✅ נרכש · ₪5,863</small></div>
-      <div class="route-dot adi"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">LAS → Bozeman + רכב שבוע 2<small>שבת 15 אוגוסט · WN3416 · 17:00→20:05 · ✅ EVEN Hotel הוזמן</small></div>
-      <div class="route-dot rv"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">ילוסטון (צפון + מערב) + גרנד טטון<small>16–21 אוגוסט · ✅ כל הלינות הוזמנו</small></div>
-      <div class="route-dot rv"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">JAC → לונדון → נתב"ג<small>21–23 אוגוסט · ✅ טיסות + Page8 (22→23/8)</small></div>
-      <div class="route-dot europe"></div>
-    </div><div class="route-line"></div>
-    <div class="route-stop">
-      <div class="label">נתב"ג — הביתה<small>ראשון 23 אוגוסט 2026</small></div>
-      <div class="route-dot end"></div>
-    </div>
-  </div>
-</section>
-
-
-<section id="weather">
-  <h2>🌡️ מזג האוויר — אוגוסט</h2>
-  <div style="overflow-x:auto;">
-    <table>
-      <thead><tr><th>יעד</th><th>טמפ' (°C)</th><th>הערה</th></tr></thead>
-      <tbody>
-        <tr><td>לוס אנג'לס</td><td class="ok">26–30°C</td><td>חם יבש, נסבל בצל</td></tr>
-        <tr><td>סן פרנסיסקו</td><td class="cool">15–18°C</td><td>ערפל בבקרים — להביא שכבות!</td></tr>
-        <tr><td>Big Sur / Route 1</td><td class="cool">16–20°C</td><td>קריר ומושלם לנסיעה</td></tr>
-        <tr><td>San Luis Obispo</td><td class="ok">22–27°C</td><td>שמשי, יבש, נעים</td></tr>
-        <tr><td>Santa Barbara</td><td class="ok">22–26°C</td><td>ריביירה אמריקאית — הכי נעים</td></tr>
-        <tr><td>לאס וגאס</td><td class="hot">38–42°C</td><td>קיצוני — 2 לילות, פעילות ערב/לילה בלבד</td></tr>
-        <tr><td>ילוסטון / גרנד טטון</td><td class="cool">18–24°C</td><td>הנוח ביותר במסלול</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="days">
-  <h2>📅 יום יום</h2>
-
-  <div class="week-label">שבוע 1 — 5 נפשות (כולל עדי) | 5–14 אוגוסט</div>
-
-  <!-- Day 1 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d4f">Aug 5</div>
-      <div><div class="day-title">✈️ TLV → LAX → SFO — נוחתים ומשיכים ישר ל-SF! 🌉</div>
-      <div class="day-drive">📅 רביעי · TLV 01:05 → LAX 06:00 · LY5 · קונקשן LAX→SFO · נחיתה SF ~15:00 · ✅ Y53M72</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ LAX 06:00</span> נחיתה · <span class="done-tag">✅ LY5 · Y53M72</span> · קונקשן LAX → SFO: <span class="done-tag">✅ AA6277 · 09:37→11:14 · AIKSXY</span></li>
-        <li>נחיתה SFO 11:14 · <strong>איסוף רכב ב-SFO</strong> <span class="done-tag">✅ Alamo · Ofran 65071522</span> — הגעה לדלפק ~12:00 אחרי מטען · צ'ק-אין מלון</li>
-        <li><strong>🌉 Golden Gate Bridge</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Golden%20Gate%20Bridge%20Vista%20Point" target="_blank" title="פתח ב-Google Maps">📍</a> ~17:00 — Vista Point (צד SF, דקות מהגשר) או Battery Spencer (Marin side, 15 דק' נסיעה) · שעת זהב לתמונות</li>
-        <li>ערב: ארוחה ב-Fisherman's Wharf <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Fisherman%27s%20Wharf%2C%20San%20Francisco" target="_blank" title="פתח ב-Google Maps">📍</a> · Pier 39 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pier%2039%2C%20San%20Francisco" target="_blank" title="פתח ב-Google Maps">📍</a> אם יש כוח · שינה מוקדמת — מחר 08:30 Route 1!</li>
-      </ul>
-      <div class="r1-box">✈️ יום נסיעה ארוך (22+ שעות מנתב"ג) — לא לדחוס. Golden Gate בשקיעה + ארוחת ערב = מושלם. מחר 08:30 מתחיל ה-Route 1!</div>
-      <div class="sleep-box">🛏️ <span class="book-tag">📋 להזמין</span> SF — Fisherman's Wharf area (Argonaut Hotel / Hotel Zephyr) · לילה יחיד</div>
-    </div>
+  <!-- Announcement -->
+  <div style="background:#171717; color:#fff; text-align:center; padding:11px 20px; font-size:13.5px; font-weight:500; letter-spacing:.2px;">
+    התוכנית הרשמית · TLV → SF · 3 ימי Route 1 · Camarillo · Disneyland · יוניברסל · Cabazon · וגאס · ילוסטון · לונדון · הביתה
   </div>
 
-  <!-- Day 2 — Route 1 Day 1 -->
-  <div class="day-card" style="border-right:4px solid #1abc9c;">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d5r">Aug 6</div>
-      <div><div class="day-title">🌊 Route 1 Day 1: SF → Half Moon Bay 📸 → 17-Mile Drive → 🍽️ Carmel (3+ hrs) → ⭐ Point Lobos → Monterey</div>
-      <div class="day-drive">📅 חמישי · ~245 ק"מ · יציאה 08:30 · מדלגים על Monterey באמצע (חוזרים ללינה) · Carmel 14:00–17:15 (3+ שעות) · Point Lobos 17:30 · צ'ק-אין ~19:05</div></div>
-    </div>
-    <div class="day-body">
-      <table style="font-size:.85em;margin-bottom:12px;border-radius:8px;overflow:hidden;">
-        <thead><tr><th>עצירה</th><th>הגעה</th><th>יציאה</th><th style="font-size:.8em;color:#888;">נסיעה</th></tr></thead>
-        <tbody>
-          <tr><td>יציאה מ-SF</td><td>—</td><td>08:30</td><td></td></tr>
-          <tr><td>Half Moon Bay — 📸 צילום צוקים (Cowell Ranch / Poplar Beach) + קפה <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Cowell%20Ranch%20State%20Beach%2C%20Half%20Moon%20Bay" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>09:30</td><td>10:00</td><td style="font-size:.8em;color:#888;">50 ק"מ · 60 דק' (Hwy 1)</td></tr>
-          <tr><td>Santa Cruz — אופציונלי: קפה מהיר בדרך (או מדלגים) <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Santa%20Cruz%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~11:50</td><td>מעבר</td><td style="font-size:.8em;color:#888;">78 ק"מ · 80 דק'</td></tr>
-          <tr><td>17-Mile Drive 🌄 (נופים · שער נסגר בשקיעה ~20:00) <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=17-Mile%20Drive%2C%20Pebble%20Beach%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>12:15</td><td>13:45</td><td style="font-size:.8em;color:#888;">78 ק"מ · 75 דק'</td></tr>
-          <tr style="background:#fff3e0;"><td><strong>Carmel-by-the-Sea — 🍽️ ארוחת צהריים + העיירה (≥3 שעות)</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Carmel-by-the-Sea%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>14:00</td><td>17:15</td><td style="font-size:.8em;color:#888;">8 ק"מ · 10 דק'</td></tr>
-          <tr style="background:#fff8e1;"><td><strong>⭐ Point Lobos State Natural Reserve</strong> 🌅 <span style="font-size:.8em;color:#c0392b;">(כניסה אחרונה 18:30 · נסגר 19:00)</span> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Point%20Lobos%20State%20Natural%20Reserve" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>17:30</td><td>18:45</td><td style="font-size:.8em;color:#888;">6 ק"מ · 10 דק'</td></tr>
-          <tr style="background:#e8f8f5;"><td>✅ לינה Portola Hotel & Spa, Monterey <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Portola%20Hotel%20%26%20Spa%2C%20Monterey" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~19:05</td><td>—</td><td style="font-size:.8em;color:#888;">11 ק"מ · 20 דק'</td></tr>
-        </tbody>
-      </table>
-      <button class="todo-btn" onclick="var b=this.nextElementSibling;var open=b.style.display==='block';b.style.display=open?'none':'block';this.innerHTML=open?'📋 פרטי היום ▾':'📋 פרטי היום ▴'">📋 פרטי היום ▾</button>
-      <div class="todo-box">
-        <ul>
-          <li><span class="time-tag">⏰ 08:30</span> יציאה מ-SF</li>
-          <li><span class="time-tag">⏰ 09:30</span> <strong>Half Moon Bay 📸</strong> — קפה ראשון, 30 דק' · נקודות צילום: <strong>Cowell Ranch State Beach</strong> או <strong>Poplar Beach</strong> (על Hwy 1, צוקים דרמטיים)</li>
-          <li><span class="time-tag">⏰ 11:50</span> <strong>Santa Cruz</strong> — <em>אופציונלי:</em> קפה מהיר, או מדלגים כדי לשמור זמן ל-Carmel</li>
-          <li>💡 <strong>מדלגים על Monterey באמצע היום</strong> — חוזרים ללינה בערב. ישר ל-17-Mile / Carmel / Point Lobos.</li>
-          <li><span class="time-tag">⏰ 12:15</span> <strong>17-Mile Drive ★★★</strong> ($12.50/רכב) — Lone Cypress · Bird Rock · Pebble Beach · שער נסגר בשקיעה ~20:00</li>
-          <li><span class="time-tag">⏰ 14:00</span> <strong>🍽️ Carmel-by-the-Sea</strong> (3+ שעות עד 17:15) — ארוחת צהריים + טיול בעיירה · מסעדות מומלצות: <strong>Forge in the Forest</strong> (מטבח עד 16:00), <strong>Brophy's Tavern</strong> (רצוף עד 21:45), <strong>Dametra Cafe</strong> (ים-תיכוני)
-            <ul style="margin-top:6px;font-size:.9em;color:#555;">
-              <li>⏱️ <strong>1.5–2 שעות — מרכז העיירה:</strong> הליכה נינוחה לאורך Ocean Avenue · חצרות נסתרות · בתים ציוריים · חנויות בוטיק וגלריות</li>
-              <li>⏱️ <strong>30–60 דק' — חוף כרמל:</strong> ירידה לקו המים בקצה הרחוב הראשי · חול לבן · צילומי נוף</li>
-            </ul>
-          </li>
-          <li><span class="time-tag">⏰ 17:30</span> <strong>⭐ Point Lobos State Natural Reserve</strong> (שעת זהב) — Cypress Grove trail ~2 ק"מ · כלבי ים + חוף גרניט · כניסה $10/רכב · <strong style="color:#c0392b;">⏰ כניסה אחרונה 18:30, נסגר 19:00</strong></li>
-          <li><span class="time-tag">⏰ 19:05</span> צ'ק-אין Portola Hotel & Spa · ארוחת ערב</li>
-        </ul>
-        <div class="r1-box" style="margin-top:10px;">⏰ <strong>אם היום מתעכב</strong> — להחליף סדר: Point Lobos קודם (שעת זהב), Carmel אחריו (אין שעת סגירה).</div>
-        <div style="margin-top:10px;font-weight:700;font-size:.9em;color:#6c3483;">🌆 ערב במונטריי</div>
-        <ul style="margin-top:4px;">
-          <li><strong>רציף הקנרי (Cannery Row)</strong> — שדרת הנמל ההיסטורית; חנויות בוטיק ובתי קפה · ~1 שעה</li>
-          <li><strong>🦦 חוף McAbee / Lovers Point</strong> — תצפית: אוטרות ים על הגב, כלבי ים ואריות ים על הסלעים · 30–45 דק'</li>
-          <li><strong>רציף הדייגים (Old Fisherman's Wharf)</strong> — אריות ים מתחת למזח + Clam Chowder בקערת לחם מחמצת (טעימות חינם!) · ~1.5 שעות</li>
-        </ul>
+  <!-- Hero -->
+  <header style="background:#fff; padding:clamp(40px,7vw,68px) clamp(20px,5vw,48px) clamp(32px,5vw,52px); border-bottom:1px solid #E7E7E7;">
+    <div style="max-width:1040px; margin:0 auto;">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:14px;">מסע קיץ · 5–23 אוגוסט 2026</div>
+      <h1 style="font-size:clamp(2rem,5.4vw,3.2rem); font-weight:800; line-height:1.1; letter-spacing:-.02em; margin-bottom:16px; text-wrap:balance;">חופשה 2026 — לוס אנג'לס, סן פרנסיסקו,<br>Route 1 &amp; ילוסטון</h1>
+      <p style="font-size:clamp(15px,2vw,18px); color:#373737; max-width:760px; line-height:1.6; margin-bottom:26px;">נוחתים ב-LAX, ממשיכים ישר לסן פרנסיסקו · Golden Gate · Big Sur · Monterey · Morro Bay · Santa Barbara · Camarillo Outlets · Disneyland · יוניברסל · Cabazon · לאס וגאס · ילוסטון וגרנד טטון · לונדון · הביתה.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <span style="background:#DBEEFF; color:#171717; border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600;">5–23 אוגוסט 2026</span>
+        <span style="background:#F2F2F2; color:#171717; border:1px solid #E7E7E7; border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600;">5 נפשות שבוע 1 · 4 שבוע 2</span>
+        <span style="background:#CFF5DF; color:#171717; border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600;">SF ביום הנחיתה</span>
+        <span style="background:#FAE7EC; color:#171717; border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600;">Route 1 — 3 ימים</span>
+        <span style="background:#F2F2F2; color:#171717; border:1px solid #E7E7E7; border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600;">3 לילות LA</span>
       </div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>Portola Hotel & Spa, Monterey</strong> · Two Portola Plaza · Conf: 5209813535 · ₪2,304 · 2 חדרים</div>
     </div>
-  </div>
+  </header>
 
-  <!-- Day 3 — Route 1 Day 2 -->
-  <div class="day-card" style="border-right:4px solid #1abc9c;">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d7r">Aug 7</div>
-      <div><div class="day-title">🌊 Route 1 Day 2: 🐋 Whale Watching → Bixby Bridge → McWay Falls → Elephant Seals → Morro Bay → SLO</div>
-      <div class="day-drive">📅 שישי · ~230 ק"מ · כל היום דרומה · Whale Watching 09:00 · הגעה SLO ~19:00</div></div>
+  <!-- Sticky nav -->
+  <nav style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid #E7E7E7;">
+    <div style="max-width:1040px; margin:0 auto; display:flex; gap:4px; overflow-x:auto; padding:9px clamp(12px,4vw,20px); -webkit-overflow-scrolling:touch;">
+      <a href="#route" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">מסלול</a>
+      <a href="#weather" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">מזג אוויר</a>
+      <a href="#days" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">יום יום</a>
+      <a href="#flights" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">טיסות</a>
+      <a href="#hotels" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">לינה</a>
+      <a href="#budget" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">תקציב</a>
+      <a href="#booking" style="padding:7px 14px; border-radius:999px; font-size:14px; font-weight:600; color:#373737; text-decoration:none; white-space:nowrap;" style-hover="background:#F2F2F2;">הזמנות</a>
     </div>
-    <div class="day-body">
-      <table style="font-size:.85em;margin-bottom:12px;border-radius:8px;overflow:hidden;">
-        <thead><tr><th>עצירה</th><th>הגעה</th><th>יציאה</th><th style="font-size:.8em;color:#888;">נסיעה</th></tr></thead>
-        <tbody>
-          <tr><td>Moss Landing Harbor — הגעה לנמל (7881 Sandholdt Rd · ~20 ק"מ צפונה מ-Monterey) <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=7881%20Sandholdt%20Rd%2C%20Moss%20Landing%2C%20CA" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>08:15</td><td>08:40</td><td style="font-size:.8em;color:#888;">20 ק"מ · 25 דק'</td></tr>
-          <tr style="background:#e8f8f5;"><td>🐋 Whale Watching — Blue Ocean Whale Watch ✅ <span style="font-size:.8em;color:#27ae60;">#350653606</span> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blue%20Ocean%20Whale%20Watch%2C%20Moss%20Landing" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>09:00</td><td>12:30</td><td style="font-size:.8em;color:#888;">3:30 טיול</td></tr>
-          <tr><td>🌉 Bixby Creek Bridge 📸 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bixby%20Creek%20Bridge%2C%20Big%20Sur" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~13:00</td><td>13:20</td><td style="font-size:.8em;color:#888;">20 ק"מ · 25 דק'</td></tr>
-          <tr style="background:#e8f8f5;"><td>McWay Falls — מפל לים + תצפית <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=McWay%20Falls%2C%20Big%20Sur" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~14:20</td><td>14:45</td><td style="font-size:.8em;color:#888;">50 ק"מ · 60 דק'</td></tr>
-          <tr style="background:#fffde7;font-style:italic;"><td>↳ Ewoldsen Trail <span style="font-size:.8em;font-weight:600;color:#e67e22;">(אופציונלי — אם יש זמן)</span> — יערות רדווד + נוף לים, 4.8 ק"מ לולאה <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ewoldsen%20Trail%2C%20Julia%20Pfeiffer%20Burns%20State%20Park" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>14:45</td><td>~16:15</td><td style="font-size:.8em;color:#888;">~90 דק' · מאותו חניון</td></tr>
-          <tr><td>🦭 Elephant Seals — Piedras Blancas <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Piedras%20Blancas%20Elephant%20Seal%20Rookery" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~16:10 <span style="font-size:.75em;color:#e67e22;">(~17:45 אם עושים Ewoldsen)</span></td><td>16:55</td><td style="font-size:.8em;color:#888;">65 ק"מ · 85 דק' (Hwy 1 איטי!)</td></tr>
-          <tr><td>🏔️ Morro Bay — ארוחת ערב + Morro Rock <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Morro%20Rock%2C%20Morro%20Bay%2C%20CA" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~17:50</td><td>18:30</td><td style="font-size:.8em;color:#888;">50 ק"מ · 55 דק'</td></tr>
-          <tr style="background:#e8f8f5;"><td>San Luis Obispo — צ'ק-אין <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Quality%20Suites%20Downtown%20San%20Luis%20Obispo" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~18:55</td><td>—</td><td style="font-size:.8em;color:#888;">25 ק"מ · 25 דק'</td></tr>
-        </tbody>
-      </table>
-      <ul>
-        <li><span class="time-tag">⏰ 08:40</span> <strong>הגעה לנמל Moss Landing</strong> — 7881 Sandholdt Rd · ~20 ק"מ צפונה מ-Monterey · 20 דק' לפני יציאה</li>
-        <li><span class="time-tag">⏰ 09:00</span> <strong>🐋 Whale Watching ★★★ — Blue Ocean Whale Watch</strong> <span class="done-tag">✅ הוזמן #350653606</span> · 5 נוסעים (Upper Deck) · לווייתני כחול + humpbacks · חוזרים 12:00–13:00
-          <ul style="margin-top:6px;font-size:.9em;color:#555;">
-            <li>🍱 להביא אוכל ושתייה — אין בר על הסירה (קירור ידני בלבד, לא גדול)</li>
-            <li>💵 מזומן לחניון $15 · לטיפ לצוות · לצמידי Reliefband $8</li>
-            <li>💊 כדורי מחלת ים — לקחת לפני השינה ובבוקר</li>
-            <li>🧥 שכבות + מעיל עמיד למים + נעליים סגורות — קר גם אם החזאי אומר אחרת</li>
+  </nav>
+
+  <main style="max-width:1040px; margin:0 auto; padding:0 clamp(16px,4vw,32px) 72px;">
+
+    <!-- ROUTE -->
+    <section id="route" data-screen-label="מסלול" style="scroll-margin-top:74px; margin-top:clamp(40px,6vw,60px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">01 · מסלול</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px;">המסלול המלא</h2>
+      <a href="route1-map.html" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#171717; color:#fff; padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:600; font-size:14.5px; margin-bottom:24px;" style-hover="background:#373737;">📍 מפת כביש 1 האינטראקטיבית — נקודות · מרחקים · לינות (Aug 6–8)</a>
+
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; padding:clamp(20px,3vw,32px) clamp(18px,3vw,36px);">
+        <div style="display:grid; grid-template-columns:1fr 16px; column-gap:16px; align-items:center;">
+
+          <div style="padding:9px 0; font-weight:600;">נתב"ג → LAX — יציאה<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">5 אוגוסט 01:00 · אל-על · נחיתה 06:00 · ✅ נרכש</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#5FD0CA; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">✈️ LAX → SFO ✅ AIKSXY — ביום הנחיתה<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">5 אוגוסט · AA6277 · 09:37→11:14 · רכב נאסף ב-SFO (SFO→LAS one-way, 5–15/8)</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">סן פרנסיסקו — 1 לילה · היילייטס בלבד<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">5 אוגוסט · Golden Gate שקיעה · Fisherman's Wharf · שינה מוקדמת</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#89C6FD; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">Route 1 יום 1: SF → Half Moon Bay → 17-Mile Drive → Carmel (3+ שעות) → Point Lobos → לינה Monterey<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">6 אוגוסט · ~240 ק"מ · יציאה 08:30 · Carmel 14:00–17:15 · Point Lobos 17:30 · צ'ק-אין ~19:05</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#89C6FD; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">Route 1 יום 2: Whale Watching Monterey → Bixby Bridge → McWay Falls → Elephant Seals → Morro Bay → SLO<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">7 אוגוסט · ~230 ק"מ · כל היום דרומה · Whale Watching 09:00 · הגעה SLO ~19:00</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#89C6FD; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">Route 1 יום 3: SLO → Pismo Beach → Santa Barbara → Camarillo Outlets → לוס אנג'לס<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">8 אוגוסט · ~300 ק"מ · Route 1 מסתיים ישר ב-LA על ה-101</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">לוס אנג'לס — 3 לילות · Universal Studios<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">8–10 אוגוסט · ✅ Loews Hollywood · Universal (9/8) · Venice / Malibu / Getty</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#FF829F; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">Disneyland — Anaheim — יום שלם<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">12 אוגוסט · Disneyland Park + California Adventure</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#FF829F; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">Desert Hills Outlets, Cabazon → וגאס<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">13 אוגוסט · ~120 ק"מ מ-Anaheim · בדרך לוגאס</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#FF829F; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">לאס וגאס — 2 לילות<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">13 אוגוסט (הגעה ערב) · ✅ The Palazzo at The Venetian® · יום הולדת לקרן + פרידה מעדי</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#FF829F; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">עדי עוזבת LAS → LAX → ת"א<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">שבת 15 אוגוסט · 19:24 מ-LAS · ✅ נרכש · ₪5,863</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#C0C0C0; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">LAS → Bozeman + רכב שבוע 2<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">שבת 15 אוגוסט · WN3416 · 17:00→20:05 · ✅ EVEN Hotel הוזמן</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#5FD0CA; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#5FD0CA; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">ילוסטון (צפון + מערב) + גרנד טטון<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">16–21 אוגוסט · ✅ כל הלינות הוזמנו</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#5FD0CA; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">JAC → לונדון → נתב"ג<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">21–23 אוגוסט · ✅ טיסות + Page8 (22→23/8)</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#89C6FD; justify-self:center;"></div>
+          <div style="width:2px; height:26px; background:#E7E7E7; justify-self:center; grid-column:2;"></div>
+
+          <div style="padding:9px 0; font-weight:600;">נתב"ג — הביתה<small style="display:block; font-weight:400; font-size:13px; color:#565656; margin-top:2px;">ראשון 23 אוגוסט 2026</small></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#FF829F; justify-self:center;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEATHER -->
+    <section id="weather" data-screen-label="מזג אוויר" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">02 · מזג אוויר</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px;">מזג האוויר באוגוסט</h2>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:14.5px; min-width:420px;">
+            <thead><tr style="background:#171717; color:#fff;"><th style="padding:13px 16px; text-align:right; font-weight:600;">יעד</th><th style="padding:13px 16px; text-align:right; font-weight:600;">טמפ' (°C)</th><th style="padding:13px 16px; text-align:right; font-weight:600;">הערה</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:12px 16px;">לוס אנג'לס</td><td style="padding:12px 16px;"><span style="background:#CFF5DF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">26–30°</span></td><td style="padding:12px 16px; color:#373737;">חם יבש, נסבל בצל</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:12px 16px;">סן פרנסיסקו</td><td style="padding:12px 16px;"><span style="background:#DBEEFF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">15–18°</span></td><td style="padding:12px 16px; color:#373737;">ערפל בבקרים — להביא שכבות</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:12px 16px;">Big Sur / Route 1</td><td style="padding:12px 16px;"><span style="background:#DBEEFF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">16–20°</span></td><td style="padding:12px 16px; color:#373737;">קריר ומושלם לנסיעה</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:12px 16px;">San Luis Obispo</td><td style="padding:12px 16px;"><span style="background:#CFF5DF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">22–27°</span></td><td style="padding:12px 16px; color:#373737;">שמשי, יבש, נעים</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:12px 16px;">Santa Barbara</td><td style="padding:12px 16px;"><span style="background:#CFF5DF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">22–26°</span></td><td style="padding:12px 16px; color:#373737;">ריביירה אמריקאית — הכי נעים</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:12px 16px;">לאס וגאס</td><td style="padding:12px 16px;"><span style="background:#FFCEDB; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">38–42°</span></td><td style="padding:12px 16px; color:#373737;">קיצוני — פעילות ערב/לילה בלבד</td></tr>
+              <tr><td style="padding:12px 16px;">ילוסטון / גרנד טטון</td><td style="padding:12px 16px;"><span style="background:#DBEEFF; padding:3px 11px; border-radius:999px; font-weight:600; font-size:13px;">18–24°</span></td><td style="padding:12px 16px; color:#373737;">הנוח ביותר במסלול</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAYS -->
+    <section id="days" data-screen-label="יום יום" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">03 · יום יום</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:20px;">יום אחר יום</h2>
+
+      <div style="display:inline-flex; align-items:center; background:#171717; color:#fff; padding:10px 20px; border-radius:10px; font-weight:700; font-size:15px; margin:8px 0 18px;">שבוע 1 — 5 נפשות (כולל עדי) · 5–14 אוגוסט</div>
+
+      <!-- Day 1 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#89C6FD; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 5</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">✈️ TLV → LAX → SFO — נוחתים וממשיכים ישר ל-SF</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">רביעי · TLV 01:05 → LAX 06:00 · LY5 · קונקשן LAX→SFO · נחיתה SF ~15:00 · ✅ Y53M72</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600; color:#373737;">⏰ LAX 06:00</span> נחיתה · <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ LY5 · Y53M72</span> · קונקשן LAX → SFO: <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ AA6277 · 09:37→11:14 · AIKSXY</span></li>
+            <li style="margin:7px 0;">נחיתה SFO 11:14 · <strong>איסוף רכב ב-SFO</strong> <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ Alamo · Ofran 65071522</span> — הגעה לדלפק ~12:00 אחרי מטען · צ'ק-אין מלון</li>
+            <li style="margin:7px 0;"><strong>Golden Gate Bridge</strong> <a href="https://www.google.com/maps/search/?api=1&query=Golden%20Gate%20Bridge%20Vista%20Point" target="_blank" style="text-decoration:none;" title="Google Maps">📍</a> ~17:00 — Vista Point (צד SF) או Battery Spencer (Marin, 15 דק') · שעת זהב לתמונות</li>
+            <li style="margin:7px 0;">ערב: ארוחה ב-Fisherman's Wharf <a href="https://www.google.com/maps/search/?api=1&query=Fisherman%27s%20Wharf%2C%20San%20Francisco" target="_blank" style="text-decoration:none;" title="Google Maps">📍</a> · Pier 39 <a href="https://www.google.com/maps/search/?api=1&query=Pier%2039%2C%20San%20Francisco" target="_blank" style="text-decoration:none;" title="Google Maps">📍</a> אם יש כוח · שינה מוקדמת — מחר 08:30 Route 1</li>
           </ul>
-        </li>
-        <li><span class="time-tag">⏰ 13:00</span> <strong>Bixby Creek Bridge ★★★</strong> — תמונה אייקונית · אור אחה"צ · 20 דק' עצירה</li>
-        <li><span class="time-tag">⏰ 14:20</span> <strong>McWay Falls ★★★</strong> — מפל ישירות לים · <strong style="color:#c0392b;">⚠️ שביל התצפית סגור לאורך 2026 (תיקון קיר תמך) — צפייה מהכביש (Hwy 1) בלבד</strong> · <em style="color:#e67e22;">אופציונלי: Ewoldsen Trail (14:45–16:15) — 4.8 ק"מ לולאה ביערות רדווד, מאותו חניון, ~90 דק' (פתוח)</em></li>
-        <li><span class="time-tag">⏰ 16:10</span> <strong>Elephant Seals ★★</strong> (Piedras Blancas) — מושבה ענקית, חינם · 45 דק' · ⚠️ 65 ק"מ · 85 דק' נסיעה</li>
-        <li><span class="time-tag">⏰ 17:50</span> <strong>Morro Bay</strong> — ארוחת ערב · Morro Rock · Embarcadero</li>
-        <li><span class="time-tag">⏰ 18:55</span> <strong>San Luis Obispo</strong> — צ'ק-אין Quality Suites Downtown SLO (1631 Monterey St · Conf ❓) · Bubble Gum Alley</li>
-      </ul>
-      <div class="r1-box">✅ <strong>אין backtracking!</strong> יום שלם דרומה מ-Monterey עד SLO. 🐋 אוגוסט = עונת שיא: לווייתני כחול + humpbacks. <strong>Blue Ocean Whale Watch — הוזמן! ✅ #350653606</strong> · Moss Landing Harbor (20 ק"מ צפונה מ-Monterey) · יציאה 09:00 · להגיע 08:40.</div>
-      <div class="tip-box">⚠️ <strong>Hwy 1 = 50 קמ"ש ממוצע</strong> — לא לחשב לפי כביש מהיר! · Pfeiffer Beach הוסר — חוויה של שחר בלבד, לא רלוונטי ללא לינה ב-Big Sur.</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>Quality Suites Downtown San Luis Obispo</strong> · 1631 Monterey Street · ₪2,084 · 2 חדרים (King Suite w/ Living Room + סוויטת קינג נגישה) · ארוחת בוקר כלולה · ביטול חינם עד 5/8 23:59</div>
-    </div>
-  </div>
+          <div style="background:#DBEEFF; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px; color:#171717;">יום נסיעה ארוך (22+ שעות מנתב"ג) — לא לדחוס. Golden Gate בשקיעה + ארוחת ערב = מושלם. מחר 08:30 מתחיל ה-Route 1.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>Marriott Vacation Club®, San Francisco</strong> · 2620 Jones Street, Fisherman's Wharf · Conf: 6251080544 · ₪1,859 · 2 חדרים</div>
+        </div>
+      </article>
 
-  <!-- Day 4 — Route 1 Day 3 + Camarillo -->
-  <div class="day-card" style="border-right:4px solid #1abc9c;">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d8r">Aug 8</div>
-      <div><div class="day-title">🌊 Route 1 Day 3: SLO → Pismo Beach → Santa Barbara → 🛍️ Camarillo Outlets → Los Angeles</div>
-      <div class="day-drive">📅 שבת · ~300 ק"מ · ~3:10 שעות נסיעה · הגעה LA ~18:00–18:15 (פקק שבת על 101)</div></div>
-    </div>
-    <div class="day-body">
-      <table style="font-size:.85em;margin-bottom:12px;border-radius:8px;overflow:hidden;">
-        <thead><tr><th>עצירה</th><th>הגעה</th><th>יציאה</th><th style="font-size:.8em;color:#888;">נסיעה</th></tr></thead>
-        <tbody>
-          <tr><td>יציאה מ-SLO — Quality Suites Downtown <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Quality%20Suites%20Downtown%20San%20Luis%20Obispo" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>—</td><td>08:30</td><td></td></tr>
-          <tr><td>Pismo Beach — ארוחת בוקר על הים <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pismo%20Beach%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>08:45</td><td>09:30</td><td style="font-size:.8em;color:#888;">20 ק"מ · 15 דק'</td></tr>
-          <tr style="background:#fff3e0;"><td><strong>Santa Barbara ★★</strong> — State Street · Mission · Wharf <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Santa%20Barbara%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>11:00</td><td>12:30</td><td style="font-size:.8em;color:#888;">135 ק"מ · 80 דק'</td></tr>
-          <tr style="background:#fdf2ff;"><td><strong>🛍️ Camarillo Premium Outlets</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Camarillo%20Premium%20Outlets" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>13:40</td><td>17:10</td><td style="font-size:.8em;color:#888;">120 ק"מ · 70 דק'</td></tr>
-          <tr style="background:#e8f8f5;"><td>✅ לינה Loews Hollywood Hotel <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Loews%20Hollywood%20Hotel" target="_blank" title="פתח ב-Google Maps">📍</a></td><td>~18:00</td><td>—</td><td style="font-size:.8em;color:#888;">35 ק"מ · ⚠️ פקק שבת 50–60 דק'</td></tr>
-        </tbody>
-      </table>
-      <button class="todo-btn" onclick="var b=this.nextElementSibling;var open=b.style.display==='block';b.style.display=open?'none':'block';this.innerHTML=open?'📋 פרטי היום ▾':'📋 פרטי היום ▴'">📋 פרטי היום ▾</button>
-      <div class="todo-box">
-        <ul>
-          <li><span class="time-tag">⏰ 08:45</span> <strong>Pismo Beach</strong> — ארוחת בוקר על הים · clam chowder מומלץ</li>
-          <li><span class="time-tag">⏰ 11:00</span> <strong>Santa Barbara ★★</strong> — State Street · Old Mission Santa Barbara · Stearns Wharf · ארוחת צהריים · 🌺 ארכיטקטורה ספרדית לבנה, ים טורקיז — לתת לה שעה וחצי לפחות</li>
-          <li><span class="time-tag">⏰ 13:40</span> <strong>🛍️ Camarillo Premium Outlets</strong> (3.5 שעות) — Prada, Gucci, Burberry, Coach, Kate Spade, Nike, H&M · 160+ חנויות · בדרך ל-LA על ה-101</li>
-          <li><span class="time-tag">⏰ ~18:00</span> צ'ק-אין Loews Hollywood Hotel · שינה מוקדמת — מחר Universal!</li>
-        </ul>
-        <div class="rv-box" style="margin-top:10px;">🚗 ~300 ק"מ · ~3:10 שעות נהיגה · Route 1 מסתיים ב-LA — ישר על ה-101!</div>
+      <!-- Day 2 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#89C6FD; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 6</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Route 1 · יום 1: SF → Half Moon Bay → 17-Mile Drive → Carmel → Point Lobos → Monterey</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">חמישי · ~245 ק"מ · יציאה 08:30 · Carmel 14:00–17:15 · Point Lobos 17:30 · צ'ק-אין ~19:05</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <details style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:0; margin-bottom:12px;">
+            <summary style="padding:11px 15px; font-weight:600; font-size:14px; display:flex; justify-content:space-between; align-items:center;">לוח זמנים ועצירות<span style="color:#565656; font-size:12px;">הצג / הסתר ▾</span></summary>
+            <div style="padding:0 12px 12px; overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:13px; min-width:460px; background:#fff; border-radius:8px; overflow:hidden;">
+                <thead><tr style="background:#373737; color:#fff;"><th style="padding:9px 10px; text-align:right;">עצירה</th><th style="padding:9px 10px; text-align:right;">הגעה</th><th style="padding:9px 10px; text-align:right;">יציאה</th><th style="padding:9px 10px; text-align:right; color:#C0C0C0;">נסיעה</th></tr></thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">יציאה מ-SF</td><td style="padding:8px 10px;">—</td><td style="padding:8px 10px;">08:30</td><td style="padding:8px 10px; color:#888;"></td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Half Moon Bay — צילום צוקים (Cowell Ranch / Poplar Beach) + קפה <a href="https://www.google.com/maps/search/?api=1&query=Cowell%20Ranch%20State%20Beach%2C%20Half%20Moon%20Bay" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">09:30</td><td style="padding:8px 10px;">10:00</td><td style="padding:8px 10px; color:#888;">50 ק"מ · 60 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Santa Cruz — אופציונלי: קפה מהיר (או מדלגים) <a href="https://www.google.com/maps/search/?api=1&query=Santa%20Cruz%2C%20California" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~11:50</td><td style="padding:8px 10px;">מעבר</td><td style="padding:8px 10px; color:#888;">78 ק"מ · 80 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">17-Mile Drive (נופים · שער נסגר ~20:00) <a href="https://www.google.com/maps/search/?api=1&query=17-Mile%20Drive%2C%20Pebble%20Beach%2C%20California" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">12:15</td><td style="padding:8px 10px;">13:45</td><td style="padding:8px 10px; color:#888;">78 ק"מ · 75 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#FAE7EC;"><td style="padding:8px 10px;"><strong>Carmel-by-the-Sea — ארוחת צהריים + העיירה (≥3 שעות)</strong> <a href="https://www.google.com/maps/search/?api=1&query=Carmel-by-the-Sea%2C%20California" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">14:00</td><td style="padding:8px 10px;">17:15</td><td style="padding:8px 10px; color:#888;">8 ק"מ · 10 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#DBEEFF;"><td style="padding:8px 10px;"><strong>⭐ Point Lobos State Natural Reserve</strong> <span style="font-size:12px; color:#C0392B;">(כניסה אחרונה 18:30 · נסגר 19:00)</span> <a href="https://www.google.com/maps/search/?api=1&query=Point%20Lobos%20State%20Natural%20Reserve" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">17:30</td><td style="padding:8px 10px;">18:45</td><td style="padding:8px 10px; color:#888;">6 ק"מ · 10 דק'</td></tr>
+                  <tr style="background:#CFF5DF;"><td style="padding:8px 10px;">✅ לינה Portola Hotel &amp; Spa, Monterey <a href="https://www.google.com/maps/search/?api=1&query=Portola%20Hotel%20%26%20Spa%2C%20Monterey" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~19:05</td><td style="padding:8px 10px;">—</td><td style="padding:8px 10px; color:#888;">11 ק"מ · 20 דק'</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+          <details style="border:1px solid #E7E7E7; border-radius:10px;">
+            <summary style="padding:11px 15px; font-weight:600; font-size:14px; display:flex; justify-content:space-between; align-items:center;">פרטי היום המלאים<span style="color:#565656; font-size:12px;">הצג / הסתר ▾</span></summary>
+            <div style="padding:4px 16px 14px;">
+              <ul style="padding-inline-start:18px; color:#373737; font-size:14px; list-style:none;">
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:30</span> יציאה מ-SF</li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:30</span> <strong>Half Moon Bay</strong> — קפה ראשון · נקודות צילום: Cowell Ranch State Beach או Poplar Beach (צוקים דרמטיים על Hwy 1)</li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:50</span> <strong>Santa Cruz</strong> — אופציונלי: קפה מהיר, או מדלגים כדי לשמור זמן ל-Carmel</li>
+                <li style="margin:8px 0;">💡 <strong>מדלגים על Monterey באמצע היום</strong> — חוזרים ללינה בערב. ישר ל-17-Mile / Carmel / Point Lobos.</li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 12:15</span> <strong>17-Mile Drive</strong> ($12.50/רכב) — Lone Cypress · Bird Rock · Pebble Beach · שער נסגר ~20:00</li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 14:00</span> <strong>Carmel-by-the-Sea</strong> (3+ שעות עד 17:15) — צהריים + טיול · מסעדות: Forge in the Forest (עד 16:00), Brophy's Tavern (עד 21:45), Dametra Cafe (ים-תיכוני)</li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 17:30</span> <strong>⭐ Point Lobos</strong> (שעת זהב) — Cypress Grove ~2 ק"מ · כלבי ים + חוף גרניט · $10/רכב · <strong style="color:#C0392B;">כניסה אחרונה 18:30, נסגר 19:00</strong></li>
+                <li style="margin:8px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 19:05</span> צ'ק-אין Portola Hotel &amp; Spa · ארוחת ערב</li>
+              </ul>
+              <div style="background:#DBEEFF; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13.5px;">⏰ <strong>אם היום מתעכב</strong> — להחליף סדר: Point Lobos קודם (שעת זהב), Carmel אחריו (אין שעת סגירה).</div>
+              <div style="font-weight:700; font-size:14px; margin-top:12px;">ערב במונטריי</div>
+              <ul style="padding-inline-start:18px; color:#373737; font-size:14px; margin-top:4px;">
+                <li style="margin:6px 0;"><strong>Cannery Row</strong> — שדרת נמל היסטורית; בוטיקים ובתי קפה · ~1 שעה</li>
+                <li style="margin:6px 0;"><strong>חוף McAbee / Lovers Point</strong> — אוטרות ים, כלבי ים ואריות ים · 30–45 דק'</li>
+                <li style="margin:6px 0;"><strong>Old Fisherman's Wharf</strong> — אריות ים + Clam Chowder בקערת מחמצת (טעימות חינם) · ~1.5 שעות</li>
+              </ul>
+            </div>
+          </details>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>Portola Hotel &amp; Spa, Monterey</strong> · Two Portola Plaza · Conf: 5209813535 · ₪2,304 · 2 חדרים</div>
+        </div>
+      </article>
+
+      <!-- Day 3 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#89C6FD; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 7</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Route 1 · יום 2: Whale Watching → Bixby → McWay Falls → Elephant Seals → Morro Bay → SLO</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שישי · ~230 ק"מ · כל היום דרומה · Whale Watching 09:00 · הגעה SLO ~19:00</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <details style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; margin-bottom:12px;">
+            <summary style="padding:11px 15px; font-weight:600; font-size:14px; display:flex; justify-content:space-between; align-items:center;">לוח זמנים ועצירות<span style="color:#565656; font-size:12px;">הצג / הסתר ▾</span></summary>
+            <div style="padding:0 12px 12px; overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:13px; min-width:460px; background:#fff; border-radius:8px; overflow:hidden;">
+                <thead><tr style="background:#373737; color:#fff;"><th style="padding:9px 10px; text-align:right;">עצירה</th><th style="padding:9px 10px; text-align:right;">הגעה</th><th style="padding:9px 10px; text-align:right;">יציאה</th><th style="padding:9px 10px; text-align:right; color:#C0C0C0;">נסיעה</th></tr></thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Moss Landing Harbor (7881 Sandholdt Rd · ~20 ק"מ מ-Monterey) <a href="https://www.google.com/maps/search/?api=1&query=7881%20Sandholdt%20Rd%2C%20Moss%20Landing%2C%20CA" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">08:15</td><td style="padding:8px 10px;">08:40</td><td style="padding:8px 10px; color:#888;">20 ק"מ · 25 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#DBEEFF;"><td style="padding:8px 10px;">Whale Watching — Blue Ocean ✅ <span style="font-size:12px;">#350653606</span> <a href="https://www.google.com/maps/search/?api=1&query=Blue%20Ocean%20Whale%20Watch%2C%20Moss%20Landing" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">09:00</td><td style="padding:8px 10px;">12:30</td><td style="padding:8px 10px; color:#888;">3:30 טיול</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Bixby Creek Bridge <a href="https://www.google.com/maps/search/?api=1&query=Bixby%20Creek%20Bridge%2C%20Big%20Sur" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~13:00</td><td style="padding:8px 10px;">13:20</td><td style="padding:8px 10px; color:#888;">20 ק"מ · 25 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#DBEEFF;"><td style="padding:8px 10px;">McWay Falls — מפל לים + תצפית <a href="https://www.google.com/maps/search/?api=1&query=McWay%20Falls%2C%20Big%20Sur" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~14:20</td><td style="padding:8px 10px;">14:45</td><td style="padding:8px 10px; color:#888;">50 ק"מ · 60 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#FFFDE7; font-style:italic;"><td style="padding:8px 10px;">↳ Ewoldsen Trail <span style="font-size:12px; color:#E67E22;">(אופציונלי)</span> — רדווד + נוף, 4.8 ק"מ לולאה <a href="https://www.google.com/maps/search/?api=1&query=Ewoldsen%20Trail%2C%20Julia%20Pfeiffer%20Burns%20State%20Park" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">14:45</td><td style="padding:8px 10px;">~16:15</td><td style="padding:8px 10px; color:#888;">~90 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Elephant Seals — Piedras Blancas <a href="https://www.google.com/maps/search/?api=1&query=Piedras%20Blancas%20Elephant%20Seal%20Rookery" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~16:10</td><td style="padding:8px 10px;">16:55</td><td style="padding:8px 10px; color:#888;">65 ק"מ · 85 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Morro Bay — ארוחת ערב + Morro Rock <a href="https://www.google.com/maps/search/?api=1&query=Morro%20Rock%2C%20Morro%20Bay%2C%20CA" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~17:50</td><td style="padding:8px 10px;">18:30</td><td style="padding:8px 10px; color:#888;">50 ק"מ · 55 דק'</td></tr>
+                  <tr style="background:#CFF5DF;"><td style="padding:8px 10px;">San Luis Obispo — צ'ק-אין <a href="https://www.google.com/maps/search/?api=1&query=Quality%20Suites%20Downtown%20San%20Luis%20Obispo" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~18:55</td><td style="padding:8px 10px;">—</td><td style="padding:8px 10px; color:#888;">25 ק"מ · 25 דק'</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:00</span> <strong>Whale Watching — Blue Ocean</strong> <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ #350653606</span> · 5 נוסעים · לווייתני כחול + humpbacks · חוזרים 12:00–13:00. להביא אוכל/שתייה, מזומן לחניון $15, כדורי מחלת ים, שכבות + מעיל.</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 14:20</span> <strong>McWay Falls</strong> — <strong style="color:#C0392B;">⚠️ שביל התצפית סגור לאורך 2026 — צפייה מהכביש בלבד</strong>. אופציונלי: Ewoldsen Trail (14:45–16:15).</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 17:50</span> <strong>Morro Bay</strong> ארוחת ערב · Morro Rock · Embarcadero → <strong>SLO</strong> צ'ק-אין Quality Suites</li>
+          </ul>
+          <div style="background:#DBEEFF; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;"><strong>אין backtracking</strong> — יום שלם דרומה מ-Monterey עד SLO. אוגוסט = שיא עונת לווייתנים. Blue Ocean הוזמן ✅ #350653606 · יציאה 09:00, להגיע 08:40.</div>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:10px; font-size:13.5px;">⚠️ <strong>Hwy 1 = 50 קמ"ש ממוצע</strong> — לא לחשב לפי כביש מהיר. Pfeiffer Beach הוסר (חוויית שחר בלבד).</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>Quality Suites Downtown SLO</strong> · 1631 Monterey St · ₪2,084 · 2 חדרים · ארוחת בוקר כלולה · ביטול חינם עד 5/8</div>
+        </div>
+      </article>
+
+      <!-- Day 4 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#89C6FD; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 8</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Route 1 · יום 3: SLO → Pismo Beach → Santa Barbara → Camarillo Outlets → Los Angeles</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שבת · ~300 ק"מ · ~3:10 שעות נסיעה · הגעה LA ~18:00 (פקק שבת על 101)</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <details style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; margin-bottom:12px;">
+            <summary style="padding:11px 15px; font-weight:600; font-size:14px; display:flex; justify-content:space-between; align-items:center;">לוח זמנים ועצירות<span style="color:#565656; font-size:12px;">הצג / הסתר ▾</span></summary>
+            <div style="padding:0 12px 12px; overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:13px; min-width:460px; background:#fff; border-radius:8px; overflow:hidden;">
+                <thead><tr style="background:#373737; color:#fff;"><th style="padding:9px 10px; text-align:right;">עצירה</th><th style="padding:9px 10px; text-align:right;">הגעה</th><th style="padding:9px 10px; text-align:right;">יציאה</th><th style="padding:9px 10px; text-align:right; color:#C0C0C0;">נסיעה</th></tr></thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">יציאה מ-SLO — Quality Suites <a href="https://www.google.com/maps/search/?api=1&query=Quality%20Suites%20Downtown%20San%20Luis%20Obispo" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">—</td><td style="padding:8px 10px;">08:30</td><td style="padding:8px 10px; color:#888;"></td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:8px 10px;">Pismo Beach — ארוחת בוקר על הים <a href="https://www.google.com/maps/search/?api=1&query=Pismo%20Beach%2C%20California" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">08:45</td><td style="padding:8px 10px;">09:30</td><td style="padding:8px 10px; color:#888;">20 ק"מ · 15 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#DBEEFF;"><td style="padding:8px 10px;"><strong>Santa Barbara</strong> — State Street · Mission · Wharf <a href="https://www.google.com/maps/search/?api=1&query=Santa%20Barbara%2C%20California" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">11:00</td><td style="padding:8px 10px;">12:30</td><td style="padding:8px 10px; color:#888;">135 ק"מ · 80 דק'</td></tr>
+                  <tr style="border-bottom:1px solid #F2F2F2; background:#FAE7EC;"><td style="padding:8px 10px;"><strong>Camarillo Premium Outlets</strong> <a href="https://www.google.com/maps/search/?api=1&query=Camarillo%20Premium%20Outlets" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">13:40</td><td style="padding:8px 10px;">17:10</td><td style="padding:8px 10px; color:#888;">120 ק"מ · 70 דק'</td></tr>
+                  <tr style="background:#CFF5DF;"><td style="padding:8px 10px;">✅ לינה Loews Hollywood Hotel <a href="https://www.google.com/maps/search/?api=1&query=Loews%20Hollywood%20Hotel" target="_blank" style="text-decoration:none;">📍</a></td><td style="padding:8px 10px;">~18:00</td><td style="padding:8px 10px;">—</td><td style="padding:8px 10px; color:#888;">35 ק"מ · פקק שבת 50–60 דק'</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:00</span> <strong>Santa Barbara</strong> — State Street · Old Mission · Stearns Wharf · ארכיטקטורה ספרדית לבנה, ים טורקיז — לתת שעה וחצי לפחות</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 13:40</span> <strong>Camarillo Premium Outlets</strong> (3.5 שעות) — Prada, Gucci, Burberry, Coach, Nike, H&amp;M · 160+ חנויות · בדרך ל-LA על ה-101</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ ~18:00</span> צ'ק-אין Loews Hollywood · שינה מוקדמת — מחר Universal</li>
+          </ul>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>Loews Hollywood Hotel</strong> · 5740907913 · ₪4,069 · לילה 1 LA · ⚠️ לא on-site</div>
+        </div>
+      </article>
+
+      <!-- Day 5 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 9</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Universal Studios Hollywood</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">ראשון · Express Pass ✅ · ⚠️ Early Access לא זמין (לא on-site)</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;">⚠️ <strong>Super Nintendo World Early Access אבוד</strong> — היה זמין רק לאורחי מלון on-site (Hilton Garden Inn). Loews Hollywood אינו on-site. להגיע לפתיחת הפארק ולרוץ ל-Super Nintendo World ראשונים.</li>
+            <li style="margin:7px 0;">Universal Studios Hollywood <a href="https://www.google.com/maps/search/?api=1&query=Universal%20Studios%20Hollywood" target="_blank" style="text-decoration:none;">📍</a> · Super Nintendo World (Mario Kart) · Wizarding World of Harry Potter · Jurassic World · Minion Land</li>
+            <li style="margin:7px 0;">ערב: Hollywood Walk of Fame <a href="https://www.google.com/maps/search/?api=1&query=Hollywood%20Walk%20of%20Fame" target="_blank" style="text-decoration:none;">📍</a> + CityWalk <a href="https://www.google.com/maps/search/?api=1&query=Universal%20CityWalk%20Hollywood" target="_blank" style="text-decoration:none;">📍</a></li>
+          </ul>
+          <div style="background:#FAE7EC; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚡ <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ Express Pass × 5 · UH00004OB7O · $1,545 / ₪4,536 · 9/8/26</span></div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>Loews Hollywood Hotel</strong> · 5740907913 · לילה 2 LA</div>
+        </div>
+      </article>
+
+      <!-- Day 6 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 10</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">LA — יום חופשי: Malibu / Venice / Santa Monica</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שני · לוס אנג'לס · יום אחרון ב-LA לפני Disneyland</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;">Malibu Beach <a href="https://www.google.com/maps/search/?api=1&query=Malibu%20Beach%2C%20California" target="_blank" style="text-decoration:none;">📍</a> · Venice Boardwalk <a href="https://www.google.com/maps/search/?api=1&query=Venice%20Beach%20Boardwalk%2C%20Los%20Angeles" target="_blank" style="text-decoration:none;">📍</a> · Santa Monica 3rd Street Promenade <a href="https://www.google.com/maps/search/?api=1&query=Third%20Street%20Promenade%2C%20Santa%20Monica" target="_blank" style="text-decoration:none;">📍</a></li>
+            <li style="margin:7px 0;">ארוחת ערב Santa Monica · לארוז — מחר Disneyland</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⛔ <strong>The Getty Center סגור בימי שני</strong> — לא לתכנן ל-10/8. אלטרנטיבות פתוחות: Venice Boardwalk · Griffith Observatory <a href="https://www.google.com/maps/search/?api=1&query=Griffith%20Observatory%2C%20Los%20Angeles" target="_blank" style="text-decoration:none;">📍</a> · Santa Monica Pier <a href="https://www.google.com/maps/search/?api=1&query=Santa%20Monica%20Pier" target="_blank" style="text-decoration:none;">📍</a>.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#FFCEDB; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">📋 להזמין</span> Venice / Hollywood · לילה 3 LA (אחרון)</div>
+        </div>
+      </article>
+
+      <!-- Day 7 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 11</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Los Angeles → Anaheim — צ'ק-אין לפני Disneyland</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שלישי · ~50 ק"מ · הגעה Anaheim בצהריים · שינה מוקדמת</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:00</span> צ'ק-אאוט LA · נסיעה ~50 ק"מ דרומה ל-Anaheim (~45 דק')</li>
+            <li style="margin:7px 0;">צ'ק-אין <strong>Sheraton Park Hotel at the Anaheim Resort</strong> <a href="https://www.google.com/maps/search/?api=1&query=Sheraton%20Park%20Hotel%20at%20the%20Anaheim%20Resort" target="_blank" style="text-decoration:none;">📍</a> (Conf: 5869647984) · צהריים · Downtown Disney / Garden Walk</li>
+            <li style="margin:7px 0;">Disney merch: Target / Walmart Anaheim בלבד (עד 50% הנחה מול הפארק)</li>
+            <li style="margin:7px 0;">שינה מוקדמת — מחר 08:00 פתיחת Disneyland</li>
+          </ul>
+          <div style="background:#FAE7EC; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">להגיע לפארק 30 דק' לפני פתיחה — Galaxy's Edge ראשון לפני שמתמלא. Lightning Lane — להפעיל ברגע הכניסה.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Sheraton Park Hotel at the Anaheim Resort · Conf: 5869647984 · לילה 1</div>
+        </div>
+      </article>
+
+      <!-- Day 8 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 12</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Disneyland — יום שלם</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">רביעי · Anaheim · פתיחה 08:00 · Disneyland Park — יום שלם</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:00</span> <strong>Disneyland Park</strong> <a href="https://www.google.com/maps/search/?api=1&query=Disneyland%20Park%2C%20Anaheim" target="_blank" style="text-decoration:none;">📍</a> — Galaxy's Edge לפני ההמון, Haunted Mansion, Pirates, Fantasyland</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ אחה"צ</span> Tomorrowland · Big Thunder Mountain · Matterhorn · Space Mountain</li>
+            <li style="margin:7px 0;">מצעד + <span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ מופע אורות ~21:00</span></li>
+            <li style="margin:7px 0;">אחרי הפארק: לארוז — מחר Cabazon + Vegas</li>
+          </ul>
+          <div style="background:#FAE7EC; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚡ <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ Lightning Lane Multi Pass · 5 כרטיסים · $915 / ₪2,686 · 12/8</span></div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Sheraton Park Hotel · Conf: 5869647984 · לילה 2 (אחרון)</div>
+        </div>
+      </article>
+
+      <!-- Day 9 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 13</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">Anaheim → Cabazon Outlets → Vegas · יום הולדת לקרן</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">חמישי · ~320 ק"מ · הגעה Vegas ~18:00 · ארוחת יום הולדת + פרידה מעדי</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:00</span> Anaheim → I-10 מזרחה</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ ~10:30</span> <strong>Desert Hills Premium Outlets, Cabazon</strong> <a href="https://www.google.com/maps/search/?api=1&query=Desert%20Hills%20Premium%20Outlets%2C%20Cabazon" target="_blank" style="text-decoration:none;">📍</a> — Gucci, Prada, Coach, Kate Spade, Nike · 5 שעות עד ~15:30 → I-15 צפונה → Vegas ~18:00</li>
+            <li style="margin:7px 0;"><strong>ארוחת יום הולדת לקרן + פרידה מעדי</strong> — ארוחה אחרונה של 5 ביחד</li>
+            <li style="margin:7px 0;">⚠️ עדי נשארת הלילה — טסה מחר שבת 15/8 ב-<span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 19:24</span> · <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ ₪5,863</span></li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">🌡️ <strong>38–42°C — אסטרטגיית חום:</strong> 09:00–11:30 טיול חיצוני בסטריפ בלבד · 12:00–17:00 בריכה / קניון מזוגן בלבד (Forum Shops, Grand Canal Shoppes) · אחרי 19:00 חזרה לחוץ. חשוב במיוחד לבת ה-13.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>The Palazzo at The Venetian®</strong> <a href="https://www.google.com/maps/search/?api=1&query=The%20Palazzo%20at%20The%20Venetian%2C%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a> · Conf: 6883258314 · ₪3,844 · 2 חדרים · לילה 1 (כולל עדי)</div>
+        </div>
+      </article>
+
+      <!-- Day 10 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#FFCEDB; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 14</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">לאס וגאס — יום שני בעיר</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שישי · הסטריפ · מסעדות · קניות · ערב גדול</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:00–11:30</span> טיול בסטריפ — Bellagio Fountains <a href="https://www.google.com/maps/search/?api=1&query=Fountains%20of%20Bellagio%2C%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a> · Caesars Palace <a href="https://www.google.com/maps/search/?api=1&query=Caesars%20Palace%2C%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a> · Venetian (לפני החום)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 12:00–17:00</span> 🌡️ <strong>פנים בלבד</strong> — Forum Shops / Grand Canal Shoppes / בריכה</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 18:30</span> <strong>"O" by Cirque du Soleil® @ Bellagio</strong> <a href="https://www.google.com/maps/search/?api=1&query=Bellagio%20Hotel%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a> — <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ 5 כרטיסים · Conf: 124942697 · ₪2,528</span></li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 21:30+</span> High Roller <a href="https://www.google.com/maps/search/?api=1&query=High%20Roller%20The%20LINQ%2C%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a> · Fremont Street <a href="https://www.google.com/maps/search/?api=1&query=Fremont%20Street%20Experience%2C%20Las%20Vegas" target="_blank" style="text-decoration:none;">📍</a></li>
+            <li style="margin:7px 0;">⚠️ עדי טסה מחר שבת 15/8 ב-19:24 — לצאת לשדה ~17:00</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">🌡️ <strong>38–42°C — חוק הברזל:</strong> 12:00–17:00 בתוך בניין מזוגן בלבד. אחרי 19:00 חזרה לרחוב.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> <strong>The Palazzo at The Venetian®</strong> · Conf: 6883258314 · לילה 2 (אחרון · כולל עדי)</div>
+        </div>
+      </article>
+
+      <div style="display:inline-flex; align-items:center; background:#171717; color:#fff; padding:10px 20px; border-radius:10px; font-weight:700; font-size:15px; margin:14px 0 18px;">שבוע 2 — 4 נפשות (ללא עדי) · 15–23 אוגוסט</div>
+
+      <!-- Day 11 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 15</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">✈️ עדי טסה הביתה + המשפחה: LAS → Bozeman</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שבת · משפחה (4) LAS 17:00→BZN 20:05 (WN3416) | עדי LAS 19:24→LAX (LY4479)→ת"א (LY106)</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 15px; margin-bottom:12px; font-size:13.5px;">🚨 <strong>עדכון לוח זמנים:</strong> טיסת המשפחה (WN3416) יוצאת ב-<strong>17:00</strong> — מוקדם ממה שתוכנן ("אחרי 20:00"). היום קוצר: יוצאים לשדה ~14:30, כולל החזרת הרכב. עדי תישאר בשדה לטיסתה ב-19:24.</div>
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:00–10:30</span> <strong>Red Rock Canyon</strong> <a href="https://www.google.com/maps/search/?api=1&query=Red%20Rock%20Canyon%20National%20Conservation%20Area%2C%20Nevada" target="_blank" style="text-decoration:none;">📍</a> (45 דק' מהסטריפ) — לולאת נסיעה 20 ק"מ · לחזור לפני החום</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:00</span> צ'ק-אאוט Palazzo (Conf: 6883258314) · 11:00–14:00 פנים בלבד — קניון / בריכה / ברנץ' (40°C)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ ~14:30</span> כולם יוצאים לשדה LAS · החזרת רכב שבוע 1 (<span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ Alamo · Ofran 65071522</span>)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 17:00</span> <strong>משפחה (4):</strong> LAS→BZN <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ WN3416 · CYU86I · ₪2,095</span> · פרידה מעדי · איסוף רכב ב-BZN <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ Ofran 85071362</span></li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 19:24</span> <strong>עדי</strong>: LAS 19:24 → LAX 20:34 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ LY4479 / DL2288</span> → TLV <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ LY106 · ₪5,863</span></li>
+          </ul>
+          <div style="background:#CFF5DF; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">Red Rock Canyon = הפתרון המושלם ל-9 שעות הריקות. 45 דק' מהסטריפ, פתוח 08:00, לולאה 2.5 שעות, חזרה לפני 11:00.</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG · $384.32 / ₪1,128</div>
+        </div>
+      </article>
+
+      <!-- Day 12 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 16</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">בוזמן → ילוסטון צפון: Mammoth + Tower Fall + Lamar Valley</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">ראשון · ~130 ק"מ · יציאה 06:00</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 06:30</span> יציאה מבוזמן → Mammoth Hot Springs <a href="https://www.google.com/maps/search/?api=1&query=Mammoth%20Hot%20Springs%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> (126 ק"מ)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 07:55–09:00</span> Mammoth Hot Springs — טיילת מדרגות טראוורטין · איילים חופשי — מרחק 25 מ'</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:45–10:15</span> Tower Fall <a href="https://www.google.com/maps/search/?api=1&query=Tower%20Fall%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> — תצפית מפל 40 מ' (הליכה 15 דק')</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:15–13:00</span> Lamar Valley <a href="https://www.google.com/maps/search/?api=1&query=Lamar%20Valley%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> — ביזונים, פרונגהורן, אפשרי זאבים/דובים · פיקניק</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 15:00–18:30</span> זמן חופשי — Boiling River או עיירת Gardiner · ערב: נסיעה אופציונלית לצפייה בחיות</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚠️ עיכובי בנייה ~30 דק' בכביש Gardiner–Mammoth — לצאת מוקדם · דובים/זאבים: 90 מ'+ · ביזונים/איילים: 25 מ'+ · ~280 ק"מ סה"כ</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Yellowstone Riverside Cottages <a href="https://www.google.com/maps/search/?api=1&query=Yellowstone%20Riverside%20Cottages%2C%20Gardiner" target="_blank" style="text-decoration:none;">📍</a> · ₪1,407 · הזמנה 5856245753 · צ'ק-אין 18:30</div>
+        </div>
+      </article>
+
+      <!-- Day 13 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 17</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">ילוסטון מערב — Old Faithful + Grand Prismatic</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שני · Gardiner → Norris → West Yellowstone</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 07:30</span> יציאה מ-Gardiner (תדלוק! — תחנות מוגבלות) → Norris Geyser Basin <a href="https://www.google.com/maps/search/?api=1&query=Norris%20Geyser%20Basin%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> (43 ק"מ)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:25–10:00</span> Norris Geyser Basin — Porcelain Basin + חלק מ-Back Basin</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 10:45–12:15</span> Midway Geyser Basin <a href="https://www.google.com/maps/search/?api=1&query=Midway%20Geyser%20Basin%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> + Grand Prismatic Spring <a href="https://www.google.com/maps/search/?api=1&query=Grand%20Prismatic%20Spring%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> (חניה מתמלאת אחרי 10:30)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 13:40</span> צ'ק-אין Starlite Yellowstone · 14:00–17:00 זמן חופשי — בריכה / Grizzly &amp; Wolf Discovery Center</li>
+          </ul>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Starlite Yellowstone, Tapestry Collection by Hilton <a href="https://www.google.com/maps/search/?api=1&query=Starlite%20Yellowstone%20Tapestry%20Collection%20by%20Hilton" target="_blank" style="text-decoration:none;">📍</a> · ₪2,547</div>
+        </div>
+      </article>
+
+      <!-- Day 14 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 18</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">ילוסטון — Old Faithful + Upper Geyser Basin</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שלישי · West Yellowstone → Old Faithful (~100 ק"מ הלוך-חזור)</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 06:30</span> השכמה (זריחה ~06:50) → נסיעה ל-Old Faithful (50 ק"מ) · 07:40 הגעה לפני גל המבקרים</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:00–10:30</span> Old Faithful <a href="https://www.google.com/maps/search/?api=1&query=Old%20Faithful%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> + Upper Geyser Basin: Geyser Hill, Morning Glory Pool, Castle/Grand/Riverside</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 12:45–14:00</span> Fountain Paint Pot / Firehole Lake Drive <a href="https://www.google.com/maps/search/?api=1&query=Fountain%20Paint%20Pot%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> — טיילת קלה, פחות עומס</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 15:00–17:30</span> חזרה ל-West Yellowstone — מנוחה / בריכה / IMAX</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚠️ חניית Midway Geyser Basin עומס שיא — להגיע לפני 10:00 או אחרי 17:00</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Starlite Yellowstone · לילה 2</div>
+        </div>
+      </article>
+
+      <!-- Day 15 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 19</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">ילוסטון → Hayden Valley + Grand Canyon → גרנד טטון (Rockwell Inn)</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">רביעי · ~240 ק"מ (מסלול נופי דרך Hayden Valley + Artist Point)</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 06:30</span> צ'ק-אאוט Starlite → Canyon Village (64 ק"מ)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 07:35–09:00</span> Hayden Valley <a href="https://www.google.com/maps/search/?api=1&query=Hayden%20Valley%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> — נסיעת חיות בר · בוקר מוקדם = שיא פעילות ביזונים/זאבים/דובים</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 09:00–09:45</span> Artist Point <a href="https://www.google.com/maps/search/?api=1&query=Artist%20Point%2C%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> + Grand Canyon of the Yellowstone <a href="https://www.google.com/maps/search/?api=1&query=Grand%20Canyon%20of%20the%20Yellowstone" target="_blank" style="text-decoration:none;">📍</a> — מפל 94 מ'</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 10:30–14:15</span> נסיעה דרך Yellowstone Lake → South Entrance → Grand Teton — עצירות: Jackson Lake <a href="https://www.google.com/maps/search/?api=1&query=Jackson%20Lake%2C%20Grand%20Teton%20National%20Park" target="_blank" style="text-decoration:none;">📍</a>, Oxbow Bend <a href="https://www.google.com/maps/search/?api=1&query=Oxbow%20Bend%2C%20Grand%20Teton%20National%20Park" target="_blank" style="text-decoration:none;">📍</a></li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 15:00–16:00</span> צ'ק-אין Rockwell Inn</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚠️ "פקקי ביזונים" שכיחים במסלול — להשאיר מרווח זמן</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> The Rockwell Inn, Grand Teton <a href="https://www.google.com/maps/search/?api=1&query=The%20Rockwell%20Inn%2C%20Grand%20Teton" target="_blank" style="text-decoration:none;">📍</a> · ₪3,584 · ביטול חינם עד 15/8</div>
+        </div>
+      </article>
+
+      <!-- Day 16 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#9AFFC5; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 20</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">גרנד טטון — Jenny Lake + חיות בר</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">חמישי · Grand Teton NP</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 06:00</span> Oxbow Bend <a href="https://www.google.com/maps/search/?api=1&query=Oxbow%20Bend%2C%20Grand%20Teton%20National%20Park" target="_blank" style="text-decoration:none;">📍</a> — צפייה בחיות בר בזריחה · 100 מ'+ מהחיות</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:30–09:00</span> ארוחת בוקר Colter Bay + טיול קצר על שפת האגם</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 11:00–15:30</span> Jenny Lake <a href="https://www.google.com/maps/search/?api=1&query=Jenny%20Lake%2C%20Grand%20Teton%20National%20Park" target="_blank" style="text-decoration:none;">📍</a> — Scenic Cruise 11:00 (להזמין מראש, jennylakeboating.com) + Hidden Falls + Inspiration Point (~3.5 ק"מ)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 18:30–20:30</span> סיבוב ערב לצפייה בחיות בר — Moose-Wilson Road או Oxbow Bend · ⚠️ Death Canyon Trailhead סגור קיץ 2026</li>
+          </ul>
+          <div style="background:#FDECEA; border:1px solid #FAD4CE; border-radius:10px; padding:11px 14px; margin-top:12px; font-size:13.5px;">⚠️ דובים: מרחק מינימום 100 מ', כל המזון בקופסאות הגנה מדובים / ברכב</div>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:10px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Rockwell Inn <a href="https://www.google.com/maps/search/?api=1&query=The%20Rockwell%20Inn%2C%20Grand%20Teton" target="_blank" style="text-decoration:none;">📍</a> · לילה 2 (אחרון)</div>
+        </div>
+      </article>
+
+      <!-- Day 17 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#BBDFFF; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 21</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">✈️ גרנד טטון → JAC → טיסה ללונדון</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שישי · JAC 14:52→DEN 16:34 (UA2791) → LHR 09:40+1 (UA27) · ✅ נרכש · ₪5,020</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 07:30–08:45</span> עצירה קצרה — Schwabacher Landing <a href="https://www.google.com/maps/search/?api=1&query=Schwabacher%20Landing%2C%20Grand%20Teton" target="_blank" style="text-decoration:none;">📍</a> או Mormon Row <a href="https://www.google.com/maps/search/?api=1&query=Mormon%20Row%2C%20Grand%20Teton" target="_blank" style="text-decoration:none;">📍</a> (אור בוקר, בלי הליכות ארוכות)</li>
+            <li style="margin:7px 0;"><span style="background:#F2F2F2; border:1px solid #E7E7E7; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">⏰ 08:45–09:15</span> נסיעה ל-Jackson Hole Airport <a href="https://www.google.com/maps/search/?api=1&query=Jackson%20Hole%20Airport%20JAC" target="_blank" style="text-decoration:none;">📍</a> · החזרת הרכב · צ'ק-אין ~12:00</li>
+            <li style="margin:7px 0;">טיסה JAC→DEN <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ UA2791 · 14:52→16:34</span> · DEN→LHR <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ UA27 · 17:35→09:40 (22/8) · ₪5,020</span></li>
+          </ul>
+          <div style="background:#DBEEFF; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px;">✈️ <strong>לינה במטוס</strong> — טיסת לילה DEN→LHR (UA27 · יוצא 21/8 17:35, נוחת LHR 22/8 09:40). אין מלון בלילה הזה.</div>
+        </div>
+      </article>
+
+      <!-- Day 18 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#BBDFFF; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 22</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">לונדון — יום שלם</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">שבת · נחיתה LHR 09:40</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;">Hyde Park <a href="https://www.google.com/maps/search/?api=1&query=Hyde%20Park%2C%20London" target="_blank" style="text-decoration:none;">📍</a> · Borough Market <a href="https://www.google.com/maps/search/?api=1&query=Borough%20Market%2C%20London" target="_blank" style="text-decoration:none;">📍</a> · British Museum <a href="https://www.google.com/maps/search/?api=1&query=British%20Museum%2C%20London" target="_blank" style="text-decoration:none;">📍</a> · Covent Garden <a href="https://www.google.com/maps/search/?api=1&query=Covent%20Garden%2C%20London" target="_blank" style="text-decoration:none;">📍</a></li>
+            <li style="margin:7px 0;">🚨 <strong>שימו לב:</strong> הטיסה חזרה (23/8) יוצאת מ-<strong>Stansted (STN)</strong> <a href="https://www.google.com/maps/search/?api=1&query=London%20Stansted%20Airport%20STN" target="_blank" style="text-decoration:none;">📍</a>, לא Heathrow! מ-Page8 (מרכז) — לתכנן מעבר ל-STN בבוקר 23/8 (~1.5 שעות)</li>
+          </ul>
+          <div style="background:#F8F8F8; border:1px solid #E7E7E7; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px; color:#373737;">🏨 <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ הוזמן</span> Page8, Page Hotels <a href="https://www.google.com/maps/search/?api=1&query=Page8%20Page%20Hotels%2C%208%20St.%20Martin%27s%20Place%2C%20London" target="_blank" style="text-decoration:none;">📍</a> · Conf: MerTev9mxj81Page · 2× Double Room · ₪2,369 · צ'ק-אין מ-15:00 · לילה יחיד (22→23/8)</div>
+        </div>
+      </article>
+
+      <!-- Day 19 -->
+      <article style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 18px; flex-wrap:wrap;">
+          <span style="background:#BBDFFF; color:#171717; min-width:66px; text-align:center; padding:7px 12px; border-radius:10px; font-weight:700; font-size:13px;">Aug 23</span>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-weight:700; font-size:clamp(16px,2vw,18px); line-height:1.35;">✈️ לונדון → נתב"ג — הביתה</div>
+            <div style="font-size:13px; color:#565656; margin-top:3px;">ראשון · STN 17:15 → TLV 00:10 (24/8) · IZ912 Arkia · ✅ 3J8A-XD2S / GDRUSE · ₪5,725</div>
+          </div>
+        </div>
+        <div style="padding:2px 18px 18px;">
+          <ul style="padding-inline-start:20px; color:#373737; font-size:14.5px;">
+            <li style="margin:7px 0;">צ'ק-אאוט Page8 עד 11:00 · 8 St. Martin's Place <a href="https://www.google.com/maps/search/?api=1&query=Page8%20Page%20Hotels%2C%208%20St.%20Martin%27s%20Place%2C%20London" target="_blank" style="text-decoration:none;">📍</a></li>
+            <li style="margin:7px 0;">🚨 <strong>מעבר ל-Stansted (STN)</strong> <a href="https://www.google.com/maps/search/?api=1&query=London%20Stansted%20Airport%20STN" target="_blank" style="text-decoration:none;">📍</a> — לא Heathrow! להגיע מוקדם מספיק (~1.5 שעות נסיעה ממרכז לונדון)</li>
+            <li style="margin:7px 0;">בוקר/אחה"צ חופשי · <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:600;">✅ IZ912 · STN 17:15 → TLV 00:10 · Arkia · 3J8A-XD2S / GDRUSE · ₪5,725</span> · הביתה</li>
+          </ul>
+          <div style="background:#DBEEFF; border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px;">🏠 בית! נחיתה נתב"ג <strong>00:10 — ליל שני, 24 אוגוסט 2026</strong> (אחרי חצות)</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- FLIGHTS -->
+    <section id="flights" data-screen-label="טיסות" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">04 · טיסות</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:8px;">טיסות</h2>
+      <p style="color:#565656; font-size:15px; margin-bottom:18px;">✅ כל הטיסות הוזמנו.</p>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:13.5px; min-width:760px;">
+            <thead><tr style="background:#171717; color:#fff;"><th style="padding:12px 12px; text-align:right; font-weight:600;">תאריך</th><th style="padding:12px 12px; text-align:right; font-weight:600;">מסלול</th><th style="padding:12px 12px; text-align:right; font-weight:600;">המראה</th><th style="padding:12px 12px; text-align:right; font-weight:600;">נחיתה</th><th style="padding:12px 12px; text-align:right; font-weight:600;">נוסעים</th><th style="padding:12px 12px; text-align:right; font-weight:600;">טיסה</th><th style="padding:12px 12px; text-align:right; font-weight:600;">חברה</th><th style="padding:12px 12px; text-align:right; font-weight:600;">מחיר</th><th style="padding:12px 12px; text-align:right; font-weight:600;">אישור</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 12px;">5/8</td><td style="padding:10px 12px;">TLV → LAX</td><td style="padding:10px 12px;">01:05</td><td style="padding:10px 12px;">06:00</td><td style="padding:10px 12px;">4 (ללא עדי)</td><td style="padding:10px 12px;">LY5</td><td style="padding:10px 12px;">El Al</td><td style="padding:10px 12px;">₪11,535</td><td style="padding:10px 12px;">Y53M72</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 12px;">5/8</td><td style="padding:10px 12px;">TLV → LAX (עדי)</td><td style="padding:10px 12px;">01:05</td><td style="padding:10px 12px;">06:00</td><td style="padding:10px 12px;">1 (עדי)</td><td style="padding:10px 12px;">LY5</td><td style="padding:10px 12px;">El Al</td><td style="padding:10px 12px;">₪5,863 (הלוך-חזור)</td><td style="padding:10px 12px;">—</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 12px;">5/8</td><td style="padding:10px 12px;">LAX → SFO</td><td style="padding:10px 12px;">09:37</td><td style="padding:10px 12px;">11:14</td><td style="padding:10px 12px;">5</td><td style="padding:10px 12px;">AA6277</td><td style="padding:10px 12px;">American Airlines</td><td style="padding:10px 12px;">₪2,418</td><td style="padding:10px 12px;">AIKSXY</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 12px;">15/8 (שבת)</td><td style="padding:10px 12px;">LAS → BZN</td><td style="padding:10px 12px;">17:00</td><td style="padding:10px 12px;">20:05</td><td style="padding:10px 12px;">4</td><td style="padding:10px 12px;">WN3416</td><td style="padding:10px 12px;">Southwest Airlines</td><td style="padding:10px 12px;">₪2,095</td><td style="padding:10px 12px;">CYU86I</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 12px;">15/8 (שבת)</td><td style="padding:10px 12px;">LAS → LAX (עדי)</td><td style="padding:10px 12px;">19:24</td><td style="padding:10px 12px;">20:34</td><td style="padding:10px 12px;">1 (עדי)</td><td style="padding:10px 12px;">LY4479</td><td style="padding:10px 12px;">El Al / Delta DL2288</td><td style="padding:10px 12px;" rowspan="2">₪5,863 (הלוך-חזור)</td><td style="padding:10px 12px;" rowspan="2">8Y6E8U</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 12px;">15–16/8</td><td style="padding:10px 12px;">LAX → TLV (עדי)</td><td style="padding:10px 12px;">23:15 (15/8)</td><td style="padding:10px 12px;">23:05 (16/8)</td><td style="padding:10px 12px;">1 (עדי)</td><td style="padding:10px 12px;">LY106</td><td style="padding:10px 12px;">El Al</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 12px;">21/8 (שישי)</td><td style="padding:10px 12px;">JAC → DEN</td><td style="padding:10px 12px;">14:52</td><td style="padding:10px 12px;">16:34</td><td style="padding:10px 12px;">4</td><td style="padding:10px 12px;">UA2791</td><td style="padding:10px 12px;" rowspan="2">United Airlines</td><td style="padding:10px 12px;" rowspan="2">₪5,020</td><td style="padding:10px 12px;" rowspan="2">—</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 12px;">21–22/8</td><td style="padding:10px 12px;">DEN → LHR</td><td style="padding:10px 12px;">17:35 (21/8)</td><td style="padding:10px 12px;">09:40 (22/8)</td><td style="padding:10px 12px;">4</td><td style="padding:10px 12px;">UA27</td></tr>
+              <tr><td style="padding:10px 12px;">23–24/8</td><td style="padding:10px 12px;">STN → TLV</td><td style="padding:10px 12px;">17:15 (23/8)</td><td style="padding:10px 12px;">00:10 (24/8)</td><td style="padding:10px 12px;">4</td><td style="padding:10px 12px;">IZ912</td><td style="padding:10px 12px;">Arkia</td><td style="padding:10px 12px;">₪5,725</td><td style="padding:10px 12px;">3J8A-XD2S / GDRUSE</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:#FDECEA; padding:14px 18px; font-size:13px; color:#171717; border-top:1px solid #FAD4CE;">
+          ⚠️ <strong>שעת ההמראה TLV→LAX (5/8):</strong> באישור ההזמנה <strong>01:05</strong> (לא 00:10 כפי שצוין בעבר) — לוודא.<br>
+          🚨 <strong>עדכון 15/8:</strong> טיסת LAS→BZN (WN3416) יוצאת ב-<strong>17:00</strong>, מוקדם מהמתוכנן ולפני טיסת עדי (19:24). היום קוצר — הגעה לשדה ~14:30 עם פרידה מעדי בשדה.<br>
+          🚨 <strong>שדות תעופה בלונדון:</strong> UA27 נוחתת ב-<strong>Heathrow (LHR)</strong>, אבל IZ912 חזרה יוצאת מ-<strong>Stansted (STN)</strong> — כ-1.5 שעות נסיעה. לתכנן מעבר לפני 23/8 17:15.
+        </div>
       </div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>Loews Hollywood Hotel</strong> · 5740907913 · ₪4,069 · לילה 1 LA · ⚠️ לא on-site</div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Day 5 — Universal Studios -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d3">Aug 9</div>
-      <div><div class="day-title">Universal Studios Hollywood 🎬🧙</div>
-      <div class="day-drive">📅 ראשון · Express Pass ✅ · ⚠️ Early Access לא זמין (לא on-site)</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li>⚠️ <strong>Super Nintendo World Early Access אבוד</strong> — היה זמין רק לאורחי מלון on-site (Hilton Garden Inn). Loews Hollywood אינו on-site. הגיעו לפתיחת הפארק ורוצו ל-Super Nintendo World ראשונים.</li>
-        <li>Universal Studios Hollywood <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Universal%20Studios%20Hollywood" target="_blank" title="פתח ב-Google Maps">📍</a> · Super Nintendo World (Mario Kart) · Wizarding World of Harry Potter · Jurassic World · Minion Land</li>
-        <li>ערב: Hollywood Walk of Fame <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hollywood%20Walk%20of%20Fame" target="_blank" title="פתח ב-Google Maps">📍</a> + CityWalk <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Universal%20CityWalk%20Hollywood" target="_blank" title="פתח ב-Google Maps">📍</a></li>
-      </ul>
-      <div class="tip-box">⚡ <span class="done-tag">✅ Express Pass × 5 · UH00004OB7O · $1,545 / ₪4,536 · 9/8/26</span></div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>Loews Hollywood Hotel</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Loews%20Hollywood%20Hotel" target="_blank" title="פתח ב-Google Maps">📍</a> · 5740907913 · לילה 2 LA</div>
-    </div>
-  </div>
+    <!-- HOTELS -->
+    <section id="hotels" data-screen-label="לינה" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">05 · לינה</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px;">לינה</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:14px;">
 
-  <!-- Day 6 — LA free day -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d2">Aug 10</div>
-      <div><div class="day-title">LA — Free Day: Malibu / Venice / Santa Monica 🌊</div>
-      <div class="day-drive">📅 שני · לוס אנג'לס · יום אחרון ב-LA לפני Disneyland</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li>Malibu Beach <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Malibu%20Beach%2C%20California" target="_blank" title="פתח ב-Google Maps">📍</a> · Venice Boardwalk <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Venice%20Beach%20Boardwalk%2C%20Los%20Angeles" target="_blank" title="פתח ב-Google Maps">📍</a> · Santa Monica 3rd Street Promenade <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Third%20Street%20Promenade%2C%20Santa%20Monica" target="_blank" title="פתח ב-Google Maps">📍</a></li>
-        <li>ארוחת ערב Santa Monica · 🧳 ארוז — מחר Disneyland!</li>
-      </ul>
-      <div class="tip-box" style="background:#fdecea;border-color:#e74c3c;color:#7b241c;">⛔ <strong>The Getty Center — סגור בשני!</strong> לא לתכנן את Getty ל-10/8. אלטרנטיבות פתוחות: Venice Boardwalk · Griffith Observatory <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Griffith%20Observatory%2C%20Los%20Angeles" target="_blank" title="פתח ב-Google Maps">📍</a> · Santa Monica Pier <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Santa%20Monica%20Pier" target="_blank" title="פתח ב-Google Maps">📍</a>.</div>
-      <div class="sleep-box">🛏️ <span class="book-tag">📋 להזמין</span> Venice / Hollywood · לילה 3 LA (אחרון)</div>
-    </div>
-  </div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">סן פרנסיסקו — 1 לילה <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">1 לילה (5–6/8) · ביום הנחיתה · צ'ק-אין 16:00 / צ'ק-אאוט 11:00</div>
+          <div style="font-size:14px; color:#373737;">Marriott Vacation Club® · 2620 Jones Street, Fisherman's Wharf · 2 חדרים · Conf: 6251080544</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪1,859 ($633.23) · ביטול חינם עד 2/8 23:59</div>
+        </div>
 
-  <!-- Day 7 — LA → Anaheim -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d10">Aug 11</div>
-      <div><div class="day-title">Los Angeles → Anaheim — Check-in before Disneyland 🎢</div>
-      <div class="day-drive">📅 שלישי · ~50 ק"מ · הגעה Anaheim בצהריים · שינה מוקדמת</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 11:00</span> צ'ק-אאוט LA · נסיעה ~50 ק"מ דרומה ל-Anaheim (~45 דק')</li>
-        <li>צ'ק-אין <strong>Sheraton Park Hotel at the Anaheim Resort</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sheraton%20Park%20Hotel%20at%20the%20Anaheim%20Resort" target="_blank" title="פתח ב-Google Maps">📍</a> (Conf: 5869647984) · ארוחת צהריים · Downtown Disney <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Downtown%20Disney%20District%2C%20Anaheim" target="_blank" title="פתח ב-Google Maps">📍</a> / Garden Walk</li>
-        <li>🛍️ <strong>Disney merch:</strong> Target / Walmart Anaheim בלבד (עד 50% הנחה מול הפארק)</li>
-        <li>שינה מוקדמת — מחר 08:00 פתיחת Disneyland!</li>
-      </ul>
-      <div class="tip-box">🎢 להגיע לפארק 30 דק' לפני פתיחה — Galaxy's Edge הראשון לפני שמתמלא. Lightning Lane — להפעיל ברגע הכניסה.</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Sheraton Park Hotel at the Anaheim Resort <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sheraton%20Park%20Hotel%20at%20the%20Anaheim%20Resort" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: 5869647984 · לילה 1</div>
-    </div>
-  </div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">Monterey <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">1 לילה (6/8) · הגעה ~17:30 · Whale Watching מחר 09:00</div>
+          <div style="font-size:14px; color:#373737;">Portola Hotel &amp; Spa · Two Portola Plaza · 2 חדרים · Conf: 5209813535</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪2,304 ($784.78)</div>
+        </div>
 
-  <!-- Day 8 — Disneyland -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d10">Aug 12</div>
-      <div><div class="day-title">Disneyland — יום שלם 🎢🎡</div>
-      <div class="day-drive">📅 רביעי · Anaheim · פתיחה 08:00 · Disneyland Park — יום שלם</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 08:00</span> <strong>Disneyland Park</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Disneyland%20Park%2C%20Anaheim" target="_blank" title="פתח ב-Google Maps">📍</a> — Galaxy's Edge לפני ההמון, Haunted Mansion, Pirates, Fantasyland</li>
-        <li><span class="time-tag">⏰ אחה"צ</span> Tomorrowland · Big Thunder Mountain · Matterhorn · Space Mountain</li>
-        <li>מצעד + <span class="time-tag">⏰ מופע אורות ולייזרים ~21:00</span></li>
-        <li>🧳 אחרי הפארק: ארוז — מחר Cabazon + Vegas</li>
-      </ul>
-      <div class="tip-box">⚡ <span class="done-tag">✅ Lightning Lane Multi Pass · 5 כרטיסים · $915 / ₪2,686 · 12/8</span></div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Sheraton Park Hotel at the Anaheim Resort <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sheraton%20Park%20Hotel%20at%20the%20Anaheim%20Resort" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: 5869647984 · לילה 2 (אחרון)</div>
-    </div>
-  </div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">San Luis Obispo <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">1 לילה (7/8) · צ'ק-אין 16:00 / צ'ק-אאוט 12:00</div>
+          <div style="font-size:14px; color:#373737;">Quality Suites Downtown SLO · 1631 Monterey St · 2 חדרים · ארוחת בוקר כלולה</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪2,084 ($709.72) · ביטול חינם עד 5/8</div>
+        </div>
 
-  <!-- Day 9 — Cabazon + Vegas -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d10">Aug 13</div>
-      <div><div class="day-title">Anaheim → Cabazon Outlets (5 hrs) → Vegas 🛍️ + 🎂 Keren's Birthday</div>
-      <div class="day-drive">📅 חמישי · ~320 ק"מ · הגעה Vegas ~18:00 · ארוחת יום הולדת + פרידה מעדי</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ יציאה 09:00</span> Anaheim → I-10 מזרחה</li>
-        <li><span class="time-tag">⏰ ~10:30</span> <strong>Desert Hills Premium Outlets, Cabazon</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Desert%20Hills%20Premium%20Outlets%2C%20Cabazon" target="_blank" title="פתח ב-Google Maps">📍</a> — Gucci, Prada, Coach, Kate Spade, Nike</li>
-        <li>🛍️ 5 שעות עד <span class="time-tag">⏰ ~15:30</span> → I-15 צפונה → Vegas <span class="time-tag">⏰ ~18:00</span></li>
-        <li>🎂 <strong>ארוחת יום הולדת לקרן + פרידה מעדי</strong> — ארוחה אחרונה של 5 ביחד</li>
-        <li>⚠️ עדי נשארת הלילה — טסה מחר שבת 15/8 ב-<span class="time-tag">⏰ 19:24</span> · <span class="done-tag">✅ ₪5,863</span></li>
-      </ul>
-      <div class="tip-box">💜 2 לילות בVegas — הרבה יותר נינוח! ערב 1: ארוחת יום הולדת + Bellagio Fountains. ערב 2: High Roller + Fremont Street.<br>🌡️ <strong>38–42°C — אסטרטגיית חום:</strong> 09:00–11:30 = טיול חיצוני בסטריפ בלבד · 12:00–17:00 = בריכה / קניון מזוגן בלבד (Forum Shops, Grand Canal Shoppes) · אחרי 19:00 = חזרה לחוץ. חשוב במיוחד לבת ה-13.</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>The Palazzo at The Venetian®</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Palazzo%20at%20The%20Venetian%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: 6883258314 · ₪3,844 · 2 חדרים · לילה ראשון (כולל עדי)</div>
-    </div>
-  </div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">Anaheim — Disneyland <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">2 לילות (11–13/8)</div>
+          <div style="font-size:14px; color:#373737;">Sheraton Park Hotel at the Anaheim Resort · 2 חדרים · Conf: 5869647984</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪2,928 ($997.44) · ביטול חינם עד 11/8</div>
+        </div>
 
-  <!-- Day 10 — Vegas Day 2 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d11">Aug 14</div>
-      <div><div class="day-title">לאס וגאס — יום שני בעיר 🎰🌆</div>
-      <div class="day-drive">📅 שישי · הסטריפ · מסעדות · קניות · ערב גדול</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 09:00–11:30</span> טיול בסטריפ — Bellagio Fountains <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Fountains%20of%20Bellagio%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> · Caesars Palace <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Caesars%20Palace%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> · Venetian (לפני החום)</li>
-        <li><span class="time-tag">⏰ 12:00–17:00</span> 🌡️ <strong>פנים בלבד</strong> — Forum Shops / Grand Canal Shoppes / בריכת המלון</li>
-        <li><span class="time-tag">⏰ 18:30</span> 🎭 <strong>"O" by Cirque du Soleil® @ Bellagio</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bellagio%20Hotel%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> — ✅ הוזמן · 5 כרטיסים · Conf: 124942697 · ₪2,528</li>
-        <li><span class="time-tag">⏰ 21:30+</span> High Roller (גלגל ענק) <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=High%20Roller%20The%20LINQ%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> · Fremont Street Experience <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Fremont%20Street%20Experience%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> (אחרי המופע)</li>
-        <li>⚠️ עדי טסה מחר שבת 15/8 ב-<span class="time-tag">⏰ 19:24</span> — לצאת לשדה ~17:00</li>
-      </ul>
-      <div class="tip-box">🌡️ <strong>38–42°C — חוק הברזל:</strong> 12:00–17:00 = בתוך בניין מזוגן בלבד. אחרי 19:00 = חזרה לרחוב. חשוב במיוחד לבת ה-13. Red Rock Canyon — ראה מחר בבוקר לפני החום!</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> <strong>The Palazzo at The Venetian®</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Palazzo%20at%20The%20Venetian%2C%20Las%20Vegas" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: 6883258314 · אותו מלון · לילה שני (אחרון · כולל עדי)</div>
-    </div>
-  </div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">לוס אנג'לס — 3 לילות <span style="background:#FFCEDB; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">חלקי ✅</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">3 לילות (8–10/8) · Route 1 מסתיים ב-LA</div>
+          <div style="font-size:14px; color:#373737;">8–9/8: ✅ <strong>Loews Hollywood Hotel</strong> · Conf: 5740907913 · ⚠️ לא on-site | 10/8: Venice / Hollywood (להזמין)</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪4,069 · 2 לילות הוזמנו · 10/8 ₪1,200–₪2,200</div>
+        </div>
 
-  <div class="week-label">שבוע 2 — 4 נפשות (ללא עדי) | 15–23 אוגוסט</div>
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">לאס וגאס — 2 לילות <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">2 לילות (13–15/8) · הגעה ~18:00</div>
+          <div style="font-size:14px; color:#373737;">The Palazzo at The Venetian® · 2 חדרים (Sphere view) · Conf: 6883258314</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪3,844 · resort fee $220 · ביטול חינם עד 9/8</div>
+        </div>
 
-  <!-- Day 11 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d12">Aug 15</div>
-      <div><div class="day-title">עדי טסה הביתה + המשפחה: LAS → Bozeman ✈️💜</div>
-      <div class="day-drive">📅 שבת · משפחה (4) LAS 17:00→BZN 20:05 (WN3416) | עדי LAS 19:24→LAX (LY4479)→ת"א (LY106)</div></div>
-    </div>
-    <div class="day-body">
-      <div style="background:#fdeaea;border-radius:8px;padding:11px 15px;margin-bottom:10px;border-right:4px solid #c0392b;font-size:.9em;">
-        🚨 <strong>עדכון לוח זמנים:</strong> טיסת המשפחה (WN3416) יוצאת ב-<strong>17:00</strong> — מוקדם יותר ממה שתוכנן ("אחרי 20:00"). היום קוצר בהתאם: יוצאים לשדה ביחד ב-~14:30, כולל החזרת הרכב. עדי תישאר בשדה לטיסתה ב-19:24.
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">בוזמן <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">1 לילה (15/8)</div>
+          <div style="font-size:14px; color:#373737;">EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪1,128 ($384.32)</div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">Gardiner, MT <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">1 לילה (16/8)</div>
+          <div style="font-size:14px; color:#373737;">Yellowstone Riverside Cottages · הזמנה 5856245753</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪1,407</div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">Starlite Yellowstone <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">2 לילות (17–19/8)</div>
+          <div style="font-size:14px; color:#373737;">Starlite Yellowstone, Tapestry Collection by Hilton</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪2,547</div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">Rockwell Inn, Grand Teton <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">2 לילות (19–21/8)</div>
+          <div style="font-size:14px; color:#373737;">The Rockwell Inn, Grand Teton</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪3,584</div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E7E7E7; border-radius:12px; padding:16px 18px;">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">לונדון <span style="background:#CFF5DF; border-radius:999px; padding:2px 9px; font-size:11.5px; font-weight:600;">✅ הוזמן</span></div>
+          <div style="font-size:12.5px; color:#565656; margin-bottom:8px;">לילה יחיד (22→23/8) · צ'ק-אין מ-15:00</div>
+          <div style="font-size:14px; color:#373737;">Page8, Page Hotels · 8 St. Martin's Place, WC2N 4JH · 2× Double Room · Conf: MerTev9mxj81Page</div>
+          <div style="font-size:13px; color:#171717; font-weight:700; margin-top:8px;">₪2,369 ($806.16) · ביטול חינם עד 15/8</div>
+        </div>
       </div>
-      <ul>
-        <li><span class="time-tag">⏰ 11:00</span> צ'ק-אאוט מ-<strong>The Palazzo at The Venetian®</strong> (Conf: 6883258314)</li>
-        <li><span class="time-tag">⏰ 08:00–10:30</span> 🏜️ <strong>Red Rock Canyon</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Red%20Rock%20Canyon%20National%20Conservation%20Area%2C%20Nevada" target="_blank" title="פתח ב-Google Maps">📍</a> (45 דק' מהסטריפ) — לולאת נסיעה ציורית 20 ק"מ · פתוח מ-08:00 · לחזור לפני החום</li>
-        <li><span class="time-tag">⏰ 11:00–14:00</span> 🌡️ פנים בלבד — קניון מזוגן / בריכת מלון / ברנץ' · 40°C בחוץ</li>
-        <li><span class="time-tag">⏰ ~14:30</span> כולם יוצאים לשדה LAS ביחד · החזרת רכב שבוע 1 (<span class="done-tag">✅ Alamo · Ofran 65071522</span>)</li>
-        <li><span class="time-tag">⏰ 17:00</span> <strong>משפחה (4):</strong> LAS→BZN · <span class="done-tag">✅ WN3416 · 17:00→20:05 · CYU86I · ₪2,095</span> · פרידה מעדי בשדה · איסוף רכב ב-BZN: <span class="done-tag">✅ Ofran 85071362</span></li>
-        <li><span class="time-tag">⏰ 19:24</span> <strong>עדי</strong> נשארת בשדה LAS לטיסתה: LAS 19:24 → LAX 20:34 (<span class="done-tag">✅ LY4479 / Delta DL2288</span>) → TLV 23:15(15/8)→23:05(16/8) (<span class="done-tag">✅ LY106</span>) · <span class="done-tag">✅ ₪5,863</span></li>
-        <li>צ'ק-אין: <span class="done-tag">✅ EVEN Hotel Bozeman · $384.32 / ₪1,128</span></li>
-      </ul>
-      <div class="rv-box">🏜️ Red Rock Canyon = הפתרון המושלם ל-9 שעות הריקות. 45 דק' מהסטריפ, פתוח 08:00, לולאת נסיעה 2.5 שעות, חזרה לפני 11:00 לפני שהחום הופך מסוכן.</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=EVEN%20Hotel%20Bozeman%20Yellowstone%20International%20Airport" target="_blank" title="פתח ב-Google Maps">📍</a></div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Day 12 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d13">Aug 16</div>
-      <div><div class="day-title">בוזמן → ילוסטון צפון: Mammoth + Tower Fall + Lamar Valley 🦌</div>
-      <div class="day-drive">📅 ראשון · ~130 ק"מ · יציאה 06:00</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 06:30</span> יציאה מבוזמן → Mammoth Hot Springs <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mammoth%20Hot%20Springs%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> (126 ק"מ)</li>
-        <li><span class="time-tag">⏰ 07:55–09:00</span> Mammoth Hot Springs — טיילת מדרגות טראוורטין (45–60 דק') · אזהרה: איילים מסתובבים חופשי — מרחק 25 מ'</li>
-        <li><span class="time-tag">⏰ 09:45–10:15</span> Tower Fall <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tower%20Fall%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> — תצפית מפל 40 מ' (29 ק"מ, הליכה 15 דק')</li>
-        <li><span class="time-tag">⏰ 11:15–13:00</span> Lamar Valley <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lamar%20Valley%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> (47 ק"מ) — ביזונים, פרונגהורן, אפשרי זאבים/דובים · פיקניק</li>
-        <li><span class="time-tag">⏰ 15:00–18:30</span> זמן חופשי — Boiling River או עיירת Gardiner</li>
-        <li><span class="time-tag">⏰ 19:30–20:30</span> נסיעת ערב אופציונלית לצפייה בחיות בר</li>
-      </ul>
-      <div class="tip-box" style="background:#fff3cd;border-color:#ffc107;">⚠️ עיכובי בנייה ~30 דק' בכביש Gardiner–Mammoth — לצאת מוקדם · ⚠️ דובים/זאבים: 90 מ'+ · ביזונים/איילים: 25 מ'+ · ~280 ק"מ סה"כ</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Yellowstone Riverside Cottages <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Yellowstone%20Riverside%20Cottages%2C%20Gardiner" target="_blank" title="פתח ב-Google Maps">📍</a> · ₪1,407 · הזמנה 5856245753 · Booking.com קרן · צ'ק-אין 18:30</div>
-    </div>
-  </div>
-
-  <!-- Day 13 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d14">Aug 17</div>
-      <div><div class="day-title">ילוסטון מערב — Old Faithful + Grand Prismatic 🌋</div>
-      <div class="day-drive">📅 שני · Gardiner → Norris → West Yellowstone</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 07:30</span> יציאה מ-Gardiner (תדלוק! — תחנות מוגבלות בפארק) → Norris Geyser Basin <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Norris%20Geyser%20Basin%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> (43 ק"מ)</li>
-        <li><span class="time-tag">⏰ 08:25–10:00</span> Norris Geyser Basin — Porcelain Basin + חלק מ-Back Basin</li>
-        <li><span class="time-tag">⏰ 10:45–12:15</span> Midway Geyser Basin <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Midway%20Geyser%20Basin%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> + Grand Prismatic Spring ★★★ <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grand%20Prismatic%20Spring%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> + Excelsior Geyser (38 ק"מ; חניה מתמלאת אחרי 10:30!)</li>
-        <li><span class="time-tag">⏰ 13:40</span> צ'ק-אין Starlite Yellowstone (30 ק"מ)</li>
-        <li><span class="time-tag">⏰ 14:00–17:00</span> זמן חופשי — בריכה / Grizzly &amp; Wolf Discovery Center</li>
-      </ul>
-      <div class="rv-box">🏨 <span class="done-tag">✅ הוזמן</span> Starlite Yellowstone, Tapestry Collection by Hilton <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Starlite%20Yellowstone%20Tapestry%20Collection%20by%20Hilton" target="_blank" title="פתח ב-Google Maps">📍</a> · ₪2,547</div>
-    </div>
-  </div>
-
-  <!-- Day 14 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d15">Aug 18</div>
-      <div><div class="day-title">ילוסטון — Old Faithful + Upper Geyser Basin 🌋</div>
-      <div class="day-drive">📅 שלישי · West Yellowstone → Old Faithful (~100 ק"מ הלוך-חזור)</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 06:30</span> השכמה (זריחה ~06:50) → נסיעה ל-Old Faithful (50 ק"מ)</li>
-        <li><span class="time-tag">⏰ 07:40</span> הגעה לפני גל המבקרים — לבדוק לוח חיזוי התפרצויות בבית הספרים מיד</li>
-        <li><span class="time-tag">⏰ 08:00–10:30</span> Old Faithful ★★★ <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Old%20Faithful%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> + טיילת Upper Geyser Basin: Geyser Hill, Morning Glory Pool, Castle/Grand/Riverside Geysers</li>
-        <li><span class="time-tag">⏰ 12:45–14:00</span> Fountain Paint Pot / Firehole Lake Drive <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Fountain%20Paint%20Pot%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> — טיילת קלה, פחות עומס</li>
-        <li><span class="time-tag">⏰ 15:00–17:30</span> חזרה ל-West Yellowstone — מנוחה/בריכה/IMAX</li>
-      </ul>
-      <div class="tip-box" style="background:#fff3cd;border-color:#ffc107;">⚠️ חניית Midway Geyser Basin עומס שיא — להגיע לפני 10:00 או אחרי 17:00</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Starlite Yellowstone <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Starlite%20Yellowstone%20Tapestry%20Collection%20by%20Hilton" target="_blank" title="פתח ב-Google Maps">📍</a> · לילה 2</div>
-    </div>
-  </div>
-
-  <!-- Day 15 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d16">Aug 19</div>
-      <div><div class="day-title">ילוסטון → Hayden Valley + Grand Canyon → גרנד טטון: Rockwell Inn 🏔️🐺</div>
-      <div class="day-drive">📅 רביעי · ~240 ק"מ (מסלול נופי דרך Hayden Valley + Artist Point)</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 06:30</span> צ'ק-אאוט מ-Starlite Yellowstone → Canyon Village (64 ק"מ)</li>
-        <li><span class="time-tag">⏰ 07:35–09:00</span> Hayden Valley <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hayden%20Valley%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> — נסיעת חיות בר (26 ק"מ) — בוקר מוקדם = שיא פעילות ביזונים/זאבים/דובים</li>
-        <li><span class="time-tag">⏰ 09:00–09:45</span> Artist Point <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Artist%20Point%2C%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> + Grand Canyon of the Yellowstone <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grand%20Canyon%20of%20the%20Yellowstone" target="_blank" title="פתח ב-Google Maps">📍</a> — מפל 94 מ', ללכת מוקדם לפני העומס</li>
-        <li><span class="time-tag">⏰ 10:30–13:00</span> נסיעה דרך Yellowstone Lake → South Entrance (86 ק"מ)</li>
-        <li><span class="time-tag">⏰ 13:00–14:15</span> John D. Rockefeller Memorial Parkway → Grand Teton (92 ק"מ) — עצירות אופציונליות: Jackson Lake <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Jackson%20Lake%2C%20Grand%20Teton%20National%20Park" target="_blank" title="פתח ב-Google Maps">📍</a>, Oxbow Bend <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Oxbow%20Bend%2C%20Grand%20Teton%20National%20Park" target="_blank" title="פתח ב-Google Maps">📍</a></li>
-        <li><span class="time-tag">⏰ 15:00–16:00</span> צ'ק-אין Rockwell Inn</li>
-      </ul>
-      <div class="tip-box" style="background:#fff3cd;border-color:#ffc107;">⚠️ "פקקי ביזונים" שכיחים במסלול — להשאיר מרווח זמן</div>
-      <div class="rv-box">🏨 <span class="done-tag">✅ הוזמן</span> The Rockwell Inn, Grand Teton <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Rockwell%20Inn%2C%20Grand%20Teton" target="_blank" title="פתח ב-Google Maps">📍</a> · ₪3,584 · ביטול חינם עד 15/8</div>
-    </div>
-  </div>
-
-  <!-- Day 16 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d17">Aug 20</div>
-      <div><div class="day-title">גרנד טטון — Jenny Lake + חיות בר 🦌</div>
-      <div class="day-drive">📅 חמישי · Grand Teton NP</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 06:00</span> נסיעה ל-Oxbow Bend <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Oxbow%20Bend%2C%20Grand%20Teton%20National%20Park" target="_blank" title="פתח ב-Google Maps">📍</a> (43 ק"מ) — צפייה בחיות בר בזריחה (אליגים, אילות, לוטרות) — 100 מ'+ מהחיות</li>
-        <li><span class="time-tag">⏰ 08:30–09:00</span> ארוחת בוקר ב-Colter Bay + טיול קצר על שפת האגם (8 ק"מ)</li>
-        <li><span class="time-tag">⏰ 11:00–12:00</span> Jenny Lake <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Jenny%20Lake%2C%20Grand%20Teton%20National%20Park" target="_blank" title="פתח ב-Google Maps">📍</a> (32 ק"מ) — Jenny Lake Scenic Cruise (להזמין מראש 12:00, jennylakeboating.com)</li>
-        <li><span class="time-tag">⏰ 13:15–15:30</span> שייט מעבורת + הליכה ל-Hidden Falls + Inspiration Point (~3.5 ק"מ הלוך-חזור)</li>
-        <li><span class="time-tag">⏰ 18:30–20:30</span> סיבוב ערב לצפייה בחיות בר — Moose-Wilson Road או חזרה ל-Oxbow Bend — שעתיים לפני השקיעה הן הזמן הטוב ביותר</li>
-        <li>⚠️ Death Canyon Trailhead סגור כל קיץ 2026</li>
-      </ul>
-      <div class="tip-box" style="background:#fff3cd;border-color:#ffc107;">⚠️ דובים: מרחק מינימום 100 מ', כל המזון בקופסאות הגנה מדובים/ברכב</div>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Rockwell Inn <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Rockwell%20Inn%2C%20Grand%20Teton" target="_blank" title="פתח ב-Google Maps">📍</a> · לילה 2 (אחרון)</div>
-    </div>
-  </div>
-
-  <!-- Day 17 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num d18">Aug 21</div>
-      <div><div class="day-title">גרנד טטון → JAC → טיסה ללונדון ✈️🗼</div>
-      <div class="day-drive">📅 שישי · JAC 14:52→DEN 16:34 (UA2791) → LHR 09:40+1 (UA27) · ✅ נרכש · ₪5,020</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li><span class="time-tag">⏰ 07:00</span> השכמה, אריזה, טעינת הרכב</li>
-        <li><span class="time-tag">⏰ 07:30–08:45</span> עצירה קצרה — Schwabacher Landing <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Schwabacher%20Landing%2C%20Grand%20Teton" target="_blank" title="פתח ב-Google Maps">📍</a> או Mormon Row <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mormon%20Row%2C%20Grand%20Teton" target="_blank" title="פתח ב-Google Maps">📍</a> (~15–20 ק"מ, אור בוקר נעים, בלי הליכות ארוכות)</li>
-        <li><span class="time-tag">⏰ 08:45–09:15</span> נסיעה ל-Jackson Hole Airport <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Jackson%20Hole%20Airport%20JAC" target="_blank" title="פתח ב-Google Maps">📍</a> (~25–30 ק"מ) · החזרת הרכב</li>
-        <li><span class="time-tag">⏰ ~12:00–12:30</span> צ'ק-אין לטיסה (שדה קטן עם מסלול יחיד — מרווח נוח לפני 14:52)</li>
-        <li>טיסה JAC→DEN <span class="done-tag">✅ UA2791 · 14:52→16:34</span> · DEN→LHR <span class="done-tag">✅ UA27 · 17:35→09:40 (22/8)</span> · <span class="done-tag">✅ ₪5,020</span></li>
-      </ul>
-      <div class="sleep-box">✈️ <strong>לינה במטוס</strong> — טיסת לילה DEN→LHR (UA27 · יוצא 21/8 17:35, נוחת LHR 22/8 09:40). אין מלון בלילה הזה.</div>
-    </div>
-  </div>
-
-  <!-- Day 18 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num" style="background:#922b21;">Aug 22</div>
-      <div><div class="day-title">לונדון — יום שלם 🎡</div>
-      <div class="day-drive">📅 שבת · נחיתה LHR 09:40</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li>Hyde Park <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hyde%20Park%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a> · Borough Market <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Borough%20Market%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a> · British Museum <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=British%20Museum%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a> · Covent Garden <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Covent%20Garden%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a></li>
-        <li>🚨 <strong>שימו לב:</strong> הטיסה חזרה (23/8) יוצאת מ-<strong>Stansted (STN)</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=London%20Stansted%20Airport%20STN" target="_blank" title="פתח ב-Google Maps">📍</a>, לא Heathrow! מ-Page8 (מרכז) — לתכנן מעבר ל-STN בבוקר 23/8 (~1.5 שעות)</li>
-      </ul>
-      <div class="sleep-box">🛏️ <span class="done-tag">✅ הוזמן</span> Page8, Page Hotels <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Page8%20Page%20Hotels%2C%208%20St.%20Martin%27s%20Place%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: MerTev9mxj81Page · 2× Double Room · ₪2,369 · צ'ק-אין מ-15:00 · <strong>לילה יחיד</strong> (22→23/8)</div>
-    </div>
-  </div>
-
-  <!-- Day 19 -->
-  <div class="day-card">
-    <div class="day-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-      <div class="day-num" style="background:#6c3483;">Aug 23</div>
-      <div><div class="day-title">לונדון → נתב"ג ✈️ הביתה!</div>
-      <div class="day-drive">📅 ראשון · STN 17:15 → TLV 00:10 (24/8) · IZ912 Arkia · ✅ 3J8A-XD2S / GDRUSE · ₪5,725</div></div>
-    </div>
-    <div class="day-body">
-      <ul>
-        <li>צ'ק-אאוט Page8 עד 11:00 · 8 St. Martin's Place <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Page8%20Page%20Hotels%2C%208%20St.%20Martin%27s%20Place%2C%20London" target="_blank" title="פתח ב-Google Maps">📍</a> · Conf: MerTev9mxj81Page</li>
-        <li>🚨 <strong>מעבר ל-Stansted (STN)</strong> <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=London%20Stansted%20Airport%20STN" target="_blank" title="פתח ב-Google Maps">📍</a> — לא Heathrow! לתכנן הגעה מוקדמת מספיק (~1.5 שעות נסיעה ממרכז לונדון)</li>
-        <li>בוקר/אחה"צ חופשי · <span class="done-tag">✅ IZ912 · STN 17:15 → TLV 00:10 · Arkia · 3J8A-XD2S / GDRUSE · ₪5,725</span> · הביתה!</li>
-      </ul>
-      <div class="sleep-box">🏠 בית! נחיתה נתב"ג <strong>00:10 — ליל שני, 24 אוגוסט 2026</strong> (אחרי חצות!)</div>
-    </div>
-  </div>
-
-</section>
-
-<section id="flights">
-  <h2>✈️ טיסות</h2>
-  <div class="flight-section">
-    <div class="flight-card">
-      <h3>✅ כל הטיסות הוזמנו</h3>
-      <table>
-        <thead><tr><th>תאריך</th><th>מסלול</th><th>המראה</th><th>נחיתה</th><th>נוסעים</th><th>מס׳ טיסה</th><th>חברה</th><th>מחיר</th><th>אישור</th></tr></thead>
-        <tbody>
-          <tr class="star-row"><td>5/8</td><td>TLV → LAX</td><td>01:05</td><td>06:00</td><td>4 (ללא עדי)</td><td>LY5</td><td>El Al</td><td>₪11,535</td><td>Y53M72</td></tr>
-          <tr class="star-row"><td>5/8</td><td>TLV → LAX (עדי)</td><td>01:05</td><td>06:00</td><td>1 (עדי)</td><td>LY5</td><td>El Al</td><td>₪5,863 (הלוך-חזור)</td><td>—</td></tr>
-          <tr class="star-row"><td>5/8</td><td>LAX → SFO</td><td>09:37</td><td>11:14</td><td>5</td><td>AA6277</td><td>American Airlines</td><td>₪2,418</td><td>AIKSXY</td></tr>
-          <tr class="star-row"><td>15/8 (שבת)</td><td>LAS → BZN</td><td>17:00</td><td>20:05</td><td>4</td><td>WN3416</td><td>Southwest Airlines</td><td>₪2,095</td><td>CYU86I</td></tr>
-          <tr class="star-row"><td>15/8 (שבת)</td><td>LAS → LAX (עדי)</td><td>19:24</td><td>20:34</td><td>1 (עדי)</td><td>LY4479</td><td>El Al / Delta DL2288</td><td rowspan="2">₪5,863 (הלוך-חזור)</td><td rowspan="2">8Y6E8U</td></tr>
-          <tr class="star-row"><td>15–16/8</td><td>LAX → TLV (עדי)</td><td>23:15 (15/8)</td><td>23:05 (16/8)</td><td>1 (עדי)</td><td>LY106</td><td>El Al</td></tr>
-          <tr class="star-row"><td>21/8 (שישי)</td><td>JAC → DEN</td><td>14:52</td><td>16:34</td><td>4</td><td>UA2791</td><td rowspan="2">United Airlines</td><td rowspan="2">₪5,020</td><td rowspan="2">—</td></tr>
-          <tr class="star-row"><td>21–22/8</td><td>DEN → LHR</td><td>17:35 (21/8)</td><td>09:40 (22/8)</td><td>4</td><td>UA27</td></tr>
-          <tr class="star-row"><td>23–24/8</td><td>STN → TLV</td><td>17:15 (23/8)</td><td>00:10 (24/8)</td><td>4</td><td>IZ912</td><td>Arkia</td><td>₪5,725</td><td>3J8A-XD2S / GDRUSE</td></tr>
-        </tbody>
-      </table>
-      <div style="background:#fdeaea;border-radius:8px;padding:11px 15px;margin-top:12px;border-right:4px solid #c0392b;font-size:.86em;">
-        ⚠️ <strong>שימו לב:</strong> שעת ההמראה TLV→LAX (5/8) באישור ההזמנה היא <strong>01:05</strong> (לא 00:10 כפי שצוין בעבר) — יש לוודא.
-        <br>🚨 <strong>עדכון לוח זמנים 15/8:</strong> טיסת LAS→BZN (WN3416) יוצאת ב-<strong>17:00</strong>, מוקדם מהמתוכנן ("אחרי 20:00") ו<strong>לפני</strong> טיסת עדי (19:24). יום ה-15/8 קוצר — לתכנן הגעה לשדה ~14:30, עם פרידה מעדי בשדה.
-        <br>🚨 <strong>בעיית שדה תעופה בלונדון:</strong> הטיסה JAC→LHR (UA27) נוחתת ב-<strong>Heathrow (LHR)</strong>, אבל הטיסה חזרה IZ912 יוצאת מ-<strong>Stansted (STN)</strong> — שדה תעופה אחר, כ-1.5 שעות נסיעה. יש לתכנן מעבר בין השדות לפני 23/8 17:15!
+    <!-- BUDGET -->
+    <section id="budget" data-screen-label="תקציב" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">06 · תקציב</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px;">תקציב</h2>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:13.5px; min-width:520px;">
+            <thead><tr style="background:#171717; color:#fff;"><th style="padding:12px 14px; text-align:right; font-weight:600;">קטגוריה</th><th style="padding:12px 14px; text-align:right; font-weight:600;">₪</th><th style="padding:12px 14px; text-align:right; font-weight:600;">הערות</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">TLV→LAX ×4 · LY5 · Y53M72</td><td style="padding:10px 14px;">₪11,535</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">טיסות עדי round trip · LY5 / LY4479 / LY106 · 8Y6E8U</td><td style="padding:10px 14px;">₪5,863</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">JAC→LHR (21/8) ×4 · UA2791 + UA27</td><td style="padding:10px 14px;">₪5,020</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">STN→TLV (23–24/8) ×4 · IZ912 · 3J8A-XD2S / GDRUSE</td><td style="padding:10px 14px;">₪5,725</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">LAX→SFO · AA6277 · AIKSXY ×5</td><td style="padding:10px 14px;">₪2,418</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">LAS→BZN (15/8) ×4 · WN3416 · CYU86I</td><td style="padding:10px 14px;">₪2,095</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">רכב SFO→LAS · Alamo · Ofran 65071522 · Chrysler Pacifica 7 pax · 11 ימים (כולל one-way ₪352)</td><td style="padding:10px 14px;">₪3,954</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">רכב שבוע 2 — BZN→JAC · Ofran 85071362</td><td style="padding:10px 14px;">₪2,689</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">Starlite · Rockwell Inn · Riverside Cottages · EVEN Hotel</td><td style="padding:10px 14px;">₪8,666</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">Sheraton Park Anaheim · Conf: 5869647984 (11–13/8)</td><td style="padding:10px 14px;">₪2,928</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Portola Hotel &amp; Spa, Monterey · Conf: 5209813535 (6–7/8)</td><td style="padding:10px 14px;">₪2,304</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Quality Suites Downtown SLO (7–8/8)</td><td style="padding:10px 14px;">₪2,084</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Loews Hollywood Hotel · Conf: 5740907913 (8–10/8) · ⚠️ לא on-site</td><td style="padding:10px 14px;">₪4,069</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">The Palazzo at The Venetian® · Conf: 6883258314 (13–15/8) · resort fee $220</td><td style="padding:10px 14px;">₪3,844</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Page8, London · Conf: MerTev9mxj81Page (22–23/8)</td><td style="padding:10px 14px;">₪2,369</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Marriott Vacation Club®, San Francisco · Conf: 6251080544 (5–6/8)</td><td style="padding:10px 14px;">₪1,859</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">לינה שאר — LA לילה 10/8 (1 ל')</td><td style="padding:10px 14px;">₪1,200–₪2,200</td><td style="padding:10px 14px; color:#565656;">2 חדרים</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">Whale Watching — Blue Ocean · 5 נוסעים · #350653606</td><td style="padding:10px 14px;">₪1,789</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">Disneyland × 5 + Lightning Lane Multi Pass · 12/8</td><td style="padding:10px 14px;">₪2,686</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">"O" by Cirque du Soleil® · Bellagio · 14/8 · Conf: 124942697</td><td style="padding:10px 14px;">₪2,528</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">ביטוח נסיעות — משפחה (4) · $436</td><td style="padding:10px 14px;">₪1,280</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">ביטוח נסיעות — עדי · $55</td><td style="padding:10px 14px;">₪161</td><td style="padding:10px 14px; color:#565656;">✅ נרכש</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2; background:#FAFAFA;"><td style="padding:10px 14px;">Universal Express ×5 · UH00004OB7O · 9/8/26</td><td style="padding:10px 14px;">₪4,536</td><td style="padding:10px 14px; color:#565656;">✅ הוזמן</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">Non-Resident Annual Pass · $250 · 4 נפשות</td><td style="padding:10px 14px;">~₪734</td><td style="padding:10px 14px; color:#565656;"></td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">רישיון נהיגה בינלאומי (IDP) × 2 נהגים</td><td style="padding:10px 14px;">~₪220</td><td style="padding:10px 14px; color:#565656;">📋 ממסי · חובה לפני הטיסה</td></tr>
+              <tr style="border-bottom:1px solid #F2F2F2;"><td style="padding:10px 14px;">אוכל (19 יום)</td><td style="padding:10px 14px;">₪14,000–₪19,000</td><td style="padding:10px 14px; color:#565656;"></td></tr>
+              <tr><td style="padding:10px 14px;">פעילויות שונות</td><td style="padding:10px 14px;">₪1,500–₪2,500</td><td style="padding:10px 14px; color:#565656;"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:#DBEEFF; padding:13px 18px; font-size:13.5px; color:#171717;"><strong>הערות תקציב:</strong> רכב SFO→LAS (one-way) כולל דמי החזרה. לינות Route 1 יקרות (Big Sur = מחיר שיא). Disneyland יום × 5 = הוצאה משמעותית — להזמין מוקדם.</div>
       </div>
-    </div>
-  </div>
-</section>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin-top:14px;">
+        <div style="background:#171717; color:#fff; border-radius:12px; padding:18px 22px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:600;">✅ שולם / הוזמן</span>
+          <span style="font-size:22px; font-weight:800;">₪80,402</span>
+        </div>
+        <div style="background:#171717; color:#fff; border-radius:12px; padding:18px 22px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:600;">סה"כ משוער</span>
+          <span style="font-size:20px; font-weight:800;">₪96K–₪103K</span>
+        </div>
+      </div>
+    </section>
 
-<section id="hotels">
-  <h2>🏨 לינה</h2>
-  <div class="hotels-grid">
-    <div class="hotel-card sf">
-      <div class="city">סן פרנסיסקו ⭐ — 1 לילה</div>
-      <div class="nights">1 לילה (5/8) · ביום הנחיתה!</div>
-      <div class="name">Argonaut Hotel (Fisherman's Wharf) / Hotel Zephyr / Westin St. Francis</div>
-      <div class="price">~₪1,200–₪2,000 ללילה (2 חדרים)</div>
-    </div>
-    <div class="hotel-card r1">
-      <div class="city">Monterey 🌊 · ✅ הוזמן</div>
-      <div class="nights">1 לילה (6/8) · הגעה ~17:30 · 🐋 Whale Watching מחר 09:00</div>
-      <div class="name">Portola Hotel & Spa · Two Portola Plaza · 2 חדרים · Conf: 5209813535</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪2,304 ($784.78) · ✅ הוזמן</div>
-    </div>
-    <div class="hotel-card r1">
-      <div class="city">San Luis Obispo 🌊 · ✅ הוזמן</div>
-      <div class="nights">1 לילה (7/8) · צ'ק-אין 16:00 / צ'ק-אאוט 12:00</div>
-      <div class="name">Quality Suites Downtown San Luis Obispo · 1631 Monterey Street · 2 חדרים · ארוחת בוקר כלולה</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪2,084 ($709.72) · ✅ הוזמן · ביטול חינם עד 5/8</div>
-    </div>
-    <div class="hotel-card must">
-      <div class="city">Anaheim — Disneyland · ✅ הוזמן</div>
-      <div class="nights">2 לילות (11–13/8) · הגעה 11/8 צהריים · צ'ק-אאוט 13/8</div>
-      <div class="name">Sheraton Park Hotel at the Anaheim Resort · 2 חדרים · Conf: 5869647984</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪2,928 ($997.44) · ✅ הוזמן · ביטול חינם עד 11/8 00:00</div>
-    </div>
-    <div class="hotel-card must">
-      <div class="city">לוס אנג'לס — 3 לילות · חלקי ✅</div>
-      <div class="nights">3 לילות (8–10/8) · Route 1 מסתיים ב-LA</div>
-      <div class="name">לילות 8–9/8: ✅ <strong>Loews Hollywood Hotel</strong> · Conf: 5740907913 · ⚠️ לא on-site (Early Access אבוד) | לילה 10/8: Venice / Hollywood (להזמין)</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪4,069 ($1,385.74) · ✅ 2 לילות הוזמנו · לילה 10/8 ₪1,200–₪2,200</div>
-    </div>
-    <div class="hotel-card">
-      <div class="city">לאס וגאס — 2 לילות · ✅ הוזמן</div>
-      <div class="nights">2 לילות (13–15/8) · הגעה ~18:00</div>
-      <div class="name">The Palazzo at The Venetian® · 2 חדרים (Sphere view) · Conf: 6883258314</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪3,844 ($1,309.34) · ✅ הוזמן · resort fee $220 · ביטול חינם עד 9/8</div>
-    </div>
-    <div class="hotel-card rv">
-      <div class="city">בוזמן · ✅ הוזמן</div>
-      <div class="nights">1 לילה (15/8)</div>
-      <div class="name">EVEN Hotel Bozeman Yellowstone Intl Arpt by IHG</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪1,128 ($384.32) · ✅ הוזמן</div>
-    </div>
-    <div class="hotel-card rv">
-      <div class="city">Gardiner, MT · ✅ הוזמן</div>
-      <div class="nights">1 לילה (16/8)</div>
-      <div class="name">Yellowstone Riverside Cottages · הזמנה 5856245753 · Booking.com קרן</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪1,407 · ✅ הוזמן</div>
-    </div>
-    <div class="hotel-card rv">
-      <div class="city">Starlite Yellowstone · ✅ הוזמן</div>
-      <div class="nights">2 לילות (17–19/8)</div>
-      <div class="name">Starlite Yellowstone, Tapestry Collection by Hilton</div>
-      <div class="price" style="color:#27ae60;">₪2,547 · ✅ הוזמן</div>
-    </div>
-    <div class="hotel-card rv">
-      <div class="city">Rockwell Inn, Grand Teton · ✅ הוזמן</div>
-      <div class="nights">2 לילות (19–21/8)</div>
-      <div class="name">The Rockwell Inn, Grand Teton</div>
-      <div class="price" style="color:#27ae60;">₪3,584 · ✅ הוזמן</div>
-    </div>
-    <div class="hotel-card">
-      <div class="city">לונדון · ✅ הוזמן</div>
-      <div class="nights">לילה יחיד (22→23/8) · צ'ק-אין מ-15:00 / צ'ק-אאוט עד 11:00</div>
-      <div class="name">Page8, Page Hotels · 8 St. Martin's Place, WC2N 4JH · 2× Double Room (Queen) · Conf: MerTev9mxj81Page · הזמנה ישירה באתר המלון</div>
-      <div class="price" style="color:#27ae60;font-weight:700;">₪2,369 ($806.16) · ✅ הוזמן · ביטול חינם עד 15/8 12:00 UTC</div>
-    </div>
-  </div>
-</section>
+    <!-- BOOKING -->
+    <section id="booking" data-screen-label="הזמנות" style="scroll-margin-top:74px; margin-top:clamp(44px,6vw,64px);">
+      <div style="font-size:13px; font-weight:600; color:#565656; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;">07 · הזמנות</div>
+      <h2 style="font-size:clamp(24px,3.4vw,34px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px;">הזמנות — מה צריך</h2>
 
-<section id="budget">
-  <h2>💰 תקציב</h2>
-  <div class="budget-card">
-    <table>
-      <thead><tr><th>קטגוריה</th><th>₪</th><th>הערות</th></tr></thead>
-      <tbody>
-        <tr><td>TLV→LAX ×4 · LY5 · 01:05→06:00 · Y53M72</td><td>₪11,535</td><td>✅ נרכש</td></tr>
-        <tr><td>טיסות עדי round trip · LY5 / LY4479 (DL2288) / LY106 · 8Y6E8U</td><td>₪5,863</td><td>✅ נרכש</td></tr>
-        <tr><td>JAC→LHR (21/8) ×4 · UA2791 + UA27</td><td>₪5,020</td><td>✅ נרכש</td></tr>
-        <tr><td>STN→TLV (23–24/8) ×4 · IZ912 · 3J8A-XD2S / GDRUSE</td><td>₪5,725</td><td>✅ נרכש</td></tr>
-        <tr style="background:#f5eef8;"><td>✈️ LAX→SFO · AA6277 · 09:37→11:14 · AIKSXY ×5</td><td>₪2,418</td><td>✅ הוזמן</td></tr>
-        <tr><td>LAS→BZN (15/8) ×4 · WN3416 · 17:00→20:05 · CYU86I</td><td>₪2,095</td><td>✅ הוזמן</td></tr>
-        <tr><td>✅ רכב SFO→LAS · Alamo · Ofran 65071522 · Chrysler Pacifica 7 pax · 5/8 11:00 → 16/8 11:00 (11 ימים) · ₪3,602 + ₪352 one-way = <strong>₪3,954</strong></td><td>₪3,954</td><td>✅ הוזמן</td></tr>
-        <tr><td>רכב שבוע 2 — BZN→JAC · Ofran 85071362</td><td>₪2,689.06</td><td>✅ נרכש</td></tr>
-        <tr><td>Starlite Yellowstone · Rockwell Inn · Riverside Cottages · EVEN Hotel</td><td>₪8,666</td><td>✅ נרכש</td></tr>
-        <tr><td>Sheraton Park Hotel at the Anaheim Resort · 2 חדרים · Conf: 5869647984 (11–13/8)</td><td>₪2,928</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>Portola Hotel & Spa, Monterey · 2 חדרים · Conf: 5209813535 (6–7/8)</td><td>₪2,304</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>Quality Suites Downtown San Luis Obispo · 2 חדרים (7–8/8)</td><td>₪2,084</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>Loews Hollywood Hotel · 2 חדרים · Conf: 5740907913 (8–10/8, 2 לילות) · ⚠️ לא on-site</td><td>₪4,069</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>The Palazzo at The Venetian® · 2 חדרים · Conf: 6883258314 (13–15/8, 2 לילות) · resort fee $220</td><td>₪3,844</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>Page8, Page Hotels, London · 2 חדרים · Conf: MerTev9mxj81Page (22–23/8, 1 לילה) · הזמנה ישירה</td><td>₪2,369</td><td>✅ הוזמן</td></tr>
-        <tr><td>לינה שאר — SF (1 ל') + LA לילה 10/8 (1 ל')</td><td>₪2,200–₪4,200</td><td>2 חדרים</td></tr>
-        <tr><td>🐋 Whale Watching — Blue Ocean Whale Watch · 7/8 · Moss Landing · 5 נוסעים · #350653606</td><td>₪1,789</td><td>✅ הוזמן</td></tr>
-        <tr><td>Disneyland × 5 כרטיסים + Lightning Lane Multi Pass · 12/8</td><td>₪2,686</td><td>✅ הוזמן</td></tr>
-        <tr style="background:#eafaf1;"><td>🎭 "O" by Cirque du Soleil® · Bellagio · 14/8 18:30 · 5 כרטיסים · Conf: 124942697</td><td>₪2,528</td><td>✅ הוזמן</td></tr>
-        <tr><td>🛡️ ביטוח נסיעות — משפחה (4 נפשות) · $436</td><td>₪1,280</td><td>✅ נרכש</td></tr>
-        <tr><td>🛡️ ביטוח נסיעות — עדי (בנפרד) · $55</td><td>₪161</td><td>✅ נרכש</td></tr>
-        <tr style="background:#eafaf1;"><td>Universal Express ×5 · UH00004OB7O · 9/8/26</td><td>₪4,536</td><td>✅ הוזמן</td></tr>
-        <tr><td>Non-Resident Annual Pass</td><td>~₪734</td><td>$250 · 4 נפשות</td></tr>
-        <tr><td>🚗 רישיון נהיגה בינלאומי (IDP) × 2 נהגים</td><td>~₪220</td><td>📋 ממסי · חובה לפני הטיסה</td></tr>
-        <tr><td>אוכל (19 יום)</td><td>₪14,000–₪19,000</td><td></td></tr>
-        <tr><td>פעילויות שונות</td><td>₪1,500–₪2,500</td><td></td></tr>
-      </tbody>
-    </table>
-    <div style="background:#e8f8f5;border-radius:10px;padding:14px 18px;margin-top:16px;border-right:4px solid #1abc9c;font-size:.93em;">
-      <strong>📊 הערות תקציב:</strong> רכב SFO→LAS (one-way) כולל דמי החזרה. לינות Route 1 יקרות (Big Sur = מחיר שיא). Disneyland 1 יום × 5 (Park Hopper) = הוצאה משמעותית — להזמין מוקדם.
-    </div>
-    <div class="budget-total" style="background:#0e6655;margin-top:12px;margin-bottom:8px;">
-      <span>✅ שולם/הוזמן</span>
-      <span>₪78,543</span>
-    </div>
-    <div class="budget-total">
-      <span>סה"כ משוער (בינוני)</span>
-      <span>₪95,000–₪103,000</span>
-    </div>
-  </div>
-</section>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#FFCEDB; color:#171717; padding:11px 18px; font-weight:700; font-size:14.5px;">עכשיו — לפני הכל</div>
+        <div style="padding:2px 18px;">
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון LA (8–10/8) — Loews Hollywood · 2 לילות · Conf: 5740907913 · ₪4,069</strong><br><span style="font-size:13px; color:#565656;">⚠️ לא on-site ב-Universal — Super Nintendo World Early Access אבוד. ה-Express Pass (₪4,536, UH00004OB7O) עדיין תקף.</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון Monterey (6/8) — Portola Hotel &amp; Spa · Conf: 5209813535 · ₪2,304</strong></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון SLO (7/8) — Quality Suites Downtown SLO · 2 חדרים · ₪2,084</strong><br><span style="font-size:13px; color:#565656;">ארוחת בוקר כלולה · ביטול חינם עד 5/8 23:59</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון Vegas (13–15/8) — The Palazzo at The Venetian® · Conf: 6883258314 · ₪3,844</strong><br><span style="font-size:13px; color:#565656;">resort fee $220 · ביטול חינם עד 9/8 23:59</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ "O" by Cirque du Soleil® — Bellagio · 14/8 18:30 · 5 כרטיסים · Conf: 124942697 · ₪2,528</strong></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון SF (5–6/8) — Marriott Vacation Club® · Conf: 6251080544 · ₪1,859</strong><br><span style="font-size:13px; color:#565656;">2 חדרים · ביטול חינם עד 2/8 23:59</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ ביטוח נסיעות — משפחה ($436) + עדי ($55)</strong></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>ESTA USA ×5 · ESTA UK (ETA) ×4 · Non-Resident Annual Pass ($250)</strong></div>
+          <div style="padding:13px 0;"><strong>🚗 רישיון נהיגה בינלאומי (IDP) — לשני ההורים</strong><br><span style="font-size:13px; color:#565656;">⚠️ חובה להוציא בישראל לפני הטיסה. מנפיקים בממסי (MEMSI) · ~₪110/נהג · תקף שנה · להביא רישיון רגיל + IDP יחד.</span></div>
+        </div>
+      </div>
 
-<section id="booking">
-  <h2>✅ הזמנות — מה צריך</h2>
-  <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);">
-    <div style="background:#c0392b;color:white;padding:11px 18px;font-weight:700;">🔴 עכשיו — לפני הכל</div>
-    <div style="padding:0 18px;">
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ מלון LA (8–10/8) — Loews Hollywood Hotel · 2 לילות · Conf: 5740907913 · ₪4,069 — הוזמן</strong><br><span style="font-size:.85em;color:#e74c3c;font-weight:600;">⚠️ לא on-site ב-Universal — Super Nintendo World Early Access אבוד. ה-Express Pass (₪4,536, UH00004OB7O) עדיין תקף ומדלג על התורים.</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ מלון Monterey (6/8) — Portola Hotel & Spa · 1 לילה · Conf: 5209813535 · ₪2,304 — הוזמן</strong></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ מלון SLO (7/8) — Quality Suites Downtown San Luis Obispo · 1 לילה · 2 חדרים · ₪2,084 — הוזמן</strong><br><span style="font-size:.85em;color:#777;">ארוחת בוקר כלולה · ביטול חינם עד 5/8 23:59 · מ-6/8: חיוב $329.86</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ מלון Vegas (13–15/8) — The Palazzo at The Venetian® · 2 לילות · 2 חדרים · Conf: 6883258314 · קוד 3389 · ₪3,844 — הוזמן</strong><br><span style="font-size:.85em;color:#777;">resort fee $220 ($55/לילה, נגבה במלון) · ביטול חינם עד 9/8 23:59</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ 🎭 "O" by Cirque du Soleil® — Bellagio, Vegas · 14/8 18:30 · 5 כרטיסים · Conf: 124942697 · ₪2,528 — הוזמן</strong></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ ביטוח נסיעות — משפחה ($436) + עדי בנפרד ($55) — הושלם</strong></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>ESTA USA ×5 · ESTA UK (ETA) ×4 · Non-Resident Annual Pass ($250)</strong></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>🚗 רישיון נהיגה בינלאומי (IDP) — לשני ההורים (כל נהג)</strong><br><span style="font-size:.85em;color:#e74c3c;font-weight:600;">⚠️ חובה להוציא בישראל לפני הטיסה — אי אפשר להשיג בחו"ל.</span> <span style="font-size:.85em;color:#777;">הרישיון הישראלי אינו באנגלית; Alamo/דלפק ההשכרה והמשטרה מצפים ל-IDP נלווה. מנפיקים בממסי (MEMSI) · ~₪110/נהג · תקף שנה · להביא את הרישיון הרגיל + IDP יחד.</span></div>
-    </div>
-    <div style="background:#e67e22;color:white;padding:11px 18px;font-weight:700;">🟠 בהקדם</div>
-    <div style="padding:0 18px;">
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>🚗 לשנות החזרת רכב SFO→LAS (Ofran 65071522) מ-16/8 ל-14/8</strong><br><span style="font-size:.85em;color:#777;">להתקשר ל-Ofran/Alamo · ב-Vegas נעים על הסטריפ ולא צריך רכב ב-15/8 · חוסך ימי השכרה + חניה</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ מלון London (22–23/8) — Page8, Page Hotels · 1 לילה · 2 חדרים · Conf: MerTev9mxj81Page · ₪2,369 — הוזמן</strong><br><span style="font-size:.85em;color:#777;">הזמנה ישירה באתר המלון · 8 St. Martin's Place · Early Bird · ביטול חינם עד 15/8 12:00 UTC</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>🏨 מלון SF (5/8) + מלון Venice/Hollywood (לילה 10/8)</strong><br><span style="font-size:.85em;color:#777;">2 חדרים לכל לינה</span></div>
-    </div>
-    <div style="background:#f39c12;color:white;padding:11px 18px;font-weight:700;">🟡 1–2 חודשים לפני</div>
-    <div style="padding:0 18px;">
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;color:#27ae60;"><strong>✅ Universal Express ×5 · 9/8/26 · $1,545 / ₪4,536 · אישור: UH00004OB7O — הושלם</strong><br><span style="font-size:.85em;color:#777;">מדלג על התורים בכל ההאטרקציות. ⚠️ Super Nintendo World Early Access לא כלול — היה זמין רק לאורחי מלון on-site (Loews Hollywood אינו on-site).</span></div>
-    </div>
-    <div style="background:#27ae60;color:white;padding:11px 18px;font-weight:700;">🟢 כמה שבועות לפני</div>
-    <div style="padding:0 18px;">
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>💊 Dramamine (מחלת ים) — לגיל</strong><br><span style="font-size:.85em;color:#777;">לקנות לפני הטיסה · לקחת לילה לפני + בבוקר ה-7/8 לפני 🐋 Whale Watching</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>📱 הרשמה לאפליקציית Waymo (מונית אוטונומית)</strong><br><span style="font-size:.85em;color:#777;">פעילה ב-San Francisco וב-Los Angeles — להוריד ולהירשם מראש (כולל אמצעי תשלום) כדי לחסוך זמן בהמתנה לגישה</span></div>
-      <div style="padding:13px 0;border-bottom:1px solid #f2f2f2;"><strong>🚤 להזמין Jenny Lake Scenic Cruise — 20/8 שייט 11:00–12:00</strong><br><span style="font-size:.85em;color:#777;">jennylakeboating.com · מקומות מתמלאים מראש בעיקר באוגוסט</span></div>
-    </div>
-  </div>
-</section>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#BBDFFF; color:#171717; padding:11px 18px; font-weight:700; font-size:14.5px;">בהקדם</div>
+        <div style="padding:2px 18px;">
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>🚗 לשנות החזרת רכב SFO→LAS (Ofran 65071522) מ-16/8 ל-14/8</strong><br><span style="font-size:13px; color:#565656;">בוגאס נעים על הסטריפ ולא צריך רכב ב-15/8 · חוסך ימי השכרה + חניה</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>✅ מלון London (22–23/8) — Page8 · Conf: MerTev9mxj81Page · ₪2,369</strong><br><span style="font-size:13px; color:#565656;">הזמנה ישירה · ביטול חינם עד 15/8 12:00 UTC</span></div>
+          <div style="padding:13px 0;"><strong>🏨 מלון Venice/Hollywood (לילה 10/8)</strong><br><span style="font-size:13px; color:#565656;">2 חדרים</span></div>
+        </div>
+      </div>
 
-<div class="closing">
-  3 לילות ב-LA, טיסה ל-SF, ו-3 ימים על הכביש הציורי ביותר בעולם — Route 1 לאורך האוקיינוס הפסיפי, מגשר Golden Gate דרך Big Sur ועד Santa Barbara — לפני Disneyland, ילוסטון, ולונדון.
-  <strong>Big Sur הוא לא יעד. הוא חוויה שמשנה.</strong>
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#CFF5DF; color:#171717; padding:11px 18px; font-weight:700; font-size:14.5px;">1–2 חודשים לפני</div>
+        <div style="padding:2px 18px;">
+          <div style="padding:13px 0;"><strong>✅ Universal Express ×5 · 9/8/26 · $1,545 / ₪4,536 · UH00004OB7O</strong><br><span style="font-size:13px; color:#565656;">מדלג על התורים. ⚠️ Super Nintendo World Early Access לא כלול (Loews אינו on-site).</span></div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid #E7E7E7; border-radius:14px; overflow:hidden;">
+        <div style="background:#9AFFC5; color:#171717; padding:11px 18px; font-weight:700; font-size:14.5px;">כמה שבועות לפני</div>
+        <div style="padding:2px 18px;">
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>💊 Dramamine (מחלת ים) — לגיל</strong><br><span style="font-size:13px; color:#565656;">לקחת לילה לפני + בבוקר ה-7/8 לפני Whale Watching</span></div>
+          <div style="padding:13px 0; border-bottom:1px solid #F2F2F2;"><strong>📱 הרשמה לאפליקציית Waymo (מונית אוטונומית)</strong><br><span style="font-size:13px; color:#565656;">פעילה ב-SF וב-LA — להוריד ולהירשם מראש (כולל אמצעי תשלום)</span></div>
+          <div style="padding:13px 0;"><strong>🚤 להזמין Jenny Lake Scenic Cruise — 20/8 שייט 11:00–12:00</strong><br><span style="font-size:13px; color:#565656;">jennylakeboating.com · מקומות מתמלאים מראש באוגוסט</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <div style="background:#171717; color:#fff; border-radius:16px; padding:clamp(28px,5vw,48px); text-align:center; margin-top:clamp(44px,6vw,64px);">
+      <p style="font-size:clamp(15px,2vw,18px); line-height:1.8; max-width:760px; margin:0 auto; color:#E7E7E7;">3 לילות ב-LA, טיסה ל-SF, ו-3 ימים על הכביש הציורי ביותר בעולם — Route 1 לאורך האוקיינוס השקט, מ-Golden Gate דרך Big Sur ועד Santa Barbara — לפני Disneyland, ילוסטון ולונדון.</p>
+      <p style="font-size:clamp(20px,3vw,28px); font-weight:800; margin-top:18px; letter-spacing:-.01em;">Big Sur הוא לא יעד. הוא חוויה שמשנה.</p>
+    </div>
+
+  </main>
 </div>
-
-</div>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#DBEEFF"/><text x="50" y="60" font-size="44" text-anchor="middle" font-family="Helvetica,Arial" font-weight="700" fill="#171717">✈</text></svg>
+</template>
+</x-dc>
 </body>
 </html>
