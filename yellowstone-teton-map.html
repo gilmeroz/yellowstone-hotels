@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפת ילוסטון וגרנד טטון — Aug 15–21, 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  :root{
+    --d15:#7c3aed; --d16:#2563eb; --d17:#16a34a; --d18:#ea580c; --d19:#dc2626; --d20:#0891b2; --d21:#64748b;
+    --hotel:#dc2626; --bg:#0f172a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif;}
+  header{background:var(--bg);color:#fff;padding:14px 20px;}
+  header h1{margin:0 0 4px;font-size:20px;}
+  header p{margin:0;font-size:13px;opacity:.85;}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 20px;background:#f1f5f9;
+    font-size:12.5px;border-bottom:1px solid #e2e8f0;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:22px;height:5px;border-radius:3px;display:inline-block;}
+  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;
+    box-shadow:0 0 0 1px #94a3b8;}
+  #map{height:calc(100vh - 140px);width:100%;}
+  .num-icon{background:#fff;border:2px solid #334155;border-radius:50%;width:26px;height:26px;
+    line-height:22px;text-align:center;font-weight:700;font-size:13px;color:#0f172a;}
+  .hotel-icon{font-size:24px;line-height:30px;text-align:center;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
+  .leaflet-popup-content{font-size:13px;direction:rtl;text-align:right;line-height:1.5;}
+  .leaflet-popup-content b{font-size:14px;}
+  .leg{color:#475569;font-size:12px;}
+  @media(max-width:600px){#map{height:calc(100vh - 170px);}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🗺️ ילוסטון וגרנד טטון — Bozeman → Jackson Hole</h1>
+  <p>15–21 באוגוסט 2026 · ~7 ימים · 🏨 = לינה (EVEN Bozeman · Riverside Cottages Gardiner · Starlite Yellowstone · Rockwell Inn)</p>
+</header>
+<div class="legend">
+  <span><i class="swatch" style="background:var(--d15)"></i> 15/8 — נחיתת BZN + לינה</span>
+  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — Mammoth · Tower · Lamar → Gardiner</span>
+  <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Norris · Grand Prismatic → West Yellowstone</span>
+  <span><i class="swatch" style="background:var(--d18)"></i> 18/8 — Old Faithful (יום שלם)</span>
+  <span><i class="swatch" style="background:var(--d19)"></i> 19/8 — Hayden/Canyon → Grand Teton</span>
+  <span><i class="swatch" style="background:var(--d20)"></i> 20/8 — גרנד טטון (יום שלם)</span>
+  <span><i class="swatch" style="background:var(--d21)"></i> 21/8 — יציאה ל-JAC</span>
+  <span>🏨 לינה</span>
+</div>
+<div id="map"></div>
+<script>
+// All points in trip order. leg = drive from the PREVIOUS point.
+const pts = [
+  // ---- Aug 15 (violet) — arrival ----
+  {day:"15", name:"✈️ נחיתה בבוזמן (BZN) — WN3416 מ-LAS", time:"20:05", leg:"—", ll:[45.7772,-111.1602],
+   note:"טיסה פנימית, אין ביקורת דרכונים · איסוף מזוודות + רכב שכור Ofran (~30–40 דק') · Conf 85071362"},
+  {day:"15", name:"🏨 EVEN Hotel Bozeman Yellowstone Intl Arpt", time:"צ'ק-אין ~21:00 · לילה 1", leg:"~5 ק\"מ משדה התעופה", ll:[45.7850,-111.1590], hotel:true,
+   note:"406 Belgrade Blvd, Belgrade MT · 3 מבוגרים + ילדה · $384.32 / ₪1,128 · ביטול חינם עד 14/8 16:00 MDT"},
+
+  // ---- Aug 16 (blue) — Bozeman → Mammoth → Tower → Lamar → Gardiner ----
+  {day:"16", name:"בוזמן — יציאה", time:"06:30", leg:"—", ll:[45.7850,-111.1590]},
+  {day:"16", name:"Mammoth Hot Springs Terraces", time:"07:55–09:00", leg:"126 ק\"מ · 1:25", ll:[44.9764,-110.7016],
+   note:"מדרכת עץ שטוחה 45–60 דק' · איילות בסביבה — מרחק 25מ'"},
+  {day:"16", name:"Tower Fall", time:"09:45–10:15", leg:"29 ק\"מ · 45 דק'", ll:[44.8988,-110.4132],
+   note:"מפל בגובה 40מ' · הליכת תצפית 15 דק'"},
+  {day:"16", name:"Lamar Valley — חיות בר + פיקניק", time:"11:15–13:00", leg:"47 ק\"מ · 1:00", ll:[44.9210,-110.2280],
+   note:"ביזון, פרונגהורן, אפשרי זאבים/דובים"},
+  {day:"16", name:"🏨 Yellowstone Riverside Cottages, Gardiner", time:"צ'ק-אין 18:30 · לילה 2", leg:"76 ק\"מ חזרה + זמן חופשי (Boiling River)", ll:[45.0327,-110.7051], hotel:true,
+   note:"521 Scott St · קוד 0601 · Conf 5856245753 · 4 מבוגרים · $479.25 / ₪1,407 · ביטול חינם עד 1/8 23:59 GMT"},
+
+  // ---- Aug 17 (green) — Gardiner → Norris → Grand Prismatic → West Yellowstone ----
+  {day:"17", name:"גרדינר — צ'ק-אאוט + תדלוק", time:"07:30", leg:"—", ll:[45.0327,-110.7051]},
+  {day:"17", name:"Norris Geyser Basin", time:"08:25–10:00", leg:"43 ק\"מ · 55 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
+   note:"Porcelain Basin + חלק מ-Back Basin loop"},
+  {day:"17", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"10:45–12:15", leg:"38 ק\"מ · 40–45 דק' — חניה מתמלאת אחרי 10:30", ll:[44.5250,-110.8398],
+   note:"Excelsior Geyser · צבעים הכי חזקים בשמש צהריים"},
+  {day:"17", name:"Madison Junction — ארוחת צהריים", time:"12:15–13:00", leg:"—", ll:[44.6459,-110.8654]},
+  {day:"17", name:"🏨 Starlite Yellowstone", time:"צ'ק-אין 13:40 · לילה 1", leg:"30 ק\"מ · 30–40 דק'", ll:[44.6621,-111.1046], hotel:true,
+   note:"301 Madison Ave, West Yellowstone · Tapestry Collection by Hilton · ₪2,547 · ביטול עד 2/8 23:59"},
+
+  // ---- Aug 18 (orange) — Old Faithful full day ----
+  {day:"18", name:"West Yellowstone — יציאה", time:"07:00", leg:"—", ll:[44.6621,-111.1046]},
+  {day:"18", name:"Old Faithful & Upper Geyser Basin ⭐", time:"07:40–10:30", leg:"50 ק\"מ · 40–45 דק'", ll:[44.4605,-110.8281],
+   note:"Geyser Hill, Morning Glory Pool, Castle/Grand/Riverside Geysers · להגיע לפני גל הקהל"},
+  {day:"18", name:"Fountain Paint Pot / Firehole Lake Drive", time:"12:45–14:00", leg:"13 ק\"מ", ll:[44.5540,-110.7986],
+   note:"מדרכת עץ קלה, פחות קהל"},
+  {day:"18", name:"🏨 חזרה ל-Starlite Yellowstone", time:"14:45 · לילה 2", leg:"50 ק\"מ · 45 דק'", ll:[44.6621,-111.1046], hotel:true,
+   note:"בריכה / IMAX — מנוחה לפני ארוחת ערב"},
+
+  // ---- Aug 19 (red) — West Yellowstone → Hayden/Canyon → Grand Teton ----
+  {day:"19", name:"West Yellowstone — צ'ק-אאוט", time:"06:30", leg:"—", ll:[44.6621,-111.1046]},
+  {day:"19", name:"Canyon Village", time:"~07:35", leg:"64 ק\"מ · 65 דק'", ll:[44.7205,-110.4994]},
+  {day:"19", name:"Hayden Valley — נהיגת חיות בר", time:"07:35–09:00", leg:"26 ק\"מ + עצירות", ll:[44.6386,-110.4666],
+   note:"שחר = שיא פעילות ביזון/זאבים/דובים"},
+  {day:"19", name:"Artist Point — Grand Canyon of the Yellowstone ⭐", time:"09:00–09:45", leg:"—", ll:[44.7204,-110.4795],
+   note:"Lower Falls, מפל בגובה 94מ' · להגיע מוקדם, הקהל גדל לקראת הצהריים"},
+  {day:"19", name:"Fishing Bridge — ארוחת צהריים", time:"10:30–12:10", leg:"26 ק\"מ · 40 דק'", ll:[44.5652,-110.3737],
+   note:"לאורך שפת אגם ילוסטון"},
+  {day:"19", name:"South Entrance — יציאה מהפארק", time:"~13:00", leg:"60 ק\"מ · 50 דק'", ll:[44.1391,-110.6660]},
+  {day:"19", name:"Snake River Overlook / Jenny Lake (אופציונלי)", time:"14:15–15:00", leg:"92 ק\"מ · 75 דק' (דרך John D. Rockefeller Pkwy)", ll:[43.6425,-110.5713]},
+  {day:"19", name:"🏨 The Rockwell Inn, Jackson", time:"צ'ק-אין 15:00–16:00 · לילה 1", leg:"—", ll:[43.4808,-110.7624], hotel:true,
+   note:"285 N Cache Dr, Jackson WY · ₪3,584 · ביטול חינם עד 15/8"},
+
+  // ---- Aug 20 (cyan) — Grand Teton full day ----
+  {day:"20", name:"ג'קסון — יציאה מוקדמת", time:"06:00", leg:"—", ll:[43.4808,-110.7624]},
+  {day:"20", name:"Oxbow Bend — חיות בר בשחר ⭐", time:"06:45–08:30", leg:"43 ק\"מ · 45 דק'", ll:[43.8570,-110.5423],
+   note:"אליות, איילים, לוטרות · השתקפות Mt. Moran · מרחק 100מ'+"},
+  {day:"20", name:"Colter Bay — ארוחת בוקר", time:"08:30–09:00", leg:"8 ק\"מ", ll:[43.9020,-110.6367],
+   note:"טיול לאורך החוף"},
+  {day:"20", name:"Jenny Lake — שיט + ארוחת צהריים", time:"09:00–13:15", leg:"32 ק\"מ · 35 דק'", ll:[43.7904,-110.7245],
+   note:"⛴️ Jenny Lake Scenic Cruise — הזמנה מראש ל-12:00 (jennylakeboating.com)"},
+  {day:"20", name:"Hidden Falls & Inspiration Point", time:"13:15–15:30", leg:"מעבורת + הליכה ~3.5 ק\"מ הלוך-שוב", ll:[43.7847,-110.7345]},
+  {day:"20", name:"Moose-Wilson Road — סיבוב חיות בר בערב", time:"18:30–20:30", leg:"—", ll:[43.6800,-110.7550],
+   note:"שקיעה ~20:15–20:30 · שיא פעילות אליות/איילים"},
+  {day:"20", name:"🏨 חזרה ל-Rockwell Inn", time:"לילה 2", leg:"—", ll:[43.4808,-110.7624], hotel:true},
+
+  // ---- Aug 21 (slate) — departure to JAC ----
+  {day:"21", name:"ג'קסון — יציאה, אריזה", time:"07:00", leg:"—", ll:[43.4808,-110.7624]},
+  {day:"21", name:"Schwabacher Landing / Mormon Row", time:"07:30–08:45", leg:"~15–20 ק\"מ", ll:[43.6980,-110.7275],
+   note:"אור בוקר טוב, ללא טיולים ארוכים"},
+  {day:"21", name:"✈️ שדה התעופה Jackson Hole (JAC)", time:"הגעה 09:15 · המראה 14:52 (UA2791 ל-DEN)", leg:"25–30 ק\"מ", ll:[43.6073,-110.7377],
+   note:"החזרת רכב שכור · שדה קטן, טרמינל בודד · צ'ק-אין עד 12:00–12:30"},
+];
+
+const colors = {"15":"#7c3aed","16":"#2563eb","17":"#16a34a","18":"#ea580c","19":"#dc2626","20":"#0891b2","21":"#64748b"};
+const days = ["15","16","17","18","19","20","21"];
+
+const map = L.map('map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:18, attribution:'© OpenStreetMap'
+}).addTo(map);
+
+// One polyline per day, colored
+const bounds = [];
+days.forEach(d=>{
+  const dayPts = pts.filter(p=>p.day===d).map(p=>p.ll);
+  if(dayPts.length>1){
+    L.polyline(dayPts,{color:colors[d],weight:4,opacity:.8}).addTo(map);
+  }
+});
+
+// Markers
+pts.forEach((p,i)=>{
+  bounds.push(p.ll);
+  let icon;
+  if(p.hotel){
+    icon = L.divIcon({className:'', html:'<div class="hotel-icon">🏨</div>',
+      iconSize:[30,30], iconAnchor:[15,28]});
+  } else {
+    icon = L.divIcon({className:'', html:`<div class="num-icon" style="border-color:${colors[p.day]}">${i+1}</div>`,
+      iconSize:[26,26], iconAnchor:[13,13]});
+  }
+  const popup = `<b>${p.name}</b><br>🕐 ${p.time}<br>`+
+    (p.leg && p.leg!=="—" ? `<span class="leg">🚗 מהנקודה הקודמת: ${p.leg}</span><br>` : "")+
+    (p.note ? `<span class="leg">${p.note}</span>` : "");
+  L.marker(p.ll,{icon}).addTo(map).bindPopup(popup);
+});
+
+map.fitBounds(bounds,{padding:[40,40]});
+</script>
+</body>
+</html>
