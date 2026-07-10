@@ -38,11 +38,11 @@
 <body>
 <header>
   <h1>🗺️ ילוסטון וגרנד טטון — Bozeman → Jackson Hole</h1>
-  <p>15–21 באוגוסט 2026 · ~7 ימים · 🏨 = לינה (EVEN Bozeman · Riverside Cottages Gardiner · Starlite Yellowstone · Rockwell Inn)</p>
+  <p>15–21 באוגוסט 2026 · ~7 ימים · 🏨 = לינה (EVEN Bozeman · Silver Gate Cabin 6 · Starlite Yellowstone · Rockwell Inn)</p>
 </header>
 <div class="legend">
   <span><i class="swatch" style="background:var(--d15)"></i> 15/8 — נחיתת BZN + לינה</span>
-  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — רפטינג · Tower Fall · Lamar (שקיעה) → Gardiner</span>
+  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — רפטינג · Tower Fall · Lamar (שקיעה) → Silver Gate</span>
   <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Mammoth · Norris · Grand Prismatic → West Yellowstone</span>
   <span><i class="swatch" style="background:var(--d18)"></i> 18/8 — Old Faithful (יום שלם)</span>
   <span><i class="swatch" style="background:var(--d19)"></i> 19/8 — Hayden/Canyon → Grand Teton</span>
@@ -60,7 +60,7 @@ const pts = [
   {day:"15", name:"🏨 EVEN Hotel Bozeman Yellowstone Intl Arpt", time:"צ'ק-אין ~21:00 · לילה 1", leg:"~5 ק\"מ משדה התעופה", ll:[45.7850,-111.1590], hotel:true,
    note:"406 Belgrade Blvd, Belgrade MT · 3 מבוגרים + ילדה · $384.32 / ₪1,128 · ביטול חינם עד 14/8 16:00 MDT"},
 
-  // ---- Aug 16 (blue) — Bozeman → Gardiner (rafting) → Tower Fall → Lamar (dusk) → Gardiner ----
+  // ---- Aug 16 (blue) — Bozeman → Gardiner (rafting) → Tower Fall → Lamar (dusk) → Silver Gate ----
   {day:"16", name:"בוזמן — יציאה", time:"07:00", leg:"—", ll:[45.7850,-111.1590]},
   {day:"16", name:"רפטינג — Gardiner Town Stretch", time:"צ'ק-אין 08:45 · על המים 09:15–11:45", leg:"126 ק\"מ · 1:25", ll:[45.0327,-110.7051],
    note:"Class I–III · ~2 שעות במים · מומלץ חליפות/ג'קטים למים (בעיקר לבת ה-13) · טרם הוזמן"},
@@ -69,21 +69,23 @@ const pts = [
    note:"חלון הסיכון הגבוה ביותר לסופות רעמים (שיא 13:00–17:00) — לכן זמן גמיש, לא outdoor מתוכנן · גיבוי מקורה: Heritage & Research Center / Chamber of Commerce Visitor Center"},
   {day:"16", name:"Tower Fall", time:"17:45–18:15", leg:"37 ק\"מ דרך Mammoth Junction · 45 דק'", ll:[44.8988,-110.4132],
    note:"מפל בגובה 40מ' · הליכת תצפית 15 דק'"},
-  {day:"16", name:"Lamar Valley — חיות בר (שקיעה)", time:"18:15–19:15", leg:"18 ק\"מ · 30 דק' + עצירות", ll:[44.9210,-110.2280],
-   note:"חלון שקיעה — שיא פעילות חיות בר: ביזון, פרונגהורן, אפשרי זאבים/דובים"},
-  {day:"16", name:"🏨 Yellowstone Riverside Cottages, Gardiner", time:"צ'ק-אין ~19:15–20:00 · לילה 2", leg:"55 ק\"מ חזרה", ll:[45.0327,-110.7051], hotel:true,
-   note:"521 Scott St · קוד 0601 · Conf 5856245753 · 4 מבוגרים · $479.25 / ₪1,407 · ביטול חינם עד 1/8 23:59 GMT · ⚠️ לוודא מול הנכס אם הצ'ק-אין עצמאי (קוד) או עד 20:00 בלבד"},
+  {day:"16", name:"Lamar Valley — חיות בר (שקיעה)", time:"18:15–19:30", leg:"18 ק\"מ · 30 דק' + עצירות", ll:[44.9210,-110.2280],
+   note:"חלון שקיעה, מוארך — שיא פעילות חיות בר: ביזון, פרונגהורן, אפשרי זאבים/דובים · אין יותר נסיעת חזרה לגרדינר, אז אפשר להישאר קצת יותר"},
+  {day:"16", name:"🏨 Silver Gate Cabin 6, Silver Gate MT", time:"צ'ק-אין ~19:30–19:55 · לילה 2", leg:"~25 ק\"מ המשך מזרחה · 25–30 דק'", ll:[45.0059,-109.8354], hotel:true,
+   note:"109 US Hwy 212 · Conf #127209 · 4 מבוגרים · $364.00 / ₪1,069 (הערכה, $308 מקדמה + $56 בהגעה) · ליד הכניסה הצפון-מזרחית · מבטל את נסיעת החזרה ל-Gardiner אחרי חשיכה · ⚠️ מחליף את Yellowstone Riverside Cottages (Gardiner) — יש לבטל את ההזמנה הישנה (5856245753) עד 1/8 23:59 GMT"},
 
-  // ---- Aug 17 (green) — Gardiner → Mammoth → Norris → Grand Prismatic → West Yellowstone ----
-  {day:"17", name:"גרדינר — צ'ק-אאוט + תדלוק", time:"06:45", leg:"—", ll:[45.0327,-110.7051]},
-  {day:"17", name:"Mammoth Hot Springs Terraces", time:"07:00–07:45", leg:"8 ק\"מ · ~15 דק'", ll:[44.9764,-110.7016],
-   note:"מדרכת טראוורטין (הועבר מ-16/8 — התנגשות עם רפטינג בבוקר) · איילות בסביבה — מרחק 25מ'"},
-  {day:"17", name:"Norris Geyser Basin", time:"08:25–10:00", leg:"34 ק\"מ · 40 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
-   note:"Porcelain Basin + חלק מ-Back Basin loop"},
-  {day:"17", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"10:45–12:15", leg:"38 ק\"מ · 40–45 דק' — חניה מתמלאת אחרי 10:30", ll:[44.5250,-110.8398],
-   note:"Excelsior Geyser · צבעים הכי חזקים בשמש צהריים"},
-  {day:"17", name:"Madison Junction — ארוחת צהריים", time:"12:15–13:00", leg:"—", ll:[44.6459,-110.8654]},
-  {day:"17", name:"🏨 Starlite Yellowstone", time:"צ'ק-אין 13:40 · לילה 1", leg:"30 ק\"מ · 30–40 דק'", ll:[44.6621,-111.1046], hotel:true,
+  // ---- Aug 17 (green) — Silver Gate → Mammoth → Norris → Grand Prismatic → West Yellowstone ----
+  {day:"17", name:"Silver Gate — צ'ק-אאוט + תדלוק ב-Cooke City", time:"06:15", leg:"—", ll:[45.0059,-109.8354]},
+  {day:"17", name:"Tower-Roosevelt Junction — מעבר", time:"~07:10", leg:"53 ק\"מ דרך Lamar Valley · 55 דק'", ll:[44.8988,-110.4132],
+   note:"נסיעה חזרה דרך Lamar Valley — הזדמנות לחיות בר בשחר בדרך"},
+  {day:"17", name:"Mammoth Hot Springs Terraces", time:"07:55–08:40", leg:"29 ק\"מ · 45 דק'", ll:[44.9764,-110.7016],
+   note:"מדרכת טראוורטין · איילות בסביבה — מרחק 25מ'"},
+  {day:"17", name:"Norris Geyser Basin", time:"09:20–10:40", leg:"34 ק\"מ · 40 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
+   note:"Porcelain Basin + חלק מ-Back Basin loop · מקוצר ~15 דק' כדי לספוג את הנסיעה הארוכה יותר מ-Silver Gate"},
+  {day:"17", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"11:25–12:45", leg:"38 ק\"מ · 40–45 דק' — חניה מתמלאת אחרי 10:30", ll:[44.5250,-110.8398],
+   note:"Excelsior Geyser · הגעה מאוחרת יותר מהתוכנית המקורית — לצפות לעומס חניה"},
+  {day:"17", name:"Madison Junction — ארוחת צהריים", time:"12:45–13:30", leg:"—", ll:[44.6459,-110.8654]},
+  {day:"17", name:"🏨 Starlite Yellowstone", time:"צ'ק-אין 14:10 · לילה 1", leg:"30 ק\"מ · 30–40 דק'", ll:[44.6621,-111.1046], hotel:true,
    note:"301 Madison Ave, West Yellowstone · Tapestry Collection by Hilton · ₪2,547 · ביטול עד 2/8 23:59"},
 
   // ---- Aug 18 (orange) — Old Faithful full day ----
