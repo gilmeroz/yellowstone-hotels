@@ -42,8 +42,8 @@
 </header>
 <div class="legend">
   <span><i class="swatch" style="background:var(--d15)"></i> 15/8 — נחיתת BZN + לינה</span>
-  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — Mammoth · Tower · Lamar → Gardiner</span>
-  <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Norris · Grand Prismatic → West Yellowstone</span>
+  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — רפטינג · Tower Fall · Lamar (שקיעה) → Gardiner</span>
+  <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Mammoth · Norris · Grand Prismatic → West Yellowstone</span>
   <span><i class="swatch" style="background:var(--d18)"></i> 18/8 — Old Faithful (יום שלם)</span>
   <span><i class="swatch" style="background:var(--d19)"></i> 19/8 — Hayden/Canyon → Grand Teton</span>
   <span><i class="swatch" style="background:var(--d20)"></i> 20/8 — גרנד טטון (יום שלם)</span>
@@ -60,20 +60,25 @@ const pts = [
   {day:"15", name:"🏨 EVEN Hotel Bozeman Yellowstone Intl Arpt", time:"צ'ק-אין ~21:00 · לילה 1", leg:"~5 ק\"מ משדה התעופה", ll:[45.7850,-111.1590], hotel:true,
    note:"406 Belgrade Blvd, Belgrade MT · 3 מבוגרים + ילדה · $384.32 / ₪1,128 · ביטול חינם עד 14/8 16:00 MDT"},
 
-  // ---- Aug 16 (blue) — Bozeman → Mammoth → Tower → Lamar → Gardiner ----
-  {day:"16", name:"בוזמן — יציאה", time:"06:30", leg:"—", ll:[45.7850,-111.1590]},
-  {day:"16", name:"Mammoth Hot Springs Terraces", time:"07:55–09:00", leg:"126 ק\"מ · 1:25", ll:[44.9764,-110.7016],
-   note:"מדרכת עץ שטוחה 45–60 דק' · איילות בסביבה — מרחק 25מ'"},
-  {day:"16", name:"Tower Fall", time:"09:45–10:15", leg:"29 ק\"מ · 45 דק'", ll:[44.8988,-110.4132],
+  // ---- Aug 16 (blue) — Bozeman → Gardiner (rafting) → Tower Fall → Lamar (dusk) → Gardiner ----
+  {day:"16", name:"בוזמן — יציאה", time:"07:00", leg:"—", ll:[45.7850,-111.1590]},
+  {day:"16", name:"רפטינג — Gardiner Town Stretch", time:"צ'ק-אין 08:45 · על המים 09:15–11:45", leg:"126 ק\"מ · 1:25", ll:[45.0327,-110.7051],
+   note:"Class I–III · ~2 שעות במים · מומלץ חליפות/ג'קטים למים (בעיקר לבת ה-13) · טרם הוזמן"},
+  {day:"16", name:"גרדינר — ארוחת צהריים + התייבשות", time:"12:15–13:00", leg:"—", ll:[45.0327,-110.7051]},
+  {day:"16", name:"זמן חופשי / Boiling River", time:"13:00–17:00", leg:"—", ll:[45.0028,-110.7075],
+   note:"חלון הסיכון הגבוה ביותר לסופות רעמים (שיא 13:00–17:00) — לכן זמן גמיש, לא outdoor מתוכנן · גיבוי מקורה: Heritage & Research Center / Chamber of Commerce Visitor Center"},
+  {day:"16", name:"Tower Fall", time:"17:45–18:15", leg:"37 ק\"מ דרך Mammoth Junction · 45 דק'", ll:[44.8988,-110.4132],
    note:"מפל בגובה 40מ' · הליכת תצפית 15 דק'"},
-  {day:"16", name:"Lamar Valley — חיות בר + פיקניק", time:"11:15–13:00", leg:"47 ק\"מ · 1:00", ll:[44.9210,-110.2280],
-   note:"ביזון, פרונגהורן, אפשרי זאבים/דובים"},
-  {day:"16", name:"🏨 Yellowstone Riverside Cottages, Gardiner", time:"צ'ק-אין 18:30 · לילה 2", leg:"76 ק\"מ חזרה + זמן חופשי (Boiling River)", ll:[45.0327,-110.7051], hotel:true,
-   note:"521 Scott St · קוד 0601 · Conf 5856245753 · 4 מבוגרים · $479.25 / ₪1,407 · ביטול חינם עד 1/8 23:59 GMT"},
+  {day:"16", name:"Lamar Valley — חיות בר (שקיעה)", time:"18:15–19:15", leg:"18 ק\"מ · 30 דק' + עצירות", ll:[44.9210,-110.2280],
+   note:"חלון שקיעה — שיא פעילות חיות בר: ביזון, פרונגהורן, אפשרי זאבים/דובים"},
+  {day:"16", name:"🏨 Yellowstone Riverside Cottages, Gardiner", time:"צ'ק-אין ~19:15–20:00 · לילה 2", leg:"55 ק\"מ חזרה", ll:[45.0327,-110.7051], hotel:true,
+   note:"521 Scott St · קוד 0601 · Conf 5856245753 · 4 מבוגרים · $479.25 / ₪1,407 · ביטול חינם עד 1/8 23:59 GMT · ⚠️ לוודא מול הנכס אם הצ'ק-אין עצמאי (קוד) או עד 20:00 בלבד"},
 
-  // ---- Aug 17 (green) — Gardiner → Norris → Grand Prismatic → West Yellowstone ----
-  {day:"17", name:"גרדינר — צ'ק-אאוט + תדלוק", time:"07:30", leg:"—", ll:[45.0327,-110.7051]},
-  {day:"17", name:"Norris Geyser Basin", time:"08:25–10:00", leg:"43 ק\"מ · 55 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
+  // ---- Aug 17 (green) — Gardiner → Mammoth → Norris → Grand Prismatic → West Yellowstone ----
+  {day:"17", name:"גרדינר — צ'ק-אאוט + תדלוק", time:"06:45", leg:"—", ll:[45.0327,-110.7051]},
+  {day:"17", name:"Mammoth Hot Springs Terraces", time:"07:00–07:45", leg:"8 ק\"מ · ~15 דק'", ll:[44.9764,-110.7016],
+   note:"מדרכת טראוורטין (הועבר מ-16/8 — התנגשות עם רפטינג בבוקר) · איילות בסביבה — מרחק 25מ'"},
+  {day:"17", name:"Norris Geyser Basin", time:"08:25–10:00", leg:"34 ק\"מ · 40 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
    note:"Porcelain Basin + חלק מ-Back Basin loop"},
   {day:"17", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"10:45–12:15", leg:"38 ק\"מ · 40–45 דק' — חניה מתמלאת אחרי 10:30", ll:[44.5250,-110.8398],
    note:"Excelsior Geyser · צבעים הכי חזקים בשמש צהריים"},
