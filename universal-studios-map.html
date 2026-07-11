@@ -4,119 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מפת Universal Studios Hollywood — Aug 9, 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
   :root{
-    --upper:#7c3aed; --lower:#2563eb; --target:#dc2626; --bg:#0f172a;
+    --prio:#dc2626; --add:#2563eb; --bonus:#16a34a; --entrance:#7c3aed;
+    --bg:#0f172a;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif;background:#f1f5f9;}
+  html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif;}
   header{background:var(--bg);color:#fff;padding:14px 20px;}
   header h1{margin:0 0 4px;font-size:20px;}
   header p{margin:0;font-size:13px;opacity:.85;}
-  .legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 20px;background:#fff;
+  .legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 20px;background:#f1f5f9;
     font-size:12.5px;border-bottom:1px solid #e2e8f0;}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
   .swatch{width:22px;height:5px;border-radius:3px;display:inline-block;}
-  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;}
-  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 60px;}
-  .lot{border-radius:16px;padding:18px;margin-bottom:8px;}
-  .lot h2{margin:0 0 4px;font-size:16px;}
-  .lot .sub{font-size:12.5px;opacity:.8;margin-bottom:14px;}
-  .upper{background:#f2e9fe;border:2px solid var(--upper);}
-  .lower{background:#e5edff;border:2px solid var(--lower);}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
-  .card{background:#fff;border-radius:12px;padding:10px 12px;border:1px solid #e2e8f0;box-shadow:0 1px 2px rgba(0,0,0,.04);scroll-margin-top:14px;}
-  .card.target{border:2px solid var(--target);background:#fff5f5;}
-  .card:target{outline:3px solid #f59e0b;outline-offset:2px;}
-  .card .name{font-weight:700;font-size:13.5px;margin-bottom:3px;}
-  .card .note{font-size:12px;color:#565656;line-height:1.4;}
-  .badge{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--target);border-radius:999px;padding:1px 7px;margin-inline-start:6px;vertical-align:middle;}
-  .starway{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;font-size:13px;color:#334155;font-weight:600;}
-  .starway .arrow{font-size:20px;}
-  .tips{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px 18px;margin-top:14px;font-size:13.5px;color:#334155;line-height:1.7;}
-  .tips h3{margin:0 0 8px;font-size:14px;}
-  .tips ul{margin:0;padding-inline-start:20px;}
+  #map{height:calc(100vh - 150px);width:100%;}
+  .num-icon{background:#fff;border:2px solid #334155;border-radius:50%;width:26px;height:26px;
+    line-height:22px;text-align:center;font-weight:700;font-size:13px;color:#0f172a;}
+  .gate-icon{font-size:24px;line-height:30px;text-align:center;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
+  .leaflet-popup-content{font-size:13px;direction:rtl;text-align:right;line-height:1.5;}
+  .leaflet-popup-content b{font-size:14px;}
+  .leg{color:#475569;font-size:12px;}
+  .disclaimer{padding:8px 20px;background:#fff7ed;color:#7c2d12;font-size:12px;border-bottom:1px solid #fed7aa;}
+  @media(max-width:600px){#map{height:calc(100vh - 190px);}}
 </style>
 </head>
 <body>
 <header>
-  <h1>🍄 Universal Studios Hollywood — Upper Lot / Lower Lot</h1>
-  <p>9 באוגוסט 2026 (ראשון) · יום מלא מ-Loews Hollywood Hotel (לא on-site) · Express Pass ×5 ✅ · 🎯 = יעד שביקשת (Super Mario / Harry Potter / Mario Kart / The Mummy)</p>
+  <h1>🍄 Universal Studios Hollywood — יום שלם</h1>
+  <p>ראשון, 9 באוגוסט 2026 · פתיחה ~09:00 · Express Pass ×5 ✅ · ⚠️ Early Access ל-Super Nintendo World לא זמין (Loews Hollywood אינו on-site)</p>
 </header>
 <div class="legend">
-  <span><i class="swatch" style="background:var(--upper)"></i> Upper Lot (רמת הכניסה)</span>
-  <span><i class="swatch" style="background:var(--lower)"></i> Lower Lot (דרך ה-Starway)</span>
-  <span><i class="dot" style="background:var(--target);border-color:var(--target)"></i> יעד מבוקש</span>
+  <span><i class="swatch" style="background:var(--entrance)"></i> 🚪 כניסה / Starway</span>
+  <span><i class="swatch" style="background:var(--prio)"></i> עדיפות (4, must-do — כולל 4 היעדים שביקשת)</span>
+  <span><i class="swatch" style="background:var(--add)"></i> תוספות מומלצות (3)</span>
+  <span><i class="swatch" style="background:var(--bonus)"></i> בונוס בלבד (2)</span>
 </div>
-<div class="wrap">
+<div class="disclaimer">⚠️ מיקומים משוערים לצורך תכנון מסלול הליכה כללי בלבד — לא לניווט מדויק בפארק. להשתמש באפליקציית Universal Studios Hollywood לניווט חי.</div>
+<div id="map"></div>
+<script>
+// Suggested touring order: rope-drop → Lower Lot first (Early Access lost, so race there),
+// group all Lower Lot rides together (Starway only connects the two levels), then Upper Lot in the afternoon.
+const pts = [
+  {id:"entrance", name:"🚪 כניסה — Universal Plaza", tier:"entrance", ll:[34.1367,-118.3532],
+   note:"פתיחת שערים ~09:00 · Express Pass ×5 ביד · לרוץ ישר ל-Starway ולרדת ל-Lower Lot"},
 
-  <div class="lot upper">
-    <h2>⬆️ Upper Lot — רמת הכניסה</h2>
-    <div class="sub">כניסה ראשית · Studio Tour · חנייה · CityWalk</div>
-    <div class="cards">
-      <div class="card target" id="harry-potter">
-        <div class="name">🧙 Wizarding World of Harry Potter <span class="badge">יעד</span></div>
-        <div class="note">Hogsmeade · Harry Potter and the Forbidden Journey · Flight of the Hippogriff · Ollivander's</div>
-      </div>
-      <div class="card" id="simpsons">
-        <div class="name">🎬 The Simpsons Ride / Springfield</div>
-        <div class="note">אזור אוכל + סימולטור</div>
-      </div>
-      <div class="card" id="minion-land">
-        <div class="name">🟡 Minion Land</div>
-        <div class="note">Despicable Me Minion Mayhem</div>
-      </div>
-      <div class="card" id="fast-furious">
-        <div class="name">🏎️ Fast &amp; Furious: Hollywood Drift <span class="badge" style="background:#16a34a;">חדש 26/6/26</span></div>
-        <div class="note">רכבת חוץ מהירה ביותר ב-Universal (72 mph) · צפי לתורים ארוכים כי היא חדשה</div>
-      </div>
-      <div class="card" id="studio-tour">
-        <div class="name">🎥 Studio Tour</div>
-        <div class="note">סיור מודרך ברכבת טרם + King Kong 360</div>
-      </div>
-    </div>
-  </div>
+  {id:"starway-down", name:"⬇️ Starway — ירידה ל-Lower Lot", tier:"entrance", ll:[34.1372,-118.3548],
+   note:"מדרגות נעות, ~5 דק' · החיבור היחיד בין המפלסים — כדאי לרכז כאן את כל הרכבות התחתונות ברצף אחד"},
 
-  <div class="starway"><span class="arrow">↕️</span> Starway — מדרגות נעות, ~5 דקות כל כיוון (חיבור היחיד בין המפלסים) <span class="arrow">↕️</span></div>
+  {id:"super-nintendo-world", name:"🍄 Super Nintendo World — אזור Super Mario", tier:"prio", ll:[34.1392,-118.3552],
+   note:"🎯 יעד מבוקש · Express Pass נותן כניסה חד-פעמית לאזור בלי תור וירטואלי"},
+  {id:"mario-kart", name:"🏁 Mario Kart: Bowser's Challenge", tier:"prio", ll:[34.1393,-118.3550],
+   note:"🎯 יעד מבוקש · בתוך Super Nintendo World · Express Pass מכסה כעת גם אותה · יש Single Rider"},
 
-  <div class="lot lower">
-    <h2>⬇️ Lower Lot — דרך ה-Starway</h2>
-    <div class="sub">רכז את כל הרכבות כאן ברצף אחד לפני חזרה למעלה</div>
-    <div class="cards">
-      <div class="card target" id="super-nintendo-world">
-        <div class="name">🍄 Super Nintendo World <span class="badge">יעד</span></div>
-        <div class="note">אזור Super Mario · כניסה חופשית ללא תור וירטואלי כשיש Express Pass</div>
-      </div>
-      <div class="card target" id="mario-kart">
-        <div class="name">🏁 Mario Kart: Bowser's Challenge <span class="badge">יעד</span></div>
-        <div class="note">בתוך Super Nintendo World · Express Pass מכסה כעת גם אותה · יש Single Rider</div>
-      </div>
-      <div class="card target" id="mummy">
-        <div class="name">🧟 Revenge of the Mummy — "The Mummy" <span class="badge">יעד</span></div>
-        <div class="note">רכבת הרים מהירה בחושך · גובה מינימלי 122 ס"מ — לא רלוונטי לבנות (13/18/21) · כלולה ב-Express</div>
-      </div>
-      <div class="card" id="jurassic-world">
-        <div class="name">🦖 Jurassic World — The Ride</div>
-        <div class="note">רכבת מים · טפטוף ⭐ יורדת/צניחה</div>
-      </div>
-      <div class="card" id="transformers">
-        <div class="name">🤖 Transformers: The Ride 3D</div>
-        <div class="note">סימולטור 3D</div>
-      </div>
-    </div>
-  </div>
+  {id:"jurassic-world", name:"🦖 Jurassic World — The Ride", tier:"prio", ll:[34.1390,-118.3532],
+   note:"רכבת מים · צניחה תלולה — ילטבו להירטב"},
 
-  <div class="tips">
-    <h3>💡 טיפים לסדר הביקור</h3>
-    <ul>
-      <li>⚠️ Super Nintendo World Early Access אבוד (Loews Hollywood אינו on-site) — להגיע לפתיחת השערים ולרדת ל-Lower Lot ראשונים.</li>
-      <li>ברגע שב-Lower Lot: Mario Kart → Jurassic World → Revenge of the Mummy → Transformers ברצף, לפני שעולים חזרה ב-Starway.</li>
-      <li>Express Pass (₪4,536, UH00004OB7O) מכסה את כל 4 היעדים המבוקשים: Harry Potter, Super Nintendo World (כניסה), Mario Kart, ו-Revenge of the Mummy.</li>
-      <li>אחר הצהריים: לעלות חזרה ל-Upper Lot ל-Wizarding World of Harry Potter, Minion Land, ו-Fast &amp; Furious: Hollywood Drift (רכבת חדשה — צפי לתור ארוך יחסית כי היא רק נפתחה).</li>
-      <li>ערב: Hollywood Walk of Fame + CityWalk (מחוץ לפארק, ליד היציאה).</li>
-    </ul>
-  </div>
+  {id:"mummy", name:"🧟 Revenge of the Mummy — \"The Mummy\"", tier:"prio", ll:[34.1381,-118.3522],
+   note:"🎯 יעד מבוקש · רכבת הרים מהירה בחושך, נסיעה לאחור · גובה מינימלי 122 ס\"מ — לא רלוונטי לבנות (13/18/21) · כלולה ב-Express"},
 
-</div>
+  {id:"transformers", name:"🤖 Transformers: The Ride 3D", tier:"bonus", ll:[34.1386,-118.3527],
+   note:"סימולטור 3D · בונוס אם נשאר זמן ב-Lower Lot"},
+
+  {id:"starway-up", name:"⬆️ Starway — עלייה חזרה ל-Upper Lot", tier:"entrance", ll:[34.1375,-118.3545],
+   note:"אחרי כל רכבות ה-Lower Lot — לעלות חזרה פעם אחת בלבד"},
+
+  {id:"harry-potter", name:"🧙 Wizarding World of Harry Potter", tier:"prio", ll:[34.1385,-118.3503],
+   note:"🎯 יעד מבוקש · Hogsmeade · Harry Potter and the Forbidden Journey · Flight of the Hippogriff · Ollivander's"},
+
+  {id:"simpsons", name:"🎬 The Simpsons Ride / Springfield", tier:"add", ll:[34.1370,-118.3545],
+   note:"אזור אוכל + סימולטור — קליל לשלב בדרך חזרה"},
+
+  {id:"minion-land", name:"🟡 Minion Land — Despicable Me Minion Mayhem", tier:"add", ll:[34.1360,-118.3538],
+   note:"סימולטור משפחתי, המתנה בד\"כ סבירה"},
+
+  {id:"fast-furious", name:"🏎️ Fast & Furious: Hollywood Drift", tier:"add", ll:[34.1355,-118.3552],
+   note:"רכבת חוץ חדשה (נפתחה 26/6/26) · מהירה ביותר ב-Universal (72 mph) · צפי לתורים ארוכים כי היא חדשה"},
+
+  {id:"studio-tour", name:"🎥 Studio Tour", tier:"bonus", ll:[34.1372,-118.3560],
+   note:"סיור מודרך ברכבת טרם + King Kong 360 · בונוס אם נשאר זמן בסוף היום"},
+
+  {id:"exit", name:"🎆 יציאה — CityWalk + Hollywood Walk of Fame", tier:"entrance", ll:[34.1358,-118.3567],
+   note:"ערב מחוץ לפארק — מסעדות ובידור ב-CityWalk, הליכה קצרה ל-Walk of Fame"},
+];
+
+const colors = {entrance:"#7c3aed", prio:"#dc2626", add:"#2563eb", bonus:"#16a34a"};
+
+const map = L.map('map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19, attribution:'© OpenStreetMap'
+}).addTo(map);
+
+L.polyline(pts.map(p=>p.ll),{color:"#334155",weight:3,opacity:.6,dashArray:"6,6"}).addTo(map);
+
+const bounds = [];
+const markerById = {};
+pts.forEach((p,i)=>{
+  bounds.push(p.ll);
+  let icon;
+  if(p.tier==="entrance"){
+    const emoji = p.id==="entrance"?"🚪":(p.id==="exit"?"🎆":"↕️");
+    icon = L.divIcon({className:'', html:`<div class="gate-icon">${emoji}</div>`,
+      iconSize:[30,30], iconAnchor:[15,28]});
+  } else {
+    icon = L.divIcon({className:'', html:`<div class="num-icon" style="border-color:${colors[p.tier]}">${i+1}</div>`,
+      iconSize:[26,26], iconAnchor:[13,13]});
+  }
+  const tierLabel = {prio:"עדיפות (must-do)", add:"תוספת מומלצת", bonus:"בונוס בלבד", entrance:""}[p.tier];
+  const popup = `<b>${p.name}</b>`+(tierLabel?`<br>${tierLabel}`:"")+
+    (p.note ? `<br><span class="leg">${p.note}</span>` : "");
+  const marker = L.marker(p.ll,{icon}).addTo(map).bindPopup(popup);
+  markerById[p.id] = marker;
+});
+
+map.fitBounds(bounds,{padding:[40,40]});
+
+// Deep-link support: universal-studios-map.html#mummy opens that marker's popup and centers on it.
+const hashId = location.hash.replace('#','');
+if(hashId && markerById[hashId]){
+  const m = markerById[hashId];
+  map.setView(m.getLatLng(), 18);
+  m.openPopup();
+}
+</script>
 </body>
 </html>

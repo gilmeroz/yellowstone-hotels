@@ -92,8 +92,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   maxZoom:19, attribution:'© OpenStreetMap'
 }).addTo(map);
 
-L.polyline(pts.map(p=>p.ll),{color:"#334155",weight:3,opacity:.6,dashArray:"6,6"}).addTo(map);
-
 const bounds = [];
 pts.forEach((p,i)=>{
   bounds.push(p.ll);
