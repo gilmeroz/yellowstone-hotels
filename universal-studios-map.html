@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפת Universal Studios Hollywood — Aug 9, 2026</title>
+<style>
+  :root{
+    --upper:#7c3aed; --lower:#2563eb; --target:#dc2626; --bg:#0f172a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif;background:#f1f5f9;}
+  header{background:var(--bg);color:#fff;padding:14px 20px;}
+  header h1{margin:0 0 4px;font-size:20px;}
+  header p{margin:0;font-size:13px;opacity:.85;}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 20px;background:#fff;
+    font-size:12.5px;border-bottom:1px solid #e2e8f0;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:22px;height:5px;border-radius:3px;display:inline-block;}
+  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;}
+  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 60px;}
+  .lot{border-radius:16px;padding:18px;margin-bottom:8px;}
+  .lot h2{margin:0 0 4px;font-size:16px;}
+  .lot .sub{font-size:12.5px;opacity:.8;margin-bottom:14px;}
+  .upper{background:#f2e9fe;border:2px solid var(--upper);}
+  .lower{background:#e5edff;border:2px solid var(--lower);}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+  .card{background:#fff;border-radius:12px;padding:10px 12px;border:1px solid #e2e8f0;box-shadow:0 1px 2px rgba(0,0,0,.04);scroll-margin-top:14px;}
+  .card.target{border:2px solid var(--target);background:#fff5f5;}
+  .card:target{outline:3px solid #f59e0b;outline-offset:2px;}
+  .card .name{font-weight:700;font-size:13.5px;margin-bottom:3px;}
+  .card .note{font-size:12px;color:#565656;line-height:1.4;}
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--target);border-radius:999px;padding:1px 7px;margin-inline-start:6px;vertical-align:middle;}
+  .starway{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;font-size:13px;color:#334155;font-weight:600;}
+  .starway .arrow{font-size:20px;}
+  .tips{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px 18px;margin-top:14px;font-size:13.5px;color:#334155;line-height:1.7;}
+  .tips h3{margin:0 0 8px;font-size:14px;}
+  .tips ul{margin:0;padding-inline-start:20px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🍄 Universal Studios Hollywood — Upper Lot / Lower Lot</h1>
+  <p>9 באוגוסט 2026 (ראשון) · יום מלא מ-Loews Hollywood Hotel (לא on-site) · Express Pass ×5 ✅ · 🎯 = יעד שביקשת (Super Mario / Harry Potter / Mario Kart / The Mummy)</p>
+</header>
+<div class="legend">
+  <span><i class="swatch" style="background:var(--upper)"></i> Upper Lot (רמת הכניסה)</span>
+  <span><i class="swatch" style="background:var(--lower)"></i> Lower Lot (דרך ה-Starway)</span>
+  <span><i class="dot" style="background:var(--target);border-color:var(--target)"></i> יעד מבוקש</span>
+</div>
+<div class="wrap">
+
+  <div class="lot upper">
+    <h2>⬆️ Upper Lot — רמת הכניסה</h2>
+    <div class="sub">כניסה ראשית · Studio Tour · חנייה · CityWalk</div>
+    <div class="cards">
+      <div class="card target" id="harry-potter">
+        <div class="name">🧙 Wizarding World of Harry Potter <span class="badge">יעד</span></div>
+        <div class="note">Hogsmeade · Harry Potter and the Forbidden Journey · Flight of the Hippogriff · Ollivander's</div>
+      </div>
+      <div class="card" id="simpsons">
+        <div class="name">🎬 The Simpsons Ride / Springfield</div>
+        <div class="note">אזור אוכל + סימולטור</div>
+      </div>
+      <div class="card" id="minion-land">
+        <div class="name">🟡 Minion Land</div>
+        <div class="note">Despicable Me Minion Mayhem</div>
+      </div>
+      <div class="card" id="fast-furious">
+        <div class="name">🏎️ Fast &amp; Furious: Hollywood Drift <span class="badge" style="background:#16a34a;">חדש 26/6/26</span></div>
+        <div class="note">רכבת חוץ מהירה ביותר ב-Universal (72 mph) · צפי לתורים ארוכים כי היא חדשה</div>
+      </div>
+      <div class="card" id="studio-tour">
+        <div class="name">🎥 Studio Tour</div>
+        <div class="note">סיור מודרך ברכבת טרם + King Kong 360</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="starway"><span class="arrow">↕️</span> Starway — מדרגות נעות, ~5 דקות כל כיוון (חיבור היחיד בין המפלסים) <span class="arrow">↕️</span></div>
+
+  <div class="lot lower">
+    <h2>⬇️ Lower Lot — דרך ה-Starway</h2>
+    <div class="sub">רכז את כל הרכבות כאן ברצף אחד לפני חזרה למעלה</div>
+    <div class="cards">
+      <div class="card target" id="super-nintendo-world">
+        <div class="name">🍄 Super Nintendo World <span class="badge">יעד</span></div>
+        <div class="note">אזור Super Mario · כניסה חופשית ללא תור וירטואלי כשיש Express Pass</div>
+      </div>
+      <div class="card target" id="mario-kart">
+        <div class="name">🏁 Mario Kart: Bowser's Challenge <span class="badge">יעד</span></div>
+        <div class="note">בתוך Super Nintendo World · Express Pass מכסה כעת גם אותה · יש Single Rider</div>
+      </div>
+      <div class="card target" id="mummy">
+        <div class="name">🧟 Revenge of the Mummy — "The Mummy" <span class="badge">יעד</span></div>
+        <div class="note">רכבת הרים מהירה בחושך · גובה מינימלי 122 ס"מ — לא רלוונטי לבנות (13/18/21) · כלולה ב-Express</div>
+      </div>
+      <div class="card" id="jurassic-world">
+        <div class="name">🦖 Jurassic World — The Ride</div>
+        <div class="note">רכבת מים · טפטוף ⭐ יורדת/צניחה</div>
+      </div>
+      <div class="card" id="transformers">
+        <div class="name">🤖 Transformers: The Ride 3D</div>
+        <div class="note">סימולטור 3D</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips">
+    <h3>💡 טיפים לסדר הביקור</h3>
+    <ul>
+      <li>⚠️ Super Nintendo World Early Access אבוד (Loews Hollywood אינו on-site) — להגיע לפתיחת השערים ולרדת ל-Lower Lot ראשונים.</li>
+      <li>ברגע שב-Lower Lot: Mario Kart → Jurassic World → Revenge of the Mummy → Transformers ברצף, לפני שעולים חזרה ב-Starway.</li>
+      <li>Express Pass (₪4,536, UH00004OB7O) מכסה את כל 4 היעדים המבוקשים: Harry Potter, Super Nintendo World (כניסה), Mario Kart, ו-Revenge of the Mummy.</li>
+      <li>אחר הצהריים: לעלות חזרה ל-Upper Lot ל-Wizarding World of Harry Potter, Minion Land, ו-Fast &amp; Furious: Hollywood Drift (רכבת חדשה — צפי לתור ארוך יחסית כי היא רק נפתחה).</li>
+      <li>ערב: Hollywood Walk of Fame + CityWalk (מחוץ לפארק, ליד היציאה).</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
