@@ -45,7 +45,7 @@
   <span><i class="swatch" style="background:var(--add)"></i> תוספות מומלצות (3)</span>
   <span><i class="swatch" style="background:var(--bonus)"></i> בונוס בלבד (2)</span>
 </div>
-<div class="disclaimer">⚠️ מיקומים משוערים לצורך תכנון מסלול הליכה כללי בלבד — לא לניווט מדויק בפארק. להשתמש באפליקציית Universal Studios Hollywood לניווט חי.</div>
+<div class="disclaimer">⚠️ תצלום לוויין אמיתי של הפארק (Esri World Imagery) — אפשר לראות בבירור את מבנה הטירה של הארי פוטר, Super Nintendo World הצבעוני והבריכה של Jurassic World. מיקומי הסיכות משוערים בהתאם לפריסה הידועה (Upper/Lower Lot) אך לא נבדקו פיקסל-לפיקסל — אם משהו נראה לא מיושר עם המבנה בתצלום, זו הערכה ולא ניווט מדויק. להשתמש באפליקציית Universal Studios Hollywood לניווט חי בתוך הפארק.</div>
 <div id="map"></div>
 <script>
 // Suggested touring order: rope-drop → Lower Lot first (Early Access lost, so race there),
@@ -96,8 +96,8 @@ const pts = [
 const colors = {entrance:"#7c3aed", prio:"#dc2626", add:"#2563eb", bonus:"#16a34a"};
 
 const map = L.map('map');
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-  maxZoom:19, attribution:'© OpenStreetMap'
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+  maxZoom:20, attribution:'Esri, Maxar, Earthstar Geographics'
 }).addTo(map);
 
 L.polyline(pts.map(p=>p.ll),{color:"#334155",weight:3,opacity:.6,dashArray:"6,6"}).addTo(map);

@@ -45,43 +45,45 @@
   <span><i class="swatch" style="background:var(--add)"></i> תוספות מומלצות (4)</span>
   <span><i class="swatch" style="background:var(--bonus)"></i> בונוס בלבד (2)</span>
 </div>
-<div class="disclaimer">⚠️ מיקומים משוערים לצורך תכנון מסלול הליכה כללי בלבד — לא לניווט מדויק בפארק. להשתמש באפליקציית Disneyland לניווט חי.</div>
+<div class="disclaimer">⚠️ מיקומים לרוב מבוססים על OpenStreetMap + מיקום מאומת מ-Google Maps (Pirates of the Caribbean) — Seven Dwarfs Mine Train ו-Lightcycle Run אינם ממופים ב-OSM (אטרקציות חדשות) ומסומנים כהערכה. לא לניווט מדויק בפארק — להשתמש באפליקציית Disneyland לניווט חי.</div>
 <div id="map"></div>
 <script>
-// Suggested walking/touring order, counter-clockwise from Tomorrowland back to the central hub for the evening show.
+// Suggested walking/touring order — a geographic loop from the entrance through
+// Adventureland → New Orleans Square → Critter Country → Frontierland →
+// Galaxy's Edge → Fantasyland → Tomorrowland → back to the hub.
 const pts = [
-  {name:"🚪 כניסה — Main Street, U.S.A.", tier:"entrance", ll:[33.8095,-117.9174],
+  {name:"🚪 כניסה — Main Street, U.S.A.", tier:"entrance", ll:[33.8099,-117.9190],
    note:"פתיחת שערים 08:00 · לוודא כולם באפליקציית Disneyland מ-07:00 להזמנת Lightning Lane"},
 
-  {name:"Space Mountain", tier:"prio", ll:[33.8143,-117.9162],
-   note:"Tomorrowland · rope-drop מומלץ — ביקוש גבוה בבוקר"},
-  {name:"Lightcycle Run (TRON)", tier:"prio", ll:[33.8135,-117.9168],
-   note:"Tomorrowland · ⚠️ הרכיבה עם הביקוש הגבוה ביותר בפארק — Lightning Lane נגמר תוך 1–2 שעות; לוודא אם דורש Lightning Lane Single Pass נפרד (לא כלול ב-Multi Pass)"},
-
-  {name:"Seven Dwarfs Mine Train", tier:"prio", ll:[33.8130,-117.9192],
-   note:"Fantasyland · ביקוש גבוה מאוד — Lightning Lane מוקדם"},
-  {name:"Matterhorn Bobsleds", tier:"add", ll:[33.8145,-117.9179],
-   note:"Fantasyland/Tomorrowland — ליד Seven Dwarfs, קליל לשלב באותו אזור"},
-
-  {name:"Pirates of the Caribbean", tier:"prio", ll:[33.8106,-117.9186],
-   note:"New Orleans Square · שיט, המתנה בד״כ סבירה"},
-  {name:"Haunted Mansion", tier:"add", ll:[33.8101,-117.9182],
-   note:"New Orleans Square · ממש ליד Pirates — כמעט ללא הליכה נוספת"},
-
-  {name:"Big Thunder Mountain Railroad", tier:"prio", ll:[33.8117,-117.9209],
-   note:"Frontierland · ⚠️ לוודא סגור/פתוח קרוב לנסיעה — היסטוריה של שיפוצים ממושכים"},
-  {name:"Tiana's Bayou Adventure", tier:"bonus", ll:[33.8098,-117.9202],
-   note:"Critter Country · בונוס בלבד — גם רטיבות נעימה בחום אוגוסט"},
-
-  {name:"Star Wars: Rise of the Resistance", tier:"add", ll:[33.8137,-117.9228],
-   note:"Star Wars: Galaxy's Edge · חוויה ארוכה ומורכבת, ביקוש גבוה"},
-  {name:"Millennium Falcon: Smugglers Run", tier:"bonus", ll:[33.8142,-117.9223],
-   note:"Star Wars: Galaxy's Edge · בונוס — אותו אזור כמו Rise of the Resistance"},
-
-  {name:"Indiana Jones Adventure", tier:"add", ll:[33.8111,-117.9199],
+  {name:"Indiana Jones Adventure", tier:"add", ll:[33.8103,-117.9212],
    note:"Adventureland · ביקוש גבוה, מומלץ Lightning Lane"},
 
-  {name:"🎆 מצעד + מופע אורות ~21:00", tier:"entrance", ll:[33.8121,-117.9189],
+  {name:"Pirates of the Caribbean", tier:"prio", ll:[33.8112486,-117.9208094],
+   note:"New Orleans Square · שיט, המתנה בד״כ סבירה · מיקום מאומת מ-Google Maps"},
+  {name:"Haunted Mansion", tier:"add", ll:[33.8115,-117.9226],
+   note:"New Orleans Square/Critter Country border"},
+  {name:"Tiana's Bayou Adventure", tier:"bonus", ll:[33.8119,-117.9228],
+   note:"Critter Country · בונוס בלבד — ליד Haunted Mansion · גם רטיבות נעימה בחום אוגוסט"},
+
+  {name:"Big Thunder Mountain Railroad", tier:"prio", ll:[33.8127,-117.9204],
+   note:"Frontierland · ⚠️ לוודא סגור/פתוח קרוב לנסיעה — היסטוריה של שיפוצים ממושכים"},
+
+  {name:"Star Wars: Rise of the Resistance", tier:"add", ll:[33.8144,-117.9227],
+   note:"Star Wars: Galaxy's Edge · חוויה ארוכה ומורכבת, ביקוש גבוה"},
+  {name:"Millennium Falcon: Smugglers Run", tier:"bonus", ll:[33.8152,-117.9214],
+   note:"Star Wars: Galaxy's Edge · בונוס — אותו אזור כמו Rise of the Resistance"},
+
+  {name:"Seven Dwarfs Mine Train", tier:"prio", ll:[33.8133,-117.9186],
+   note:"Fantasyland · ביקוש גבוה מאוד — Lightning Lane מוקדם · ⚠️ מיקום משוער (לא ממופה ב-OSM)"},
+  {name:"Matterhorn Bobsleds", tier:"add", ll:[33.8131,-117.9178],
+   note:"Fantasyland/Tomorrowland border — ליד Seven Dwarfs"},
+
+  {name:"Space Mountain", tier:"prio", ll:[33.8110,-117.9175],
+   note:"Tomorrowland · rope-drop מומלץ — ביקוש גבוה בבוקר"},
+  {name:"Lightcycle Run (TRON)", tier:"prio", ll:[33.8118,-117.9165],
+   note:"Tomorrowland · ⚠️ הרכיבה עם הביקוש הגבוה ביותר בפארק — Lightning Lane נגמר תוך 1–2 שעות; לוודא אם דורש Lightning Lane Single Pass נפרד (לא כלול ב-Multi Pass) · ⚠️ מיקום משוער (לא ממופה ב-OSM)"},
+
+  {name:"🎆 מצעד + מופע אורות ~21:00", tier:"entrance", ll:[33.8128,-117.9190],
    note:"חזרה למרכז הפארק (Central Plaza / הטירה) לקראת הערב"},
 ];
 
@@ -92,7 +94,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   maxZoom:19, attribution:'© OpenStreetMap'
 }).addTo(map);
 
+L.polyline(pts.map(p=>p.ll),{color:"#334155",weight:3,opacity:.6,dashArray:"6,6"}).addTo(map);
+
 const bounds = [];
+let rideNum = 0;
 pts.forEach((p,i)=>{
   bounds.push(p.ll);
   let icon;
@@ -100,7 +105,8 @@ pts.forEach((p,i)=>{
     icon = L.divIcon({className:'', html:`<div class="gate-icon">${i===0?"🚪":"🎆"}</div>`,
       iconSize:[30,30], iconAnchor:[15,28]});
   } else {
-    icon = L.divIcon({className:'', html:`<div class="num-icon" style="border-color:${colors[p.tier]}">${i+1}</div>`,
+    rideNum++;
+    icon = L.divIcon({className:'', html:`<div class="num-icon" style="border-color:${colors[p.tier]}">${rideNum}</div>`,
       iconSize:[26,26], iconAnchor:[13,13]});
   }
   const tierLabel = {prio:"עדיפות (must-do)", add:"תוספת מומלצת", bonus:"בונוס בלבד", entrance:""}[p.tier];
