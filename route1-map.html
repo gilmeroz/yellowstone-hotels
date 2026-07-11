@@ -41,8 +41,8 @@
 </header>
 <div class="legend">
   <span><i class="swatch" style="background:var(--d1)"></i> 5/8 — SFO → Monterey · 17-Mile · Carmel</span>
-  <span><i class="swatch" style="background:var(--d2)"></i> 6/8 — Whale Watching → Carmel → Point Lobos → Big Sur</span>
-  <span><i class="swatch" style="background:var(--d3)"></i> 7/8 — Big Sur יום שלם → Elephant Seals → SLO</span>
+  <span><i class="swatch" style="background:var(--d2)"></i> 6/8 — Whale Watching → Carmel → Point Lobos → ערב בכרמל</span>
+  <span><i class="swatch" style="background:var(--d3)"></i> 7/8 — Bixby Bridge → Big Sur יום שלם → Elephant Seals → SLO</span>
   <span><i class="swatch" style="background:var(--d4)"></i> 8/8 — SLO → Santa Barbara → Camarillo → LA</span>
   <span>🏨 לינה</span>
 </div>
@@ -67,15 +67,18 @@ const pts = [
    note:"Blue Ocean Whale Watch ✅ Conf #350653606 · 5 נוסעים · חוזרים 12:00–13:00"},
   {day:2, name:"Carmel-by-the-Sea — ארוחת צהריים + העיירה", time:"13:35–15:00", leg:"36 ק\"מ · 30 דק'", ll:[36.5552,-121.9233],
    note:"Forge in the Forest (מטבח עד 16:00) — הועבר לפני Point Lobos ב-10/7 למרווח נוח יותר"},
-  {day:2, name:"⭐ Point Lobos State Natural Reserve", time:"15:10–16:25", leg:"6 ק\"מ · 10 דק'", ll:[36.5158,-121.9430],
-   note:"Cypress Grove ~2 ק\"מ · $10/רכב · אחה\"צ, לא שעת זהב"},
-  {day:2, name:"Bixby Creek Bridge 📸", time:"~16:45–17:05", leg:"18 ק\"מ · 20 דק'", ll:[36.3717,-121.9015]},
-  {day:2, name:"🏨 Carmel Mission Inn", time:"צ'ק-אין ~17:25 · לילה 2", leg:"21 ק\"מ · 20 דק' (חזרה צפונה)", ll:[36.5477,-121.9088], hotel:true,
-   note:"✅ הוזמן · 3665 Rio Rd, Carmel-By-The-Sea · Agoda Conf #1746741155 · 2 חדרים King ADA Accessible · $746.24 / ₪2,191 · לא בתוך Big Sur עצמה — ~13 mi/18 דק' צפונית ל-Bixby, ~26 mi/45 דק' צפונית ל-Pfeiffer Beach"},
+  {day:2, name:"⭐ Point Lobos State Natural Reserve", time:"15:10–17:30", leg:"6 ק\"מ · 10 דק'", ll:[36.5158,-121.9430],
+   note:"Cypress Grove Trail + China Cove + Sea Lion Point + Bird Island Overlook · $10/רכב · אחה\"צ, לא שעת זהב · אין מזון/מים בפנים — להביא פיקניק"},
+  {day:2, name:"ערב בכרמל — Carmel Beach + Ocean Ave + Plaza + חצרות", time:"17:40–19:30", leg:"6 ק\"מ · 10 דק'", ll:[36.5544,-121.9236],
+   note:"Scenic Road Walkway (שביל שטוח לאורך החוף) · גלריות ובוטיקים ב-Ocean Avenue · Carmel Plaza · חצרות נסתרות · ארוחת ערב בעיר"},
+  {day:2, name:"🏨 Carmel Mission Inn", time:"צ'ק-אין ~19:30–19:45 · לילה 2", leg:"~5 דק'", ll:[36.5477,-121.9088], hotel:true,
+   note:"✅ הוזמן · 3665 Rio Rd, Carmel-By-The-Sea · Agoda Conf #1746741155 · 2 חדרים King ADA Accessible · $746.24 / ₪2,191 · לא בתוך Big Sur עצמה — כמה דקות מכל מקום בעיר"},
 
-  // ---- Aug 7 (orange) — Big Sur full day → Elephant Seals → Morro Bay → SLO ----
-  {day:3, name:"Carmel Mission Inn — יציאה", time:"08:00", leg:"—", ll:[36.5477,-121.9088]},
-  {day:3, name:"Pfeiffer Beach — חוף חול סגול", time:"08:45–10:00", leg:"42 ק\"מ · 45 דק'", ll:[36.2385,-121.7952],
+  // ---- Aug 7 (orange) — Bixby Bridge → Big Sur full day → Elephant Seals → Morro Bay → SLO ----
+  {day:3, name:"Carmel Mission Inn — יציאה", time:"07:45", leg:"—", ll:[36.5477,-121.9088]},
+  {day:3, name:"Bixby Creek Bridge 📸", time:"08:05–08:20", leg:"21 ק\"מ · 20 דק'", ll:[36.3717,-121.9015],
+   note:"הועבר מ-6/8 — נמצא ישר בדרך דרומה ל-Pfeiffer Beach, אז עכשיו זו עצירה קצרה בדרך במקום נסיעה נפרדת"},
+  {day:3, name:"Pfeiffer Beach — חוף חול סגול", time:"08:45–10:00", leg:"21 ק\"מ · 25 דק'", ll:[36.2385,-121.7952],
    note:"✓ ללא היתר, $12 חניה · רק ~60 מקומות — ראשון בבוקר לפני שהחניון מתמלא (12:00–14:30 באוגוסט)"},
   {day:3, name:"Nepenthe — ארוחת צהריים + נוף", time:"10:15–13:00", leg:"6 ק\"מ · 15 דק'", ll:[36.2202,-121.7827],
    note:"Henry Miller Memorial Library לידו אם יש המתנה לשולחן"},
