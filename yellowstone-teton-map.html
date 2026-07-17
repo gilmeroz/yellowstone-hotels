@@ -42,11 +42,11 @@
 </header>
 <div class="legend">
   <span><i class="swatch" style="background:var(--d15)"></i> 15/8 — נחיתת BZN + לינה</span>
-  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — רפטינג · Tower Fall · Lamar (שקיעה) → Silver Gate</span>
-  <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Mammoth · Norris · Grand Prismatic → West Yellowstone</span>
-  <span><i class="swatch" style="background:var(--d18)"></i> 18/8 — Old Faithful (יום שלם)</span>
-  <span><i class="swatch" style="background:var(--d19)"></i> 19/8 — Hayden/Canyon → Grand Teton</span>
-  <span><i class="swatch" style="background:var(--d20)"></i> 20/8 — גרנד טטון (יום שלם)</span>
+  <span><i class="swatch" style="background:var(--d16)"></i> 16/8 — Roosevelt Arch · Mammoth · Tower Fall · Lamar (שקיעה) → Silver Gate</span>
+  <span><i class="swatch" style="background:var(--d17)"></i> 17/8 — Grand Canyon (2 rims) · Yellowstone Lake · Hayden (שקיעה) · Norris → West Yellowstone</span>
+  <span><i class="swatch" style="background:var(--d18)"></i> 18/8 — Old Faithful · Mystic Falls · Grand Prismatic (יום שלם)</span>
+  <span><i class="swatch" style="background:var(--d19)"></i> 19/8 — West Thumb Geyser Basin → Grand Teton</span>
+  <span><i class="swatch" style="background:var(--d20)"></i> 20/8 — Jenny Lake · Hidden Falls (יום שלם)</span>
   <span><i class="swatch" style="background:var(--d21)"></i> 21/8 — יציאה ל-JAC</span>
   <span>🏨 לינה</span>
 </div>
@@ -60,14 +60,16 @@ const pts = [
   {day:"15", name:"🏨 EVEN Hotel Bozeman Yellowstone Intl Arpt", time:"צ'ק-אין ~21:00 · לילה 1", leg:"~5 ק\"מ משדה התעופה", ll:[45.7850,-111.1590], hotel:true,
    note:"406 Belgrade Blvd, Belgrade MT · 3 מבוגרים + ילדה · $384.32 / ₪1,128 · ביטול חינם עד 14/8 16:00 MDT"},
 
-  // ---- Aug 16 (blue) — Bozeman → Gardiner (rafting) → Tower Fall → Lamar (dusk) → Silver Gate ----
+  // ---- Aug 16 (blue) — Bozeman → Gardiner (Roosevelt Arch + Mammoth) → Tower Fall → Lamar (dusk) → Silver Gate ----
   {day:"16", name:"בוזמן — יציאה", time:"07:00", leg:"—", ll:[45.7850,-111.1590]},
-  {day:"16", name:"רפטינג — Gardiner Town Stretch", time:"צ'ק-אין 08:45 · על המים 09:15–11:45", leg:"126 ק\"מ · 1:25", ll:[45.0327,-110.7051],
-   note:"Class I–III · ~2 שעות במים · מומלץ חליפות/ג'קטים למים (בעיקר לבת ה-13) · טרם הוזמן"},
-  {day:"16", name:"גרדינר — ארוחת צהריים + התייבשות", time:"12:15–13:00", leg:"—", ll:[45.0327,-110.7051],
-   note:"The Corral, 711 Scott St W (פתוח 12:00–20:00) — USA Today Best Elk Burger 2017, אייל/ביזון/בקר אורגני מאז 1961"},
-  {day:"16", name:"זמן חופשי / Boiling River", time:"13:00–17:00", leg:"—", ll:[45.0028,-110.7075],
-   note:"חלון הסיכון הגבוה ביותר לסופות רעמים (שיא 13:00–17:00) — לכן זמן גמיש, לא outdoor מתוכנן · גיבוי מקורה: Heritage & Research Center / Chamber of Commerce Visitor Center"},
+  {day:"16", name:"Roosevelt Arch, Gardiner", time:"~08:25", leg:"126 ק\"מ · 1:25", ll:[45.0316,-110.7028],
+   note:"שער הכניסה הצפונית ההיסטורי משנת 1903 · עצירת צילום ~10 דק'"},
+  {day:"16", name:"Mammoth Hot Springs Terraces", time:"08:45–09:30", leg:"8 ק\"מ · 10 דק'", ll:[44.9764,-110.7016],
+   note:"מדרכת טראוורטין עליונה/תחתונה · איילות בסביבה — מרחק 25מ'"},
+  {day:"16", name:"Albright Visitor Center", time:"09:30–10:00", leg:"—", ll:[44.9767,-110.7028],
+   note:"תערוכות היסטוריית הפארק + חוברת Junior Ranger ($5) לבת ה-13"},
+  {day:"16", name:"גרדינר — זמן חופשי + ארוחת צהריים", time:"10:10–17:00", leg:"8 ק\"מ · 10 דק'", ll:[45.0327,-110.7051],
+   note:"12:15–13:00 The Corral, 711 Scott St W — USA Today Best Elk Burger 2017, אייל/ביזון/בקר אורגני מאז 1961 · אחה\"צ חלון הסיכון הגבוה ביותר לסופות רעמים (13:00–17:00) — זמן גמיש, לא outdoor מתוכנן · ⚠️ Boiling River סגור לצמיתות מאז שיטפון 2022 — לא לתכנן סביבו"},
   {day:"16", name:"Tower Fall", time:"17:45–18:15", leg:"37 ק\"מ דרך Mammoth Junction · 45 דק'", ll:[44.8988,-110.4132],
    note:"מפל בגובה 40מ' · הליכת תצפית 15 דק'"},
   {day:"16", name:"Lamar Valley — חיות בר (שקיעה)", time:"18:15–19:30", leg:"18 ק\"מ · 30 דק' + עצירות", ll:[44.9210,-110.2280],
@@ -75,61 +77,76 @@ const pts = [
   {day:"16", name:"🏨 Silver Gate Cabin 6, Silver Gate MT", time:"צ'ק-אין ~19:30–19:55 · לילה 2", leg:"~25 ק\"מ המשך מזרחה · 25–30 דק'", ll:[45.0059,-109.8354], hotel:true,
    note:"109 US Hwy 212 · Conf #127209 · 4 מבוגרים · $364.00 / ₪1,069 (הערכה, $308 מקדמה + $56 בהגעה) · ליד הכניסה הצפון-מזרחית · מבטל את נסיעת החזרה ל-Gardiner אחרי חשיכה · ⚠️ מחליף את Yellowstone Riverside Cottages (Gardiner) — יש לבטל את ההזמנה הישנה (5856245753) עד 1/8 23:59 GMT"},
 
-  // ---- Aug 17 (green) — Silver Gate → Mammoth → Norris → Grand Prismatic → West Yellowstone ----
-  {day:"17", name:"Silver Gate — צ'ק-אאוט + תדלוק ב-Cooke City", time:"06:15", leg:"—", ll:[45.0059,-109.8354]},
-  {day:"17", name:"Tower-Roosevelt Junction — מעבר", time:"~07:10", leg:"53 ק\"מ דרך Lamar Valley · 55 דק'", ll:[44.8988,-110.4132],
+  // ---- Aug 17 (green) — Silver Gate → Grand Canyon (South+North Rim) → Yellowstone Lake → Hayden (dusk) → Norris → West Yellowstone ----
+  {day:"17", name:"Silver Gate — צ'ק-אאוט + תדלוק ב-Cooke City", time:"06:00", leg:"—", ll:[45.0059,-109.8354]},
+  {day:"17", name:"Lamar Valley → Tower-Roosevelt Junction (שחר)", time:"06:00–06:55", leg:"53 ק\"מ · 55 דק'", ll:[44.8988,-110.4132],
    note:"נסיעה חזרה דרך Lamar Valley — הזדמנות לחיות בר בשחר בדרך"},
-  {day:"17", name:"Mammoth Hot Springs Terraces", time:"07:55–08:40", leg:"29 ק\"מ · 45 דק'", ll:[44.9764,-110.7016],
-   note:"מדרכת טראוורטין · איילות בסביבה — מרחק 25מ'"},
-  {day:"17", name:"Norris Geyser Basin", time:"09:20–10:40", leg:"34 ק\"מ · 40 דק' ⚠️ אפשרי עיכוב עבודות", ll:[44.7264,-110.7016],
-   note:"Porcelain Basin + חלק מ-Back Basin loop, כולל Steamboat Geyser (הגייזר הפעיל הגבוה בעולם — התפרצויות לא ניתנות לחיזוי) · מקוצר ~15 דק' כדי לספוג את הנסיעה הארוכה יותר מ-Silver Gate · שבילי דק עץ מעל קרקע רותחת, עשרות גייזרים, ובחלק הצפוני מעיינות הפורצלן (Porcelain Springs) היפים"},
-  {day:"17", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"11:25–12:45", leg:"38 ק\"מ · 40–45 דק' — חניה מתמלאת אחרי 10:30", ll:[44.5250,-110.8398],
-   note:"Excelsior Geyser · הגעה מאוחרת יותר מהתוכנית המקורית — לצפות לעומס חניה"},
-  {day:"17", name:"Madison Junction — ארוחת צהריים", time:"12:45–13:30", leg:"—", ll:[44.6459,-110.8654]},
-  {day:"17", name:"🏨 Starlite Yellowstone", time:"צ'ק-אין 14:10 · לילה 1", leg:"30 ק\"מ · 30–40 דק'", ll:[44.6621,-111.1046], hotel:true,
-   note:"301 Madison Ave, West Yellowstone · Tapestry Collection by Hilton · ₪2,547 · ביטול עד 2/8 23:59"},
+  {day:"17", name:"Dunraven Pass → Canyon Village", time:"06:55–07:35", leg:"30 ק\"מ · 40 דק'", ll:[44.7205,-110.4994]},
+  {day:"17", name:"Artist Point + South Rim Trail", time:"07:45–08:15", leg:"—", ll:[44.7146,-110.4832],
+   note:"South Rim בשחר, כמעט ללא קהל — תצפית קלאסית על Lower Falls (94מ')"},
+  {day:"17", name:"Brink of the Upper Falls Trail", time:"08:25–08:45", leg:"—", ll:[44.7196,-110.4972],
+   note:"הליכה קצרה מאוד (<0.5 ק\"מ הלוך-חזור) לפלטפורמה ממש מעל שפת המפל העליון"},
+  {day:"17", name:"Lookout Point → Grand View (North Rim)", time:"08:55–09:25", leg:"~10 דק' דרך Canyon Village", ll:[44.7258,-110.4932],
+   note:"מסלול קל, כמעט שטוח לגמרי, זוויות צילום מעולות על Lower Falls"},
+  {day:"17", name:"Inspiration Point", time:"09:25–09:40", leg:"—", ll:[44.7211,-110.4796],
+   note:"מסלול נגיש קצרצר מהחניון לפלטפורמת תצפית רחבה במורד הזרם"},
+  {day:"17", name:"Yellowstone Lake / Bridge Bay — בלוק מורחב + צהריים", time:"10:20–16:30", leg:"30 ק\"מ · 40 דק' דרך Hayden Valley (ללא עצירה)", ll:[44.5652,-110.3737],
+   note:"Bridge Bay Marina + Fishing Bridge boardwalk · ארוחת צהריים במקום · ⚠️ שונה מ-West Thumb (19/8), שהוא הזרוע המערבית של האגם"},
+  {day:"17", name:"Hayden Valley — נהיגת חיות בר (שקיעה)", time:"16:55–17:40", leg:"15 ק\"מ · 25 דק'", ll:[44.6386,-110.4666],
+   note:"שיא פעילות ביזון/פרונגהורן/אפשרי זאב-דוב · לעצור בתפניות ולא בכביש"},
+  {day:"17", name:"Norris Geyser Basin", time:"18:25–19:25", leg:"45 דק' דרך Canyon Village", ll:[44.7264,-110.7016],
+   note:"Porcelain Basin + Back Basin loop מלא, כולל Steamboat Geyser (הגייזר הפעיל הגבוה בעולם) · אור עדיין טוב, שקיעה רק ב-20:25"},
+  {day:"17", name:"🏨 Starlite Yellowstone", time:"הגעה ~20:05 · לילה 1", leg:"45 ק\"מ · 40 דק' דרך Madison", ll:[44.6621,-111.1046], hotel:true,
+   note:"301 Madison Ave, West Yellowstone · Tapestry Collection by Hilton · ₪2,547 · ביטול עד 2/8 23:59 · ארוחת ערב Madison Crossing Lounge ~20:00–20:30"},
 
-  // ---- Aug 18 (orange) — Old Faithful full day ----
+  // ---- Aug 18 (orange) — Old Faithful, Mystic Falls, then Grand Prismatic ----
   {day:"18", name:"West Yellowstone — ארוחת בוקר + קופסת צהריים, יציאה", time:"06:45–07:05", leg:"—", ll:[44.6621,-111.1046],
-   note:"Ernie's Bakery & Deli או Mountain Mama's — מאפה+קפה לדרך + קופסת צהריים ל-Old Faithful"},
-  {day:"18", name:"Old Faithful & Upper Geyser Basin ⭐", time:"08:00–10:30", leg:"50 ק\"מ · 40–45 דק'", ll:[44.4605,-110.8281],
+   note:"Ernie's Bakery & Deli או Mountain Mama's — מאפה+קפה לדרך + קופסת צהריים"},
+  {day:"18", name:"Old Faithful & Upper Geyser Basin ⭐", time:"08:00–10:00", leg:"58 ק\"מ · 55 דק' (ללא עצירה ב-Midway)", ll:[44.4605,-110.8281],
    note:"Geyser Hill, Morning Glory Pool, Castle/Grand/Riverside Geysers · להגיע לפני גל הקהל"},
-  {day:"18", name:"Fountain Paint Pot / Firehole Lake Drive", time:"12:45–14:00", leg:"13 ק\"מ", ll:[44.5540,-110.7986],
+  {day:"18", name:"Mystic Falls Trail", time:"10:00–10:50", leg:"—", ll:[44.4795,-110.8390],
+   note:"~4 ק\"מ הלוך-חזור דרך שביל הגישה ל-Biscuit Basin (המדרכה/הגייזרים עצמם סגורים — רק השביל פתוח) · ⚠️ Biscuit Basin עדיין סגור (פיצוץ הידרותרמי יולי 2024 + יוני 2026)"},
+  {day:"18", name:"Midway Geyser Basin — Grand Prismatic ⭐", time:"11:05–12:05", leg:"13 ק\"מ · 15 דק'", ll:[44.5250,-110.8398],
+   note:"עכשיו בצהריים — פחות קיטור, הצבעים הכי בולטים · ⚠️ חניה עמוסה אחרי 10:30, אפשרי Fairy Falls Trailhead כחניית גלישה"},
+  {day:"18", name:"Fountain Paint Pot / Firehole Lake Drive", time:"12:35–13:15", leg:"—", ll:[44.5540,-110.7986],
    note:"מדרכת עץ קלה, פחות קהל"},
-  {day:"18", name:"🏨 חזרה ל-Starlite Yellowstone", time:"14:45 · לילה 2", leg:"50 ק\"מ · 45 דק'", ll:[44.6621,-111.1046], hotel:true,
-   note:"בריכה / IMAX — מנוחה לפני ארוחת ערב"},
+  {day:"18", name:"🏨 חזרה ל-Starlite Yellowstone", time:"14:00 · לילה 2", leg:"45 ק\"מ · 45 דק'", ll:[44.6621,-111.1046], hotel:true,
+   note:"14:00–15:40 Grizzly & Wolf Discovery Center · בריכה/מנוחה לפני ארוחת ערב"},
 
-  // ---- Aug 19 (red) — West Yellowstone → Hayden/Canyon → Grand Teton ----
-  {day:"19", name:"West Yellowstone — צ'ק-אאוט", time:"06:30", leg:"—", ll:[44.6621,-111.1046]},
-  {day:"19", name:"Canyon Village", time:"~07:35", leg:"64 ק\"מ · 65 דק'", ll:[44.7205,-110.4994]},
-  {day:"19", name:"Hayden Valley — נהיגת חיות בר", time:"07:35–09:00", leg:"26 ק\"מ + עצירות", ll:[44.6386,-110.4666],
-   note:"שחר = שיא פעילות ביזון/זאבים/דובים"},
-  {day:"19", name:"Artist Point — Grand Canyon of the Yellowstone ⭐", time:"09:00–09:45", leg:"—", ll:[44.7204,-110.4795],
-   note:"Lower Falls, מפל בגובה 94מ' · להגיע מוקדם, הקהל גדל לקראת הצהריים"},
-  {day:"19", name:"Fishing Bridge — ארוחת צהריים", time:"10:30–12:10", leg:"26 ק\"מ · 40 דק'", ll:[44.5652,-110.3737],
-   note:"לאורך שפת אגם ילוסטון"},
-  {day:"19", name:"South Entrance — יציאה מהפארק", time:"~13:00", leg:"60 ק\"מ · 50 דק'", ll:[44.1391,-110.6660]},
-  {day:"19", name:"Snake River Overlook / Jenny Lake (אופציונלי)", time:"14:15–15:00", leg:"92 ק\"מ · 75 דק' (דרך John D. Rockefeller Pkwy)", ll:[43.6425,-110.5713]},
-  {day:"19", name:"🏨 The Rockwell Inn, Jackson", time:"צ'ק-אין 15:00–16:00 · לילה 1", leg:"—", ll:[43.4808,-110.7624], hotel:true,
-   note:"285 N Cache Dr, Jackson WY · ₪3,584 · ביטול חינם עד 15/8"},
+  // ---- Aug 19 (red) — West Yellowstone → West Thumb Geyser Basin → Grand Teton ----
+  {day:"19", name:"West Yellowstone — צ'ק-אאוט", time:"07:00", leg:"—", ll:[44.6621,-111.1046]},
+  {day:"19", name:"Old Faithful (מעבר, ללא עצירה)", time:"07:45–08:25", leg:"50 ק\"מ · 40–45 דק'", ll:[44.4605,-110.8281]},
+  {day:"19", name:"West Thumb Geyser Basin", time:"08:25–09:05", leg:"27 ק\"מ דרך Craig Pass · 40 דק'", ll:[44.4160,-110.5745],
+   note:"גייזרים על שפת Yellowstone Lake (Fishing Cone, Abyss Pool) · טיילת עץ קלה ושטוחה · ⚠️ שונה מ-Bridge Bay (17/8) — הזרוע המערבית של האגם"},
+  {day:"19", name:"South Entrance — יציאה מהפארק", time:"09:05–09:40", leg:"35 ק\"מ · 35 דק'", ll:[44.1391,-110.6660]},
+  {day:"19", name:"Snake River Overlook (אופציונלי)", time:"10:55–11:40", leg:"92 ק\"מ · 75 דק' דרך John D. Rockefeller Pkwy", ll:[43.6425,-110.5713],
+   note:"Jenny Lake נדלגת כאן — הביקור המלא מחר בבוקר לפני שהחניון מתמלא"},
+  {day:"19", name:"🏨 The Rockwell Inn, Jackson", time:"צ'ק-אין ~12:00 · לילה 1", leg:"—", ll:[43.4808,-110.7624], hotel:true,
+   note:"285 N Cache Dr, Jackson WY · ₪3,584 · ביטול חינם עד 15/8 · אחה\"צ חופשי 12:00–18:00 · ארוחת ערב Snake River Brewing"},
 
-  // ---- Aug 20 (cyan) — Grand Teton full day ----
-  {day:"20", name:"ג'קסון — יציאה מוקדמת", time:"06:00", leg:"—", ll:[43.4808,-110.7624]},
-  {day:"20", name:"Oxbow Bend — חיות בר בשחר ⭐", time:"06:45–08:30", leg:"43 ק\"מ · 45 דק'", ll:[43.8570,-110.5423],
+  // ---- Aug 20 (cyan) — Grand Teton full day: Jenny Lake, Hidden Falls, Oxbow Bend ----
+  {day:"20", name:"ג'קסון — יציאה מוקדמת", time:"05:30", leg:"—", ll:[43.4808,-110.7624]},
+  {day:"20", name:"Oxbow Bend — חיות בר בשחר ⭐", time:"06:15–07:00", leg:"43 ק\"מ · 45 דק'", ll:[43.8570,-110.5423],
    note:"אליות, איילים, לוטרות · השתקפות Mt. Moran · מרחק 100מ'+"},
-  {day:"20", name:"Colter Bay — ארוחת בוקר", time:"08:30–09:00", leg:"8 ק\"מ", ll:[43.9020,-110.6367],
-   note:"טיול לאורך החוף"},
-  {day:"20", name:"Jenny Lake — שיט + ארוחת צהריים", time:"09:00–13:15", leg:"32 ק\"מ · 35 דק'", ll:[43.7904,-110.7245],
-   note:"⛴️ Jenny Lake Scenic Cruise — הזמנה מראש ל-12:00 (jennylakeboating.com)"},
-  {day:"20", name:"Hidden Falls & Inspiration Point", time:"13:15–15:30", leg:"מעבורת + הליכה ~3.5 ק\"מ הלוך-שוב", ll:[43.7847,-110.7345]},
+  {day:"20", name:"Jenny Lake — הגעה מוקדמת + ארוחת בוקר", time:"07:40–08:00", leg:"40 ק\"מ · 40 דק' (ללא עצירה ב-Colter Bay)", ll:[43.7904,-110.7245],
+   note:"⚠️ חניה מוקדמת — החניון מתמלא עד כ-08:30"},
+  {day:"20", name:"Hidden Falls & Inspiration Point", time:"08:00–10:30", leg:"שאטל סירה לחוף המערבי (~10 דק', כל 10–15 דק')", ll:[43.7847,-110.7345],
+   note:"מסלול הליכה ~3.5 ק\"מ הלוך-חזור מהחוף המערבי"},
+  {day:"20", name:"Jenny Lake Scenic Cruise", time:"11:00–12:00", leg:"שאטל סירה חזרה לחוף המזרחי", ll:[43.7904,-110.7245],
+   note:"⛴️ הזמנה מראש ל-12:00 (jennylakeboating.com)"},
+  {day:"20", name:"Jenny Lake — ארוחת צהריים + זמן חופשי", time:"12:15–15:30", leg:"—", ll:[43.7904,-110.7245],
+   note:"אופציונלי: שכירת קיאק/קאנו בחוף המזרחי (Jenny Lake Boating, $20/שעה או $80/יום, ללא הזמנה מראש)"},
   {day:"20", name:"Moose-Wilson Road — סיבוב חיות בר בערב", time:"18:30–20:30", leg:"—", ll:[43.6800,-110.7550],
-   note:"שקיעה ~20:15–20:30 · שיא פעילות אליות/איילים"},
-  {day:"20", name:"🏨 חזרה ל-Rockwell Inn", time:"לילה 2", leg:"—", ll:[43.4808,-110.7624], hotel:true},
+   note:"שקיעה ~20:15–20:30 · שיא פעילות אליות/איילים · ⚠️ Death Canyon Trailhead סגור קיץ 2026"},
+  {day:"20", name:"🏨 חזרה ל-Rockwell Inn", time:"לילה 2", leg:"—", ll:[43.4808,-110.7624], hotel:true,
+   note:"ארוחת ערב אחרי הסיבוב: Pinky G's Pizzeria, 50 W Broadway"},
 
   // ---- Aug 21 (slate) — departure to JAC ----
   {day:"21", name:"ג'קסון — יציאה, אריזה", time:"07:00", leg:"—", ll:[43.4808,-110.7624]},
-  {day:"21", name:"Schwabacher Landing / Mormon Row", time:"07:30–08:45", leg:"~15–20 ק\"מ", ll:[43.6980,-110.7275],
-   note:"אור בוקר טוב, ללא טיולים ארוכים"},
+  {day:"21", name:"Mormon Row — עצירת צילום", time:"07:30–08:00", leg:"~15 ק\"מ", ll:[43.6828,-110.6089],
+   note:"אור בוקר טוב על האסמים ההיסטוריים (Antelope Flats Historic District), ללא טיולים ארוכים"},
+  {day:"21", name:"Schwabacher Landing — עצירת צילום", time:"08:00–08:45", leg:"~10 ק\"מ", ll:[43.7425,-110.6684],
+   note:"שיקופים על נהר Snake River מול הרי Teton, אור בוקר טוב, ללא טיולים ארוכים"},
   {day:"21", name:"✈️ שדה התעופה Jackson Hole (JAC)", time:"הגעה 09:15 · המראה 14:52 (UA2791 ל-DEN)", leg:"25–30 ק\"מ", ll:[43.6073,-110.7377],
    note:"החזרת רכב שכור · שדה קטן, טרמינל בודד · צ'ק-אין עד 12:00–12:30"},
 ];
